@@ -1,0 +1,18 @@
+{
+	"pack": {
+		"pack_format": 48,
+		"description": [
+			{
+				"text": "Gasworks Built-In Resources",
+				"color": "green"
+			}
+		]
+	},
+	"filter": {
+		"block": [
+			{
+				"path": "recipe/charcoal"
+			}
+		]
+	}
+}

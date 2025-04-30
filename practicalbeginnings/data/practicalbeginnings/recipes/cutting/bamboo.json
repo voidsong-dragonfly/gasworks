@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:bamboo"
+    }
+  ],
+  "result": [
+    {
+      "item": "farmersdelight:straw"
+    },
+    {
+      "chance": 0.5,
+      "item": "farmersdelight:straw"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

@@ -1,0 +1,71 @@
+RAW MATERIALS
+------------------------------------------
+Coal            | Coal Coke, Steel
+Redstone        | Redstone
+(Nether) Quartz | Quartz, Duralumin
+Iron            | Wrought Iron, Steel
+Copper          | Copper, Duralumin
+Lead            | Lead
+Latenium        | Latenium
+Bauxite         | Duralumin
+Limeclay        | Cement, Fireclay, Clay
+
+
+PROCESSED MATERIALS
+------------------------------------------
+Wrought Iron
+Steel
+Coal Coke
+Duralumin
+Cement
+Latenium
+
+
+MACHINES (EARLY GAME)                                   		UTILITIES (EARLY GAME)
+------------------------------------------              		------------------------------------------
+Crude Blast Furnace & Bellows                           		Prospector's Pick
+Crude Kiln                                              		Compost Pile
+Trip Hammer                                             		Tradeswoman's Journal
+Beehive Oven
+Machine Shop 0
+------------------------------------------              		------------------------------------------
+MACHINES (EARLY-MID GAME: Wrought Iron, Fireclay)       		UTILITIES (EARLY-MID GAME)
+------------------------------------------              		------------------------------------------
+Blast Furnace & Heaters                                 		Case Hardening
+Kiln                                                    		Steam Drill
+Coking Retort                                           		Steam Saw
+Condensation Column                                     		Gas Lighting
+Process Boiler                                          		Conveyor Belts [Inclined, Normal, Chute]
+Stationary Engine                                       		Workshop
+Steam Hammer                                            		Caisson System
+Rock Breaker                                            		Geologic Survey Kit
+Blasting Hammer                                         		Storage Container
+Precision Lathe                                         		Storage Tank
+Sawmill                                                 		Compost Drum
+Machine Shop 1                                          		Warehouse Shelving
+Integrated Arm
+------------------------------------------              		------------------------------------------
+MACHINES (LATE-MID GAME: Machine Shop 1, Precision 1)   		UTILITIES (LATE-MID GAME)
+------------------------------------------              		------------------------------------------
+Wire Drawing Press                                      		Warehouse Crane
+Vibration Concentrator                                  		Spawn-Blocking Gas Lighting
+Magnetic Concentrator                                   		Motor Saw
+Bessemer Converter                                      		Motor Drill
+Machine Shop 2                                          		Print Shop
+Gas Lighting (Mantle needs Latenium)                    		Dyeing Bath
+Distillation Column                                     		Refractory Caissons
+Pressurized Reaction Unit
+Assembly Bay
+Autonomic Arm
+Electric Arc Furnace
+Steam Turbogenerator
+Soulfire Catalyst
+------------------------------------------              		------------------------------------------
+MACHINES (END GAME: Assembly Bay, Soulfire Catalyst)    		UTILITIES (END GAME)
+------------------------------------------              		------------------------------------------
+Machine Shop 3                                          		Powered Exoskeleton
+Mercury Turbogenerator                                  		Gravity Device
+Mercury Boiler                                          		Portal Device
+Conduit Bubble Frame                                    		Geologic Dimensional Scanning System
+Miniature Dimensional Tunnel Signaling Mast             		Dimensional Scanning and Assembly System
+Nether Dimensional Tunnel Frame

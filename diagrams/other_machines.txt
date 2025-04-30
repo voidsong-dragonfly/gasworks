@@ -1,0 +1,330 @@
+GREGTECH SINGLEBLOCK MACHINES
+------------------------------------------
+Bending Machine
+Forge Hammer
+Forming Press
+Wiremill
+Compressor
+Macerator
+Ore Washer
+Centrifuge
+Thermal Centrifuge
+Sifter
+Chemical Bath
+Chemical Reactor
+Canning Machine
+Electric Furnace
+Arc Furnace
+Alloy Smelter
+Assembling Machine
+Circuit Assembling Machine
+Shredder
+Packer
+Unpacker
+Distillery
+Brewery
+Fluid Heater
+Mixer
+Extractor
+Autoclave
+Cutting Machine
+Electromagnetic Separator
+Magnetizer
+Fluid Solidifier
+Lathe
+Microwave
+Precision Laser Engraver
+Printer
+Electrolyzer
+
+GREGTECH MULTIBLOCK MACHINES
+------------------------------------------
+Electric Blast Furnace
+Multismelter
+Alloy Blast Furnace
+Vacuum Freezer
+Distillation Tower
+Cracking Unit
+Large Chemical Reactor
+Pyrolyse Oven
+Implosion Compressor
+Assembly Line
+Circuit Assembly Line
+
+
+CATEGORIZED MACHINES
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        SMELTING        |       ORE PROCESSING      |       CHEMISTRY       |       SINGLE ACTION       |       METALWORK       |           ASSEMBLY            |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Alloy Smelter          | Macerator                 | Chemical Bath         | Canning Machine           | Bending Machine       | Assembling Machine            |
+ Electric Furnace       | Ore Washer                | Distillery            | Packer/Unpacker           | Forge Hammer          | Circuit Assembling Machine    |
+ Microwave              | Sifter                    | Chemical Reactor      | Autoclave                 | Forming Press         | Precision Laser Engraver      |
+ Arc Furnace            | Centrifuge                | Fluid Heater          | Extractor                 | Wiremill              | Disassembler/Shredder         |
+                        | Thermal Centrifuge        | Mixer                 | Printer                   | Lathe                 |                               |
+ Electric Blast Furnace | Electromagnetic Separator | Brewery               | Magnetizer                | Cutting Machine       | Assembly Line                 |
+ Alloy Blast Furnace    |                           |                       | Compressor                |                       | Circuit Assembly Line         |
+ Multi-Smelter          |                           | Electrolyzer          | Fluid Solidifier          |                       |                               |
+                        |                           | Pyrolyse Oven         |                           |                       |                               |
+                        |                           | Distillation Column   | Implosion Compressor      |                       |                               |
+                        |                           | Cracking Unit         | Vacuum Freezer            |                       |                               |
+
+
+CONDENSED CATEGORIZED MACHINES - SIMILAR MACHINES ARE NO LONGER SEPARATED, STRANGE MACHINES REMOVED
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        SMELTING        |       ORE PROCESSING      |       CHEMISTRY       |       SINGLE ACTION       |       METALWORK       |           ASSEMBLY            |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Alloy Smelter          | Macerator                 | Chemical Bath         | Cutting Machine           | Forge Hammer          | Precision Assembly Line       |
+ Electric Furnace       | Ore Washer                | Chemical Reactor      | Autoclave                 | Drawing Mill          | Precision Laser Engraver      |
+                        | Sifter                    | Mixer                 | Printer                   | Forming Press         | Shredder                      |
+ Arc Furnace            | Centrifuge                | Brewery               |                           | Lathe                 |                               |
+ Blast Furnace          | Electromagnetic Separator |                       | Refrigeration Unit        |                       |                               |
+                        |                           | Pyrolyse Oven         | Implosion Compressor      |                       |                               |
+                        |                           | Distillation Column   |                           |                       |                               |
+                        |                           | Cracking Unit         |                           |                       |                               |
+                        |                           | Electrolyzer          |                           |                       |                               |
+
+
+
+MACHINE ASSOCIATIONS - GREGTECH:GASWORKS
+------------------------------------------
+ Forge Hammer, Forming Press            | Trip Hammer & Steam Hammer
+ Drawing Mill, Lathe                    | Drawing Press
+ Arc Furnace, Alloy Furnace             | Arc Furnace
+ Electric Furnace, Blast Furnace        | Crude Blast Furnace & Blast Furnace, Crude Kiln & Kiln, Bessemer Converter, Soulfire Catalyst
+ Macerator                              | Steam Hammer, Rock Breaker
+ Ore Washer, Sifter, Centrifuge         | Vanning Concentrator
+ Electromagnetic Separator              | Magnetic Separation Unit
+ Chemical Reactor, Brewery, Autoclave   | Pressurized Reaction Unit
+ Distillation Column                    | Distillation Column
+ Pyrolyse Oven                          | Coking Retort
+ Cutting Machine                        | Sawmill
+ Precision Assembly Line                | Assembly Bay
+
+
+
+MISSING MACHINES - GREGTECH vs GASWORKS
+------------------------------------------
+Chemical Bath
+Mixer
+Cracking Unit
+Printer
+Implosion Compressor
+Refrigeration Unit
+Precision Laser Engraver
+Shredder
+Electrolyzer
+
+
+Machine Difference Balance: Gregtech +9 new, +3 balance, +12 total
+Is it necessary to increase this number? Consider comparing with Mekanism, RotaryCraft & ReactorCraft, Thermal Expansion 1.12?
+
+
+
+
+
+
+
+
+MEKANISM SINGLEBLOCK MACHINES
+------------------------------------------
+Metallurgic Infuser
+Enrichment Chamber
+Energized Smelter
+Crusher
+Purification Chamber
+Chemical Injection Chamber
+Chemical Dissolution Chamber
+Precision Sawmill
+Osmium Compressor
+Combiner
+Electrolytic Separator
+Pressurized Reaction Chamber
+Chemical Oxidizer
+Chemical Infuser
+Chemical Washer
+Chemical Crystallizer
+Rotary Condensentrator
+Solar Neutron Activator
+Nutritional Liquefier
+Isotope Centrifuge
+
+MEKANISM MULTIBLOCK MACHINES
+------------------------------------------
+Thermal Evaporation Plant
+
+
+CATEGORIZED MACHINES
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        SMELTING        |       ORE PROCESSING      |       CHEMISTRY       |       SINGLE ACTION       |       METALWORK       |           ASSEMBLY            |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Metallurgic Infuser    | Enrichment Chamber        | Chemical Infuser      | Combiner                  | Metallurgic Infuser   |                               |
+ Energized Smelter      | Crusher                   | Chemical Oxidizer     | Rotary Condensentrator    |                       |                               |
+ Osmium Compressor      | Purification Chamber      | P. Reaction Chamber   | Precision Sawmill         |                       |                               |
+                        | Chemical Injection C.     | Isotope Centrifuge    | Nutritional Liquefier     |                       |                               |
+                        | Chemical Dissolution C.   | T. Evaporation Plant  | Solar Neutron Activator   |                       |                               |
+                        | Chemical Washer           | Electrolytic Separator|                           |                       |                               |
+                        | Chemical Crystallizer     |                       |                           |                       |                               |
+
+MACHINE ASSOCIATIONS - MEKANISM:GASWORKS
+------------------------------------------
+ Metallurgic Infuser                        | Trip Hammer & Steam Hammer, Drawing Press
+ Metallurgic Infuser, Osmium Compressor     | Arc Furnace
+ Energized Smelter                          | Crude Blast Furnace & Blast Furnace, Crude Kiln & Kiln, Bessemer Converter, Soulfire Catalyst
+ Ore Line (Machines x7)                     | Steam Hammer, Rock Breaker, Vanning Concentrator, Magnetic Separation Unit
+ Chemical Infuser, Chemical Oxidizer, PRC   | Pressurized Reaction Unit
+ Thermal Evaporation Plant                  | Distillation Column
+ Precision Sawmill                          | Sawmill
+
+
+MISSING MACHINES - MEKANISM vs GASWORKS
+------------------------------------------
+Combiner
+Rotary Condensentator
+Nutritional Liquefier
+Solar Neutron Activator
+Electrolytic Separator
+Isotope Centrifuge
+
+MISSING MACHINES - GASWORKS vs MEKANISM
+------------------------------------------
+Coking Retort
+Assembly Bay
+
+
+Machine Difference Balance: Mekanism +6 new, Gasworks -2 new, +1 balance, +5 total
+
+
+
+
+
+
+
+
+ROTARYCRAFT/REACTORCRAFT SINGLEBLOCK MACHINES
+------------------------------------------
+Grinder
+Centrifuge
+Fermenter
+Blast Furnace
+Rock Melter
+Obsidian Factory
+Friction Heater & Heater
+Extractor
+Spawner Controller
+Fractionation Unit
+Compactor
+Magnetizer
+Pulse Jet Furnace
+Steel Purifier
+Lava Smeltery
+Fluid Crystallizer
+Fuel Enhancer
+Composter
+Liquid Distillery
+Refrigeration Unit
+Liquefaction Machine
+Ammonia Synthesizer
+Uranium Processor
+Isotope Centrifuge
+Electrolyzer
+
+
+CATEGORIZED MACHINES
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        SMELTING        |       ORE PROCESSING      |       CHEMISTRY       |       SINGLE ACTION       |       METALWORK       |           ASSEMBLY            |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Pulse Jet Furnace      | Grinder                   | Fermenter             | Centrifuge                |                       |                               |
+ Steel Purifier         | Extractor                 | Liquid Distillery     | Compactor                 |                       |                               |
+ Blast Furnace          |                           | Liquefaction Machine  | Rock Melter               |                       |                               |
+ Friction Heater        |                           | Fractionation Unit    | Obsidian Factory          |                       |                               |
+ Heater                 |                           | Fuel Enhancer         | Magnetization Unit        |                       |                               |
+ Lava Smeltery          |                           | Electrolyzer          | Isotope Centrifuge        |                       |                               |
+                        |                           | Ammonia Synthesizer   | Composter                 |                       |                               |
+                        |                           | Uranium Processor     | Spawner Controller        |                       |                               |
+                        |                           |                       | Refrigeration Unit        |                       |                               |
+                        |                           |                       | Fluid Crystallizer        |                       |                               |
+
+CONDENSED CATEGORIZED MACHINES - SIMILAR MACHINES ARE NO LONGER SEPARATED, STRANGE MACHINES REMOVED
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        SMELTING        |       ORE PROCESSING      |       CHEMISTRY       |       SINGLE ACTION       |       METALWORK       |           ASSEMBLY            |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Pulse Jet Furnace      | Grinder                   | Fermenter             | Centrifuge                |                       |                               |
+ Lava Smeltery          | Extractor                 | Liquid Distillery     | Compactor                 |                       |                               |
+ Blast Furnace          |                           | Fractionation Synth.  | Rock Melter               |                       |                               |
+ Friction Heater        |                           | Electrolyzer          | Fluid Solidifier          |                       |                               |
+                        |                           |                       | Magnetization Unit        |                       |                               |
+                        |                           |                       | Isotope Centrifuge        |                       |                               |
+                        |                           |                       | Composter                 |                       |                               |
+                        |                           |                       | Spawner Controller        |                       |                               |
+                        |                           |                       | Refrigeration Unit        |                       |                               |
+
+
+MACHINE ASSOCIATIONS - ROTARYCRAFT:GASWORKS
+------------------------------------------
+ Blast Furnace, Pulse Jet Furnace | Arc Furnace
+ Lava Smeltery, Friction Heater   | Crude Blast Furnace & Blast Furnace, Crude Kiln & Kiln, Bessemer Converter, Soulfire Catalyst
+ Grinder                          | Steam Hammer, Rock Breaker
+ Extractor                        | Vanning Concentrator, Magnetic Separation Unit
+ Fractionation Synthesizer        | Pressurized Reaction Unit
+ Liquid Distillery                | Distillation Column
+
+
+MISSING MACHINES - ROTARYCRAFT vs GASWORKS
+------------------------------------------
+Fermenter
+Electrolyzer
+Centrifuge
+Compactor
+Rock Melter
+Fluid Solidifier
+Magnetization Unit
+Isotope Centrifuge
+Composter
+Spawner Controller
+Refrigeration Unit
+
+
+MISSING MACHINES - GASWORKS vs ROTARYCRAFT
+------------------------------------------
+Assembly Bay
+Sawmill
+Coking Retort
+Trip Hammer & Steam Hammer
+Drawing Press
+
+
+
+Machine Difference Balance: RotaryCraft & ReactorCraft +11 new, Gasworks -5 new, -3 balance, +3 total
+
+
+
+
+
+
+
+------------------------------------------
+NOVEL MACHINE IDEAS - GREGTECH, MEKANISM, ROTARYCRAFT
+------------------------------------------
+Chemical Bath, Mixer, Printer, Implosion Compressor, Refrigeration Unit, Lathe
+Reconstruction Unit, Thermal Evaporation Stack
+Fermenter, Rock Melter, Spawner Controller, Composter, Magnetization Unit
+
+------------------------------------------
+USEFUL MACHINE IDEAS - GREGTECH, MEKANISM, ROTARYCRAFT
+------------------------------------------
+Chemical Bath & Mixer => Mixing Bath
+Printer
+Refrigeration Unit
+Fermenter
+Spawner Controller
+Composter
+
+------------------------------------------
+USED MACHINE IDEAS
+------------------------------------------
+Printer       => Print Shop
+Composter     => Compost Pile & Compost Drum
+Chemical Bath => Dyeing Bath
+
+
+

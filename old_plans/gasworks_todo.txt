@@ -1,0 +1,79 @@
+DISTILLATION_RECIPE:
+    Input:
+        CoalGas: 1000
+    Output:
+        CoalTar: 200
+        Ammonia: 300
+        Ethylbenzene: 250
+        CarbonDioxide: 250
+
+DISTILLATION_RECIPE:
+    Input:
+        CoalTar: 1000
+    Output:
+        Naphthalene: 400
+        HydrogenSulfide: 300
+        Creosote: 200
+        Phenol: 100
+
+DISTILLATION_RECIPE:
+    Input:
+        LiquidNetherAir: 100000
+    Output:
+        CarbonMonoxide: 72000
+        CoalGas: 10000
+        HydrogenSulfide: 7500
+        SulfurDioxide: 7500
+        Helium3: 2500
+        Neon: 500
+        Ash: 22.5%
+
+DISTILLATION_RECIPES.recipeBuilder("distill_charcoal_byproducts")
+                .inputFluids(CharcoalByproducts.getFluid(1000))
+                .chancedOutput(dust, Charcoal, 2500, 0)
+                .outputFluids(WoodTar.getFluid(250))
+                .outputFluids(WoodVinegar.getFluid(400))
+                .outputFluids(WoodGas.getFluid(250))
+                .outputFluids(Dimethylbenzene.getFluid(100))
+                .duration(40).EUt(256).save(provider);
+
+        DISTILLATION_RECIPES.recipeBuilder("distill_wood_tar")
+                .inputFluids(WoodTar.getFluid(1000))
+                .outputFluids(Creosote.getFluid(300))
+                .outputFluids(Phenol.getFluid(75))
+                .outputFluids(Benzene.getFluid(350))
+                .outputFluids(Toluene.getFluid(75))
+                .outputFluids(Dimethylbenzene.getFluid(200))
+                .duration(40).EUt(256).save(provider);
+
+        DISTILLATION_RECIPES.recipeBuilder("distill_wood_vinegar")
+                .inputFluids(WoodVinegar.getFluid(1000))
+                .outputFluids(AceticAcid.getFluid(100))
+                .outputFluids(Water.getFluid(500))
+                .outputFluids(Ethanol.getFluid(10))
+                .outputFluids(Methanol.getFluid(300))
+                .outputFluids(Acetone.getFluid(50))
+                .outputFluids(MethylAcetate.getFluid(10))
+                .duration(40).EUt(256).save(provider);
+
+        DISTILLATION_RECIPES.recipeBuilder("distill_wood_gas")
+                .inputFluids(WoodGas.getFluid(1000))
+                .outputFluids(CarbonDioxide.getFluid(490))
+                .outputFluids(Ethylene.getFluid(20))
+                .outputFluids(Methane.getFluid(130))
+                .outputFluids(CarbonMonoxide.getFluid(340))
+                .outputFluids(Hydrogen.getFluid(20))
+                .duration(40).EUt(256).save(provider);
+
+
+Theoretical processes:
+
+Coking Retort:              Coal => Sulfurous Gas + Coke + Ash
+    HPRU:                   Sulfurous Gas + Water => Tarry Gas + Sulfur
+Condenser:                  Tarry|Sulfurous Gas => Coal Gas + Coal Tar
+    Refinery:               Coal Gas + Water + Calcite|Dripstone => Ammonium Liqour
+        Distillation Tower: Ammonium Liqour => Ammonium Nitrate + Water + Refinery Gas
+    Distillation Tower:     Refinery|Coal Gas => Acetylene + Heating Gas
+    Distillation Tower:     Coal Tar => Paraffin Wax + Creosote Oil + Gasoline (Benzole) + Aniline
+
+Aniline dyes and an industrial scale dyeing machine maybe?

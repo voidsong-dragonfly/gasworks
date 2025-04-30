@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "projectvibrantjourneys:beach_grass"
+    }
+  ],
+  "result": [
+    {
+      "item": "farmersdelight:straw"
+    },
+    {
+      "chance": 0.125,
+      "item": "farmersdelight:straw"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

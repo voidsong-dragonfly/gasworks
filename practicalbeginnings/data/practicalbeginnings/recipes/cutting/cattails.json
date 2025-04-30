@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "verdantvibes:cattails"
+    }
+  ],
+  "result": [
+    {
+      "item": "farmersdelight:straw"
+    },
+    {
+      "chance": 0.25,
+      "item": "minecraft:stick"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

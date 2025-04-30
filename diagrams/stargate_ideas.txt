@@ -1,0 +1,5 @@
+ BASIC MOD IDEA
+------------------------------------------
+Addon at the end of Gasworks which adds more interdimensional things, in the style of the Stargate idea but with several important changes.
+Primary changes are Stargates requiring significant infrastructure to construct and, crucially, operate. No more 'tiny stargate platform on the surface', buried facilities and others are common.
+Dialling is expensive enough to need dedicated facilities of either endgame (blaze tap power) or post-endgame (enriched naquadah reactor) but provides access to significant resources.
