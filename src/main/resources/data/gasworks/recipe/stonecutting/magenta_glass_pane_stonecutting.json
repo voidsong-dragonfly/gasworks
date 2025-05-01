@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:magenta_stained_glass"
+  },
+  "result": {
+    "count": 4,
+    "id": "minecraft:magenta_stained_glass_pane"
+  }
+}
