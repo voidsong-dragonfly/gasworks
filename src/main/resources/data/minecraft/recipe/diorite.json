@@ -7,18 +7,22 @@
       }
     }
   ],
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "building",
-  "ingredients": [
-    {
-      "item": "minecraft:diorite"
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
     },
-    {
+    "Q": {
       "item": "minecraft:quartz"
     }
+  },
+  "pattern": [
+    "CQ",
+    "QC"
   ],
   "result": {
-    "count": 1,
-    "id": "minecraft:granite"
+    "count": 2,
+    "id": "minecraft:diorite"
   }
 }

@@ -14,11 +14,11 @@
       "item": "minecraft:diorite"
     },
     {
-      "item": "minecraft:quartz"
+      "item": "minecraft:cobblestone"
     }
   ],
   "result": {
-    "count": 1,
-    "id": "minecraft:granite"
+    "count": 2,
+    "id": "minecraft:andesite"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "gasworks:non_metal_realism"
+      }
+    }
+  ],
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "minecraft:basalt"
+  },
+  "result": {
+    "id": "minecraft:smooth_basalt"
+  }
+}

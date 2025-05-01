@@ -7,18 +7,20 @@
       }
     }
   ],
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "building",
-  "ingredients": [
-    {
-      "item": "minecraft:diorite"
-    },
-    {
-      "item": "minecraft:quartz"
+  "key": {
+    "#": {
+      "item": "minecraft:bone_meal"
     }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
   ],
   "result": {
     "count": 1,
-    "id": "minecraft:granite"
+    "id": "minecraft:bone_block"
   }
 }

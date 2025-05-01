@@ -8,17 +8,14 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
-  "category": "building",
+  "category": "redstone",
   "ingredients": [
     {
-      "item": "minecraft:diorite"
-    },
-    {
-      "item": "minecraft:quartz"
+      "item": "minecraft:stone"
     }
   ],
   "result": {
     "count": 1,
-    "id": "minecraft:granite"
+    "id": "minecraft:stone_button"
   }
 }
