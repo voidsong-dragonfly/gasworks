@@ -16,18 +16,28 @@
       }
     }
   ],
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "#": {
-      "item": "minecraft:wheat"
+  "group": "rabbit_stew",
+  "ingredients": [
+    {
+      "item": "minecraft:baked_potato"
+    },
+    {
+      "item": "minecraft:cooked_rabbit"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
     }
-  },
-  "pattern": [
-    "###"
   ],
   "result": {
     "count": 1,
-    "id": "minecraft:bread"
+    "id": "minecraft:rabbit_stew"
   }
 }

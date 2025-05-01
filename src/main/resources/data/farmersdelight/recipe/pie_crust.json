@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "gasworks:non_metal_realism"
+      }
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "tag": "c:foods/milk"
+    },
+    "w": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "wMw",
+    " w "
+  ],
+  "result": {
+    "count": 1,
+    "id": "farmersdelight:pie_crust"
+  }
+}

@@ -76,12 +76,19 @@ description='''${mod_description}'''
     # Side this dependency is applied on - BOTH, CLIENT, or SERVER
     side="BOTH"
 
-# Here's another dependency
 [[dependencies.${mod_id}]]
     modId="minecraft"
     type="required"
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="${minecraft_version_range}"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="farmersdelight"
+    type="optional"
+    # This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="${fd_version_range}"
     ordering="AFTER"
     side="BOTH"
 

@@ -16,18 +16,21 @@
       }
     }
   ],
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "#": {
-      "item": "minecraft:wheat"
+  "ingredients": [
+    {
+      "item": "minecraft:pumpkin"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
     }
-  },
-  "pattern": [
-    "###"
   ],
   "result": {
     "count": 1,
-    "id": "minecraft:bread"
+    "id": "minecraft:pumpkin_pie"
   }
 }

@@ -21,13 +21,16 @@
   "key": {
     "#": {
       "item": "minecraft:wheat"
+    },
+    "X": {
+      "item": "minecraft:cocoa_beans"
     }
   },
   "pattern": [
-    "###"
+    "#X#"
   ],
   "result": {
-    "count": 1,
-    "id": "minecraft:bread"
+    "count": 8,
+    "id": "minecraft:cookie"
   }
 }
