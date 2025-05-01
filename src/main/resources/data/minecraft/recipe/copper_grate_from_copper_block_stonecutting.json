@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "gasworks:metal_realism"
+      }
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:copper_block"
+  },
+  "result": {
+    "count": 4,
+    "id": "minecraft:copper_grate"
+  }
+}
