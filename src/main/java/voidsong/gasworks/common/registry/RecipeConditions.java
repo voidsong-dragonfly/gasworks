@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.registries;
+package voidsong.gasworks.common.registry;
 
 import com.mojang.serialization.MapCodec;
 import net.neoforged.neoforge.common.conditions.ICondition;
