@@ -10,7 +10,7 @@ import voidsong.gasworks.common.recipe.NonMetalRealismCondition;
 
 import java.util.function.Supplier;
 
-public class RecipeConditions {
+public class GSRecipeConditions {
     public static final DeferredRegister<MapCodec<? extends ICondition>> CONDITION_CODECS = DeferredRegister.create(NeoForgeRegistries.Keys.CONDITION_CODECS, Gasworks.MOD_ID);
 
     public static final Supplier<MapCodec<NonMetalRealismCondition>> NON_METAL_REALISM = CONDITION_CODECS.register("non_metal_realism", () -> NonMetalRealismCondition.CODEC);

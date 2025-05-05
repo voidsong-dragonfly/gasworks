@@ -14,6 +14,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
@@ -54,8 +55,65 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		this.existingFileHelper = exFileHelper;
 	}
 
-	protected String getName(Block b) {
+	/*
+	 * Library functions and other functions not directly related to models & blockstates; none of these should be accessed outside this class
+	 */
+
+	public static ResourceLocation rl(String path) {
+		return ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "block/" + path);
+	}
+
+	private String getName(Block b) {
 		return BuiltInRegistries.BLOCK.getKey(b).getPath();
+	}
+
+	private int getAngle(Direction dir, int offset) {
+		return (int)((dir.toYRot()+offset)%360);
+	}
+
+	private static <T extends Comparable<T>> void forEach(PartialBlockstate base, Property<T> prop, List<Property<?>> remaining, Consumer<PartialBlockstate> out) {
+		for(T value : prop.getPossibleValues())
+			forEachState(base, remaining, map -> {
+				map = map.with(prop, value);
+				out.accept(map);
+			});
+	}
+
+	private static void forEachState(PartialBlockstate base, List<Property<?>> props, Consumer<PartialBlockstate> out) {
+		if(!props.isEmpty()) {
+			List<Property<?>> remaining = props.subList(1, props.size());
+			Property<?> main = props.getFirst();
+			forEach(base, main, remaining, out);
+		}
+		else
+			out.accept(base);
+	}
+
+	private void setRenderType(@Nullable RenderType type, ModelBuilder<?>... builders) {
+		if(type!=null) {
+			final String typeName;
+			if(type==RenderType.solid())
+				typeName = "solid";
+			else if(type==RenderType.translucent())
+				typeName = "translucent";
+			else if(type==RenderType.cutout())
+				typeName = "cutout";
+			else if(type==RenderType.cutoutMipped())
+				typeName = "cutout_mipped";
+			else
+				throw new RuntimeException("Unknown render type: "+type);
+
+			for(final ModelBuilder<?> model : builders)
+				model.renderType(typeName);
+		}
+	}
+
+	/*
+	 * Item models & code to apply a model that will be the one model of a block to said block
+	 */
+
+	private void itemModel(Block block, ModelFile model) {
+		itemModels().getBuilder(getName(block)).parent(model);
 	}
 
 	public void simpleBlockAndItem(Block b, ModelFile model) {
@@ -72,8 +130,11 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		itemModel(b, new ConfiguredModel(models[0]).model);
 	}
 
-	protected void cubeAll(Block b, ResourceLocation texture)
-	{
+	/*
+	 * Six-sided cubes & other simple singular models
+	 */
+
+	protected void cubeAll(Block b, ResourceLocation texture) {
 		cubeAll(b, texture, null);
 	}
 
@@ -81,6 +142,13 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		final BlockModelBuilder model = models().cubeAll(getName(b), texture);
 		setRenderType(type, model);
 		simpleBlockAndItem(b, model);
+	}
+
+	protected void multiEightCubeAll(Block b, ResourceLocation texture) {
+		ResourceLocation[] textures = new ResourceLocation[8];
+		for(int i = 0; i < 8; i++)
+			textures[i] = texture.withSuffix(Integer.toString(i));
+		multiCubeAll(b, textures);
 	}
 
 	protected void multiCubeAll(Block b, ResourceLocation... textures) {
@@ -96,12 +164,9 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		multiBlockAndItem(b, models);
 	}
 
-	protected void multiEightCubeAll(Block b, ResourceLocation texture) {
-		ResourceLocation[] textures = new ResourceLocation[8];
-		for(int i = 0; i < 8; i++)
-			textures[i] = texture.withSuffix(Integer.toString(i));
-		multiCubeAll(b, textures);
-	}
+	/*
+	 * Slabs & slab models
+	 */
 
 	protected void slab(SlabBlock b, ResourceLocation texture) {
 		slab(b, texture, null);
@@ -151,14 +216,18 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	//Forge method does not allow random textures for slabs, instead creating a ConfiguredModel directly from an input file
-	public void slabBlock(SlabBlock b, ModelFile[] bottom, ModelFile[] top, ModelFile[] doubleslab) {
+	private void slabBlock(SlabBlock b, ModelFile[] bottom, ModelFile[] top, ModelFile[] doubleslab) {
 		getVariantBuilder(b)
 				.partialState().with(SlabBlock.TYPE, SlabType.BOTTOM).addModels(Stream.of(bottom).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new))
 				.partialState().with(SlabBlock.TYPE, SlabType.TOP).addModels(Stream.of(top).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new))
 				.partialState().with(SlabBlock.TYPE, SlabType.DOUBLE).addModels(Stream.of(doubleslab).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new));
 	}
 
-	protected void stairsFor(StairBlock b, ResourceLocation texture) {
+	/*
+	 * Stairs & stair models
+	 */
+
+	protected void stairs(StairBlock b, ResourceLocation texture) {
 		stairs(b, texture, texture, texture, null);
 	}
 
@@ -172,18 +241,18 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		itemModel(b, stairs);
 	}
 
-	protected void stairsForMultiEightAll(StairBlock b, ResourceLocation texture) {
+	protected void stairsMultiEightAll(StairBlock b, ResourceLocation texture) {
 		ResourceLocation[] textures = new ResourceLocation[8];
 		for(int i = 0; i < 8; i++)
 			textures[i] = texture.withSuffix(Integer.toString(i));
-		stairsForMultiAll(b, textures);
+		stairsMultiAll(b, textures);
 	}
 
-	protected void stairsForMultiAll(StairBlock b, ResourceLocation... textures) {
-		stairsForMultiAll(b, null, textures);
+	protected void stairsMultiAll(StairBlock b, ResourceLocation... textures) {
+		stairsMultiAll(b, null, textures);
 	}
 
-	protected void stairsForMultiAll(StairBlock b, @Nullable RenderType type, ResourceLocation... textures) {
+	protected void stairsMultiAll(StairBlock b, @Nullable RenderType type, ResourceLocation... textures) {
 		final ModelBuilder<?>[] stairs = new ModelBuilder<?>[textures.length];
 		final ModelBuilder<?>[] stairsInner = new ModelBuilder<?>[textures.length];
 		final ModelBuilder<?>[] stairsOuter = new ModelBuilder<?>[textures.length];
@@ -199,7 +268,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	//Forge method does not allow random textures for slabs, instead creating a ConfiguredModel directly from an input file
-	public void stairsBlock(StairBlock block, ModelFile[] stairs, ModelFile[] stairsInner, ModelFile[] stairsOuter) {
+	private void stairsBlock(StairBlock block, ModelFile[] stairs, ModelFile[] stairsInner, ModelFile[] stairsOuter) {
 		getVariantBuilder(block)
 				.forAllStatesExcept(state -> {
 					Direction facing = state.getValue(StairBlock.FACING);
@@ -220,6 +289,10 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 					return models;
 				}, StairBlock.WATERLOGGED);
 	}
+
+	/*
+	 * Walls & wall models
+	 */
 
 	protected void wall(WallBlock b, ResourceLocation bottomTexture, ResourceLocation sideTexture, ResourceLocation topTexture) {
 		wallBlock(b,
@@ -262,7 +335,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	//Forge method does not allow random textures for walls, instead creating ConfiguredModel directly from input file
-	public void wallBlock(WallBlock block, ModelFile[] posts, ModelFile[] sides, ModelFile[] sidesTall) {
+	private void wallBlock(WallBlock block, ModelFile[] posts, ModelFile[] sides, ModelFile[] sidesTall) {
 		for(int i = 0; i < posts.length; i++) {
 			ModelFile side = sides[i];
 			ModelFile sideTall = sidesTall[i];
@@ -288,68 +361,64 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 				.condition(entry.getValue(), height);
 	}
 
-	protected void setRenderType(@Nullable RenderType type, ModelBuilder<?>... builders) {
-		if(type!=null) {
-			final String typeName;
-			if(type==RenderType.solid())
-				typeName = "solid";
-			else if(type==RenderType.translucent())
-				typeName = "translucent";
-			else if(type==RenderType.cutout())
-				typeName = "cutout";
-			else if(type==RenderType.cutoutMipped())
-				typeName = "cutout_mipped";
-			else
-				throw new RuntimeException("Unknown render type: "+type);
 
-			for(final ModelBuilder<?> model : builders)
-				model.renderType(typeName);
-		}
-	}
 
-	protected ResourceLocation addModelsPrefix(ResourceLocation in) {
-		return in.withPath("models/"+in.getPath());
-	}
-
-	protected void itemModel(Block block, ModelFile model) {
-		itemModels().getBuilder(getName(block)).parent(model);
-	}
-
-	protected BlockModelBuilder wallModelTopped(String name, String type, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
+	private BlockModelBuilder wallModelTopped(String name, String type, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
 		return models().withExistingParent(name, Gasworks.rl("block/"+type))
 				.texture("wall_bottom", bottom)
 				.texture("wall_side", side)
 				.texture("wall_top", top);
 	}
 
-	protected BlockModelBuilder wallModelToppedInventory(String name, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
+	private BlockModelBuilder wallModelToppedInventory(String name, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
 		return models().withExistingParent(name, Gasworks.rl("block/wall_inventory_topped"))
 				.texture("wall_bottom", bottom)
 				.texture("wall_side", side)
 				.texture("wall_top", top);
 	}
 
-	protected int getAngle(Direction dir, int offset) {
-		return (int)((dir.toYRot()+offset)%360);
+	/*
+	 * Axially rotatable blocks of some kind, incl. 3-axis & 2-axis (horizontal); as well as full-6-angle
+	 */
+
+	public void logPileBlock(RotatedPillarBlock block, ResourceLocation log) {
+		logPileBlock(block, log, ResourceLocation.fromNamespaceAndPath(log.getNamespace(), log.getPath() + "_top"));
 	}
 
-	protected void horizontalFacingBlock(Block block, ModelFile model) {
-		horizontalFacingBlock(block, $ -> model, List.of());
+	public void logPileBlock(RotatedPillarBlock block, ResourceLocation side, ResourceLocation end) {
+		logPileBlock(block, models().withExistingParent(getName(block), rl("wood_pile"))
+			.texture("side", side)
+			.texture("top", end));
 	}
 
-	protected void horizontalFacingBlock(Block block, ModelFile model, int offsetRotY) {
+	public void logPileBlock(RotatedPillarBlock block, ModelFile model) {
+		getVariantBuilder(block)
+			.partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Y)
+			.modelForState().modelFile(model).addModel()
+			.partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Z)
+			.modelForState().modelFile(model).rotationX(90).addModel()
+			.partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)
+			.modelForState().modelFile(model).rotationX(90).rotationY(90).addModel();
+		itemModel(block, model);
+	}
+
+	protected void horizontalFacing(Block block, ModelFile model) {
+		horizontalFacing(block, $ -> model, List.of());
+	}
+
+	protected void horizontalFacing(Block block, ModelFile model, int offsetRotY) {
 		rotatedBlock(block, $ -> model, Properties.FACING_HORIZONTAL, List.of(), 0, offsetRotY);
 	}
 
-	protected void horizontalFacingBlock(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
+	protected void horizontalFacing(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
 		rotatedBlock(block, model, Properties.FACING_HORIZONTAL, additionalProps, 0, 180);
 	}
 
-	protected void allFacingBlock(Block block, ModelFile model) {
-		allFacingBlock(block, $ -> model, List.of());
+	protected void allFacing(Block block, ModelFile model) {
+		allFacing(block, $ -> model, List.of());
 	}
 
-	protected void allFacingBlock(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
+	protected void allFacing(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
 		rotatedBlock(block, model, Properties.FACING_ALL, additionalProps, 90, 0);
 	}
 
@@ -381,23 +450,5 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 				state.with(facing, d).setModels(new ConfiguredModel(modelLoc, x+offsetRotX, y, false));
 			}
 		});
-	}
-
-	public static <T extends Comparable<T>> void forEach(PartialBlockstate base, Property<T> prop, List<Property<?>> remaining, Consumer<PartialBlockstate> out) {
-		for(T value : prop.getPossibleValues())
-			forEachState(base, remaining, map -> {
-				map = map.with(prop, value);
-				out.accept(map);
-			});
-	}
-
-	public static void forEachState(PartialBlockstate base, List<Property<?>> props, Consumer<PartialBlockstate> out) {
-		if(!props.isEmpty()) {
-			List<Property<?>> remaining = props.subList(1, props.size());
-			Property<?> main = props.getFirst();
-			forEach(base, main, remaining, out);
-		}
-		else
-			out.accept(base);
 	}
 }

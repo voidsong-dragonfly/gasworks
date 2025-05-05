@@ -1,3 +1,12 @@
 {
-    "itemGroup.gasworks": "Gasworks"
+    "itemGroup.gasworks": "Gasworks",
+    "block.gasworks.oak_log_pile": "Oak Log Pile",
+    "block.gasworks.spruce_log_pile": "Spruce Log Pile",
+    "block.gasworks.birch_log_pile": "Birch Log Pile",
+    "block.gasworks.jungle_log_pile": "Jungle Log Pile",
+    "block.gasworks.acacia_log_pile": "Acacia Log Pile",
+    "block.gasworks.dark_oak_log_pile": "Dark Oak Log Pile",
+    "block.gasworks.cherry_log_pile": "Cherry Log Pile",
+    "block.gasworks.mangrove_log_pile": "Mangrove Log Pile",
+    "block.gasworks.bamboo_log_pile": "Bamboo Log Pile"
 }

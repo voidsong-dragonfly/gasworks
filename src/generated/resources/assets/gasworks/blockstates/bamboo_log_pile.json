@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "gasworks:block/bamboo_log_pile",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "gasworks:block/bamboo_log_pile"
+    },
+    "axis=z": {
+      "model": "gasworks:block/bamboo_log_pile",
+      "x": 90
+    }
+  }
+}

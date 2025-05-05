@@ -20,6 +20,7 @@ public class DatagenHolder {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         if(event.includeServer()) {
+            generator.addProvider(true, new GasworksBlockTagsProvider(output, lookupProvider, existingFileHelper));
             //generator.addProvider(true, new GasworksRecipeProvider(output, lookupProvider));
         }
         if(event.includeClient()) {
