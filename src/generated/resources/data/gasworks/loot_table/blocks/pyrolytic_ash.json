@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:light_gray_dye"
+          "name": "gasworks:ash"
         }
       ],
       "rolls": 1.0
@@ -59,7 +59,7 @@
               }
             }
           ],
-          "name": "minecraft:coal"
+          "name": "gasworks:coke"
         }
       ],
       "rolls": 1.0

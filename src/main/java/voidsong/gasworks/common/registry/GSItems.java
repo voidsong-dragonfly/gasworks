@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -14,6 +15,10 @@ public class GSItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Gasworks.MOD_ID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Gasworks.MOD_ID);
 
+    /*
+     * Beehive oven & charcoal heap items, incl. fuels & ash
+     */
+    //Log stacks for fuel
     public static final DeferredItem<BlockItem> OAK_LOG_PILE = ITEMS.registerSimpleBlockItem("oak_log_pile", GSBlocks.OAK_LOG_PILE);
     public static final DeferredItem<BlockItem> SPRUCE_LOG_PILE = ITEMS.registerSimpleBlockItem("spruce_log_pile", GSBlocks.SPRUCE_LOG_PILE);
     public static final DeferredItem<BlockItem> BIRCH_LOG_PILE = ITEMS.registerSimpleBlockItem("birch_log_pile", GSBlocks.BIRCH_LOG_PILE);
@@ -23,6 +28,10 @@ public class GSItems {
     public static final DeferredItem<BlockItem> CHERRY_LOG_PILE = ITEMS.registerSimpleBlockItem("cherry_log_pile", GSBlocks.CHERRY_LOG_PILE);
     public static final DeferredItem<BlockItem> MANGROVE_LOG_PILE = ITEMS.registerSimpleBlockItem("mangrove_log_pile", GSBlocks.MANGROVE_LOG_PILE);
     public static final DeferredItem<BlockItem> BAMBOO_LOG_PILE = ITEMS.registerSimpleBlockItem("bamboo_log_pile", GSBlocks.BAMBOO_LOG_PILE);
+    //Coal stacks for fuel
+    //Coal coke & products
+    public static final DeferredItem<Item> COKE = ITEMS.registerSimpleItem("coke");
+    public static final DeferredItem<Item> ASH = ITEMS.registerSimpleItem("ash");
 
     // Creates a creative tab for the mod & adds all Natural Philosophy items to the tab
     @SuppressWarnings("unused")
@@ -39,5 +48,7 @@ public class GSItems {
             output.accept(CHERRY_LOG_PILE.get());
             output.accept(MANGROVE_LOG_PILE.get());
             output.accept(BAMBOO_LOG_PILE.get());
+            output.accept(COKE.get());
+            output.accept(ASH.get());
         }).build());
 }

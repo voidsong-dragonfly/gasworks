@@ -11,18 +11,17 @@ import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.properties.AshType;
 import voidsong.gasworks.common.registry.GSBlocks;
+import voidsong.gasworks.common.registry.GSItems;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -43,7 +42,7 @@ public class GasworksLootTableProvider extends LootTableProvider {
     }
 
     @Override
-    protected void validate(WritableRegistry<LootTable> registry, ValidationContext tracker, ProblemReporter.Collector collector) {
+    protected void validate(WritableRegistry<LootTable> registry, @Nonnull ValidationContext tracker, @Nonnull ProblemReporter.Collector collector) {
         registry.forEach(table -> table.validate(tracker));
     }
 
@@ -79,15 +78,15 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.BAMBOO_LOG_PILE.get());
             //Resulting ash
             add(GSBlocks.PYROLYTIC_ASH.get(), LootTable.lootTable()
-                .withPool(this.applyExplosionCondition(Items.LIGHT_GRAY_DYE.asItem(), LootPool.lootPool()
+                .withPool(this.applyExplosionCondition(GSItems.ASH.asItem(), LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(Items.LIGHT_GRAY_DYE.asItem()))))
+                    .add(LootItem.lootTableItem(GSItems.ASH.asItem()))))
                 .withPool(this.applyExplosionCondition(Items.CHARCOAL.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
                     .add(LootItem.lootTableItem(Items.CHARCOAL.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.CHARCOAL))))))
-                .withPool(this.applyExplosionCondition(Items.COAL.asItem(),  LootPool.lootPool()
+                .withPool(this.applyExplosionCondition(GSItems.COKE.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(Items.COAL.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
+                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
             );
         /*
         // Add a table with a silk touch only loot table.

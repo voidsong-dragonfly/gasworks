@@ -61,7 +61,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	 * Library functions and other functions not directly related to models & blockstates; none of these should be accessed outside this class
 	 */
 
-	public static ResourceLocation rl(String path) {
+	protected static ResourceLocation rl(String path) {
 		return ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "block/" + path);
 	}
 
