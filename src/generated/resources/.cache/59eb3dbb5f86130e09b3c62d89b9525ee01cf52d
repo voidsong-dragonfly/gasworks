@@ -1,0 +1,11 @@
+// 1.21.1	2025-05-06T03:51:36.792151044	Loot Tables
+394ac4f1686355bd610a3744fb95fab5af139d3d data/gasworks/loot_table/blocks/acacia_log_pile.json
+192e75516869bd21dfc63e7454703e49c2c02f4e data/gasworks/loot_table/blocks/bamboo_log_pile.json
+d03f896bf2c75947527a8e8f379ae176a987f38e data/gasworks/loot_table/blocks/birch_log_pile.json
+8f3da6baa52126fb912cd9233838ce8e27f8c161 data/gasworks/loot_table/blocks/cherry_log_pile.json
+3374b2d39cee217fac3ee01b507a1dbc076e6fa5 data/gasworks/loot_table/blocks/dark_oak_log_pile.json
+d552a3c5a191da35007d3afc930ef790f91105a9 data/gasworks/loot_table/blocks/jungle_log_pile.json
+4717aa6d0f3c1d06b2a40cc537a056437f00e155 data/gasworks/loot_table/blocks/mangrove_log_pile.json
+e7ecf82a543039cb2523de78d8c6f0f0795f2b87 data/gasworks/loot_table/blocks/oak_log_pile.json
+0df76c2b372ab3ed36baef8da53e3e124cb21610 data/gasworks/loot_table/blocks/pyrolytic_ash.json
+7898e6db99e5231ec4c4aa9eb01664a610a66e0d data/gasworks/loot_table/blocks/spruce_log_pile.json

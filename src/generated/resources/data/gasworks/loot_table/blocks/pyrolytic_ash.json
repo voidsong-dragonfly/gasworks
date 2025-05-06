@@ -1,0 +1,69 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:light_gray_dye"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "gasworks:pyrolytic_ash",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "type": "charcoal"
+              }
+            }
+          ],
+          "name": "minecraft:charcoal"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "gasworks:pyrolytic_ash",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "type": "coke"
+              }
+            }
+          ],
+          "name": "minecraft:coal"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "gasworks:blocks/pyrolytic_ash"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "gasworks:mangrove_log_pile"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "gasworks:blocks/mangrove_log_pile"
+}

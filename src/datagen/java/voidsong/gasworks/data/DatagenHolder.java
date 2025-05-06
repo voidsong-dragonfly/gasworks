@@ -21,6 +21,7 @@ public class DatagenHolder {
 
         if(event.includeServer()) {
             generator.addProvider(true, new GasworksBlockTagsProvider(output, lookupProvider, existingFileHelper));
+            generator.addProvider(true, new GasworksLootTableProvider(output, lookupProvider));
             //generator.addProvider(true, new GasworksRecipeProvider(output, lookupProvider));
         }
         if(event.includeClient()) {

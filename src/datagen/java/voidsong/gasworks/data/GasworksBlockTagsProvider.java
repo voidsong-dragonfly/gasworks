@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSTags;
 
 import javax.annotation.Nonnull;
@@ -27,5 +28,15 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(Blocks.BRICKS, Blocks.NETHER_BRICKS, Blocks.MUD_BRICKS)
             .add(Blocks.END_STONE_BRICKS)
             .addTag(BlockTags.DIRT).remove(Blocks.MOSS_BLOCK, Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS);
+        /*
+         * Tool tags for block breaking
+         */
+        tag(BlockTags.MINEABLE_WITH_AXE)
+            .add(GSBlocks.OAK_LOG_PILE.get(), GSBlocks.SPRUCE_LOG_PILE.get(), GSBlocks.BIRCH_LOG_PILE.get(),
+                 GSBlocks.JUNGLE_LOG_PILE.get(), GSBlocks.ACACIA_LOG_PILE.get(), GSBlocks.DARK_OAK_LOG_PILE.get(),
+                 GSBlocks.CHERRY_LOG_PILE.get(), GSBlocks.MANGROVE_LOG_PILE.get(), GSBlocks.BAMBOO_LOG_PILE.get());
+        tag(BlockTags.MINEABLE_WITH_SHOVEL)
+            .add(GSBlocks.PYROLYTIC_ASH.get());
+
     }
 }
