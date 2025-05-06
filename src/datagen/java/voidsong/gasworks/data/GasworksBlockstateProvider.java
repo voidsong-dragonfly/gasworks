@@ -3,7 +3,10 @@ package voidsong.gasworks.data;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.registry.GSBlocks;
+
+import java.util.List;
 
 public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
     public GasworksBlockstateProvider(PackOutput output, ExistingFileHelper exHelper) {
@@ -12,6 +15,10 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        /*
+         * Beehive oven & charcoal heap blocks, incl. fuels & ash
+         */
+        //Log stacks for fuel
         logPileBlock(GSBlocks.OAK_LOG_PILE.get(), ResourceLocation.withDefaultNamespace("block/stripped_oak_log"));
         logPileBlock(GSBlocks.SPRUCE_LOG_PILE.get(), ResourceLocation.withDefaultNamespace("block/stripped_spruce_log"));
         logPileBlock(GSBlocks.BIRCH_LOG_PILE.get(), ResourceLocation.withDefaultNamespace("block/stripped_birch_log"));
@@ -21,5 +28,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         logPileBlock(GSBlocks.CHERRY_LOG_PILE.get(), ResourceLocation.withDefaultNamespace("block/stripped_cherry_log"));
         logPileBlock(GSBlocks.MANGROVE_LOG_PILE.get(), ResourceLocation.withDefaultNamespace("block/stripped_mangrove_log"));
         logPileBlock(GSBlocks.BAMBOO_LOG_PILE.get(), ResourceLocation.withDefaultNamespace("block/stripped_bamboo_block"));
+        //Resulting ash
+        ashPileCubeAll(GSBlocks.PYROLYTIC_ASH.get(), List.of(PyrolyticAshBlock.ASH_TYPE), rl("charcoal_ash"), rl("coke_ash"));
     }
 }

@@ -33,7 +33,9 @@ import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder.PartialBlockstate;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
-import voidsong.gasworks.common.block.Properties;
+import voidsong.gasworks.common.block.PyrolyticAshBlock;
+import voidsong.gasworks.common.block.properties.AshType;
+import voidsong.gasworks.common.block.properties.Properties;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -449,6 +451,45 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 				}
 				state.with(facing, d).setModels(new ConfiguredModel(modelLoc, x+offsetRotX, y, false));
 			}
+		});
+	}
+
+	/*
+	 * Randomized horizontal rotation blocks such as sand & dirt
+	 */
+
+	protected void ashPileCubeAll(Block b, List<Property<?>> additionalProps, ResourceLocation charcoal, ResourceLocation coke) {
+		BlockModelBuilder charcoalModel = models().cubeAll(getName(b)+"_charcoal", charcoal);
+		BlockModelBuilder cokeModel = models().cubeAll(getName(b)+"_coke", coke);
+		ashPileCubeAll(b, additionalProps, charcoalModel, cokeModel);
+	}
+
+	protected void ashPileCubeAll(Block b, List<Property<?>> additionalProps, ModelFile charcoal, ModelFile coke) {
+		horizontalRandomBlock(b, state -> state.getSetStates().get(PyrolyticAshBlock.ASH_TYPE).equals(AshType.CHARCOAL)?charcoal:coke, additionalProps);
+	}
+
+	protected void horizontalRandomCubeAllAndItem(Block b, List<Property<?>> additionalProps, ResourceLocation texture) {
+		final BlockModelBuilder model = models().cubeAll(getName(b), texture);
+		horizontalRandomBlockAndItem(b, model, additionalProps);
+	}
+
+	protected void horizontalRandomBlockAndItem(Block b, ModelFile model, List<Property<?>> additionalProps) {
+		horizontalRandomBlock(b, model, additionalProps);
+		itemModel(b, model);
+	}
+
+	protected void horizontalRandomBlock(Block block, ModelFile model, List<Property<?>> additionalProps) {
+		horizontalRandomBlock(block, $ -> model, additionalProps);
+	}
+
+	protected void horizontalRandomBlock(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
+		VariantBlockStateBuilder stateBuilder = getVariantBuilder(block);
+		forEachState(stateBuilder.partialState(), additionalProps, state -> {
+			ConfiguredModel[] models = new ConfiguredModel[4];
+			ModelFile modelLoc = model.apply(state);
+			for(int i = 0; i < 4; i++)
+				models[i] = new ConfiguredModel(modelLoc, 0, i*90, false);
+			state.setModels(models);
 		});
 	}
 }

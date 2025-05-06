@@ -1,5 +1,7 @@
 package voidsong.gasworks.common.registry;
 
+import net.minecraft.util.ColorRGBA;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -9,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.PyrolizingBlock;
+import voidsong.gasworks.common.block.PyrolyticAshBlock;
 
 public class GSBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Gasworks.MOD_ID);
@@ -21,6 +24,10 @@ public class GSBlocks {
         .randomTicks()
         .noOcclusion();
 
+    /*
+     * Beehive oven & charcoal heap blocks, incl. fuels & ash
+     */
+    //Log stacks for fuel
     public static final DeferredBlock<RotatedPillarBlock> OAK_LOG_PILE = BLOCKS.registerBlock("oak_log_pile", PyrolizingBlock::new, LOG_PILE_PROPERTIES.mapColor(MapColor.WOOD));
     public static final DeferredBlock<RotatedPillarBlock> SPRUCE_LOG_PILE = BLOCKS.registerBlock("spruce_log_pile", PyrolizingBlock::new, LOG_PILE_PROPERTIES.mapColor(MapColor.PODZOL));
     public static final DeferredBlock<RotatedPillarBlock> BIRCH_LOG_PILE = BLOCKS.registerBlock("birch_log_pile", PyrolizingBlock::new, LOG_PILE_PROPERTIES.mapColor(MapColor.SAND));
@@ -30,4 +37,8 @@ public class GSBlocks {
     public static final DeferredBlock<RotatedPillarBlock> CHERRY_LOG_PILE = BLOCKS.registerBlock("cherry_log_pile", PyrolizingBlock::new, LOG_PILE_PROPERTIES.mapColor(MapColor.TERRACOTTA_PINK));
     public static final DeferredBlock<RotatedPillarBlock> MANGROVE_LOG_PILE = BLOCKS.registerBlock("mangrove_log_pile", PyrolizingBlock::new, LOG_PILE_PROPERTIES.mapColor(MapColor.COLOR_RED));
     public static final DeferredBlock<RotatedPillarBlock> BAMBOO_LOG_PILE = BLOCKS.registerBlock("bamboo_log_pile", PyrolizingBlock::new, LOG_PILE_PROPERTIES.sound(SoundType.BAMBOO_WOOD).mapColor(MapColor.COLOR_YELLOW));
+    //Coal stacks for fuel
+    //Resulting ash
+    public static final DeferredBlock<Block> PYROLYTIC_ASH = BLOCKS.register("pyrolytic_ash",
+        () -> new PyrolyticAshBlock(new ColorRGBA(-8356741), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.SAND)));
 }

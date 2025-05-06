@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.block;
+package voidsong.gasworks.common.block.properties;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;

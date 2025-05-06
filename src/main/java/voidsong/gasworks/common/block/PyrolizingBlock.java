@@ -25,6 +25,8 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.Nullable;
+import voidsong.gasworks.common.block.properties.AshType;
+import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSTags;
 
 import javax.annotation.Nonnull;
@@ -83,7 +85,7 @@ public class PyrolizingBlock extends RotatedPillarBlock {
                             level.setBlockAndUpdate(next, level.getBlockState(next).setValue(LIT, true));
                     }
                     if (age+1 > 15)
-                        level.setBlockAndUpdate(pos, Blocks.TERRACOTTA.defaultBlockState());
+                        level.setBlockAndUpdate(pos, finalProduct());
                     else
                         level.setBlockAndUpdate(pos, state.setValue(AGE, age + 1));
                 } else
@@ -95,15 +97,44 @@ public class PyrolizingBlock extends RotatedPillarBlock {
             level.setBlockAndUpdate(pos, state.setValue(LIT, false));
     }
 
+    /**
+     * Check to make sure the surroundings are valid to continue pyrolysis
+     * Checks for solid faces and valid blocks
+     * @param level LevelReader world the check happens in
+     * @param pos BlockPos position to check
+     * @return boolean valid to continue pyrolysis
+     */
     protected boolean validSurroundings(@Nonnull LevelReader level, @Nonnull BlockPos pos) {
         for(Direction dir : Direction.values()) {
             BlockPos check = pos.offset(dir.getNormal());
             BlockState neighbor = level.getBlockState(check);
-            if(neighbor.isFlammable(level, check, dir.getOpposite())&&!(neighbor.getBlock() instanceof PyrolizingBlock)) return false;
-            if(!((neighbor.getTags().toList().contains(GSTags.BlockTags.PYROLIZING_WALLS)||(neighbor.getBlock() instanceof PyrolizingBlock))&&neighbor.isFaceSturdy(level, check, dir.getOpposite()))) return false;
+            if(!(validNeighborBlock(level, neighbor, check, dir.getOpposite())&&neighbor.isFaceSturdy(level, check, dir.getOpposite()))) return false;
         }
         return true;
     }
+
+    /**
+     * Checks whether a material is valid (walls, ash, or fuel) as well as inflammability of walls
+     * @param level LevelReader world the check happens in
+     * @param state BlockState to check the validity of
+     * @param pos BlockPos position to check
+     * @param dir Direction to check flammability on the side of
+     * @return validity as a wall or fuel block
+     */
+    protected boolean validNeighborBlock(@Nonnull LevelReader level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull Direction dir) {
+        return (state.getTags().toList().contains(GSTags.BlockTags.PYROLIZING_WALLS)&&!state.isFlammable(level, pos, dir))||
+               (state.getBlock() instanceof PyrolizingBlock)||
+               (state.getBlock() instanceof PyrolyticAshBlock);
+    }
+
+    /**
+     * The product we want to turn the pyrolytic block into
+     * @return BlockState final product
+     */
+    protected BlockState finalProduct() {
+        return GSBlocks.PYROLYTIC_ASH.get().defaultBlockState().setValue(PyrolyticAshBlock.ASH_TYPE, AshType.CHARCOAL);
+    }
+
 
     @Override
     public int getFireSpreadSpeed(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull Direction direction) {

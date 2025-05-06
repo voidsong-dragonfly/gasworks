@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-04T20:51:43.756310858	Block States: gasworks
+// 1.21.1	2025-05-05T19:26:13.856795506	Block States: gasworks
 de8a908e599a8f81036e5ac5eb0c0e3e27953703 assets/gasworks/blockstates/acacia_log_pile.json
 cf06f0765ba7fc504001954dc73e9ddad2e05e8f assets/gasworks/blockstates/bamboo_log_pile.json
 b96b8bc9448644cdc2568c88b44bb4d641293908 assets/gasworks/blockstates/birch_log_pile.json
@@ -7,6 +7,7 @@ b3d0b3a8781a6885178c3254b98ba5b4f4abff38 assets/gasworks/blockstates/dark_oak_lo
 58d2fd3320eb5db7df877d2c7a766e62ede3719e assets/gasworks/blockstates/jungle_log_pile.json
 d0b56067ec149164d85f19782ee52a5a41b2c3a3 assets/gasworks/blockstates/mangrove_log_pile.json
 4fe56fbcf70b33201a08770c14797644ee6cc733 assets/gasworks/blockstates/oak_log_pile.json
+8b5512c742e21e960e638662c235c250a2749b0c assets/gasworks/blockstates/pyrolytic_ash.json
 57259afa5b3d50ce5421ada23dd6210e84458783 assets/gasworks/blockstates/spruce_log_pile.json
 bce6992f5302cad40478f752ac3d2bfa4a0356e3 assets/gasworks/models/block/acacia_log_pile.json
 7a91e306fd03c73a3159d76e9f643eb4e11dddf0 assets/gasworks/models/block/bamboo_log_pile.json
@@ -16,6 +17,8 @@ bce6992f5302cad40478f752ac3d2bfa4a0356e3 assets/gasworks/models/block/acacia_log
 989dd6cf7e1d6bc57c9658372027b96355246741 assets/gasworks/models/block/jungle_log_pile.json
 67c17bf69f3b1d73254f4680779308c95cd1cf9f assets/gasworks/models/block/mangrove_log_pile.json
 1568497af8e78ac26b83b1409d9b01bc6738d36a assets/gasworks/models/block/oak_log_pile.json
+4bd65d8af607c8893ba1bd591d7cd7c61e8c9a44 assets/gasworks/models/block/pyrolytic_ash_charcoal.json
+1c9614b092d54a40ffb6f4ede16fe7f5c33b05c7 assets/gasworks/models/block/pyrolytic_ash_coke.json
 2d5153458ce41159e01fb310845990cc886e7f00 assets/gasworks/models/block/spruce_log_pile.json
 e865ad6feb05f0528e8a2b350e9b4c068fd0c1ea assets/gasworks/models/item/acacia_log_pile.json
 dbc1445bad34719f6dddca474a09bd13deb1f664 assets/gasworks/models/item/bamboo_log_pile.json
