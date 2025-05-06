@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "l": {
+      "item": "minecraft:stripped_mangrove_log"
+    }
+  },
+  "pattern": [
+    " l ",
+    "l l",
+    " l "
+  ],
+  "result": {
+    "count": 4,
+    "id": "gasworks:mangrove_log_pile"
+  }
+}

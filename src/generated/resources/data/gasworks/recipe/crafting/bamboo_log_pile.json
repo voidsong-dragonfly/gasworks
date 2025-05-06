@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "l": {
+      "item": "minecraft:stripped_bamboo_block"
+    }
+  },
+  "pattern": [
+    " l ",
+    "l l",
+    " l "
+  ],
+  "result": {
+    "count": 4,
+    "id": "gasworks:bamboo_log_pile"
+  }
+}

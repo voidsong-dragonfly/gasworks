@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "l": {
+      "item": "minecraft:stripped_acacia_log"
+    }
+  },
+  "pattern": [
+    " l ",
+    "l l",
+    " l "
+  ],
+  "result": {
+    "count": 4,
+    "id": "gasworks:acacia_log_pile"
+  }
+}

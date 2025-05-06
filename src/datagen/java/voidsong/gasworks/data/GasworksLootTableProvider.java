@@ -88,11 +88,6 @@ public class GasworksLootTableProvider extends LootTableProvider {
                     .setRolls(ConstantValue.exactly(1.0F))
                     .add(LootItem.lootTableItem(GSItems.COKE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
             );
-        /*
-        // Add a table with a silk touch only loot table.
-        add(MyBlocks.EXAMPLE_SILK_TOUCHABLE_BLOCK.get(),
-            createSilkTouchOnlyTable(MyBlocks.EXAMPLE_SILK_TOUCHABLE_BLOCK.get()));*/
-            // other loot table additions here
         }
     }
 
