@@ -1,7 +1,6 @@
 {
-  "parent": "gasworks:block/wood_pile",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "side": "minecraft:block/coal_block",
-    "top": "minecraft:block/coal_block"
+    "all": "gasworks:block/coal_pile"
   }
 }
