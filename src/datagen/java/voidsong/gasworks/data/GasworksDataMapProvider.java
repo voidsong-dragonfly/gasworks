@@ -18,6 +18,7 @@ public class GasworksDataMapProvider extends DataMapProvider {
     @Override
     protected void gather(@Nonnull HolderLookup.Provider provider) {
         this.builder(NeoForgeDataMaps.FURNACE_FUELS)
-            .add(GSItems.COKE, new FurnaceFuel(1600), false);
+            .add(GSItems.COKE, new FurnaceFuel(1600), false)
+            .add(GSItems.COAL_PILE, new FurnaceFuel(12800), false);
     }
 }
