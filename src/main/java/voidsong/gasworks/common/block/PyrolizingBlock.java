@@ -34,10 +34,12 @@ import javax.annotation.Nonnull;
 public class PyrolizingBlock extends RotatedPillarBlock {
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 15);
+    private final AshType product;
 
-    public PyrolizingBlock(BlockBehaviour.Properties properties) {
+    public PyrolizingBlock(BlockBehaviour.Properties properties, @Nonnull AshType type) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
+        product = type;
     }
 
     @Override
@@ -104,7 +106,7 @@ public class PyrolizingBlock extends RotatedPillarBlock {
      * @param pos BlockPos position to check
      * @return boolean valid to continue pyrolysis
      */
-    protected boolean validSurroundings(@Nonnull LevelReader level, @Nonnull BlockPos pos) {
+    private boolean validSurroundings(@Nonnull LevelReader level, @Nonnull BlockPos pos) {
         for(Direction dir : Direction.values()) {
             BlockPos check = pos.offset(dir.getNormal());
             BlockState neighbor = level.getBlockState(check);
@@ -131,8 +133,8 @@ public class PyrolizingBlock extends RotatedPillarBlock {
      * The product we want to turn the pyrolytic block into
      * @return BlockState final product
      */
-    protected BlockState finalProduct() {
-        return GSBlocks.PYROLYTIC_ASH.get().defaultBlockState().setValue(PyrolyticAshBlock.ASH_TYPE, AshType.CHARCOAL);
+    private BlockState finalProduct() {
+        return GSBlocks.PYROLYTIC_ASH.get().defaultBlockState().setValue(PyrolyticAshBlock.ASH_TYPE, product);
     }
 
 

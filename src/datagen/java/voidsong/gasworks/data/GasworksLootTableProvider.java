@@ -4,17 +4,22 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.WritableRegistry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -51,6 +56,8 @@ public class GasworksLootTableProvider extends LootTableProvider {
             super(Set.of(), FeatureFlags.DEFAULT_FLAGS, lookupProvider);
         }
 
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
         @Override
         @Nonnull
         protected Iterable<Block> getKnownBlocks() {
@@ -76,17 +83,20 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.CHERRY_LOG_PILE.get());
             dropSelf(GSBlocks.MANGROVE_LOG_PILE.get());
             dropSelf(GSBlocks.BAMBOO_LOG_PILE.get());
+            //Coal stacks for fuel
+            dropSelf(GSBlocks.COAL_PILE.get());
             //Resulting ash
             add(GSBlocks.PYROLYTIC_ASH.get(), LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(GSItems.ASH.asItem(), LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(GSItems.ASH.asItem()))))
+                    .add(LootItem.lootTableItem(GSItems.ASH.asItem()))
+                    .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))))
                 .withPool(this.applyExplosionCondition(Items.CHARCOAL.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
                     .add(LootItem.lootTableItem(Items.CHARCOAL.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.CHARCOAL))))))
                 .withPool(this.applyExplosionCondition(GSItems.COKE.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
+                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(7))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
             );
         }
     }

@@ -65,6 +65,10 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		return ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "block/" + path);
 	}
 
+	protected static ResourceLocation rlMC(String path) {
+		return ResourceLocation.parse("block/" + path);
+	}
+
 	private String getName(Block b) {
 		return BuiltInRegistries.BLOCK.getKey(b).getPath();
 	}

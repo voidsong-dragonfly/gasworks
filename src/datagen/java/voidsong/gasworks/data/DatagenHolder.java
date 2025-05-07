@@ -23,6 +23,7 @@ public class DatagenHolder {
             generator.addProvider(true, new GasworksBlockTagsProvider(output, lookupProvider, existingFileHelper));
             generator.addProvider(true, new GasworksLootTableProvider(output, lookupProvider));
             generator.addProvider(true, new GasworksRecipeProvider(output, lookupProvider));
+            generator.addProvider(true, new GasworksDataMapProvider(output, lookupProvider));
         }
         if(event.includeClient()) {
             generator.addProvider(true, new GasworksBlockstateProvider(output, existingFileHelper));

@@ -92,6 +92,14 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .define('l', Items.STRIPPED_BAMBOO_BLOCK)
             .unlockedBy("has_log", has(ItemTags.LOGS_THAT_BURN))
             .save(output, rl(GSItems.BAMBOO_LOG_PILE, "crafting"));
+        //Coal stacks for fuel
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.COAL_PILE)
+            .pattern("ccc")
+            .pattern("c c")
+            .pattern("ccc")
+            .define('c', Items.COAL)
+            .unlockedBy("has_coal", has(Items.COAL))
+            .save(output, rl(GSItems.COAL_PILE, "crafting"));
     }
 
 

@@ -29,6 +29,7 @@ public class GSItems {
     public static final DeferredItem<BlockItem> MANGROVE_LOG_PILE = ITEMS.registerSimpleBlockItem("mangrove_log_pile", GSBlocks.MANGROVE_LOG_PILE);
     public static final DeferredItem<BlockItem> BAMBOO_LOG_PILE = ITEMS.registerSimpleBlockItem("bamboo_log_pile", GSBlocks.BAMBOO_LOG_PILE);
     //Coal stacks for fuel
+    public static final DeferredItem<BlockItem> COAL_PILE = ITEMS.registerSimpleBlockItem("coal_pile", GSBlocks.COAL_PILE);
     //Coal coke & products
     public static final DeferredItem<Item> COKE = ITEMS.registerSimpleItem("coke");
     public static final DeferredItem<Item> ASH = ITEMS.registerSimpleItem("ash");
@@ -48,6 +49,7 @@ public class GSItems {
             output.accept(CHERRY_LOG_PILE.get());
             output.accept(MANGROVE_LOG_PILE.get());
             output.accept(BAMBOO_LOG_PILE.get());
+            output.accept(COAL_PILE.get());
             output.accept(COKE.get());
             output.accept(ASH.get());
         }).build());

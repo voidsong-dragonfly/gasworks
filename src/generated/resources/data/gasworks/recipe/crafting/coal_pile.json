@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "c": {
+      "item": "minecraft:coal"
+    }
+  },
+  "pattern": [
+    "ccc",
+    "c c",
+    "ccc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "gasworks:coal_pile"
+  }
+}
