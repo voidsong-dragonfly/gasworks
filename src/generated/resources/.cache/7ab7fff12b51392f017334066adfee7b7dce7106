@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-08T16:19:55.979537383	Block States: gasworks
+// 1.21.1	2025-05-08T18:54:29.751104943	Block States: gasworks
 de8a908e599a8f81036e5ac5eb0c0e3e27953703 assets/gasworks/blockstates/acacia_log_pile.json
 cf06f0765ba7fc504001954dc73e9ddad2e05e8f assets/gasworks/blockstates/bamboo_log_pile.json
 b96b8bc9448644cdc2568c88b44bb4d641293908 assets/gasworks/blockstates/birch_log_pile.json
@@ -15,8 +15,8 @@ bce6992f5302cad40478f752ac3d2bfa4a0356e3 assets/gasworks/models/block/acacia_log
 7a91e306fd03c73a3159d76e9f643eb4e11dddf0 assets/gasworks/models/block/bamboo_log_pile.json
 856766e4560a92279eb2b579fd8fafb881bee90b assets/gasworks/models/block/birch_log_pile.json
 3be9c978fecfaafc1c6a17b82b03e3fd27803617 assets/gasworks/models/block/cherry_log_pile.json
-4af8947694b2a2a07b71e50089157a13255ed438 assets/gasworks/models/block/clay_brick_pile_fired.json
-baf3e706745a9ef07103182c008cddc5e5e5d914 assets/gasworks/models/block/clay_brick_pile_unfired.json
+c33752888458b870e8a6217539649f77b10f7c78 assets/gasworks/models/block/clay_brick_pile_fired.json
+d039cc6a4441173b028c1fc2d3767c8c1d7d317a assets/gasworks/models/block/clay_brick_pile_unfired.json
 00204763f451b4f3a88683bcd80fe5176470b3cf assets/gasworks/models/block/coal_pile.json
 567538f869839524d82bf00ef21fe7f0ae74c826 assets/gasworks/models/block/dark_oak_log_pile.json
 989dd6cf7e1d6bc57c9658372027b96355246741 assets/gasworks/models/block/jungle_log_pile.json

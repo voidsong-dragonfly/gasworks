@@ -1,6 +1,7 @@
 {
   "parent": "gasworks:block/brick_pile",
   "textures": {
-    "brick": "gasworks:block/brick_pile"
+    "brick": "gasworks:block/brick_pile",
+    "plate": "gasworks:block/stone_plate"
   }
 }

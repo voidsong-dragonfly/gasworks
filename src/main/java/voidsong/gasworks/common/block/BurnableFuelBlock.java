@@ -99,6 +99,8 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
         //Only want to progress burning if firetick is enabled, the pile is not lit, & the block has not been put out by rain
         if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)&&state.getValue(LIT)&&!this.isNearRain(level, pos)) {
             int age = state.getValue(AGE);
+            //Increment burn time to make sure state is tracked
+            level.setBlockAndUpdate(pos, state.setValue(AGE, age+1));
             //If age is >1, it's hot enough to set other blocks near it alight
             if(age > 1) {
                 for (Direction dir : Direction.values()) {
@@ -111,7 +113,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
             if(age > 5) {
                 //Check that the surroundings are valid for pyrolysis, & if so, check if we need to complete pyrolysis. Else, burn the block
                 if (this.validSurroundings(level, pos)) {
-                    if (age+1 > 15)
+                    if (age > 15)
                         level.setBlockAndUpdate(pos, finalProduct());
                 } else {
                     level.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
@@ -133,8 +135,6 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
                     }
                 }
             }
-            //Increment burn time to make sure state is tracked
-            level.setBlockAndUpdate(pos, state.setValue(AGE, age+1));
         } else if (state.getValue(LIT))
             level.setBlockAndUpdate(pos, state.setValue(LIT, false));
     }

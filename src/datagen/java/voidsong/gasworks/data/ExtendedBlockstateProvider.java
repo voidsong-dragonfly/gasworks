@@ -506,10 +506,12 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		VariantBlockStateBuilder builder = getVariantBuilder(b);
 		ModelFile unfiredModel = models()
 			.withExistingParent(getName(b)+"_unfired", rl("brick_pile"))
-			.texture("brick", unfired);
+			.texture("brick", unfired)
+			.texture("plate", rl("stone_plate"));
 		ModelFile firedModel = models()
 			.withExistingParent(getName(b)+"_fired", rl("brick_pile"))
-			.texture("brick", fired);
+			.texture("brick", fired)
+			.texture("plate", rl("stone_plate"));
 		builder.partialState().with(ClampBlock.FIRED, false).addModels( new ConfiguredModel(unfiredModel));
 		builder.partialState().with(ClampBlock.FIRED, true).addModels( new ConfiguredModel(firedModel));
 		itemModel(b, unfiredModel);

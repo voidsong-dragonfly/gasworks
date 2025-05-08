@@ -52,7 +52,7 @@ public class GSBlocks {
     public static final DeferredBlock<ClampBlock> CLAY_BRICK_PILE = BLOCKS.registerBlock("clay_brick_pile", ClampBlock::new, BlockBehaviour.Properties.of()
         .mapColor(s -> s.getValue(ClampBlock.FIRED) ? MapColor.COLOR_RED : MapColor.CLAY)
         .noOcclusion()
-        .strength(2.0f, 0.25f));
+        .strength(0.75f, 0.25f));
     //Resulting ash
     public static final DeferredBlock<Block> PYROLYTIC_ASH = BLOCKS.register("pyrolytic_ash",
         () -> new PyrolyticAshBlock(new ColorRGBA(-8356741), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.SAND)));
