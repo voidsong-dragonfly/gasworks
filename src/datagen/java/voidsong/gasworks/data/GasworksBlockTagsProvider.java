@@ -46,7 +46,7 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
                  GSBlocks.CHERRY_LOG_PILE.get(), GSBlocks.MANGROVE_LOG_PILE.get(), GSBlocks.BAMBOO_LOG_PILE.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
             .add(GSBlocks.PYROLYTIC_ASH.get())
-            .add(GSBlocks.CLAY_BRICK_PILE.get());
+            .add(GSBlocks.BRICK_CLAMP.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(GSBlocks.COAL_PILE.get());
 

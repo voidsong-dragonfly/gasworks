@@ -1,9 +1,9 @@
-// 1.21.1	2025-05-08T16:19:55.978499985	Recipes
+// 1.21.1	2025-05-08T19:44:27.94291804	Recipes
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
 07c8822a56251c4bd7c493790a893aa9a2401e35 data/gasworks/advancement/recipes/building_blocks/crafting/birch_log_pile.json
+84754ec99ee106137d8e8af94d9a9a7c6ebf8c24 data/gasworks/advancement/recipes/building_blocks/crafting/brick_clamp.json
 e5888d2969e9c380fa3892c635461183871ca15a data/gasworks/advancement/recipes/building_blocks/crafting/cherry_log_pile.json
-522afadaac8d444f1e1dd9a69cfbdf056eeb0cf3 data/gasworks/advancement/recipes/building_blocks/crafting/clay_brick_pile.json
 9665d26cc99645512457cfc31dedcf91d582d824 data/gasworks/advancement/recipes/building_blocks/crafting/coal_pile.json
 518bcb49945cef8421b7166abe934d9d9224d870 data/gasworks/advancement/recipes/building_blocks/crafting/dark_oak_log_pile.json
 f5a3306c204e3d46347eb155c7e8088bb68b83d3 data/gasworks/advancement/recipes/building_blocks/crafting/jungle_log_pile.json
@@ -13,8 +13,8 @@ f5a3306c204e3d46347eb155c7e8088bb68b83d3 data/gasworks/advancement/recipes/build
 fba92137f10bbc2cc67049556de5d7a49073c102 data/gasworks/recipe/crafting/acacia_log_pile.json
 86722bae7b730516e2b94c9628cee188eb2b0be5 data/gasworks/recipe/crafting/bamboo_log_pile.json
 30bf4c54cddf1c2e78687c09ba318ddb707ddc16 data/gasworks/recipe/crafting/birch_log_pile.json
+5c8f33fecffafbcad0043cb2ef9eb69556d17167 data/gasworks/recipe/crafting/brick_clamp.json
 a98105fd5cc49e771cc0b16eb096938b8e393bd3 data/gasworks/recipe/crafting/cherry_log_pile.json
-d94ca31df1d9612bd5d58c2b7b457cd776c42e3e data/gasworks/recipe/crafting/clay_brick_pile.json
 4ca38b9bc3ccef30bf72f6fb297b9c09042c10d9 data/gasworks/recipe/crafting/coal_pile.json
 2b6b33ba4051aa4155e33d2886bbef83d2c9b348 data/gasworks/recipe/crafting/dark_oak_log_pile.json
 bcf47c2d3a9f9cbd28e00bd3490bc7dd73a2803e data/gasworks/recipe/crafting/jungle_log_pile.json

@@ -87,13 +87,13 @@ public class GasworksLootTableProvider extends LootTableProvider {
             //Coal stacks for fuel
             dropSelf(GSBlocks.COAL_PILE.get());
             //Brick piles for firing
-            add(GSBlocks.CLAY_BRICK_PILE.get(), LootTable.lootTable()
+            add(GSBlocks.BRICK_CLAMP.get(), LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(Items.BRICK.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(Items.BRICK.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.CLAY_BRICK_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ClampBlock.FIRED, true))))))
+                    .add(LootItem.lootTableItem(Items.BRICK.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.BRICK_CLAMP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ClampBlock.FIRED, true))))))
                 .withPool(this.applyExplosionCondition(Items.CLAY_BALL,  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(Items.CLAY_BALL.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.CLAY_BRICK_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ClampBlock.FIRED, false))))))
+                    .add(LootItem.lootTableItem(Items.CLAY_BALL.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.BRICK_CLAMP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ClampBlock.FIRED, false))))))
             );
             //Resulting ash
             add(GSBlocks.PYROLYTIC_ASH.get(), LootTable.lootTable()

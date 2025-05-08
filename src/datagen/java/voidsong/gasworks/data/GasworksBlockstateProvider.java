@@ -30,7 +30,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         //Coal stacks for fuel
         horizontalRandomCubeAllAndItem(GSBlocks.COAL_PILE.get(), null, rl("coal_pile"));
         //Brick piles for firing
-        brickPileCubeAll(GSBlocks.CLAY_BRICK_PILE.get(), rl("clay_bricks"), rl("brick_pile"));
+        brickPileCubeAll(GSBlocks.BRICK_CLAMP.get(), rl("unfired_clay_bricks"), rl("fired_clay_bricks"));
         //Resulting ash
         ashPileCubeAll(GSBlocks.PYROLYTIC_ASH.get(), List.of(PyrolyticAshBlock.ASH_TYPE), rl("charcoal_ash"), rl("coke_ash"));
     }

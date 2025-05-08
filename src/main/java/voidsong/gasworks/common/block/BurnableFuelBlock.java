@@ -98,9 +98,9 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
         level.scheduleTick(pos, this, getFireTickDelay(level.random));
         //Only want to progress burning if firetick is enabled, the pile is not lit, & the block has not been put out by rain
         if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)&&state.getValue(LIT)&&!this.isNearRain(level, pos)) {
-            int age = state.getValue(AGE);
+            int age = state.getValue(AGE)+1;
             //Increment burn time to make sure state is tracked
-            level.setBlockAndUpdate(pos, state.setValue(AGE, age+1));
+            level.setBlockAndUpdate(pos, state.setValue(AGE, age));
             //If age is >1, it's hot enough to set other blocks near it alight
             if(age > 1) {
                 for (Direction dir : Direction.values()) {

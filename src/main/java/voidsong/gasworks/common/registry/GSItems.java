@@ -31,7 +31,7 @@ public class GSItems {
     //Coal stacks for fuel
     public static final DeferredItem<BlockItem> COAL_PILE = ITEMS.registerSimpleBlockItem("coal_pile", GSBlocks.COAL_PILE);
     //Brick piles for firing
-    public static final DeferredItem<BlockItem> CLAY_BRICK_PILE = ITEMS.registerSimpleBlockItem("clay_brick_pile", GSBlocks.CLAY_BRICK_PILE);
+    public static final DeferredItem<BlockItem> BRICK_CLAMP = ITEMS.registerSimpleBlockItem("brick_clamp", GSBlocks.BRICK_CLAMP);
     //Coal coke & products
     public static final DeferredItem<Item> COKE = ITEMS.registerSimpleItem("coke");
     public static final DeferredItem<Item> ASH = ITEMS.registerSimpleItem("ash");
@@ -52,7 +52,7 @@ public class GSItems {
             output.accept(MANGROVE_LOG_PILE.get());
             output.accept(BAMBOO_LOG_PILE.get());
             output.accept(COAL_PILE.get());
-            output.accept(CLAY_BRICK_PILE.get());
+            output.accept(BRICK_CLAMP.get());
             output.accept(COKE.get());
             output.accept(ASH.get());
         }).build());

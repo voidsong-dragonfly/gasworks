@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "gasworks:crafting/clay_brick_pile"
+        "recipe": "gasworks:crafting/brick_clamp"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "gasworks:crafting/clay_brick_pile"
+      "gasworks:crafting/brick_clamp"
     ]
   }
 }
