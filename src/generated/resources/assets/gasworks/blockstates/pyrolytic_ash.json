@@ -33,6 +33,23 @@
         "model": "gasworks:block/pyrolytic_ash_coke",
         "y": 270
       }
+    ],
+    "type=none": [
+      {
+        "model": "gasworks:block/pyrolytic_ash_coke"
+      },
+      {
+        "model": "gasworks:block/pyrolytic_ash_coke",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/pyrolytic_ash_coke",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/pyrolytic_ash_coke",
+        "y": 270
+      }
     ]
   }
 }

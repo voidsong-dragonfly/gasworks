@@ -1,7 +1,12 @@
 package voidsong.gasworks.data;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.registry.GSBlocks;
 
@@ -15,7 +20,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
     @Override
     protected void registerStatesAndModels() {
         /*
-         * Beehive oven & charcoal heap blocks, incl. fuels & ash
+         * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
          */
         //Log stacks for fuel
         logPileBlock(GSBlocks.OAK_LOG_PILE.get(), rlMC("stripped_oak_log"));
@@ -29,6 +34,9 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         logPileBlock(GSBlocks.BAMBOO_LOG_PILE.get(), rlMC("stripped_bamboo_block"));
         //Coal stacks for fuel
         horizontalRandomCubeAllAndItem(GSBlocks.COAL_PILE.get(), null, rl("coal_pile"));
+        brickPileCubeAll(GSBlocks.CLAY_BRICK_PILE.get(), rlMC("clay"), rl("brick_pile"));
+
+        //Brick piles for firing
         //Resulting ash
         ashPileCubeAll(GSBlocks.PYROLYTIC_ASH.get(), List.of(PyrolyticAshBlock.ASH_TYPE), rl("charcoal_ash"), rl("coke_ash"));
     }

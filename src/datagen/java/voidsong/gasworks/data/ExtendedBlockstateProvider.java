@@ -33,6 +33,7 @@ import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder.PartialBlockstate;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.properties.AshType;
 import voidsong.gasworks.common.block.properties.Properties;
@@ -69,7 +70,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		return ResourceLocation.parse("block/" + path);
 	}
 
-	private String getName(Block b) {
+	protected String getName(Block b) {
 		return BuiltInRegistries.BLOCK.getKey(b).getPath();
 	}
 
@@ -495,5 +496,22 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 				models[i] = new ConfiguredModel(modelLoc, 0, i*90, false);
 			state.setModels(models);
 		});
+	}
+
+	/*
+	 * Specialty block models in the Vanilla style that need complex functions
+	 */
+
+	protected void brickPileCubeAll(Block b, ResourceLocation unfired, ResourceLocation fired) {
+		VariantBlockStateBuilder builder = getVariantBuilder(b);
+		ModelFile unfiredModel = models()
+			.withExistingParent(getName(b)+"_unfired", rl("brick_pile"))
+			.texture("brick", unfired);
+		ModelFile firedModel = models()
+			.withExistingParent(getName(b)+"_fired", rl("brick_pile"))
+			.texture("brick", fired);
+		builder.partialState().with(ClampBlock.FIRED, false).addModels( new ConfiguredModel(unfiredModel));
+		builder.partialState().with(ClampBlock.FIRED, true).addModels( new ConfiguredModel(firedModel));
+		itemModel(b, unfiredModel);
 	}
 }

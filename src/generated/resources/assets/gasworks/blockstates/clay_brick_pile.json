@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "fired=false": {
+      "model": "gasworks:block/clay_brick_pile_unfired"
+    },
+    "fired=true": {
+      "model": "gasworks:block/clay_brick_pile_fired"
+    }
+  }
+}

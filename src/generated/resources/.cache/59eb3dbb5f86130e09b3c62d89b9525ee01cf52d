@@ -1,8 +1,9 @@
-// 1.21.1	2025-05-06T22:29:28.949087759	Loot Tables
+// 1.21.1	2025-05-08T16:19:55.977552972	Loot Tables
 394ac4f1686355bd610a3744fb95fab5af139d3d data/gasworks/loot_table/blocks/acacia_log_pile.json
 192e75516869bd21dfc63e7454703e49c2c02f4e data/gasworks/loot_table/blocks/bamboo_log_pile.json
 d03f896bf2c75947527a8e8f379ae176a987f38e data/gasworks/loot_table/blocks/birch_log_pile.json
 8f3da6baa52126fb912cd9233838ce8e27f8c161 data/gasworks/loot_table/blocks/cherry_log_pile.json
+4edbba6bc5deef620796ca9a22848ddfbd805320 data/gasworks/loot_table/blocks/clay_brick_pile.json
 c19ad3b2d3844fd76a64298789c2da5f35ab0a14 data/gasworks/loot_table/blocks/coal_pile.json
 3374b2d39cee217fac3ee01b507a1dbc076e6fa5 data/gasworks/loot_table/blocks/dark_oak_log_pile.json
 d552a3c5a191da35007d3afc930ef790f91105a9 data/gasworks/loot_table/blocks/jungle_log_pile.json

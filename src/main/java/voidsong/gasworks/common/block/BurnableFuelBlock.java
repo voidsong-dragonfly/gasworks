@@ -113,8 +113,10 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
                 if (this.validSurroundings(level, pos)) {
                     if (age+1 > 15)
                         level.setBlockAndUpdate(pos, finalProduct());
-                } else
+                } else {
                     level.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
+                    return;
+                }
             //Otherwise, we can fire bricks on it, so we check for clamp structures and increase the firing of the bricks
             } else {
                 for(int x=-1;x<=1;x++) {

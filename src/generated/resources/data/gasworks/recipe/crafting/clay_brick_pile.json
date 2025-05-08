@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "c": {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "pattern": [
+    " c ",
+    "c c",
+    " c "
+  ],
+  "result": {
+    "count": 1,
+    "id": "gasworks:clay_brick_pile"
+  }
+}

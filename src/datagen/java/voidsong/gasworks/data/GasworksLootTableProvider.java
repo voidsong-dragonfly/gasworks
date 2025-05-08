@@ -23,6 +23,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.properties.AshType;
 import voidsong.gasworks.common.registry.GSBlocks;
@@ -71,7 +72,7 @@ public class GasworksLootTableProvider extends LootTableProvider {
         @Override
         protected void generate() {
             /*
-             * Beehive oven & charcoal heap blocks, incl. fuels & ash
+             * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
              */
             //Log stacks for fuel
             dropSelf(GSBlocks.OAK_LOG_PILE.get());
@@ -85,6 +86,15 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.BAMBOO_LOG_PILE.get());
             //Coal stacks for fuel
             dropSelf(GSBlocks.COAL_PILE.get());
+            //Brick piles for firing
+            add(GSBlocks.CLAY_BRICK_PILE.get(), LootTable.lootTable()
+                .withPool(this.applyExplosionCondition(Items.BRICK.asItem(),  LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(Items.BRICK.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.CLAY_BRICK_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ClampBlock.FIRED, true))))))
+                .withPool(this.applyExplosionCondition(Items.CLAY_BALL,  LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(Items.CLAY_BALL.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.CLAY_BRICK_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ClampBlock.FIRED, false))))))
+            );
             //Resulting ash
             add(GSBlocks.PYROLYTIC_ASH.get(), LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(GSItems.ASH.asItem(), LootPool.lootPool()

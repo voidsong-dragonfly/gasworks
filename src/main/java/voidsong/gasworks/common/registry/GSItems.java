@@ -16,7 +16,7 @@ public class GSItems {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Gasworks.MOD_ID);
 
     /*
-     * Beehive oven & charcoal heap items, incl. fuels & ash
+     * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
      */
     //Log stacks for fuel
     public static final DeferredItem<BlockItem> OAK_LOG_PILE = ITEMS.registerSimpleBlockItem("oak_log_pile", GSBlocks.OAK_LOG_PILE);
@@ -30,6 +30,8 @@ public class GSItems {
     public static final DeferredItem<BlockItem> BAMBOO_LOG_PILE = ITEMS.registerSimpleBlockItem("bamboo_log_pile", GSBlocks.BAMBOO_LOG_PILE);
     //Coal stacks for fuel
     public static final DeferredItem<BlockItem> COAL_PILE = ITEMS.registerSimpleBlockItem("coal_pile", GSBlocks.COAL_PILE);
+    //Brick piles for firing
+    public static final DeferredItem<BlockItem> CLAY_BRICK_PILE = ITEMS.registerSimpleBlockItem("clay_brick_pile", GSBlocks.CLAY_BRICK_PILE);
     //Coal coke & products
     public static final DeferredItem<Item> COKE = ITEMS.registerSimpleItem("coke");
     public static final DeferredItem<Item> ASH = ITEMS.registerSimpleItem("ash");
@@ -50,6 +52,7 @@ public class GSItems {
             output.accept(MANGROVE_LOG_PILE.get());
             output.accept(BAMBOO_LOG_PILE.get());
             output.accept(COAL_PILE.get());
+            output.accept(CLAY_BRICK_PILE.get());
             output.accept(COKE.get());
             output.accept(ASH.get());
         }).build());

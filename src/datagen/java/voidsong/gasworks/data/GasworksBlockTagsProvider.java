@@ -20,6 +20,9 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(@Nonnull HolderLookup.Provider lookupProvider) {
+        /*
+         * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
+         */
         tag(GSTags.BlockTags.HIGH_TEMPERATURE_PYROLIZING_WALLS)
             .addTag(BlockTags.STONE_BRICKS).remove(Blocks.CHISELED_STONE_BRICKS)
             .add(Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_TILES, Blocks.CRACKED_DEEPSLATE_BRICKS, Blocks.CRACKED_DEEPSLATE_TILES)
@@ -42,7 +45,8 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
                  GSBlocks.JUNGLE_LOG_PILE.get(), GSBlocks.ACACIA_LOG_PILE.get(), GSBlocks.DARK_OAK_LOG_PILE.get(),
                  GSBlocks.CHERRY_LOG_PILE.get(), GSBlocks.MANGROVE_LOG_PILE.get(), GSBlocks.BAMBOO_LOG_PILE.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
-            .add(GSBlocks.PYROLYTIC_ASH.get());
+            .add(GSBlocks.PYROLYTIC_ASH.get())
+            .add(GSBlocks.CLAY_BRICK_PILE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(GSBlocks.COAL_PILE.get());
 
