@@ -19,7 +19,7 @@ public class PyrolyticAshBlock extends ColoredFallingBlock {
 
     public PyrolyticAshBlock(ColorRGBA color, BlockBehaviour.Properties properties) {
         super(color, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ASH_TYPE, AshType.CHARCOAL));
+        this.registerDefaultState(this.stateDefinition.any().setValue(ASH_TYPE, AshType.NONE));
     }
 
     @Override

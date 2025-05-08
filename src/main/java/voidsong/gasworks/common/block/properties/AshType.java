@@ -5,6 +5,7 @@ import net.minecraft.util.StringRepresentable;
 import javax.annotation.Nonnull;
 
 public enum AshType implements StringRepresentable {
+    NONE("none"),
     COKE("coke"),
     CHARCOAL("charcoal");
 

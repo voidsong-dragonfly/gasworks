@@ -32,24 +32,35 @@ import voidsong.gasworks.common.registry.GSTags;
 
 import javax.annotation.Nonnull;
 
-public class PyrolizingBlock extends RotatedPillarBlock {
+public class BurnableFuelBlock extends RotatedPillarBlock {
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 15);
     private final AshType product;
     private final TagKey<Block> validWalls;
+    private final int clampCookMult;
 
-    public PyrolizingBlock(BlockBehaviour.Properties properties) {
+    public BurnableFuelBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
-        product = AshType.CHARCOAL;
+        product = AshType.NONE;
         validWalls = GSTags.BlockTags.PYROLIZING_WALLS;
+        clampCookMult = 1;
     }
 
-    public PyrolizingBlock(BlockBehaviour.Properties properties, @Nonnull AshType type, @Nonnull TagKey<Block> walls) {
+    public BurnableFuelBlock(BlockBehaviour.Properties properties, @Nonnull AshType type, int speed) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
+        product = type;
+        validWalls = GSTags.BlockTags.PYROLIZING_WALLS;
+        clampCookMult = speed;
+    }
+
+    public BurnableFuelBlock(BlockBehaviour.Properties properties, @Nonnull AshType type, int speed, @Nonnull TagKey<Block> walls) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
         product = type;
         validWalls = walls;
+        clampCookMult = speed;
     }
 
     @Override
@@ -85,26 +96,43 @@ public class PyrolizingBlock extends RotatedPillarBlock {
     protected void tick(@Nonnull BlockState state, ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
         //Schedule our next time to tick
         level.scheduleTick(pos, this, getFireTickDelay(level.random));
-        //Only want to progress burning if firetick is enabled
+        //Only want to progress burning if firetick is enabled, the pile is not lit, & the block has not been put out by rain
         if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)&&state.getValue(LIT)&&!this.isNearRain(level, pos)) {
             int age = state.getValue(AGE);
-            //Check if we should continue with the pyrolysis process & continue as necessary
+            //If age is >1, it's hot enough to set other blocks near it alight
+            if(age > 1) {
+                for (Direction dir : Direction.values()) {
+                    BlockPos next = pos.offset(dir.getNormal());
+                    if (level.getBlockState(next).getBlock() instanceof BurnableFuelBlock)
+                        level.setBlockAndUpdate(next, level.getBlockState(next).setValue(LIT, true));
+                }
+            }
+            //If age is >5, it's burned long enough to go out if it's not undergoing pyrolysis, so we have additional checks
             if(age > 5) {
+                //Check that the surroundings are valid for pyrolysis, & if so, check if we need to complete pyrolysis. Else, burn the block
                 if (this.validSurroundings(level, pos)) {
-                    for (Direction dir : Direction.values()) {
-                        BlockPos next = pos.offset(dir.getNormal());
-                        if (level.getBlockState(next).getBlock() instanceof PyrolizingBlock)
-                            level.setBlockAndUpdate(next, level.getBlockState(next).setValue(LIT, true));
-                    }
                     if (age+1 > 15)
                         level.setBlockAndUpdate(pos, finalProduct());
-                    else
-                        level.setBlockAndUpdate(pos, state.setValue(AGE, age + 1));
                 } else
                     level.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
+            //Otherwise, we can fire bricks on it, so we check for clamp structures and increase the firing of the bricks
+            } else {
+                for(int x=-1;x<=1;x++) {
+                    for(int z=-1;z<=1;z++) {
+                        BlockState check0 = level.getBlockState(pos.offset(x, 0, z));
+                        BlockState check1 = level.getBlockState(pos.offset(x, 1, z));
+                        if(check0.getBlock() instanceof ClampBlock)
+                            level.setBlockAndUpdate(pos.offset(x, 0, z), ClampBlock.getFiredState(check0, clampCookMult));
+                        if (check0.getBlock() instanceof ClampBlock || check1.getBlock() instanceof ClampBlock) {
+                            BlockState check2 = level.getBlockState(pos.offset(x, 2, z));
+                            level.setBlockAndUpdate(pos.offset(x, 1, z), ClampBlock.getFiredState(check1, clampCookMult));
+                            level.setBlockAndUpdate(pos.offset(x, 2, z), ClampBlock.getFiredState(check2, clampCookMult));
+                        }
+                    }
+                }
             }
-            else
-                level.setBlockAndUpdate(pos, state.setValue(AGE, age+1));
+            //Increment burn time to make sure state is tracked
+            level.setBlockAndUpdate(pos, state.setValue(AGE, age+1));
         } else if (state.getValue(LIT))
             level.setBlockAndUpdate(pos, state.setValue(LIT, false));
     }
@@ -135,7 +163,7 @@ public class PyrolizingBlock extends RotatedPillarBlock {
      */
     protected boolean validNeighborBlock(@Nonnull LevelReader level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull Direction dir) {
         return (state.getTags().toList().contains(validWalls)&&!state.isFlammable(level, pos, dir))||
-               (state.getBlock() instanceof PyrolizingBlock)||
+               (state.getBlock() instanceof BurnableFuelBlock)||
                (state.getBlock() instanceof PyrolyticAshBlock);
     }
 
