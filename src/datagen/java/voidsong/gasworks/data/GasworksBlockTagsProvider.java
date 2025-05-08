@@ -30,6 +30,10 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         tag(GSTags.BlockTags.PYROLIZING_WALLS)
             .addTag(GSTags.BlockTags.HIGH_TEMPERATURE_PYROLIZING_WALLS)
             .addTag(BlockTags.DIRT).remove(Blocks.MOSS_BLOCK, Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS);
+        tag(BlockTags.LOGS_THAT_BURN)
+            .add(GSBlocks.OAK_LOG_PILE.get(), GSBlocks.SPRUCE_LOG_PILE.get(), GSBlocks.BIRCH_LOG_PILE.get(),
+                GSBlocks.JUNGLE_LOG_PILE.get(), GSBlocks.ACACIA_LOG_PILE.get(), GSBlocks.DARK_OAK_LOG_PILE.get(),
+                GSBlocks.CHERRY_LOG_PILE.get(), GSBlocks.MANGROVE_LOG_PILE.get(), GSBlocks.BAMBOO_LOG_PILE.get());
         /*
          * Tool tags for block breaking
          */

@@ -3,18 +3,22 @@ package voidsong.gasworks.common.registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import voidsong.gasworks.Gasworks;
 
 public class GSTags {
 
-    private static ResourceLocation cLoc(String path)
-    {
+    private static ResourceLocation cLoc(String path) {
         return ResourceLocation.fromNamespaceAndPath("c", path);
     }
 
     private static TagKey<Block> blockTag(ResourceLocation name) {
         return TagKey.create(Registries.BLOCK, name);
+    }
+
+    private static TagKey<Item> itemTag(ResourceLocation name) {
+        return TagKey.create(Registries.ITEM, name);
     }
 
     public static class BlockTags {
@@ -23,6 +27,6 @@ public class GSTags {
     }
 
     public static class ItemTags {
-
+        public static final TagKey<Item> COAL_COKE = itemTag(cLoc("coal_coke"));
     }
 }
