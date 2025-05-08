@@ -28,7 +28,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         logPileBlock(GSBlocks.MANGROVE_LOG_PILE.get(), rlMC("stripped_mangrove_log"));
         logPileBlock(GSBlocks.BAMBOO_LOG_PILE.get(), rlMC("stripped_bamboo_block"));
         //Coal stacks for fuel
-        cubeAll(GSBlocks.COAL_PILE.get(), rl("coal_pile"));
+        horizontalRandomCubeAllAndItem(GSBlocks.COAL_PILE.get(), null, rl("coal_pile"));
         //Resulting ash
         ashPileCubeAll(GSBlocks.PYROLYTIC_ASH.get(), List.of(PyrolyticAshBlock.ASH_TYPE), rl("charcoal_ash"), rl("coke_ash"));
     }

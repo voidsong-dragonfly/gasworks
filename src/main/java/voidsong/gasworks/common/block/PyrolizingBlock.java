@@ -6,6 +6,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.UseOnContext;
@@ -35,11 +36,20 @@ public class PyrolizingBlock extends RotatedPillarBlock {
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 15);
     private final AshType product;
+    private final TagKey<Block> validWalls;
 
-    public PyrolizingBlock(BlockBehaviour.Properties properties, @Nonnull AshType type) {
+    public PyrolizingBlock(BlockBehaviour.Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
+        product = AshType.CHARCOAL;
+        validWalls = GSTags.BlockTags.PYROLIZING_WALLS;
+    }
+
+    public PyrolizingBlock(BlockBehaviour.Properties properties, @Nonnull AshType type, @Nonnull TagKey<Block> walls) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
         product = type;
+        validWalls = walls;
     }
 
     @Override
@@ -78,8 +88,8 @@ public class PyrolizingBlock extends RotatedPillarBlock {
         //Only want to progress burning if firetick is enabled
         if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)&&state.getValue(LIT)&&!this.isNearRain(level, pos)) {
             int age = state.getValue(AGE);
-            //Check if we should continue with the charcoalling process & continue as necessary
-            if(age > 1) {
+            //Check if we should continue with the pyrolysis process & continue as necessary
+            if(age > 5) {
                 if (this.validSurroundings(level, pos)) {
                     for (Direction dir : Direction.values()) {
                         BlockPos next = pos.offset(dir.getNormal());
@@ -124,7 +134,7 @@ public class PyrolizingBlock extends RotatedPillarBlock {
      * @return validity as a wall or fuel block
      */
     protected boolean validNeighborBlock(@Nonnull LevelReader level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull Direction dir) {
-        return (state.getTags().toList().contains(GSTags.BlockTags.PYROLIZING_WALLS)&&!state.isFlammable(level, pos, dir))||
+        return (state.getTags().toList().contains(validWalls)&&!state.isFlammable(level, pos, dir))||
                (state.getBlock() instanceof PyrolizingBlock)||
                (state.getBlock() instanceof PyrolyticAshBlock);
     }

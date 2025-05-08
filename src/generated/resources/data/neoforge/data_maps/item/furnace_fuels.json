@@ -1,5 +1,8 @@
 {
   "values": {
+    "gasworks:coal_pile": {
+      "burn_time": 12800
+    },
     "gasworks:coke": {
       "burn_time": 1600
     }

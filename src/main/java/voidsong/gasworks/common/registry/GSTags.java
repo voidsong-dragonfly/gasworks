@@ -18,6 +18,7 @@ public class GSTags {
     }
 
     public static class BlockTags {
+        public static final TagKey<Block> HIGH_TEMPERATURE_PYROLIZING_WALLS = blockTag(Gasworks.rl("high_temperature_pyrolyzing_walls"));
         public static final TagKey<Block> PYROLIZING_WALLS = blockTag(Gasworks.rl("pyrolyzing_walls"));
     }
 

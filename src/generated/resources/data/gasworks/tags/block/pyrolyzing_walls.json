@@ -1,23 +1,11 @@
 {
   "remove": [
-    "minecraft:chiseled_stone_bricks",
     "minecraft:moss_block",
     "minecraft:mud",
     "minecraft:muddy_mangrove_roots"
   ],
   "values": [
-    "#minecraft:stone_bricks",
-    "minecraft:deepslate_bricks",
-    "minecraft:deepslate_tiles",
-    "minecraft:cracked_deepslate_bricks",
-    "minecraft:cracked_deepslate_tiles",
-    "minecraft:tuff_bricks",
-    "minecraft:polished_blackstone_bricks",
-    "minecraft:cracked_polished_blackstone_bricks",
-    "minecraft:bricks",
-    "minecraft:nether_bricks",
-    "minecraft:mud_bricks",
-    "minecraft:end_stone_bricks",
+    "#gasworks:high_temperature_pyrolyzing_walls",
     "#minecraft:dirt"
   ]
 }

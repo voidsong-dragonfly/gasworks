@@ -86,7 +86,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	private static void forEachState(PartialBlockstate base, List<Property<?>> props, Consumer<PartialBlockstate> out) {
-		if(!props.isEmpty()) {
+		if(props!=null&&!props.isEmpty()) {
 			List<Property<?>> remaining = props.subList(1, props.size());
 			Property<?> main = props.getFirst();
 			forEach(base, main, remaining, out);

@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "gasworks:block/coal_pile"
-    }
+    "": [
+      {
+        "model": "gasworks:block/coal_pile"
+      },
+      {
+        "model": "gasworks:block/coal_pile",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/coal_pile",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/coal_pile",
+        "y": 270
+      }
+    ]
   }
 }

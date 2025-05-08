@@ -1,5 +1,6 @@
-// 1.21.1	2025-05-06T22:09:09.692581839	Tags for minecraft:block mod id gasworks
-949620a12145bf1691994b020509a546166caa2c data/gasworks/tags/block/pyrolyzing_walls.json
+// 1.21.1	2025-05-07T20:19:15.871480748	Tags for minecraft:block mod id gasworks
+45ef7fa748d3510c01e6441e08babd86f6206277 data/gasworks/tags/block/high_temperature_pyrolyzing_walls.json
+6fa019f5b35889d24a767124be24a8bda2b64b34 data/gasworks/tags/block/pyrolyzing_walls.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/minecraft/tags/block/mineable/axe.json
 72752c780800fa6e22b7b50ba51fc35dfe07bd91 data/minecraft/tags/block/mineable/pickaxe.json
 e410297cd614fa335b61e1a36a15b5b3d6f33ef8 data/minecraft/tags/block/mineable/shovel.json
