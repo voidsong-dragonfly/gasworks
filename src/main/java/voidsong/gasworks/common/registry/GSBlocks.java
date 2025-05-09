@@ -47,7 +47,15 @@ public class GSBlocks {
         .randomTicks()
         .noOcclusion()
         .requiresCorrectToolForDrops()
-        .strength(5.0F, 6.0F), AshType.COKE, 8, GSTags.BlockTags.HIGH_TEMPERATURE_PYROLIZING_WALLS));
+        .strength(2.0F, 6.0F), AshType.COKE, 8, GSTags.BlockTags.HIGH_TEMPERATURE_PYROLIZING_WALLS));
+    public static final DeferredBlock<RotatedPillarBlock> CHARCOAL_PILE = BLOCKS.register("charcoal_pile", () -> new BurnableFuelBlock(BlockBehaviour.Properties.of()
+        .mapColor(MapColor.TERRACOTTA_BROWN)
+        .instrument(NoteBlockInstrument.BASEDRUM)
+        .ignitedByLava()
+        .randomTicks()
+        .noOcclusion()
+        .requiresCorrectToolForDrops()
+        .strength(1.625F, 4.5F), AshType.NONE, 8));
     //Brick piles for firing
     public static final DeferredBlock<ClampBlock> BRICK_CLAMP = BLOCKS.registerBlock("brick_clamp", ClampBlock::new, BlockBehaviour.Properties.of()
         .mapColor(s -> s.getValue(ClampBlock.FIRED) ? MapColor.COLOR_RED : MapColor.CLAY)

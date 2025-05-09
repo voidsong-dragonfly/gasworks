@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "gasworks:block/charcoal_pile"
+      },
+      {
+        "model": "gasworks:block/charcoal_pile",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/charcoal_pile",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/charcoal_pile",
+        "y": 270
+      }
+    ]
+  }
+}

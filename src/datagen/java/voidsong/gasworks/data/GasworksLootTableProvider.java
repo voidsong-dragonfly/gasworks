@@ -85,7 +85,8 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.MANGROVE_LOG_PILE.get());
             dropSelf(GSBlocks.BAMBOO_LOG_PILE.get());
             //Coal stacks for fuel
-            dropSelf(GSBlocks.COAL_PILE.get());
+            add(GSBlocks.COAL_PILE.get(), createSingleItemTableWithSilkTouch(GSBlocks.COAL_PILE.get(), Items.COAL, ConstantValue.exactly(8)));
+            add(GSBlocks.CHARCOAL_PILE.get(), createSingleItemTableWithSilkTouch(GSBlocks.CHARCOAL_PILE.get(), Items.CHARCOAL, ConstantValue.exactly(8)));
             //Brick piles for firing
             add(GSBlocks.BRICK_CLAMP.get(), LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(Items.BRICK.asItem(),  LootPool.lootPool()

@@ -101,6 +101,20 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
             int age = state.getValue(AGE)+1;
             //Increment burn time to make sure state is tracked
             level.setBlockAndUpdate(pos, state.setValue(AGE, age));
+            //We can fire bricks with this, so we check for clamp structures and increase the firing of the bricks
+            for(int x=-1;x<=1;x++) {
+                for(int z=-1;z<=1;z++) {
+                    BlockState check0 = level.getBlockState(pos.offset(x, 0, z));
+                    BlockState check1 = level.getBlockState(pos.offset(x, 1, z));
+                    if(check0.getBlock() instanceof ClampBlock)
+                        level.setBlockAndUpdate(pos.offset(x, 0, z), ClampBlock.getFiredState(check0, clampCookMult));
+                    if (check0.getBlock() instanceof ClampBlock || check1.getBlock() instanceof ClampBlock) {
+                        BlockState check2 = level.getBlockState(pos.offset(x, 2, z));
+                        level.setBlockAndUpdate(pos.offset(x, 1, z), ClampBlock.getFiredState(check1, clampCookMult));
+                        level.setBlockAndUpdate(pos.offset(x, 2, z), ClampBlock.getFiredState(check2, clampCookMult));
+                    }
+                }
+            }
             //If age is >1, it's hot enough to set other blocks near it alight
             if(age > 1) {
                 for (Direction dir : Direction.values()) {
@@ -117,22 +131,6 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
                         level.setBlockAndUpdate(pos, finalProduct());
                 } else {
                     level.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
-                    return;
-                }
-            //Otherwise, we can fire bricks on it, so we check for clamp structures and increase the firing of the bricks
-            } else {
-                for(int x=-1;x<=1;x++) {
-                    for(int z=-1;z<=1;z++) {
-                        BlockState check0 = level.getBlockState(pos.offset(x, 0, z));
-                        BlockState check1 = level.getBlockState(pos.offset(x, 1, z));
-                        if(check0.getBlock() instanceof ClampBlock)
-                            level.setBlockAndUpdate(pos.offset(x, 0, z), ClampBlock.getFiredState(check0, clampCookMult));
-                        if (check0.getBlock() instanceof ClampBlock || check1.getBlock() instanceof ClampBlock) {
-                            BlockState check2 = level.getBlockState(pos.offset(x, 2, z));
-                            level.setBlockAndUpdate(pos.offset(x, 1, z), ClampBlock.getFiredState(check1, clampCookMult));
-                            level.setBlockAndUpdate(pos.offset(x, 2, z), ClampBlock.getFiredState(check2, clampCookMult));
-                        }
-                    }
                 }
             }
         } else if (state.getValue(LIT))
@@ -164,7 +162,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
      * @return validity as a wall or fuel block
      */
     protected boolean validNeighborBlock(@Nonnull LevelReader level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull Direction dir) {
-        return (state.getTags().toList().contains(validWalls)&&!state.isFlammable(level, pos, dir))||
+        return (product!=AshType.NONE&&state.getTags().toList().contains(validWalls)&&!state.isFlammable(level, pos, dir))||
                (state.getBlock() instanceof BurnableFuelBlock)||
                (state.getBlock() instanceof PyrolyticAshBlock);
     }

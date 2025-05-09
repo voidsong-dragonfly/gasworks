@@ -29,6 +29,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         logPileBlock(GSBlocks.BAMBOO_LOG_PILE.get(), rlMC("stripped_bamboo_block"));
         //Coal stacks for fuel
         horizontalRandomCubeAllAndItem(GSBlocks.COAL_PILE.get(), null, rl("coal_pile"));
+        horizontalRandomCubeAllAndItem(GSBlocks.CHARCOAL_PILE.get(), null, rl("charcoal_pile"));
         //Brick piles for firing
         brickPileCubeAll(GSBlocks.BRICK_CLAMP.get(), rl("unfired_clay_bricks"), rl("fired_clay_bricks"));
         //Resulting ash
