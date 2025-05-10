@@ -100,7 +100,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
         if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)&&state.getValue(LIT)&&!this.isNearRain(level, pos)) {
             int age = state.getValue(AGE)+1;
             //Increment burn time to make sure state is tracked
-            level.setBlockAndUpdate(pos, state.setValue(AGE, Math.min(15, age)));
+            if(age < 16) level.setBlockAndUpdate(pos, state.setValue(AGE, Math.min(15, age)));
             //We can fire bricks with this, so we check for clamp structures and increase the firing of the bricks
             for(int x=-1;x<=1;x++) {
                 for(int z=-1;z<=1;z++) {
