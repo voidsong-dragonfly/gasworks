@@ -7,15 +7,5 @@
 				"color": "green"
 			}
 		]
-	},
-	"filter": {
-		"block": [
-			{
-				"path": "(coal|copper_ingot|emerald|diamond|redstone|iron_ingot|gold_ingot|lapis_lazuli|gold_ingot)_from_?(.)*(smelting|blasting)?(.)*"
-			},
-			{
-				"path": "(iron_nugget|gold_nugget|copper_nugget)_from_smelting"
-			}
-		]
 	}
 }
