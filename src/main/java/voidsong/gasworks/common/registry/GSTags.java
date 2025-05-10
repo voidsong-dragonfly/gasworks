@@ -28,5 +28,8 @@ public class GSTags {
 
     public static class ItemTags {
         public static final TagKey<Item> COAL_COKE = itemTag(cLoc("coal_coke"));
+        public static final TagKey<Item> DUSTS = itemTag(cLoc("dusts"));
+        public static final TagKey<Item> ASH_DUST = itemTag(cLoc("dusts/ash"));
+        public static final TagKey<Item> ASH = itemTag(cLoc("ash"));
     }
 }

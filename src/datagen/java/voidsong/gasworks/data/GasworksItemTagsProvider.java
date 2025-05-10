@@ -22,6 +22,12 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
     protected void addTags(@Nonnull HolderLookup.Provider lookupProvider) {
         tag(GSTags.ItemTags.COAL_COKE)
             .add(GSItems.COKE.asItem());
+        tag(GSTags.ItemTags.DUSTS)
+            .add(GSItems.ASH.asItem());
+        tag(GSTags.ItemTags.ASH_DUST)
+            .add(GSItems.ASH.asItem());
+        tag(GSTags.ItemTags.ASH)
+            .add(GSItems.ASH.asItem());
         tag(ItemTags.LOGS_THAT_BURN)
             .add(GSItems.OAK_LOG_PILE.get(), GSItems.SPRUCE_LOG_PILE.get(), GSItems.BIRCH_LOG_PILE.get(),
                 GSItems.JUNGLE_LOG_PILE.get(), GSItems.ACACIA_LOG_PILE.get(), GSItems.DARK_OAK_LOG_PILE.get(),
