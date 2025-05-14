@@ -96,10 +96,11 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
                     BlockState check1 = level.getBlockState(pos.offset(x, 1, z));
                     if(check0.getBlock() instanceof ClampBlock)
                         level.setBlockAndUpdate(pos.offset(x, 0, z), ClampBlock.getHeatedState(check0, clampCookMult));
-                    if (check0.getBlock() instanceof ClampBlock || check1.getBlock() instanceof ClampBlock) {
+                    if (check1.getBlock() instanceof ClampBlock) {
                         BlockState check2 = level.getBlockState(pos.offset(x, 2, z));
                         level.setBlockAndUpdate(pos.offset(x, 1, z), ClampBlock.getHeatedState(check1, clampCookMult));
-                        level.setBlockAndUpdate(pos.offset(x, 2, z), ClampBlock.getHeatedState(check2, clampCookMult));
+                        if (check2.getBlock() instanceof ClampBlock)
+                            level.setBlockAndUpdate(pos.offset(x, 2, z), ClampBlock.getHeatedState(check2, clampCookMult));
                     }
                 }
             }
