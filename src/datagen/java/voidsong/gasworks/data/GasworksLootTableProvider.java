@@ -107,7 +107,7 @@ public class GasworksLootTableProvider extends LootTableProvider {
                     .add(LootItem.lootTableItem(Items.CHARCOAL.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.CHARCOAL))))))
                 .withPool(this.applyExplosionCondition(GSItems.COKE.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(7))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
+                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(5))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
             );
         }
     }

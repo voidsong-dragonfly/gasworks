@@ -36,14 +36,12 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 15);
     private final AshType product;
-    private final TagKey<Block> validWalls;
     private final int clampCookMult;
 
     public BurnableFuelBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
         product = AshType.NONE;
-        validWalls = GSTags.BlockTags.PYROLIZING_WALLS;
         clampCookMult = 1;
     }
 
@@ -51,15 +49,6 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
         product = type;
-        validWalls = GSTags.BlockTags.PYROLIZING_WALLS;
-        clampCookMult = speed;
-    }
-
-    public BurnableFuelBlock(BlockBehaviour.Properties properties, @Nonnull AshType type, int speed, @Nonnull TagKey<Block> walls) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
-        product = type;
-        validWalls = walls;
         clampCookMult = speed;
     }
 
@@ -162,7 +151,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
      * @return validity as a wall or fuel block
      */
     protected boolean validNeighborBlock(@Nonnull LevelReader level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull Direction dir) {
-        return (product!=AshType.NONE&&state.getTags().toList().contains(validWalls)&&!state.isFlammable(level, pos, dir))||
+        return (product!=AshType.NONE&&state.getTags().toList().contains(GSTags.BlockTags.PYROLIZING_WALLS)&&!state.isFlammable(level, pos, dir))||
                (state.getBlock() instanceof BurnableFuelBlock)||
                (state.getBlock() instanceof PyrolyticAshBlock);
     }

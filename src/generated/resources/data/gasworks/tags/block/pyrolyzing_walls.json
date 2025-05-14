@@ -5,7 +5,6 @@
     "minecraft:muddy_mangrove_roots"
   ],
   "values": [
-    "#gasworks:high_temperature_pyrolyzing_walls",
     "#minecraft:dirt"
   ]
 }

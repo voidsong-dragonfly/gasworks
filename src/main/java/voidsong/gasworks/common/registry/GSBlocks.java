@@ -47,7 +47,7 @@ public class GSBlocks {
         .randomTicks()
         .noOcclusion()
         .requiresCorrectToolForDrops()
-        .strength(2.0F, 6.0F), AshType.COKE, 8, GSTags.BlockTags.HIGH_TEMPERATURE_PYROLIZING_WALLS));
+        .strength(2.0F, 6.0F), AshType.COKE, 8));
     public static final DeferredBlock<RotatedPillarBlock> CHARCOAL_PILE = BLOCKS.register("charcoal_pile", () -> new BurnableFuelBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.TERRACOTTA_BROWN)
         .instrument(NoteBlockInstrument.BASEDRUM)
