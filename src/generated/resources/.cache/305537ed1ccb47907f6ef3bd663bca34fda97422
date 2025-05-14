@@ -1,5 +1,5 @@
-// 1.21.1	2025-05-13T20:36:27.045802784	Tags for minecraft:block mod id gasworks
+// 1.21.1	2025-05-13T23:00:10.03077853	Tags for minecraft:block mod id gasworks
 61fbc864bffc043f62b82e6c418f5f104923c616 data/gasworks/tags/block/pyrolyzing_walls.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/minecraft/tags/block/logs_that_burn.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/minecraft/tags/block/mineable/axe.json
-2d1088c0f78b87a0b69a3f8ab4f0a0266bb3811b data/minecraft/tags/block/mineable/shovel.json
+145220ab9f5cb157edc1bbcedb67ef66655e82f3 data/minecraft/tags/block/mineable/shovel.json

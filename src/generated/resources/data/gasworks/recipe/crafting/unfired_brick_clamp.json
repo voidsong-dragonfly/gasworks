@@ -7,12 +7,12 @@
     }
   },
   "pattern": [
-    " c ",
+    "ccc",
     "c c",
-    " c "
+    "ccc"
   ],
   "result": {
-    "count": 1,
-    "id": "gasworks:brick_clamp"
+    "count": 2,
+    "id": "gasworks:unfired_brick_clamp"
   }
 }

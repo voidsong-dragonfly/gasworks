@@ -31,7 +31,14 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         horizontalRandomCubeAllAndItem(GSBlocks.COAL_PILE.get(), null, rl("coal_pile"));
         horizontalRandomCubeAllAndItem(GSBlocks.CHARCOAL_PILE.get(), null, rl("charcoal_pile"));
         //Brick piles for firing
-        brickPileCubeAll(GSBlocks.BRICK_CLAMP.get(), rl("unfired_clay_bricks"), rl("fired_clay_bricks"));
+        simpleBlockAndItem(GSBlocks.UNFIRED_BRICK_CLAMP.get(), models()
+            .withExistingParent(getName(GSBlocks.UNFIRED_BRICK_CLAMP.get()), rl("brick_pile"))
+            .texture("brick", rl("unfired_clay_bricks"))
+            .texture("plate", rl("stone_plate")));
+        simpleBlockAndItem(GSBlocks.FIRED_BRICK_CLAMP.get(), models()
+            .withExistingParent(getName(GSBlocks.FIRED_BRICK_CLAMP.get()), rl("brick_pile"))
+            .texture("brick", rl("fired_clay_bricks"))
+            .texture("plate", rl("stone_plate")));
         //Resulting ash
         ashPileCubeAll(GSBlocks.PYROLYTIC_ASH.get(), List.of(PyrolyticAshBlock.ASH_TYPE), rl("charcoal_ash"), rl("coke_ash"));
     }

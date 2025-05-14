@@ -108,13 +108,20 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .unlockedBy("has_charcoal", has(Items.CHARCOAL))
             .save(output, rl(GSItems.CHARCOAL_PILE, "crafting"));
         //Brick piles for firing
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.BRICK_CLAMP)
-            .pattern(" c ")
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.UNFIRED_BRICK_CLAMP, 2)
+            .pattern("ccc")
             .pattern("c c")
-            .pattern(" c ")
+            .pattern("ccc")
             .define('c', Items.CLAY_BALL)
             .unlockedBy("has_clay", has(Items.CLAY_BALL))
-            .save(output, rl(GSItems.BRICK_CLAMP, "crafting"));
+            .save(output, rl(GSItems.UNFIRED_BRICK_CLAMP, "crafting"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIRED_BRICK_CLAMP, 2)
+            .pattern("bbb")
+            .pattern("b b")
+            .pattern("bbb")
+            .define('b', Items.BRICK)
+            .unlockedBy("has_brick", has(Items.BRICK))
+            .save(output, rl(GSItems.FIRED_BRICK_CLAMP, "crafting"));
     }
 
 

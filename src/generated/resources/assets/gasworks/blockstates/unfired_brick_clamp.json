@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gasworks:block/unfired_brick_clamp"
+    }
+  }
+}

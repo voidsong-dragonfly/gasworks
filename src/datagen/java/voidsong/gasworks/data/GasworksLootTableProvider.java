@@ -23,7 +23,6 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.properties.AshType;
 import voidsong.gasworks.common.registry.GSBlocks;
@@ -88,14 +87,8 @@ public class GasworksLootTableProvider extends LootTableProvider {
             add(GSBlocks.COAL_PILE.get(), createSingleItemTableWithSilkTouch(GSBlocks.COAL_PILE.get(), Items.COAL, ConstantValue.exactly(8)));
             add(GSBlocks.CHARCOAL_PILE.get(), createSingleItemTableWithSilkTouch(GSBlocks.CHARCOAL_PILE.get(), Items.CHARCOAL, ConstantValue.exactly(8)));
             //Brick piles for firing
-            add(GSBlocks.BRICK_CLAMP.get(), LootTable.lootTable()
-                .withPool(this.applyExplosionCondition(Items.BRICK.asItem(),  LootPool.lootPool()
-                    .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(Items.BRICK.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.BRICK_CLAMP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ClampBlock.FIRED, true))))))
-                .withPool(this.applyExplosionCondition(Items.CLAY_BALL,  LootPool.lootPool()
-                    .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(Items.CLAY_BALL.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.BRICK_CLAMP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ClampBlock.FIRED, false))))))
-            );
+            add(GSBlocks.UNFIRED_BRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.UNFIRED_BRICK_CLAMP.get(), Items.CLAY_BALL, ConstantValue.exactly(4)));
+            add(GSBlocks.FIRED_BRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRED_BRICK_CLAMP.get(), Items.BRICK, ConstantValue.exactly(4)));
             //Resulting ash
             add(GSBlocks.PYROLYTIC_ASH.get(), LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(GSItems.ASH.asItem(), LootPool.lootPool()

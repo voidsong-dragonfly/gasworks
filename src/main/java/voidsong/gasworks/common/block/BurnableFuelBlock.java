@@ -6,7 +6,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.UseOnContext;
@@ -89,18 +88,18 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
         if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)&&state.getValue(LIT)&&!this.isNearRain(level, pos)) {
             int age = state.getValue(AGE)+1;
             //Increment burn time to make sure state is tracked
-            if(age < 16) level.setBlockAndUpdate(pos, state.setValue(AGE, Math.min(15, age)));
+            if(age < 16) level.setBlockAndUpdate(pos, state.setValue(AGE, age));
             //We can fire bricks with this, so we check for clamp structures and increase the firing of the bricks
             for(int x=-1;x<=1;x++) {
                 for(int z=-1;z<=1;z++) {
                     BlockState check0 = level.getBlockState(pos.offset(x, 0, z));
                     BlockState check1 = level.getBlockState(pos.offset(x, 1, z));
                     if(check0.getBlock() instanceof ClampBlock)
-                        level.setBlockAndUpdate(pos.offset(x, 0, z), ClampBlock.getFiredState(check0, clampCookMult));
+                        level.setBlockAndUpdate(pos.offset(x, 0, z), ClampBlock.getHeatedState(check0, clampCookMult));
                     if (check0.getBlock() instanceof ClampBlock || check1.getBlock() instanceof ClampBlock) {
                         BlockState check2 = level.getBlockState(pos.offset(x, 2, z));
-                        level.setBlockAndUpdate(pos.offset(x, 1, z), ClampBlock.getFiredState(check1, clampCookMult));
-                        level.setBlockAndUpdate(pos.offset(x, 2, z), ClampBlock.getFiredState(check2, clampCookMult));
+                        level.setBlockAndUpdate(pos.offset(x, 1, z), ClampBlock.getHeatedState(check1, clampCookMult));
+                        level.setBlockAndUpdate(pos.offset(x, 2, z), ClampBlock.getHeatedState(check2, clampCookMult));
                     }
                 }
             }

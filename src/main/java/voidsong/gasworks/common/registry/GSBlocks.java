@@ -13,6 +13,7 @@ import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.BurnableFuelBlock;
 import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
+import voidsong.gasworks.common.block.BrickStackBlock;
 import voidsong.gasworks.common.block.properties.AshType;
 
 public class GSBlocks {
@@ -57,10 +58,16 @@ public class GSBlocks {
         .requiresCorrectToolForDrops()
         .strength(1.625F, 4.5F), AshType.NONE, 8));
     //Brick piles for firing
-    public static final DeferredBlock<ClampBlock> BRICK_CLAMP = BLOCKS.registerBlock("brick_clamp", ClampBlock::new, BlockBehaviour.Properties.of()
-        .mapColor(s -> s.getValue(ClampBlock.FIRED) ? MapColor.COLOR_RED : MapColor.CLAY)
+    public static final DeferredBlock<BrickStackBlock> FIRED_BRICK_CLAMP = BLOCKS.registerBlock("fired_brick_clamp", BrickStackBlock::new, BlockBehaviour.Properties.of()
+        .mapColor(MapColor.COLOR_RED)
+        .sound(SoundType.NETHER_BRICKS)
         .noOcclusion()
         .strength(0.5f, 0.25f));
+    public static final DeferredBlock<ClampBlock> UNFIRED_BRICK_CLAMP = BLOCKS.register("unfired_brick_clamp", () -> new ClampBlock(BlockBehaviour.Properties.of()
+        .mapColor(MapColor.CLAY)
+        .sound(SoundType.GRAVEL)
+        .noOcclusion()
+        .strength(0.5f, 0.25f), FIRED_BRICK_CLAMP.get().defaultBlockState().setValue(BrickStackBlock.FIRED, true)));
     //Resulting ash
     public static final DeferredBlock<Block> PYROLYTIC_ASH = BLOCKS.register("pyrolytic_ash",
         () -> new PyrolyticAshBlock(new ColorRGBA(-8356741), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.SAND)));

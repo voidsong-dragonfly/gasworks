@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_clay": {
+    "has_brick": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:clay_ball"
+            "items": "minecraft:brick"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "gasworks:crafting/brick_clamp"
+        "recipe": "gasworks:crafting/fired_brick_clamp"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_clay"
+      "has_brick"
     ]
   ],
   "rewards": {
     "recipes": [
-      "gasworks:crafting/brick_clamp"
+      "gasworks:crafting/fired_brick_clamp"
     ]
   }
 }
