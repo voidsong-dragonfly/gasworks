@@ -25,7 +25,10 @@ public class ClampBlock extends Block {
     }
 
     public static BlockState getHeatedState(@Nonnull BlockState previous, int increment) {
-        int age = Math.clamp(previous.getValue(ClampBlock.AGE)+increment, 0, 48);
-        return age < 48?previous.setValue(AGE, age): ((ClampBlock)previous.getBlock()).fired;
+        if(previous.getBlock() instanceof ClampBlock) {
+            int age = Math.clamp(previous.getValue(ClampBlock.AGE) + increment, 0, 48);
+            return age < 48 ? previous.setValue(AGE, age) : ((ClampBlock) previous.getBlock()).fired;
+        } else
+            return previous;
     }
 }
