@@ -136,6 +136,20 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    //Dependencies on Malte0811 code, same format as IE
+    jarJar(implementation("malte0811:BlockModelSplitter")) {
+        version {
+            strictly '[2.0.0,3)'
+            prefer '2.0.1'
+        }
+    }
+    jarJar(implementation("malte0811:DualCodecs")) {
+        version {
+            strictly "[${dualcodecs_version},1)"
+            prefer "${dualcodecs_version}"
+        }
+    }
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
