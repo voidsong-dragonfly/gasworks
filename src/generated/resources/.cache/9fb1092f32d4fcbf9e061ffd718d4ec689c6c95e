@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-13T23:20:23.129373641	Recipes
+// 1.21.1	2025-05-17T18:17:08.396940481	Recipes
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
 07c8822a56251c4bd7c493790a893aa9a2401e35 data/gasworks/advancement/recipes/building_blocks/crafting/birch_log_pile.json
@@ -12,6 +12,7 @@ f5a3306c204e3d46347eb155c7e8088bb68b83d3 data/gasworks/advancement/recipes/build
 10e29cb5e94e870c23b0aea75a89384bf718207a data/gasworks/advancement/recipes/building_blocks/crafting/oak_log_pile.json
 43ea9c5c050ef43fd59fa1a99a82a14aa7092a90 data/gasworks/advancement/recipes/building_blocks/crafting/spruce_log_pile.json
 26834a012788ea58ead7a618b2aad7e7c3402109 data/gasworks/advancement/recipes/building_blocks/crafting/unfired_brick_clamp.json
+83cfe39d498bca71af0b1ecc407d9a2fdbd14895 data/gasworks/advancement/recipes/tools/crafting/tradeswomans_journal.json
 fba92137f10bbc2cc67049556de5d7a49073c102 data/gasworks/recipe/crafting/acacia_log_pile.json
 86722bae7b730516e2b94c9628cee188eb2b0be5 data/gasworks/recipe/crafting/bamboo_log_pile.json
 30bf4c54cddf1c2e78687c09ba318ddb707ddc16 data/gasworks/recipe/crafting/birch_log_pile.json
@@ -24,4 +25,5 @@ bcf47c2d3a9f9cbd28e00bd3490bc7dd73a2803e data/gasworks/recipe/crafting/jungle_lo
 966a51872a96b662f39d7b303cb8fb90cf5230fe data/gasworks/recipe/crafting/mangrove_log_pile.json
 aeab9effe7dac38a9af9780a563ea7c206d23386 data/gasworks/recipe/crafting/oak_log_pile.json
 baa91061bd4cba9a428f7dbe2b12e1fc777093fe data/gasworks/recipe/crafting/spruce_log_pile.json
+d334669ec5700d76d29fb71f71f64d6bf4896a6b data/gasworks/recipe/crafting/tradeswomans_journal.json
 a9ae701057d60c51220605abb8d440ed926053ed data/gasworks/recipe/crafting/unfired_brick_clamp.json

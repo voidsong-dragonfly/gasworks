@@ -7,6 +7,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import voidsong.gasworks.common.Config;
 import voidsong.gasworks.common.registry.GSBlocks;
+import voidsong.gasworks.common.registry.GSDataComponents;
 import voidsong.gasworks.common.registry.GSItems;
 import voidsong.gasworks.common.registry.GSRecipeConditions;
 
@@ -24,6 +25,7 @@ public class Gasworks {
         GSItems.ITEMS.register(modEventBus);
         GSItems.CREATIVE_MODE_TABS.register(modEventBus);
         GSRecipeConditions.CONDITION_CODECS.register(modEventBus);
+        GSDataComponents.COMPONENTS.register(modEventBus);
         // Register configs
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

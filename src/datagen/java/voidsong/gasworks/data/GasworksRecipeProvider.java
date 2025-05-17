@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.Tags;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.registry.GSItems;
 
@@ -28,7 +29,7 @@ public class GasworksRecipeProvider extends RecipeProvider {
         /*
          * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
          */
-        //Log stacks for fuel
+        // Log stacks for fuel
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.OAK_LOG_PILE, 4)
             .pattern(" l ")
             .pattern("l l")
@@ -92,7 +93,7 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .define('l', Items.STRIPPED_BAMBOO_BLOCK)
             .unlockedBy("has_log", has(ItemTags.LOGS_THAT_BURN))
             .save(output, rl(GSItems.BAMBOO_LOG_PILE, "crafting"));
-        //Coal stacks for fuel
+        // Coal stacks for fuel
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.COAL_PILE)
             .pattern("ccc")
             .pattern("c c")
@@ -107,7 +108,7 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .define('c', Items.CHARCOAL)
             .unlockedBy("has_charcoal", has(Items.CHARCOAL))
             .save(output, rl(GSItems.CHARCOAL_PILE, "crafting"));
-        //Brick piles for firing
+        // Brick piles for firing
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.UNFIRED_BRICK_CLAMP, 2)
             .pattern("ccc")
             .pattern("c c")
@@ -122,6 +123,17 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .define('b', Items.BRICK)
             .unlockedBy("has_brick", has(Items.BRICK))
             .save(output, rl(GSItems.FIRED_BRICK_CLAMP, "crafting"));
+
+        /*
+         * Tool items & other useful items
+         */
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, GSItems.TRADESWOMANS_JOURNAL)
+            .requires(Items.BOOK)
+            .requires(Tags.Items.FEATHERS)
+            .requires(Items.INK_SAC)
+            .requires(Tags.Items.NUGGETS_GOLD)
+            .unlockedBy("has_book", has(Items.BOOK))
+            .save(output, rl(GSItems.TRADESWOMANS_JOURNAL, "crafting"));
     }
 
 
