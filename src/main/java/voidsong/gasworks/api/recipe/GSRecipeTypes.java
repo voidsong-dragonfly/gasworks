@@ -1,0 +1,14 @@
+package voidsong.gasworks.api.recipe;
+
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import voidsong.gasworks.Gasworks;
+
+public class GSRecipeTypes {
+    public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, Gasworks.MOD_ID);
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<PyrolysisRecipe>> PYROLYSIS = RECIPE_TYPES.register("pyrolysis", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "pyrolysis")));
+}
