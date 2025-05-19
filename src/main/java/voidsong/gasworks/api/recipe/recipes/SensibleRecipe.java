@@ -13,21 +13,26 @@ import javax.annotation.Nonnull;
 /**
  * Minecraft makes some, charitably, extremely wacko decisions about recipes. Following the words of the venerable
  * Nick Fury, given that it's a stupid-ass [set of] decision[s], I've elected to ignore [them].
- * This class reimplements a lot of the idiocy from scratch in a much better & more effective method.
- * It has a cached and machine-specific recipe list, as well as sensible outputs and no fucking around with RecipeInputs
+ * This class removes a lot of the boilerplate necessary to interact with the Vanilla system by returning empty values
  */
-public abstract class MachineRecipe implements Recipe<RecipeInput> {
+public abstract class SensibleRecipe implements Recipe<RecipeInput> {
     protected final ItemStack dummy;
     protected final RecipeType<?> type;
 
-    protected MachineRecipe(RecipeType<?> type, RecipeSerializer<?> serializer) {
+    protected SensibleRecipe(RecipeType<?> type, RecipeSerializer<?> serializer) {
         this.dummy = ItemStack.EMPTY;
         this.type = type;
     }
 
-    protected MachineRecipe(RecipeType<?> type, RecipeSerializer<?> serializer, ItemStack dummyOutput) {
+    protected SensibleRecipe(RecipeType<?> type, RecipeSerializer<?> serializer, ItemStack dummyOutput) {
         this.dummy = dummyOutput;
         this.type = type;
+    }
+
+    @Override
+    @Nonnull
+    public ItemStack getResultItem(@Nonnull HolderLookup.Provider registries) {
+        return dummy;
     }
 
     @Override

@@ -13,7 +13,7 @@ import voidsong.gasworks.api.utils.GSDualCodecs;
 
 import javax.annotation.Nonnull;
 
-public abstract class MachineRecipeSerializer<R extends Recipe<?>> implements RecipeSerializer<R> {
+public abstract class SensibleRecipeSerializer<R extends Recipe<?>> implements RecipeSerializer<R> {
 
     public static DualMapCodec<RegistryFriendlyByteBuf, ItemStack> optionalItemOutput(String name) {
         return DualCodecs.ITEM_STACK.optionalFieldOf(name, ItemStack.EMPTY);
