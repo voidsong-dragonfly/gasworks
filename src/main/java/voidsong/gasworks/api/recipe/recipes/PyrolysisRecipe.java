@@ -1,4 +1,4 @@
-package voidsong.gasworks.api.recipe;
+package voidsong.gasworks.api.recipe.recipes;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import voidsong.gasworks.api.recipe.GSRecipeTypes;
 import voidsong.gasworks.common.block.BurnableFuelBlock;
 import voidsong.gasworks.common.registry.GSItems;
 import voidsong.gasworks.api.GSTags;

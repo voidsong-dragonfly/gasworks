@@ -31,8 +31,7 @@ public class CachedRecipeList<R extends Recipe<?>> {
     private boolean cachedDataIsClient;
     private int cachedAtReloadCount = INVALID_RELOAD_COUNT;
 
-    public CachedRecipeList(Supplier<RecipeType<R>> type)
-    {
+    public CachedRecipeList(Supplier<RecipeType<R>> type) {
         this.type = type;
     }
 
