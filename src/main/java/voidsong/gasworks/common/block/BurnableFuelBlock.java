@@ -27,7 +27,7 @@ import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.Nullable;
 import voidsong.gasworks.common.block.properties.AshType;
 import voidsong.gasworks.common.registry.GSBlocks;
-import voidsong.gasworks.common.registry.GSTags;
+import voidsong.gasworks.api.GSTags;
 
 import javax.annotation.Nonnull;
 

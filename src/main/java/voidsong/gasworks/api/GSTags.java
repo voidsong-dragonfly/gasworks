@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.registry;
+package voidsong.gasworks.api;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;

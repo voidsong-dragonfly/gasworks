@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.registry.GSItems;
-import voidsong.gasworks.common.registry.GSTags;
+import voidsong.gasworks.api.GSTags;
 
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
