@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import javax.annotation.Nonnull;
 
 public class ClampBlock extends Block {
-    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 47);
+    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 35);
     public final BlockState fired;
 
     public ClampBlock(BlockBehaviour.Properties properties, BlockState firedState) {
@@ -26,8 +26,8 @@ public class ClampBlock extends Block {
 
     public static BlockState getHeatedState(@Nonnull BlockState previous, int increment) {
         if(previous.getBlock() instanceof ClampBlock) {
-            int age = Math.clamp(previous.getValue(ClampBlock.AGE) + increment, 0, 48);
-            return age < 48 ? previous.setValue(AGE, age) : ((ClampBlock) previous.getBlock()).fired;
+            int age = Math.clamp(previous.getValue(ClampBlock.AGE) + increment, 0, 36);
+            return age < 36 ? previous.setValue(AGE, age) : ((ClampBlock) previous.getBlock()).fired;
         } else
             return previous;
     }
