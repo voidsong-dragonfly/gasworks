@@ -23,8 +23,10 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         /*
          * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
          */
+        // Pyrolysis walls for use in recipes
         tag(GSTags.BlockTags.PYROLIZING_WALLS)
             .addTag(BlockTags.DIRT).remove(Blocks.MOSS_BLOCK, Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS);
+        // Log stacks for fuel
         tag(BlockTags.LOGS_THAT_BURN)
             .add(GSBlocks.OAK_LOG_PILE.get(), GSBlocks.SPRUCE_LOG_PILE.get(), GSBlocks.BIRCH_LOG_PILE.get(),
                 GSBlocks.JUNGLE_LOG_PILE.get(), GSBlocks.ACACIA_LOG_PILE.get(), GSBlocks.DARK_OAK_LOG_PILE.get(),
@@ -33,6 +35,9 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.OAK_LOG_PILE.get(), GSBlocks.SPRUCE_LOG_PILE.get(), GSBlocks.BIRCH_LOG_PILE.get(),
                 GSBlocks.JUNGLE_LOG_PILE.get(), GSBlocks.ACACIA_LOG_PILE.get(), GSBlocks.DARK_OAK_LOG_PILE.get(),
                 GSBlocks.CHERRY_LOG_PILE.get(), GSBlocks.MANGROVE_LOG_PILE.get(), GSBlocks.BAMBOO_LOG_PILE.get());
+        // Coal-like piles for fuel
+        tag(GSTags.BlockTags.COALLIKE_PILES)
+            .add(GSBlocks.CHARCOAL_PILE.get(), GSBlocks.COAL_PILE.get());
         /*
          * Tool tags for block breaking
          */

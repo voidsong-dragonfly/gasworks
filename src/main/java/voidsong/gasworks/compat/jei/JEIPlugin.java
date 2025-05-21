@@ -13,9 +13,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.api.GSTags;
+import voidsong.gasworks.api.recipe.recipes.ClampRecipe;
 import voidsong.gasworks.api.recipe.recipes.PyrolysisRecipe;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSItems;
+import voidsong.gasworks.compat.jei.pyrolysis.ClampRecipeCategory;
 import voidsong.gasworks.compat.jei.pyrolysis.PyrolysisRecipeCategory;
 
 import javax.annotation.Nonnull;
@@ -39,7 +41,8 @@ public class JEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registry) {
         IGuiHelper helper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(
-            new PyrolysisRecipeCategory(helper)
+            new PyrolysisRecipeCategory(helper),
+            new ClampRecipeCategory(helper)
         );
 
         slotDrawable = helper.getSlotDrawable();
@@ -48,6 +51,7 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes(@Nonnull IRecipeRegistration registration) {
         registration.addRecipes(JEIRecipeTypes.PYROLYSIS, getPyrolysisJEIRecipes());
+        registration.addRecipes(JEIRecipeTypes.CLAMP_FIRING, getClampJEIRecipes());
     }
 
     @Override
@@ -64,6 +68,8 @@ public class JEIPlugin implements IModPlugin {
             GSBlocks.CHERRY_LOG_PILE,
             GSBlocks.MANGROVE_LOG_PILE,
             GSBlocks.BAMBOO_LOG_PILE);
+        // Clamp recipe special-casing
+        registration.addRecipeCatalysts(JEIRecipeTypes.CLAMP_FIRING, GSItems.UNFIRED_BRICK_CLAMP, GSItems.FIRED_BRICK_CLAMP);
         // Other more traditional recipes types
     }
 
@@ -81,6 +87,14 @@ public class JEIPlugin implements IModPlugin {
         recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_bamboo"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.BAMBOO_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
         // Coal piles
         recipes.add(new RecipeHolder<>(Gasworks.rl("coke"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.COAL_PILE.get(), new ItemStack(GSItems.COKE.get(), 5), new ItemStack(GSItems.ASH.get()), 0.5f)));
+        return recipes;
+    }
+
+    private List<RecipeHolder<ClampRecipe>> getClampJEIRecipes() {
+        List<RecipeHolder<ClampRecipe>> recipes = new ArrayList<>();
+        // Log piles, but since we don't have easy access to tags, we do it manually
+        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_wood"), new ClampRecipe(GSTags.ItemTags.LOG_PILES, 8, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(Items.BRICK, 4), 1.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_coallike"), new ClampRecipe(GSTags.ItemTags.COALLIKE_PILES, 1, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(Items.BRICK, 4), 1.5f)));
         return recipes;
     }
 }

@@ -1,7 +1,9 @@
-// 1.21.1	2025-05-21T01:17:51.452052118	Tags for minecraft:item mod id gasworks
+// 1.21.1	2025-05-21T14:37:36.622942054	Tags for minecraft:item mod id gasworks
 ce5c344030dbbbc9dd1ea1d446b1f3367f84bd6f data/c/tags/item/ash.json
 a69a8939af0d5ba5281fb21fb0f0aa40db9768e5 data/c/tags/item/coal_coke.json
 ce5c344030dbbbc9dd1ea1d446b1f3367f84bd6f data/c/tags/item/dusts.json
 ce5c344030dbbbc9dd1ea1d446b1f3367f84bd6f data/c/tags/item/dusts/ash.json
+9da7a0167d541dd2a039ce4048e150e7a2f1347c data/gasworks/tags/item/coallike_piles.json
+e65a410d27fe92ecd1fea8db1a527b91613d022c data/gasworks/tags/item/log_piles.json
 61fbc864bffc043f62b82e6c418f5f104923c616 data/gasworks/tags/item/pyrolyzing_walls.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/minecraft/tags/item/logs_that_burn.json

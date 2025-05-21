@@ -23,7 +23,7 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 
 public class PyrolysisRecipeCategory extends RecipeCategory<PyrolysisRecipe> {
-    private static final ResourceLocation guiElements = Gasworks.rl("textures/gui/pyrolysis.png");
+    private static final ResourceLocation guiElements = Gasworks.rl("textures/gui/in_world.png");
     private final IDrawableStatic arrow;
     private final IDrawableAnimated arrowAnimated;
     private final IDrawableStatic flame;
@@ -52,7 +52,7 @@ public class PyrolysisRecipeCategory extends RecipeCategory<PyrolysisRecipe> {
     @Override
     public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, RecipeHolder<PyrolysisRecipe> recipeHolder, @Nonnull IFocusGroup focuses) {
         PyrolysisRecipe recipe = recipeHolder.value();
-        builder.addSlot(RecipeIngredientRole.INPUT, 1, 3)
+        builder.addSlot(RecipeIngredientRole.CATALYST, 1, 3)
             .addItemStacks(Arrays.stream(Ingredient.of(recipe.getWalls()).getItems()).toList());
 
         builder.addSlot(RecipeIngredientRole.INPUT, 21, 3)

@@ -4,51 +4,55 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import voidsong.gasworks.api.recipe.GSRecipeTypes;
-import voidsong.gasworks.common.block.BurnableFuelBlock;
+import voidsong.gasworks.common.block.ClampBlock;
 
 /**
  * WARNING: This class is a dummy class & will not affect the game at all!
- * This class is solely to hold objects necessary for registering JEI recipes for the given in-world pyrolysis recipes.
+ * This class is solely to hold objects necessary for registering JEI recipes for the given in-world brick firing recipes.
  * It also does NOT cache its recipes because they will not be used for lookups!
  */
-public class PyrolysisRecipe extends SensibleRecipeBase {
+public class ClampRecipe extends SensibleRecipeBase {
     // Recipe parameters
-    protected final TagKey<Item> walls;
-    protected final BurnableFuelBlock ingredient;
+    protected final TagKey<Item> fuels;
+    protected final int fuelAmount;
+    protected final ClampBlock ingredient;
     protected final ItemStack result;
-    protected final ItemStack ash;
     protected final float experience;
 
     /**
      * WARNING: This class is a dummy class & will not affect the game at all!
-     * This class is solely to hold objects necessary for registering JEI recipes for the given in-world pyrolysis recipes.
+     * This class is solely to hold objects necessary for registering JEI recipes for the given in-world brick firing recipes.
      * It also does NOT cache its recipes because they will not be used for lookups!
      */
-    public PyrolysisRecipe(TagKey<Item> walls, BurnableFuelBlock ingredient, ItemStack result, ItemStack ash, float experience) {
+    public ClampRecipe(TagKey<Item> fuels, int fuelAmount, ClampBlock ingredient, ItemStack result, float experience) {
         super(GSRecipeTypes.CLAMP_FIRING.get(), null, result);
-        this.walls = walls;
+        this.fuels = fuels;
+        this.fuelAmount = fuelAmount;
         this.ingredient = ingredient;
-        this.ash = ash;
         this.result = result;
         this.experience = experience;
     }
 
     /**
      * WARNING: This class is a dummy class & will not affect the game at all!
-     * This class is solely to hold objects necessary for registering JEI recipes for the given in-world pyrolysis recipes.
+     * This class is solely to hold objects necessary for registering JEI recipes for the given in-world brick firing recipes.
      * It also does NOT cache its recipes because they will not be used for lookups!
      */
-    public PyrolysisRecipe(TagKey<Item> walls, BurnableFuelBlock ingredient, Item result, Item ash, float experience) {
+    public ClampRecipe(TagKey<Item> fuels, int fuelAmount, ClampBlock ingredient, Item result, Item ash, float experience) {
         super(GSRecipeTypes.CLAMP_FIRING.get(), null, new ItemStack(result));
-        this.walls = walls;
+        this.fuels = fuels;
+        this.fuelAmount = fuelAmount;
         this.ingredient = ingredient;
-        this.ash = new ItemStack(ash);
         this.result = new ItemStack(result);
         this.experience = experience;
     }
 
-    public TagKey<Item> getWalls() {
-        return walls;
+    public TagKey<Item> getFuels() {
+        return fuels;
+    }
+
+    public int getFuelAmount() {
+        return fuelAmount;
     }
 
     public ItemStack getIngredient() {
@@ -57,10 +61,6 @@ public class PyrolysisRecipe extends SensibleRecipeBase {
 
     public ItemStack getResult() {
         return result;
-    }
-
-    public ItemStack getAsh() {
-        return ash;
     }
 
     public float getExperience() {

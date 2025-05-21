@@ -22,15 +22,32 @@ public class GSTags {
     }
 
     public static class BlockTags {
-        public static final TagKey<Block> LOG_PILES = blockTag(Gasworks.rl("log_piles"));
+        /*
+         * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
+         */
+        // Pyrolysis walls for use in recipes
         public static final TagKey<Block> PYROLIZING_WALLS = blockTag(Gasworks.rl("pyrolyzing_walls"));
+        // Log stacks for fuel
+        public static final TagKey<Block> LOG_PILES = blockTag(Gasworks.rl("log_piles"));
+        // Coal-like piles for fuel
+        public static final TagKey<Block> COALLIKE_PILES = blockTag(Gasworks.rl("coallike_piles"));
     }
 
     public static class ItemTags {
+        /*
+         * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
+         */
+        // Pyrolysis walls for use in recipes
         public static final TagKey<Item> PYROLIZING_WALLS = itemTag(Gasworks.rl("pyrolyzing_walls"));
-        public static final TagKey<Item> COAL_COKE = itemTag(cLoc("coal_coke"));
+        // Log stacks for fuel
+        public static final TagKey<Item> LOG_PILES = itemTag(Gasworks.rl("log_piles"));
+        // Coal-like piles for fuel
+        public static final TagKey<Item> COALLIKE_PILES = itemTag(Gasworks.rl("coallike_piles"));
+        // Ash products
         public static final TagKey<Item> DUSTS = itemTag(cLoc("dusts"));
         public static final TagKey<Item> ASH_DUST = itemTag(cLoc("dusts/ash"));
         public static final TagKey<Item> ASH = itemTag(cLoc("ash"));
+        // Coke products
+        public static final TagKey<Item> COAL_COKE = itemTag(cLoc("coal_coke"));
     }
 }

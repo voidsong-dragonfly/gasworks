@@ -21,20 +21,34 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(@Nonnull HolderLookup.Provider lookupProvider) {
-        tag(GSTags.ItemTags.COAL_COKE)
-            .add(GSItems.COKE.asItem());
+        /*
+         * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
+         */
+        // Pyrolysis walls for use in recipes
+        tag(GSTags.ItemTags.PYROLIZING_WALLS)
+            .addTag(ItemTags.DIRT).remove(Items.MOSS_BLOCK, Items.MUD, Items.MUDDY_MANGROVE_ROOTS);
+        // Log stacks for fuel
+        tag(ItemTags.LOGS_THAT_BURN)
+            .add(GSItems.OAK_LOG_PILE.get(), GSItems.SPRUCE_LOG_PILE.get(), GSItems.BIRCH_LOG_PILE.get(),
+                GSItems.JUNGLE_LOG_PILE.get(), GSItems.ACACIA_LOG_PILE.get(), GSItems.DARK_OAK_LOG_PILE.get(),
+                GSItems.CHERRY_LOG_PILE.get(), GSItems.MANGROVE_LOG_PILE.get(), GSItems.BAMBOO_LOG_PILE.get());
+        tag(GSTags.ItemTags.LOG_PILES)
+            .add(GSItems.OAK_LOG_PILE.get(), GSItems.SPRUCE_LOG_PILE.get(), GSItems.BIRCH_LOG_PILE.get(),
+                GSItems.JUNGLE_LOG_PILE.get(), GSItems.ACACIA_LOG_PILE.get(), GSItems.DARK_OAK_LOG_PILE.get(),
+                GSItems.CHERRY_LOG_PILE.get(), GSItems.MANGROVE_LOG_PILE.get(), GSItems.BAMBOO_LOG_PILE.get());
+        // Coal-like piles for fuel
+        tag(GSTags.ItemTags.COALLIKE_PILES)
+            .add(GSItems.CHARCOAL_PILE.get(), GSItems.COAL_PILE.get());
+        // Ash products
         tag(GSTags.ItemTags.DUSTS)
             .add(GSItems.ASH.asItem());
         tag(GSTags.ItemTags.ASH_DUST)
             .add(GSItems.ASH.asItem());
         tag(GSTags.ItemTags.ASH)
             .add(GSItems.ASH.asItem());
-        tag(GSTags.ItemTags.PYROLIZING_WALLS)
-            .addTag(ItemTags.DIRT).remove(Items.MOSS_BLOCK, Items.MUD, Items.MUDDY_MANGROVE_ROOTS);
-        tag(ItemTags.LOGS_THAT_BURN)
-            .add(GSItems.OAK_LOG_PILE.get(), GSItems.SPRUCE_LOG_PILE.get(), GSItems.BIRCH_LOG_PILE.get(),
-                GSItems.JUNGLE_LOG_PILE.get(), GSItems.ACACIA_LOG_PILE.get(), GSItems.DARK_OAK_LOG_PILE.get(),
-                GSItems.CHERRY_LOG_PILE.get(), GSItems.MANGROVE_LOG_PILE.get(), GSItems.BAMBOO_LOG_PILE.get());
+        // Coke products
+        tag(GSTags.ItemTags.COAL_COKE)
+            .add(GSItems.COKE.asItem());
 
     }
 }

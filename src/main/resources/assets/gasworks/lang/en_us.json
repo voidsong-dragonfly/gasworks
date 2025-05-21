@@ -21,5 +21,6 @@
     "message.gasworks.too_much_experience": "There is no knowledge you can gain here!",
     "tooltip.gasworks.experience": "Stored Knowledge:",
     "tooltip.gasworks.experience_levels": "%.2f Levels",
-    "jei.gasworks.pyrolysis": "In-World Pyrolysis"
+    "jei.gasworks.pyrolysis": "In-World Pyrolysis",
+    "jei.gasworks.clamp_firing": "In-World Clamp Firing"
 }
