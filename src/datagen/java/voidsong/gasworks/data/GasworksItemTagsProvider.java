@@ -4,6 +4,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
@@ -28,6 +29,8 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
             .add(GSItems.ASH.asItem());
         tag(GSTags.ItemTags.ASH)
             .add(GSItems.ASH.asItem());
+        tag(GSTags.ItemTags.PYROLIZING_WALLS)
+            .addTag(ItemTags.DIRT).remove(Items.MOSS_BLOCK, Items.MUD, Items.MUDDY_MANGROVE_ROOTS);
         tag(ItemTags.LOGS_THAT_BURN)
             .add(GSItems.OAK_LOG_PILE.get(), GSItems.SPRUCE_LOG_PILE.get(), GSItems.BIRCH_LOG_PILE.get(),
                 GSItems.JUNGLE_LOG_PILE.get(), GSItems.ACACIA_LOG_PILE.get(), GSItems.DARK_OAK_LOG_PILE.get(),

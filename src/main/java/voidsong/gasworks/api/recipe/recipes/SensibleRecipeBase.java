@@ -13,20 +13,31 @@ import javax.annotation.Nonnull;
 /**
  * Minecraft makes some, charitably, extremely wacko decisions about recipes. Following the words of the venerable
  * Nick Fury, given that it's a stupid-ass [set of] decision[s], I've elected to ignore [them].
- * This class removes a lot of the boilerplate necessary to interact with the Vanilla system by returning empty values
+ * This class removes a lot of the boilerplate necessary to interact with the Vanilla system by returning empty values.
+ * Recipes based on this class should cache their own recipes using {@link voidsong.gasworks.api.recipe.CachedRecipeList CachedRecipeList}
+ * and bypass the Vanilla recipe lookup system that iterates over all recipes in the game.
  */
-public abstract class SensibleRecipe implements Recipe<RecipeInput> {
+public abstract class SensibleRecipeBase implements Recipe<RecipeInput> {
     protected final ItemStack dummy;
     protected final RecipeType<?> type;
+    protected final RecipeSerializer<?> serializer;
 
-    protected SensibleRecipe(RecipeType<?> type, RecipeSerializer<?> serializer) {
+    protected SensibleRecipeBase(RecipeType<?> type, RecipeSerializer<?> serializer) {
         this.dummy = ItemStack.EMPTY;
         this.type = type;
+        this.serializer = serializer;
     }
 
-    protected SensibleRecipe(RecipeType<?> type, RecipeSerializer<?> serializer, ItemStack dummyOutput) {
+    protected SensibleRecipeBase(RecipeType<?> type, RecipeSerializer<?> serializer, ItemStack dummyOutput) {
         this.dummy = dummyOutput;
         this.type = type;
+        this.serializer = serializer;
+    }
+
+    @Override
+    @Nonnull
+    public RecipeSerializer<?> getSerializer() {
+        return serializer;
     }
 
     @Override

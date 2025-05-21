@@ -22,10 +22,12 @@ public class GSTags {
     }
 
     public static class BlockTags {
+        public static final TagKey<Block> LOG_PILES = blockTag(Gasworks.rl("log_piles"));
         public static final TagKey<Block> PYROLIZING_WALLS = blockTag(Gasworks.rl("pyrolyzing_walls"));
     }
 
     public static class ItemTags {
+        public static final TagKey<Item> PYROLIZING_WALLS = itemTag(Gasworks.rl("pyrolyzing_walls"));
         public static final TagKey<Item> COAL_COKE = itemTag(cLoc("coal_coke"));
         public static final TagKey<Item> DUSTS = itemTag(cLoc("dusts"));
         public static final TagKey<Item> ASH_DUST = itemTag(cLoc("dusts/ash"));

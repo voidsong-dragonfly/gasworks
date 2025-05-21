@@ -5,7 +5,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import voidsong.gasworks.api.recipe.GSRecipeTypes;
 import voidsong.gasworks.api.recipe.recipes.PyrolysisRecipe;
 
-public class RecipeTypes {
+public class JEIRecipeTypes {
 
     public static final RecipeType<RecipeHolder<PyrolysisRecipe>> PYROLYSIS = RecipeType.createFromVanilla(GSRecipeTypes.PYROLYSIS.get());
 
