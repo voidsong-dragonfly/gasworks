@@ -151,7 +151,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
      * @return validity as a wall or fuel block
      */
     protected boolean validNeighborBlock(@Nonnull LevelReader level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull Direction dir) {
-        return (product!=AshType.NONE&&state.getTags().toList().contains(GSTags.BlockTags.PYROLIZING_WALLS)&&!state.isFlammable(level, pos, dir))||
+        return (product!=AshType.NONE&&state.is(GSTags.BlockTags.PYROLIZING_WALLS)&&!state.isFlammable(level, pos, dir))||
                (state.getBlock() instanceof BurnableFuelBlock)||
                (state.getBlock() instanceof PyrolyticAshBlock);
     }
