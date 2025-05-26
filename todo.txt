@@ -1,0 +1,17 @@
+ - Compost pile features
+     - Add in JEI compat for composting recipes
+     - Possibly change recipe maps for composting recipes?
+     - Possibly a compost crafting recipe (dirt + total 1 compost chance
+ - Brick pile full features
+     - Intermediate states for rendering
+ - Other tier 0 features
+     - Fireclay
+     - Prospector's Pick
+     - Mineral lodes
+     - Trip hammer
+     - Machine shop 0
+     - Crude Blast Furnace & bellows
+     - Crude mechanical power
+     - Implement jute & possibly rubber?
+ - Tool system
+     - Two kinds of durability, 'minor fixes' & 'major fixes'

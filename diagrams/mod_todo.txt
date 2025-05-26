@@ -24,9 +24,10 @@ Latenium
 MACHINES (EARLY GAME)                                   		UTILITIES (EARLY GAME)
 ------------------------------------------              		------------------------------------------
 Crude Blast Furnace & Bellows                           		Prospector's Pick
-Brick Clamp                                              		Compost Pile (Use FDelight one?)
-Trip Hammer                                             		Tradeswoman's Journal
-Beehive Oven & Charcoal Pit
+✓ Brick Clamp                                              		Compost Pile
+Trip Hammer                                             		✓ Tradeswoman's Journal
+✓ Charcoal & Coke Pit
+Waterwheels & Windmills
 Machine Shop 0
 ------------------------------------------              		------------------------------------------
 MACHINES (EARLY-MID GAME: Wrought Iron, Fireclay)       		UTILITIES (EARLY-MID GAME)
@@ -54,7 +55,7 @@ Bessemer Converter                                      		Motor Drill
 Machine Shop 2                                          		Print Shop
 Gas Lighting (Mantle needs Latenium)                    		Dyeing Bath
 Distillation Column                                     		Refractory Caissons
-Pressurized Reaction Unit
+Pressurized Reaction Unit                                       Portable Generator
 Assembly Bay
 Autonomic Arm
 Electric Arc Furnace
