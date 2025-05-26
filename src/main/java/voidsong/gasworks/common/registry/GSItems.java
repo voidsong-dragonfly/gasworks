@@ -33,14 +33,14 @@ public class GSItems {
     // Coal stacks for fuel
     public static final DeferredItem<BlockItem> COAL_PILE = ITEMS.registerSimpleBlockItem("coal_pile", GSBlocks.COAL_PILE);
     public static final DeferredItem<BlockItem> CHARCOAL_PILE = ITEMS.registerSimpleBlockItem("charcoal_pile", GSBlocks.CHARCOAL_PILE);
-
-    // Brick piles for firing
-    public static final DeferredItem<BlockItem> UNFIRED_BRICK_CLAMP = ITEMS.registerSimpleBlockItem("unfired_brick_clamp", GSBlocks.UNFIRED_BRICK_CLAMP);
-    public static final DeferredItem<BlockItem> FIRED_BRICK_CLAMP = ITEMS.registerSimpleBlockItem("fired_brick_clamp", GSBlocks.FIRED_BRICK_CLAMP);
     // Coal coke & products
     public static final DeferredItem<Item> COKE = ITEMS.registerSimpleItem("coke");
     public static final DeferredItem<Item> ASH = ITEMS.registerSimpleItem("ash");
-
+    // Brick piles for firing
+    public static final DeferredItem<BlockItem> UNFIRED_BRICK_CLAMP = ITEMS.registerSimpleBlockItem("unfired_brick_clamp", GSBlocks.UNFIRED_BRICK_CLAMP);
+    public static final DeferredItem<BlockItem> FIRED_BRICK_CLAMP = ITEMS.registerSimpleBlockItem("fired_brick_clamp", GSBlocks.FIRED_BRICK_CLAMP);
+    // Compost piles for fertilizer
+    public static final DeferredItem<BlockItem> COMPOST_PILE = ITEMS.registerSimpleBlockItem("compost_pile", GSBlocks.COMPOST_PILE);
     /*
      * Tool items & other useful items
      */
@@ -52,21 +52,22 @@ public class GSItems {
         .title(Component.translatable("itemGroup.gasworks"))
         .icon(() -> new ItemStack(TRADESWOMANS_JOURNAL.asItem()))
         .displayItems((parameters, output) -> {
-            output.accept(OAK_LOG_PILE.get());
-            output.accept(SPRUCE_LOG_PILE.get());
-            output.accept(BIRCH_LOG_PILE.get());
-            output.accept(JUNGLE_LOG_PILE.get());
-            output.accept(ACACIA_LOG_PILE.get());
-            output.accept(DARK_OAK_LOG_PILE.get());
-            output.accept(CHERRY_LOG_PILE.get());
-            output.accept(MANGROVE_LOG_PILE.get());
-            output.accept(BAMBOO_LOG_PILE.get());
-            output.accept(COAL_PILE.get());
-            output.accept(CHARCOAL_PILE.get());
-            output.accept(UNFIRED_BRICK_CLAMP.get());
-            output.accept(FIRED_BRICK_CLAMP.get());
-            output.accept(COKE.get());
-            output.accept(ASH.get());
-            output.accept(TRADESWOMANS_JOURNAL.get());
+            output.accept(OAK_LOG_PILE);
+            output.accept(SPRUCE_LOG_PILE);
+            output.accept(BIRCH_LOG_PILE);
+            output.accept(JUNGLE_LOG_PILE);
+            output.accept(ACACIA_LOG_PILE);
+            output.accept(DARK_OAK_LOG_PILE);
+            output.accept(CHERRY_LOG_PILE);
+            output.accept(MANGROVE_LOG_PILE);
+            output.accept(BAMBOO_LOG_PILE);
+            output.accept(COAL_PILE);
+            output.accept(CHARCOAL_PILE);
+            output.accept(COKE);
+            output.accept(ASH);
+            output.accept(UNFIRED_BRICK_CLAMP);
+            output.accept(FIRED_BRICK_CLAMP);
+            output.accept(COMPOST_PILE);
+            output.accept(TRADESWOMANS_JOURNAL);
         }).build());
 }

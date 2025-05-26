@@ -23,6 +23,8 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.properties.AshType;
 import voidsong.gasworks.common.registry.GSBlocks;
@@ -73,7 +75,7 @@ public class GasworksLootTableProvider extends LootTableProvider {
             /*
              * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
              */
-            //Log stacks for fuel
+            // Log stacks for fuel
             dropSelf(GSBlocks.OAK_LOG_PILE.get());
             dropSelf(GSBlocks.SPRUCE_LOG_PILE.get());
             dropSelf(GSBlocks.BIRCH_LOG_PILE.get());
@@ -83,25 +85,46 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.CHERRY_LOG_PILE.get());
             dropSelf(GSBlocks.MANGROVE_LOG_PILE.get());
             dropSelf(GSBlocks.BAMBOO_LOG_PILE.get());
-            //Coal stacks for fuel
+            // Coal stacks for fuel
             add(GSBlocks.COAL_PILE.get(), createSingleItemTableWithSilkTouch(GSBlocks.COAL_PILE.get(), Items.COAL, ConstantValue.exactly(8)));
             add(GSBlocks.CHARCOAL_PILE.get(), createSingleItemTableWithSilkTouch(GSBlocks.CHARCOAL_PILE.get(), Items.CHARCOAL, ConstantValue.exactly(8)));
-            //Brick piles for firing
+            // Brick piles for firing
             add(GSBlocks.UNFIRED_BRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.UNFIRED_BRICK_CLAMP.get(), Items.CLAY_BALL, ConstantValue.exactly(4)));
             add(GSBlocks.FIRED_BRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRED_BRICK_CLAMP.get(), Items.BRICK, ConstantValue.exactly(4)));
-            //Resulting ash
+            // Resulting ash
             add(GSBlocks.PYROLYTIC_ASH.get(), LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(GSItems.ASH.asItem(), LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
                     .add(LootItem.lootTableItem(GSItems.ASH.asItem()))
                     .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))))
-                .withPool(this.applyExplosionCondition(Items.CHARCOAL.asItem(),  LootPool.lootPool()
+                .withPool(this.applyExplosionCondition(Items.CHARCOAL.asItem(), LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
                     .add(LootItem.lootTableItem(Items.CHARCOAL.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.CHARCOAL))))))
+                .withPool(this.applyExplosionCondition(GSItems.COKE.asItem(), LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(5)))
+                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
+            );
+            // Compost piles for fertilizer
+            add(GSBlocks.COMPOST_PILE.get(), LootTable.lootTable()
+                .withPool(this.applyExplosionCondition(GSItems.COMPOST_PILE.asItem(), LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(GSItems.COMPOST_PILE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 0))))))
+                .withPool(this.applyExplosionCondition(GSItems.COMPOST_PILE.asItem(), LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(GSItems.COMPOST_PILE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 1))))))
+                .withPool(this.applyExplosionCondition(GSItems.COMPOST_PILE.asItem(), LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(GSItems.COMPOST_PILE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 2))))))
+                .withPool(this.applyExplosionCondition(GSItems.COMPOST_PILE.asItem(), LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(GSItems.COMPOST_PILE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 3))))))
                 .withPool(this.applyExplosionCondition(GSItems.COKE.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(5))).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.PYROLYTIC_ASH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PyrolyticAshBlock.ASH_TYPE, AshType.COKE))))))
-            );
+                    .apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
+                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 4))))));
+
         }
     }
 

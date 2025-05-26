@@ -11,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.BurnableFuelBlock;
 import voidsong.gasworks.common.block.ClampBlock;
+import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.BrickStackBlock;
 import voidsong.gasworks.common.block.properties.AshType;
@@ -56,6 +57,9 @@ public class GSBlocks {
         .noOcclusion()
         .requiresCorrectToolForDrops()
         .strength(1.625F, 4.5F), AshType.NONE, 6));
+    // Resulting ash
+    public static final DeferredBlock<Block> PYROLYTIC_ASH = BLOCKS.register("pyrolytic_ash",
+        () -> new PyrolyticAshBlock(new ColorRGBA(-8356741), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.SAND)));
     // Brick piles for firing
     public static final DeferredBlock<BrickStackBlock> FIRED_BRICK_CLAMP = BLOCKS.registerBlock("fired_brick_clamp", BrickStackBlock::new, BlockBehaviour.Properties.of()
         .mapColor(MapColor.COLOR_RED)
@@ -67,7 +71,11 @@ public class GSBlocks {
         .sound(SoundType.GRAVEL)
         .noOcclusion()
         .strength(0.5f, 0.25f), FIRED_BRICK_CLAMP.get().defaultBlockState().setValue(BrickStackBlock.FIRED, true)));
-    // Resulting ash
-    public static final DeferredBlock<Block> PYROLYTIC_ASH = BLOCKS.register("pyrolytic_ash",
-        () -> new PyrolyticAshBlock(new ColorRGBA(-8356741), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.SAND)));
+    // Compost piles for fertilizer
+    public static final DeferredBlock<Block> COMPOST_PILE = BLOCKS.register("compost_pile", () -> new CompostBlock(BlockBehaviour.Properties.of()
+        .mapColor(MapColor.PODZOL)
+        .sound(SoundType.GRAVEL)
+        .ignitedByLava()
+        .randomTicks()
+        .strength(0.5F)));
 }

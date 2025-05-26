@@ -31,6 +31,8 @@ public class GSTags {
         public static final TagKey<Block> LOG_PILES = blockTag(Gasworks.rl("log_piles"));
         // Coal-like piles for fuel
         public static final TagKey<Block> COALLIKE_PILES = blockTag(Gasworks.rl("coallike_piles"));
+        // Compost-accelerating blocks
+        public static final TagKey<Block> COMPOST_ACCELERATORS = blockTag(Gasworks.rl("compost_accelerators"));
     }
 
     public static class ItemTags {
@@ -49,5 +51,6 @@ public class GSTags {
         public static final TagKey<Item> ASH = itemTag(cLoc("ash"));
         // Coke products
         public static final TagKey<Item> COAL_COKE = itemTag(cLoc("coal_coke"));
+        public static final TagKey<Item> COMPOST_ACCELERATORS_DISPLAY = itemTag(Gasworks.rl("compost_accelerators_display"));
     }
 }

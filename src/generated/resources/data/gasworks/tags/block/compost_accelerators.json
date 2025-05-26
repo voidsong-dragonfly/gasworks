@@ -1,0 +1,35 @@
+{
+  "remove": [
+    "minecraft:podzol"
+  ],
+  "values": [
+    "minecraft:red_mushroom",
+    "minecraft:brown_mushroom",
+    "minecraft:glow_lichen",
+    "minecraft:moss_block",
+    "minecraft:moss_carpet",
+    "minecraft:mycelium",
+    "minecraft:red_mushroom_block",
+    "minecraft:brown_mushroom_block",
+    "minecraft:mushroom_stem",
+    "#c:cobblestones/mossy",
+    "minecraft:mossy_cobblestone_slab",
+    "minecraft:mossy_cobblestone_stairs",
+    "minecraft:mossy_cobblestone_wall",
+    "minecraft:mossy_stone_bricks",
+    "minecraft:mossy_stone_brick_slab",
+    "minecraft:mossy_stone_brick_stairs",
+    "minecraft:mossy_stone_brick_wall",
+    "minecraft:nether_wart",
+    "minecraft:warped_fungus",
+    "minecraft:crimson_fungus",
+    "minecraft:warped_roots",
+    "minecraft:crimson_roots",
+    "minecraft:nether_sprouts",
+    "#minecraft:nylium",
+    {
+      "id": "#farmersdelight:compost_activators",
+      "required": false
+    }
+  ]
+}

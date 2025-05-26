@@ -132,7 +132,7 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
-    localRuntime "curse.maven:farmersdelight-398521:6154807" // Farmer's Delight
+    implementation "curse.maven:farmersdelight-398521:6154807" // Farmer's Delight
 
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

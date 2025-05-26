@@ -482,12 +482,24 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		itemModel(b, model);
 	}
 
-	protected void horizontalRandomBlock(Block block, ModelFile model, List<Property<?>> additionalProps) {
-		horizontalRandomBlock(block, $ -> model, additionalProps);
+	protected void horizontalRandomBlock(Block b, ModelFile model, List<Property<?>> additionalProps) {
+		horizontalRandomBlock(b, $ -> model, additionalProps);
 	}
 
-	protected void horizontalRandomBlock(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
-		VariantBlockStateBuilder stateBuilder = getVariantBuilder(block);
+	protected void horizontalRandomBlockAndItem(Block b, ModelFile item, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
+		itemModel(b, item);
+		VariantBlockStateBuilder stateBuilder = getVariantBuilder(b);
+		forEachState(stateBuilder.partialState(), additionalProps, state -> {
+			ConfiguredModel[] models = new ConfiguredModel[4];
+			ModelFile modelLoc = model.apply(state);
+			for(int i = 0; i < 4; i++)
+				models[i] = new ConfiguredModel(modelLoc, 0, i*90, false);
+			state.setModels(models);
+		});
+	}
+
+	protected void horizontalRandomBlock(Block b, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
+		VariantBlockStateBuilder stateBuilder = getVariantBuilder(b);
 		forEachState(stateBuilder.partialState(), additionalProps, state -> {
 			ConfiguredModel[] models = new ConfiguredModel[4];
 			ModelFile modelLoc = model.apply(state);

@@ -66,14 +66,14 @@
               }
             }
           ],
-          "functions": [
-            {
-              "add": false,
-              "count": 5.0,
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "gasworks:coke"
+        }
+      ],
+      "functions": [
+        {
+          "add": false,
+          "count": 5.0,
+          "function": "minecraft:set_count"
         }
       ],
       "rolls": 1.0
