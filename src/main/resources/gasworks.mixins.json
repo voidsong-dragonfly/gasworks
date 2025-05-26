@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "voidsong.gasworks.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ComposterMixin",
+    "ComposterMixin$OutputContainer"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
