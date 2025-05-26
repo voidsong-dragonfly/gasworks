@@ -119,9 +119,9 @@ public class GasworksLootTableProvider extends LootTableProvider {
                 .withPool(this.applyExplosionCondition(GSItems.COMPOST_PILE.asItem(), LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
                     .add(LootItem.lootTableItem(GSItems.COMPOST_PILE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 3))))))
-                .withPool(this.applyExplosionCondition(GSItems.COKE.asItem(),  LootPool.lootPool()
+                .withPool(this.applyExplosionCondition(GSItems.COMPOST.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .add(LootItem.lootTableItem(GSItems.COKE.asItem())
+                    .add(LootItem.lootTableItem(GSItems.COMPOST.asItem())
                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6)))
                     .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))
                     .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 4))))));

@@ -130,7 +130,7 @@
               "function": "minecraft:apply_bonus"
             }
           ],
-          "name": "gasworks:coke"
+          "name": "gasworks:compost"
         }
       ],
       "rolls": 1.0
