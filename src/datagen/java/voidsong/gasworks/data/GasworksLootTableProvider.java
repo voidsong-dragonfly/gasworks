@@ -121,9 +121,10 @@ public class GasworksLootTableProvider extends LootTableProvider {
                     .add(LootItem.lootTableItem(GSItems.COMPOST_PILE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 3))))))
                 .withPool(this.applyExplosionCondition(GSItems.COKE.asItem(),  LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))
-                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
-                    .add(LootItem.lootTableItem(GSItems.COKE.asItem()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 4))))));
+                    .add(LootItem.lootTableItem(GSItems.COKE.asItem())
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6)))
+                    .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))
+                    .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 4))))));
 
         }
     }

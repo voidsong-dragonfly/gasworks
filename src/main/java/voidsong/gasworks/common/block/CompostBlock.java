@@ -39,7 +39,7 @@ public class CompostBlock extends Block {
     protected void randomTick(@Nonnull BlockState state, @Nonnull ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
         if (level.isClientSide) return;
         // Check the chance of the composting state advancing & advance the composting state as necessary
-        if (random.nextInt(96) < getSurroundingsBoost(level, pos, state.getValue(AGE)))
+        if (random.nextInt(48) < getSurroundingsBoost(level, pos, state.getValue(AGE)))
             level.setBlockAndUpdate(pos, state.setValue(AGE, Math.clamp(state.getValue(AGE) + 1, 0, 4)));
     }
 
@@ -73,12 +73,16 @@ public class CompostBlock extends Block {
             }
         }
         // Compost directly abutting this compost provides a boost based upon the value of the difference of ages
+        // There is also a detriment for being open to the air on a maximum of two sides
+        int exposure = 0;
         for(Direction dir : Direction.values()) {
             BlockPos check = pos.offset(dir.getNormal());
             BlockState neighbor = level.getBlockState(check);
             boost += getDirectSurroundingsBoost(neighbor, age);
+            exposure = Math.clamp(exposure - 3, -6, 0);
         }
-        return boost + (overwatered ? -5 : water ? 5 : 0);
+        // Maximum reasonably likely boost is ~33, maximum silverfish reasonable boost is 57, maximum possible boost is ~90
+        return Math.max(boost + (overwatered ? -5 : water ? 5 : 0) - exposure, 3);
     }
 
     /**
@@ -88,7 +92,7 @@ public class CompostBlock extends Block {
      * @return validity as a wall or fuel block
      */
     protected int getDirectSurroundingsBoost(@Nonnull BlockState state, int baseAge) {
-        return state.canBeReplaced() ? -1 : state.getBlock() instanceof CompostBlock ? Math.max((state.getValue(AGE)-baseAge), 0) : 0;
+        return state.getBlock() instanceof CompostBlock ? Math.max((state.getValue(AGE)-baseAge), 0) : 0;
     }
 
     @Override
