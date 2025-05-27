@@ -136,6 +136,15 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		itemModel(b, new ConfiguredModel(models[0]).model);
 	}
 
+	protected void partialBlockAndItem(Block b, ModelFile item, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
+		itemModel(b, item);
+		VariantBlockStateBuilder stateBuilder = getVariantBuilder(b);
+		forEachState(stateBuilder.partialState(), additionalProps, state -> {
+			ModelFile modelLoc = model.apply(state);
+			state.setModels(new ConfiguredModel(modelLoc));
+		});
+	}
+
 	/*
 	 * Six-sided cubes & other simple singular models
 	 */

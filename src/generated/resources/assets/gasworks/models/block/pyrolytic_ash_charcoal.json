@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gasworks:block/charcoal_ash"
+    "all": "gasworks:block/ash/charcoal_ash"
   }
 }

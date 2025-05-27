@@ -2,6 +2,7 @@ package voidsong.gasworks.data;
 
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.registry.GSBlocks;
@@ -32,19 +33,24 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         horizontalRandomCubeAllAndItem(GSBlocks.COAL_PILE.get(), null, rl("coal_pile"));
         horizontalRandomCubeAllAndItem(GSBlocks.CHARCOAL_PILE.get(), null, rl("charcoal_pile"));
         // Resulting ash
-        ashPileCubeAll(GSBlocks.PYROLYTIC_ASH.get(), List.of(PyrolyticAshBlock.ASH_TYPE), rl("charcoal_ash"), rl("coke_ash"));
+        ashPileCubeAll(GSBlocks.PYROLYTIC_ASH.get(), List.of(PyrolyticAshBlock.ASH_TYPE), rl("ash/charcoal_ash"), rl("ash/coke_ash"));
         // Brick piles for firing
-        simpleBlockAndItem(GSBlocks.UNFIRED_BRICK_CLAMP.get(), models()
-            .withExistingParent(getName(GSBlocks.UNFIRED_BRICK_CLAMP.get()), rl("brick_pile"))
-            .texture("brick", rl("unfired_clay_bricks"))
-            .texture("plate", rl("stone_plate")));
+        partialBlockAndItem(GSBlocks.UNFIRED_BRICK_CLAMP.get(),
+            models().withExistingParent(getName(GSBlocks.UNFIRED_BRICK_CLAMP.get()), rl("brick_pile"))
+                .texture("brick", rl("clay_bricks/unfired_clay_bricks_0"))
+                .texture("plate", rl("stone_plate")),
+            state -> models().withExistingParent(getName(GSBlocks.UNFIRED_BRICK_CLAMP.get())+"_"+state.getSetStates().get(ClampBlock.DISPLAY_AGE), rl("brick_pile"))
+                .texture("brick", rl("clay_bricks/unfired_clay_bricks"+"_"+state.getSetStates().get(ClampBlock.DISPLAY_AGE)))
+                .texture("plate", rl("stone_plate")),
+            List.of(ClampBlock.DISPLAY_AGE));
         simpleBlockAndItem(GSBlocks.FIRED_BRICK_CLAMP.get(), models()
             .withExistingParent(getName(GSBlocks.FIRED_BRICK_CLAMP.get()), rl("brick_pile"))
-            .texture("brick", rl("fired_clay_bricks"))
+            .texture("brick", rl("clay_bricks/fired_clay_bricks"))
             .texture("plate", rl("stone_plate")));
         // Compost piles for fertilizer
         horizontalRandomBlockAndItem(GSBlocks.COMPOST_PILE.get(),
-            models().cubeAll(getName(GSBlocks.COMPOST_PILE.get())+"_0", rl("compost_pile_0")),
-            state -> models().cubeAll(getName(GSBlocks.COMPOST_PILE.get())+"_"+state.getSetStates().get(CompostBlock.AGE), rl("compost_pile_"+state.getSetStates().get(CompostBlock.AGE))), List.of(CompostBlock.AGE));
+            models().cubeAll(getName(GSBlocks.COMPOST_PILE.get())+"_0", rl("compost/compost_pile_0")),
+            state -> models().cubeAll(getName(GSBlocks.COMPOST_PILE.get())+"_"+state.getSetStates().get(CompostBlock.AGE),
+                rl("compost/compost_pile_"+state.getSetStates().get(CompostBlock.AGE))), List.of(CompostBlock.AGE));
     }
 }
