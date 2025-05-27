@@ -17,7 +17,7 @@ That's great! Please find the minimal set of mods that the bug happens with (pre
 
 ## Is this a suggestion for the mod?
 
-That's great! Suggestions are unlikely to be accepted unless they fit with the mod, so to make sure the suggestion is likely to be accepted, follow the style guide found [here](https://github.com/voidsong-dragonfly/gasworks/STYLE_GUIDE.md) for best results. Once you've verified that the suggestion will be accepted, you may proceed.
+That's great! Suggestions are unlikely to be accepted unless they fit with the mod, so to make sure the suggestion is likely to be accepted, follow the style guide found [here](https://github.com/voidsong-dragonfly/gasworks/blob/master/STYLE_GUIDE.md) for best results. Once you've verified that the suggestion will be accepted, you may proceed.
 
 **Then:**
 1. Check to make sure the suggestion has not already been made. Use the search function, and try similar/synonymous terms!
@@ -28,7 +28,7 @@ That's great! Suggestions are unlikely to be accepted unless they fit with the m
 
 ## Do you have a Pull Request for more functionality?
 
-That's great! Pull requests are a great way to quickly get features you're interested in integrated into the mod. However, pull requests are subject more stringently to the tenets of the style guide found [here](https://github.com/voidsong-dragonfly/gasworks/STYLE_GUIDE.md), due to the implementation being directly added to the mods. Once you've verified that the pull request will be accepted, you may proceed.
+That's great! Pull requests are a great way to quickly get features you're interested in integrated into the mod. However, pull requests are subject more stringently to the tenets of the style guide found [here](https://github.com/voidsong-dragonfly/gasworks/blob/master/STYLE_GUIDE.md), due to the implementation being directly added to the mods. Once you've verified that the pull request will be accepted, you may proceed.
 
 **Then:**
 1. Open a pull request [here](https://github.com/voidsong-dragonfly/gasworks/pulls)
