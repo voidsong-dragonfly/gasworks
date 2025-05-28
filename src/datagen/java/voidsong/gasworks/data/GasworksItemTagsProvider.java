@@ -7,7 +7,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.registry.GSItems;
@@ -57,8 +56,6 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
             .add(Items.RED_MUSHROOM, Items.BROWN_MUSHROOM, Items.GLOW_LICHEN)
             .add(Items.MOSS_BLOCK, Items.MOSS_CARPET)
             .add(Items.MYCELIUM, Items.RED_MUSHROOM_BLOCK, Items.BROWN_MUSHROOM_BLOCK, Items.MUSHROOM_STEM)
-            .addTag(Tags.Items.COBBLESTONES_MOSSY).add(Items.MOSSY_COBBLESTONE_SLAB, Items.MOSSY_COBBLESTONE_STAIRS, Items.MOSSY_COBBLESTONE_WALL)
-            .add(Items.MOSSY_STONE_BRICKS, Items.MOSSY_STONE_BRICK_SLAB, Items.MOSSY_STONE_BRICK_STAIRS, Items.MOSSY_STONE_BRICK_WALL)
             // Nether blocks
             .add(Items.NETHER_WART)
             .add(Items.WARPED_FUNGUS, Items.CRIMSON_FUNGUS, Items.WARPED_ROOTS, Items.CRIMSON_ROOTS, Items.NETHER_SPROUTS)

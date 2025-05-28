@@ -24,10 +24,11 @@ Latenium
 MACHINES (EARLY GAME)                                   		UTILITIES (EARLY GAME)
 ------------------------------------------              		------------------------------------------
 Crude Blast Furnace & Bellows                           		Prospector's Pick
-✓ Brick Clamp                                              		Compost Pile
+✓ Brick Clamp                                              		✓ Compost Pile
 Trip Hammer                                             		✓ Tradeswoman's Journal
 ✓ Charcoal & Coke Pit
 Waterwheels & Windmills
+Sluice
 Machine Shop 0
 ------------------------------------------              		------------------------------------------
 MACHINES (EARLY-MID GAME: Wrought Iron, Fireclay)       		UTILITIES (EARLY-MID GAME)

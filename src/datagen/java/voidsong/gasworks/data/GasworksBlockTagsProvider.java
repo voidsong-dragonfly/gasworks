@@ -4,7 +4,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import vectorwing.farmersdelight.common.tag.ModTags;
@@ -46,8 +45,6 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(Blocks.RED_MUSHROOM, Blocks.BROWN_MUSHROOM, Blocks.GLOW_LICHEN)
             .add(Blocks.MOSS_BLOCK, Blocks.MOSS_CARPET)
             .add(Blocks.MYCELIUM, Blocks.RED_MUSHROOM_BLOCK, Blocks.BROWN_MUSHROOM_BLOCK, Blocks.MUSHROOM_STEM)
-            .addTag(Tags.Blocks.COBBLESTONES_MOSSY).add(Blocks.MOSSY_COBBLESTONE_SLAB, Blocks.MOSSY_COBBLESTONE_STAIRS, Blocks.MOSSY_COBBLESTONE_WALL)
-            .add(Blocks.MOSSY_STONE_BRICKS, Blocks.MOSSY_STONE_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_STAIRS, Blocks.MOSSY_STONE_BRICK_WALL)
             // Nether blocks
             .add(Blocks.NETHER_WART)
             .add(Blocks.WARPED_FUNGUS, Blocks.CRIMSON_FUNGUS, Blocks.WARPED_ROOTS, Blocks.CRIMSON_ROOTS, Blocks.NETHER_SPROUTS)

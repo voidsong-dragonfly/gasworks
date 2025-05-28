@@ -1,9 +1,6 @@
  - Compost pile features
-     - Add in JEI compat for composting recipes
      - Possibly change recipe maps for composting recipes?
-     - Possibly a compost crafting recipe (dirt + total 1 compost chance
- - Brick pile full features
-     - Intermediate states for rendering
+     - Possibly a compost crafting recipe (dirt + total 1 compost chance)
  - Other tier 0 features
      - Fireclay
      - Prospector's Pick
