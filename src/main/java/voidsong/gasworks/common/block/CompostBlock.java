@@ -5,13 +5,19 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.InfestedBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import org.jetbrains.annotations.Nullable;
 import voidsong.gasworks.api.GSTags;
 
 import javax.annotation.Nonnull;
@@ -100,6 +106,11 @@ public class CompostBlock extends Block {
      */
     protected int getDirectSurroundingsBoost(@Nonnull BlockState state, int baseAge) {
         return state.getBlock() instanceof CompostBlock ? Math.max((state.getValue(AGE)-baseAge), 0) : 0;
+    }
+
+    @Override
+    public int getExpDrop(@Nonnull BlockState state, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nullable BlockEntity blockEntity, @Nullable Entity breaker, @Nonnull ItemStack tool) {
+        return state.getValue(AGE) == 5 ? UniformInt.of(1, 3).sample(level.getRandom()) : 0;
     }
 
     @Override

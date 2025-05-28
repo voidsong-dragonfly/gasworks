@@ -14,11 +14,13 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.api.recipe.recipes.ClampRecipe;
+import voidsong.gasworks.api.recipe.recipes.CompostRecipe;
 import voidsong.gasworks.api.recipe.recipes.PyrolysisRecipe;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSItems;
-import voidsong.gasworks.compat.jei.pyrolysis.ClampRecipeCategory;
-import voidsong.gasworks.compat.jei.pyrolysis.PyrolysisRecipeCategory;
+import voidsong.gasworks.compat.jei.categories.ClampRecipeCategory;
+import voidsong.gasworks.compat.jei.categories.CompostRecipeCategory;
+import voidsong.gasworks.compat.jei.categories.PyrolysisRecipeCategory;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -42,7 +44,8 @@ public class JEIPlugin implements IModPlugin {
         IGuiHelper helper = registry.getJeiHelpers().getGuiHelper();
         registry.addRecipeCategories(
             new PyrolysisRecipeCategory(helper),
-            new ClampRecipeCategory(helper)
+            new ClampRecipeCategory(helper),
+            new CompostRecipeCategory(helper)
         );
 
         slotDrawable = helper.getSlotDrawable();
@@ -52,6 +55,7 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(@Nonnull IRecipeRegistration registration) {
         registration.addRecipes(JEIRecipeTypes.PYROLYSIS, getPyrolysisJEIRecipes());
         registration.addRecipes(JEIRecipeTypes.CLAMP_FIRING, getClampJEIRecipes());
+        registration.addRecipes(JEIRecipeTypes.COMPOSTING, getCompostJEIRecipes());
     }
 
     @Override
@@ -71,6 +75,7 @@ public class JEIPlugin implements IModPlugin {
         // Clamp recipe special-casing
         registration.addRecipeCatalysts(JEIRecipeTypes.CLAMP_FIRING, GSItems.UNFIRED_BRICK_CLAMP, GSItems.FIRED_BRICK_CLAMP);
         // Other more traditional recipes types
+        registration.addRecipeCatalysts(JEIRecipeTypes.COMPOSTING, GSItems.COMPOST_PILE);
     }
 
     private List<RecipeHolder<PyrolysisRecipe>> getPyrolysisJEIRecipes() {
@@ -95,6 +100,13 @@ public class JEIPlugin implements IModPlugin {
         // Log piles, but since we don't have easy access to tags, we do it manually
         recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_wood"), new ClampRecipe(GSTags.ItemTags.LOG_PILES, 6, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(Items.BRICK, 4), 1.5f)));
         recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_coallike"), new ClampRecipe(GSTags.ItemTags.COALLIKE_PILES, 1, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(Items.BRICK, 4), 1.5f)));
+        return recipes;
+    }
+
+    private List<RecipeHolder<CompostRecipe>> getCompostJEIRecipes() {
+        List<RecipeHolder<CompostRecipe>> recipes = new ArrayList<>();
+        // Log piles, but since we don't have easy access to tags, we do it manually
+        recipes.add(new RecipeHolder<>(Gasworks.rl("compost"), new CompostRecipe(GSTags.ItemTags.COMPOST_ACCELERATORS_DISPLAY, GSBlocks.COMPOST_PILE.get(), GSItems.COMPOST.get(), 3, 6, 1.5f)));
         return recipes;
     }
 }

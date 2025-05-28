@@ -72,7 +72,7 @@ public class GSBlocks {
         .noOcclusion()
         .strength(0.5f, 0.25f), FIRED_BRICK_CLAMP.get().defaultBlockState().setValue(BrickStackBlock.FIRED, true)));
     // Compost piles for fertilizer
-    public static final DeferredBlock<Block> COMPOST_PILE = BLOCKS.register("compost_pile", () -> new CompostBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<CompostBlock> COMPOST_PILE = BLOCKS.register("compost_pile", () -> new CompostBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.PODZOL)
         .sound(SoundType.GRAVEL)
         .ignitedByLava()

@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.api.recipe.recipes.ClampRecipe;
+import voidsong.gasworks.api.recipe.recipes.CompostRecipe;
 import voidsong.gasworks.api.recipe.recipes.PyrolysisRecipe;
 
 public class GSRecipeTypes {
@@ -14,4 +15,5 @@ public class GSRecipeTypes {
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<PyrolysisRecipe>> PYROLYSIS = RECIPE_TYPES.register("pyrolysis", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "pyrolysis")));
     public static final DeferredHolder<RecipeType<?>, RecipeType<ClampRecipe>> CLAMP_FIRING = RECIPE_TYPES.register("clamp_firing", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "clamp_firing")));
+    public static final DeferredHolder<RecipeType<?>, RecipeType<CompostRecipe>> COMPOSTING = RECIPE_TYPES.register("composting", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "composting")));
 }

@@ -1,4 +1,4 @@
-package voidsong.gasworks.compat.jei.pyrolysis;
+package voidsong.gasworks.compat.jei.categories;
 
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;

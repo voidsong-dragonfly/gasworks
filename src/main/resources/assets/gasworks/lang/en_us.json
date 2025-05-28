@@ -24,5 +24,7 @@
     "tooltip.gasworks.experience": "Stored Knowledge:",
     "tooltip.gasworks.experience_levels": "%.2f Levels",
     "jei.gasworks.pyrolysis": "In-World Pyrolysis",
-    "jei.gasworks.clamp_firing": "In-World Clamp Firing"
+    "jei.gasworks.clamp_firing": "In-World Clamp Firing",
+    "jei.gasworks.composting": "In-World Composting",
+    "jei.gasworks.composting.chance": "Drops 3-6 compost on block break."
 }
