@@ -233,9 +233,9 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	//Forge method does not allow random textures for slabs, instead creating a ConfiguredModel directly from an input file
 	private void slabBlock(SlabBlock b, ModelFile[] bottom, ModelFile[] top, ModelFile[] doubleslab) {
 		getVariantBuilder(b)
-				.partialState().with(SlabBlock.TYPE, SlabType.BOTTOM).addModels(Stream.of(bottom).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new))
-				.partialState().with(SlabBlock.TYPE, SlabType.TOP).addModels(Stream.of(top).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new))
-				.partialState().with(SlabBlock.TYPE, SlabType.DOUBLE).addModels(Stream.of(doubleslab).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new));
+			.partialState().with(SlabBlock.TYPE, SlabType.BOTTOM).addModels(Stream.of(bottom).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new))
+			.partialState().with(SlabBlock.TYPE, SlabType.TOP).addModels(Stream.of(top).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new))
+			.partialState().with(SlabBlock.TYPE, SlabType.DOUBLE).addModels(Stream.of(doubleslab).map(ConfiguredModel::new).toArray(ConfiguredModel[]::new));
 	}
 
 	/*
@@ -285,24 +285,24 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	//Forge method does not allow random textures for slabs, instead creating a ConfiguredModel directly from an input file
 	private void stairsBlock(StairBlock block, ModelFile[] stairs, ModelFile[] stairsInner, ModelFile[] stairsOuter) {
 		getVariantBuilder(block)
-				.forAllStatesExcept(state -> {
-					Direction facing = state.getValue(StairBlock.FACING);
-					Half half = state.getValue(StairBlock.HALF);
-					StairsShape shape = state.getValue(StairBlock.SHAPE);
-					int yRot = (int)facing.getClockWise().toYRot(); // Stairs model is rotated 90 degrees clockwise for some reason
-					if(shape==StairsShape.INNER_LEFT||shape==StairsShape.OUTER_LEFT)
-						yRot += 270; // Left facing stairs are rotated 90 degrees clockwise
-					if(shape!=StairsShape.STRAIGHT&&half==Half.TOP)
-						yRot += 90; // Top stairs are rotated 90 degrees clockwise
-					yRot %= 360;
-					boolean uvlock = yRot!=0||half==Half.TOP; // Don't set uvlock for states that have no rotation
-					//We need multiple textures, so no builder
-					ModelFile[] files = (shape==StairsShape.STRAIGHT?stairs: shape==StairsShape.INNER_LEFT||shape==StairsShape.INNER_RIGHT?stairsInner: stairsOuter);
-					ConfiguredModel[] models = new ConfiguredModel[stairs.length];
-					for(int i = 0; i < stairs.length; i++)
-						models[i] = new ConfiguredModel(files[i], half==Half.BOTTOM?0: 180, yRot, uvlock);
-					return models;
-				}, StairBlock.WATERLOGGED);
+			.forAllStatesExcept(state -> {
+				Direction facing = state.getValue(StairBlock.FACING);
+				Half half = state.getValue(StairBlock.HALF);
+				StairsShape shape = state.getValue(StairBlock.SHAPE);
+				int yRot = (int)facing.getClockWise().toYRot(); // Stairs model is rotated 90 degrees clockwise for some reason
+				if(shape==StairsShape.INNER_LEFT||shape==StairsShape.OUTER_LEFT)
+					yRot += 270; // Left facing stairs are rotated 90 degrees clockwise
+				if(shape!=StairsShape.STRAIGHT&&half==Half.TOP)
+					yRot += 90; // Top stairs are rotated 90 degrees clockwise
+				yRot %= 360;
+				boolean uvlock = yRot!=0||half==Half.TOP; // Don't set uvlock for states that have no rotation
+				//We need multiple textures, so no builder
+				ModelFile[] files = (shape==StairsShape.STRAIGHT?stairs: shape==StairsShape.INNER_LEFT||shape==StairsShape.INNER_RIGHT?stairsInner: stairsOuter);
+				ConfiguredModel[] models = new ConfiguredModel[stairs.length];
+				for(int i = 0; i < stairs.length; i++)
+					models[i] = new ConfiguredModel(files[i], half==Half.BOTTOM?0: 180, yRot, uvlock);
+				return models;
+			}, StairBlock.WATERLOGGED);
 	}
 
 	/*
@@ -311,9 +311,9 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 
 	protected void wall(WallBlock b, ResourceLocation bottomTexture, ResourceLocation sideTexture, ResourceLocation topTexture) {
 		wallBlock(b,
-				wallModelTopped(getName(b)+"_post", "wall_post_topped", bottomTexture, sideTexture, topTexture),
-				wallModelTopped(getName(b)+"_side", "wall_side_topped", bottomTexture, sideTexture, topTexture),
-				wallModelTopped(getName(b)+"_side_tall", "wall_side_tall_topped", bottomTexture, sideTexture, topTexture)
+			wallModelTopped(getName(b)+"_post", "wall_post_topped", bottomTexture, sideTexture, topTexture),
+			wallModelTopped(getName(b)+"_side", "wall_side_topped", bottomTexture, sideTexture, topTexture),
+			wallModelTopped(getName(b)+"_side_tall", "wall_side_tall_topped", bottomTexture, sideTexture, topTexture)
 		);
 		itemModel(b, wallModelToppedInventory(getName(b), bottomTexture, sideTexture, topTexture));
 	}
@@ -355,41 +355,41 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 			ModelFile side = sides[i];
 			ModelFile sideTall = sidesTall[i];
 			MultiPartBlockStateBuilder builder = getMultipartBuilder(block)
-					.part().modelFile(posts[i]).addModel()
-					.condition(WallBlock.UP, true).end();
+				.part().modelFile(posts[i]).addModel()
+				.condition(WallBlock.UP, true).end();
 			WALL_PROPS.entrySet().stream()
-					.filter(e -> e.getKey().getAxis().isHorizontal())
-					.forEach(e -> {
-						wallSidePart(builder, side, e, WallSide.LOW);
-						wallSidePart(builder, sideTall, e, WallSide.TALL);
-					});
+				.filter(e -> e.getKey().getAxis().isHorizontal())
+				.forEach(e -> {
+					wallSidePart(builder, side, e, WallSide.LOW);
+					wallSidePart(builder, sideTall, e, WallSide.TALL);
+				});
 		}
 	}
 
 	//This method is private in BlockStateProvider & we need access to it
 	private void wallSidePart(MultiPartBlockStateBuilder builder, ModelFile model, Entry<Direction, Property<WallSide>> entry, WallSide height) {
 		builder.part()
-				.modelFile(model)
-				.rotationY((((int)entry.getKey().toYRot())+180)%360)
-				.uvLock(true)
-				.addModel()
-				.condition(entry.getValue(), height);
+			.modelFile(model)
+			.rotationY((((int)entry.getKey().toYRot())+180)%360)
+			.uvLock(true)
+			.addModel()
+			.condition(entry.getValue(), height);
 	}
 
 
 
 	private BlockModelBuilder wallModelTopped(String name, String type, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
 		return models().withExistingParent(name, Gasworks.rl("block/"+type))
-				.texture("wall_bottom", bottom)
-				.texture("wall_side", side)
-				.texture("wall_top", top);
+			.texture("wall_bottom", bottom)
+			.texture("wall_side", side)
+			.texture("wall_top", top);
 	}
 
 	private BlockModelBuilder wallModelToppedInventory(String name, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
 		return models().withExistingParent(name, Gasworks.rl("block/wall_inventory_topped"))
-				.texture("wall_bottom", bottom)
-				.texture("wall_side", side)
-				.texture("wall_top", top);
+			.texture("wall_bottom", bottom)
+			.texture("wall_side", side)
+			.texture("wall_top", top);
 	}
 
 	/*
