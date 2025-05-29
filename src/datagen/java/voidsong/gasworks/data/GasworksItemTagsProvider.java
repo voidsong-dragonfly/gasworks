@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.registry.GSItems;
@@ -70,5 +71,14 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
             .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "rich_soil_farmland"))
             .addOptional(ResourceLocation.fromNamespaceAndPath( "farmersdelight", "brown_mushroom_colony"))
             .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "red_mushroom_colony"));
+        /*
+         * Building blocks, including various 'functional' blocks
+         */
+        tag(Tags.Items.BRICKS)
+            .add(GSItems.FIREBRICK.get());
+        tag(GSTags.ItemTags.REFRACTORY_BRICK)
+            .add(GSItems.FIREBRICK.get());
+        tag(GSTags.ItemTags.FIREBRICK)
+            .add(GSItems.FIREBRICK.get());
     }
 }

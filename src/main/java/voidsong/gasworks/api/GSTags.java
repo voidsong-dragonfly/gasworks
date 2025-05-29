@@ -52,5 +52,10 @@ public class GSTags {
         // Coke products
         public static final TagKey<Item> COAL_COKE = itemTag(cLoc("coal_coke"));
         public static final TagKey<Item> COMPOST_ACCELERATORS_DISPLAY = itemTag(Gasworks.rl("compost_accelerators_display"));
+        /*
+         * Building blocks, including various 'functional' blocks
+         */
+        public static final TagKey<Item> REFRACTORY_BRICK = itemTag(cLoc("bricks/refractory"));
+        public static final TagKey<Item> FIREBRICK = itemTag(cLoc("bricks/firebrick"));
     }
 }

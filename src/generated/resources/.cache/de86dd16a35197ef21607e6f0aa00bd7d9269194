@@ -1,5 +1,8 @@
-// 1.21.1	2025-05-28T13:03:17.806186379	Tags for minecraft:item mod id gasworks
+// 1.21.1	2025-05-29T17:43:39.225948729	Tags for minecraft:item mod id gasworks
 ce5c344030dbbbc9dd1ea1d446b1f3367f84bd6f data/c/tags/item/ash.json
+73b7010df6c09459f30c12b1273403dee773aac3 data/c/tags/item/bricks.json
+73b7010df6c09459f30c12b1273403dee773aac3 data/c/tags/item/bricks/firebrick.json
+73b7010df6c09459f30c12b1273403dee773aac3 data/c/tags/item/bricks/refractory.json
 a69a8939af0d5ba5281fb21fb0f0aa40db9768e5 data/c/tags/item/coal_coke.json
 ce5c344030dbbbc9dd1ea1d446b1f3367f84bd6f data/c/tags/item/dusts.json
 ce5c344030dbbbc9dd1ea1d446b1f3367f84bd6f data/c/tags/item/dusts/ash.json
