@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gasworks:firebricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "gasworks:firebrick_stairs"
+  }
+}

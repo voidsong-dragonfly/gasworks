@@ -1,8 +1,7 @@
 package voidsong.gasworks.common.registry;
 
 import net.minecraft.util.ColorRGBA;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -26,6 +25,11 @@ public class GSBlocks {
         .ignitedByLava()
         .randomTicks()
         .noOcclusion();
+    private static final BlockBehaviour.Properties FIREBRICKS_PROPERTIES = BlockBehaviour.Properties.of()
+        .mapColor(MapColor.TERRACOTTA_WHITE)
+        .instrument(NoteBlockInstrument.BASEDRUM)
+        .requiresCorrectToolForDrops()
+        .strength(2.5F, 8.0F);
 
     /*
      * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
@@ -78,4 +82,11 @@ public class GSBlocks {
         .ignitedByLava()
         .randomTicks()
         .strength(0.5F)));
+    /*
+     * Building blocks, including various 'functional' blocks
+     */
+    public static DeferredBlock<Block> FIREBRICKS = BLOCKS.registerSimpleBlock("firebricks", FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<StairBlock> FIREBRICK_STAIRS = BLOCKS.register("firebrick_stairs", () -> new StairBlock(FIREBRICKS.get().defaultBlockState(), FIREBRICKS_PROPERTIES));
+    public static DeferredBlock<SlabBlock> FIREBRICK_SLAB = BLOCKS.registerBlock("firebrick_slab",  SlabBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<WallBlock> FIREBRICK_WALL = BLOCKS.registerBlock("firebrick_wall",  WallBlock::new, FIREBRICKS_PROPERTIES);
 }

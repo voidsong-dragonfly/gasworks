@@ -37,20 +37,27 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         // Brick piles for firing
         partialBlockAndItem(GSBlocks.UNFIRED_BRICK_CLAMP.get(),
             models().withExistingParent(getName(GSBlocks.UNFIRED_BRICK_CLAMP.get()), rl("brick_pile"))
-                .texture("brick", rl("clay_bricks/unfired_clay_bricks_0"))
+                .texture("brick", rl("bricks/unfired_0"))
                 .texture("plate", rl("stone_plate")),
             state -> models().withExistingParent(getName(GSBlocks.UNFIRED_BRICK_CLAMP.get())+"_"+state.getSetStates().get(ClampBlock.DISPLAY_AGE), rl("brick_pile"))
-                .texture("brick", rl("clay_bricks/unfired_clay_bricks"+"_"+state.getSetStates().get(ClampBlock.DISPLAY_AGE)))
+                .texture("brick", rl("bricks/unfired"+"_"+state.getSetStates().get(ClampBlock.DISPLAY_AGE)))
                 .texture("plate", rl("stone_plate")),
             List.of(ClampBlock.DISPLAY_AGE));
         simpleBlockAndItem(GSBlocks.FIRED_BRICK_CLAMP.get(), models()
             .withExistingParent(getName(GSBlocks.FIRED_BRICK_CLAMP.get()), rl("brick_pile"))
-            .texture("brick", rl("clay_bricks/fired_clay_bricks"))
+            .texture("brick", rl("bricks/fired"))
             .texture("plate", rl("stone_plate")));
         // Compost piles for fertilizer
         horizontalRandomBlockAndItem(GSBlocks.COMPOST_PILE.get(),
             models().cubeAll(getName(GSBlocks.COMPOST_PILE.get())+"_0", rl("compost/compost_pile_0")),
             state -> models().cubeAll(getName(GSBlocks.COMPOST_PILE.get())+"_"+state.getSetStates().get(CompostBlock.AGE),
                 rl("compost/compost_pile_"+state.getSetStates().get(CompostBlock.AGE))), List.of(CompostBlock.AGE));
+        /*
+         * Building blocks, including various 'functional' blocks
+         */
+        multiEightCubeAll(GSBlocks.FIREBRICKS.get(), rl("firebricks/firebricks"));
+        stairsMultiEightAll(GSBlocks.FIREBRICK_STAIRS.get(), rl("firebricks/firebricks"));
+        slabMultiEightAll(GSBlocks.FIREBRICK_SLAB.get(), rl("firebricks/firebricks"));
+        wallMultiEight(GSBlocks.FIREBRICK_WALL.get(), rl("firebricks/firebricks"), rl("firebricks/firebricks_wall"), rl("firebricks/firebricks_top"), false);
     }
 }

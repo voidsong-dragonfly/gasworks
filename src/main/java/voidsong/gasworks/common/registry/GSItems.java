@@ -44,6 +44,14 @@ public class GSItems {
     public static final DeferredItem<BlockItem> COMPOST_PILE = ITEMS.registerSimpleBlockItem("compost_pile", GSBlocks.COMPOST_PILE);
     public static final DeferredItem<Item> COMPOST = ITEMS.registerItem("compost", BoneMealItem::new);
     /*
+     * Building blocks, including various 'functional' blocks
+     */
+    public static final DeferredItem<Item> FIREBRICK = ITEMS.registerSimpleItem("firebrick");
+    public static final DeferredItem<BlockItem> FIREBRICKS = ITEMS.registerSimpleBlockItem("firebricks", GSBlocks.FIREBRICKS);
+    public static final DeferredItem<BlockItem> FIREBRICK_STAIRS = ITEMS.registerSimpleBlockItem("firebrick_stairs", GSBlocks.FIREBRICK_STAIRS);
+    public static final DeferredItem<BlockItem> FIREBRICK_SLAB = ITEMS.registerSimpleBlockItem("firebrick_slab", GSBlocks.FIREBRICK_SLAB);
+    public static final DeferredItem<BlockItem> FIREBRICK_WALL = ITEMS.registerSimpleBlockItem("firebrick_wall", GSBlocks.FIREBRICK_WALL);
+    /*
      * Tool items & other useful items
      */
     public static final DeferredItem<Item> TRADESWOMANS_JOURNAL = ITEMS.registerItem("tradeswomans_journal", TradeswomansJournalItem::new, new Properties().stacksTo(1));
@@ -54,6 +62,14 @@ public class GSItems {
         .title(Component.translatable("itemGroup.gasworks"))
         .icon(() -> new ItemStack(TRADESWOMANS_JOURNAL.asItem()))
         .displayItems((parameters, output) -> {
+            // Resource items
+            output.accept(COKE);
+            output.accept(ASH);
+            output.accept(COMPOST);
+            output.accept(FIREBRICK);
+            // Tool items
+            output.accept(TRADESWOMANS_JOURNAL);
+            // Blocks
             output.accept(OAK_LOG_PILE);
             output.accept(SPRUCE_LOG_PILE);
             output.accept(BIRCH_LOG_PILE);
@@ -65,12 +81,12 @@ public class GSItems {
             output.accept(BAMBOO_LOG_PILE);
             output.accept(COAL_PILE);
             output.accept(CHARCOAL_PILE);
-            output.accept(COKE);
-            output.accept(ASH);
+            output.accept(COMPOST_PILE);
             output.accept(UNFIRED_BRICK_CLAMP);
             output.accept(FIRED_BRICK_CLAMP);
-            output.accept(COMPOST_PILE);
-            output.accept(COMPOST);
-            output.accept(TRADESWOMANS_JOURNAL);
+            output.accept(FIREBRICKS);
+            output.accept(FIREBRICK_STAIRS);
+            output.accept(FIREBRICK_SLAB);
+            output.accept(FIREBRICK_WALL);
         }).build());
 }

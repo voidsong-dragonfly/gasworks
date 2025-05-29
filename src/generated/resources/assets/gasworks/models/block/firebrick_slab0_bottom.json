@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "gasworks:block/firebricks/firebricks0",
+    "side": "gasworks:block/firebricks/firebricks0",
+    "top": "gasworks:block/firebricks/firebricks0"
+  }
+}

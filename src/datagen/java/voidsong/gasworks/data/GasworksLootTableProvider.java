@@ -125,7 +125,13 @@ public class GasworksLootTableProvider extends LootTableProvider {
                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6)))
                     .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))
                     .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(GSBlocks.COMPOST_PILE.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CompostBlock.AGE, 4))))));
-
+            /*
+             * Building blocks, including various 'functional' blocks
+             */
+            dropSelf(GSBlocks.FIREBRICKS.get());
+            dropSelf(GSBlocks.FIREBRICK_STAIRS.get());
+            dropSelf(GSBlocks.FIREBRICK_SLAB.get());
+            dropSelf(GSBlocks.FIREBRICK_WALL.get());
         }
     }
 

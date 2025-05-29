@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-28T13:03:17.803514443	Tags for minecraft:block mod id gasworks
+// 1.21.1	2025-05-29T17:18:07.611823767	Tags for minecraft:block mod id gasworks
 b44a9ec610c6b135929a1118b9538fa1431a6320 data/farmersdelight/tags/block/compost_activators.json
 b44a9ec610c6b135929a1118b9538fa1431a6320 data/farmersdelight/tags/block/mushroom_colony_growable_on.json
 9da7a0167d541dd2a039ce4048e150e7a2f1347c data/gasworks/tags/block/coallike_piles.json
@@ -7,5 +7,7 @@ e65a410d27fe92ecd1fea8db1a527b91613d022c data/gasworks/tags/block/log_piles.json
 61fbc864bffc043f62b82e6c418f5f104923c616 data/gasworks/tags/block/pyrolyzing_walls.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/minecraft/tags/block/logs_that_burn.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/minecraft/tags/block/mineable/axe.json
+8595348363e0b32f0e6284b82980b37ff9a599d2 data/minecraft/tags/block/mineable/pickaxe.json
 d5e02a0c81b647409b91e35afc9d933c59f07114 data/minecraft/tags/block/mineable/shovel.json
 b44a9ec610c6b135929a1118b9538fa1431a6320 data/minecraft/tags/block/mushroom_grow_block.json
+8b90267c2b8c5cb7b6e503e312c7eec6bd5c546a data/minecraft/tags/block/walls.json

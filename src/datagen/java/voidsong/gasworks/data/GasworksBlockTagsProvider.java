@@ -55,6 +55,11 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MUSHROOM_GROW_BLOCK)
             .add(GSBlocks.COMPOST_PILE.get());
         /*
+         * Building blocks, including various 'functional' blocks
+         */
+        tag(BlockTags.WALLS)
+            .add(GSBlocks.FIREBRICK_WALL.get());
+        /*
          * Tool tags for block breaking
          */
         tag(BlockTags.MINEABLE_WITH_AXE)
@@ -68,6 +73,8 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.COAL_PILE.get())
             .add(GSBlocks.CHARCOAL_PILE.get())
             .add(GSBlocks.COMPOST_PILE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+            .add(GSBlocks.FIREBRICKS.get(), GSBlocks.FIREBRICK_STAIRS.get(), GSBlocks.FIREBRICK_SLAB.get(), GSBlocks.FIREBRICK_WALL.get());
         /*
          * Compatibility tags
          */

@@ -318,14 +318,14 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		itemModel(b, wallModelToppedInventory(getName(b), bottomTexture, sideTexture, topTexture));
 	}
 
-	protected void wallMultiEight(WallBlock b, ResourceLocation bottomTexture, ResourceLocation sideTexture, ResourceLocation topTexture) {
+	protected void wallMultiEight(WallBlock b, ResourceLocation bottomTexture, ResourceLocation sideTexture, ResourceLocation topTexture, boolean variedTop) {
 		ResourceLocation[] bottomTextures = new ResourceLocation[8];
 		ResourceLocation[] sideTextures = new ResourceLocation[8];
 		ResourceLocation[] topTextures = new ResourceLocation[8];
 		for(int i = 0; i < 8; i++) {
 			bottomTextures[i] = bottomTexture.withSuffix(Integer.toString(i));
 			sideTextures[i] = sideTexture.withSuffix(Integer.toString(i));
-			topTextures[i] = topTexture.withSuffix(Integer.toString(i));
+			topTextures[i] = variedTop?topTexture.withSuffix(Integer.toString(i)):topTexture;
 		}
 		wallMultiMany(b, bottomTextures, sideTextures, topTextures);
 	}

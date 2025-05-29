@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-26T12:03:17.14115193	Loot Tables
+// 1.21.1	2025-05-29T11:36:01.644101598	Loot Tables
 394ac4f1686355bd610a3744fb95fab5af139d3d data/gasworks/loot_table/blocks/acacia_log_pile.json
 192e75516869bd21dfc63e7454703e49c2c02f4e data/gasworks/loot_table/blocks/bamboo_log_pile.json
 d03f896bf2c75947527a8e8f379ae176a987f38e data/gasworks/loot_table/blocks/birch_log_pile.json
@@ -7,6 +7,10 @@ d268adc23eebe8fb07f8d89889320394deb0baec data/gasworks/loot_table/blocks/charcoa
 6be9720a87ccbd043f38cbf35af548c283c8f7ba data/gasworks/loot_table/blocks/coal_pile.json
 847dfd8c21e2113667aec9792e7e177cfc5b3a87 data/gasworks/loot_table/blocks/compost_pile.json
 3374b2d39cee217fac3ee01b507a1dbc076e6fa5 data/gasworks/loot_table/blocks/dark_oak_log_pile.json
+c764dcee291c6ace48d7f4c5815b870d5a38d9bc data/gasworks/loot_table/blocks/firebrick_slab.json
+ee733ada456444fe86dd7b09109908ede7dc7afd data/gasworks/loot_table/blocks/firebrick_stairs.json
+a10a33af202ee4bc7612d08d53cea7ea3d888966 data/gasworks/loot_table/blocks/firebrick_wall.json
+38a90ac716fb0667d1cdc10e8f81ba6adacc6992 data/gasworks/loot_table/blocks/firebricks.json
 76cf0a6196cce438cfdf3ade7a3365f85d345123 data/gasworks/loot_table/blocks/fired_brick_clamp.json
 d552a3c5a191da35007d3afc930ef790f91105a9 data/gasworks/loot_table/blocks/jungle_log_pile.json
 4717aa6d0f3c1d06b2a40cc537a056437f00e155 data/gasworks/loot_table/blocks/mangrove_log_pile.json

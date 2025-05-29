@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "gasworks:block/firebricks/firebricks4",
+    "side": "gasworks:block/firebricks/firebricks4",
+    "top": "gasworks:block/firebricks/firebricks4"
+  }
+}

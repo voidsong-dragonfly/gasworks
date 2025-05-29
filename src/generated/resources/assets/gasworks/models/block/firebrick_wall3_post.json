@@ -1,0 +1,8 @@
+{
+  "parent": "gasworks:block/wall_post_topped",
+  "textures": {
+    "wall_bottom": "gasworks:block/firebricks/firebricks3",
+    "wall_side": "gasworks:block/firebricks/firebricks_wall3",
+    "wall_top": "gasworks:block/firebricks/firebricks_top"
+  }
+}

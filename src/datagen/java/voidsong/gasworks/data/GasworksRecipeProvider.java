@@ -3,14 +3,11 @@ package voidsong.gasworks.data;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
 import voidsong.gasworks.Gasworks;
@@ -123,7 +120,42 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .define('b', Items.BRICK)
             .unlockedBy("has_brick", has(Items.BRICK))
             .save(output, rl(GSItems.FIRED_BRICK_CLAMP, "crafting"));
-
+        /*
+         * Building blocks, including various 'functional' blocks
+         */
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICKS)
+            .pattern("bb")
+            .pattern("bb")
+            .define('b', GSItems.FIREBRICK)
+            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+            .save(output, rl(GSItems.FIREBRICKS, "crafting"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_STAIRS, 4)
+            .pattern("b  ")
+            .pattern("bb ")
+            .pattern("bbb")
+            .define('b', GSItems.FIREBRICKS)
+            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+            .save(output, rl(GSItems.FIREBRICK_STAIRS, "crafting"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_SLAB, 6)
+            .pattern("bbb")
+            .define('b', GSItems.FIREBRICKS)
+            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+            .save(output, rl(GSItems.FIREBRICK_SLAB, "crafting"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_WALL, 6)
+            .pattern("bbb")
+            .pattern("bbb")
+            .define('b', GSItems.FIREBRICKS)
+            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+            .save(output, rl(GSItems.FIREBRICK_WALL, "crafting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FIREBRICKS), RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_STAIRS)
+            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+            .save(output, rl(GSItems.FIREBRICK_STAIRS, "stonecutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FIREBRICKS), RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_SLAB, 2)
+            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+            .save(output, rl(GSItems.FIREBRICK_SLAB, "stonecutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FIREBRICKS), RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_WALL)
+            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+            .save(output, rl(GSItems.FIREBRICK_WALL, "stonecutting"));
         /*
          * Tool items & other useful items
          */
