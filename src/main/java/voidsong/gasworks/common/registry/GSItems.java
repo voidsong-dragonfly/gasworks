@@ -40,6 +40,8 @@ public class GSItems {
     // Brick piles for firing
     public static final DeferredItem<BlockItem> UNFIRED_BRICK_CLAMP = ITEMS.registerSimpleBlockItem("unfired_brick_clamp", GSBlocks.UNFIRED_BRICK_CLAMP);
     public static final DeferredItem<BlockItem> FIRED_BRICK_CLAMP = ITEMS.registerSimpleBlockItem("fired_brick_clamp", GSBlocks.FIRED_BRICK_CLAMP);
+    public static final DeferredItem<BlockItem> UNFIRED_FIREBRICK_CLAMP = ITEMS.registerSimpleBlockItem("unfired_firebrick_clamp", GSBlocks.UNFIRED_FIREBRICK_CLAMP);
+    public static final DeferredItem<BlockItem> FIRED_FIREBRICK_CLAMP = ITEMS.registerSimpleBlockItem("fired_firebrick_clamp", GSBlocks.FIRED_FIREBRICK_CLAMP);
     // Compost piles for fertilizer
     public static final DeferredItem<BlockItem> COMPOST_PILE = ITEMS.registerSimpleBlockItem("compost_pile", GSBlocks.COMPOST_PILE);
     public static final DeferredItem<Item> COMPOST = ITEMS.registerItem("compost", BoneMealItem::new);
@@ -86,6 +88,8 @@ public class GSItems {
             output.accept(COAL_PILE);
             output.accept(CHARCOAL_PILE);
             output.accept(COMPOST_PILE);
+            output.accept(UNFIRED_FIREBRICK_CLAMP);
+            output.accept(FIRED_FIREBRICK_CLAMP);
             output.accept(UNFIRED_BRICK_CLAMP);
             output.accept(FIRED_BRICK_CLAMP);
             output.accept(FIRECLAY);

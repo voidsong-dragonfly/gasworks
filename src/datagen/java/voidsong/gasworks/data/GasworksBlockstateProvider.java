@@ -47,6 +47,18 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
             .withExistingParent(getName(GSBlocks.FIRED_BRICK_CLAMP.get()), rl("brick_pile"))
             .texture("brick", rl("bricks/fired"))
             .texture("plate", rl("stone_plate")));
+        partialBlockAndItem(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(),
+            models().withExistingParent(getName(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get()), rl("brick_pile"))
+                .texture("brick", rl("firebricks/unfired_0"))
+                .texture("plate", rl("stone_plate")),
+            state -> models().withExistingParent(getName(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get())+"_"+state.getSetStates().get(ClampBlock.DISPLAY_AGE), rl("brick_pile"))
+                .texture("brick", rl("firebricks/unfired"+"_"+state.getSetStates().get(ClampBlock.DISPLAY_AGE)))
+                .texture("plate", rl("stone_plate")),
+            List.of(ClampBlock.DISPLAY_AGE));
+        simpleBlockAndItem(GSBlocks.FIRED_FIREBRICK_CLAMP.get(), models()
+            .withExistingParent(getName(GSBlocks.FIRED_FIREBRICK_CLAMP.get()), rl("brick_pile"))
+            .texture("brick", rl("firebricks/fired"))
+            .texture("plate", rl("stone_plate")));
         // Compost piles for fertilizer
         horizontalRandomBlockAndItem(GSBlocks.COMPOST_PILE.get(),
             models().cubeAll(getName(GSBlocks.COMPOST_PILE.get())+"_0", rl("compost/compost_pile_0")),

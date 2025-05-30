@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "display_age=0": {
+      "model": "gasworks:block/unfired_firebrick_clamp_0"
+    },
+    "display_age=1": {
+      "model": "gasworks:block/unfired_firebrick_clamp_1"
+    },
+    "display_age=2": {
+      "model": "gasworks:block/unfired_firebrick_clamp_2"
+    },
+    "display_age=3": {
+      "model": "gasworks:block/unfired_firebrick_clamp_3"
+    },
+    "display_age=4": {
+      "model": "gasworks:block/unfired_firebrick_clamp_4"
+    },
+    "display_age=5": {
+      "model": "gasworks:block/unfired_firebrick_clamp_5"
+    }
+  }
+}

@@ -82,6 +82,8 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.PYROLYTIC_ASH.get())
             .add(GSBlocks.UNFIRED_BRICK_CLAMP.get())
             .add(GSBlocks.FIRED_BRICK_CLAMP.get())
+            .add(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get())
+            .add(GSBlocks.FIRED_FIREBRICK_CLAMP.get())
             .add(GSBlocks.COAL_PILE.get())
             .add(GSBlocks.CHARCOAL_PILE.get())
             .add(GSBlocks.COMPOST_PILE.get())

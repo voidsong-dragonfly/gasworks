@@ -120,6 +120,20 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .define('b', Items.BRICK)
             .unlockedBy("has_brick", has(Items.BRICK))
             .save(output, rl(GSItems.FIRED_BRICK_CLAMP, "crafting"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.UNFIRED_FIREBRICK_CLAMP, 2)
+            .pattern("ccc")
+            .pattern("c c")
+            .pattern("ccc")
+            .define('c', GSItems.FIRECLAY_BALL)
+            .unlockedBy("has_fireclay", has(GSItems.FIRECLAY_BALL))
+            .save(output, rl(GSItems.UNFIRED_FIREBRICK_CLAMP, "crafting"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIRED_FIREBRICK_CLAMP, 2)
+            .pattern("bbb")
+            .pattern("b b")
+            .pattern("bbb")
+            .define('b', GSItems.FIREBRICK)
+            .unlockedBy("has_fireclay", has(GSItems.FIREBRICK))
+            .save(output, rl(GSItems.FIRED_FIREBRICK_CLAMP, "crafting"));
         /*
          * Building blocks, including various 'functional' blocks
          */

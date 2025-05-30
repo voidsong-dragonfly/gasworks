@@ -91,6 +91,8 @@ public class GasworksLootTableProvider extends LootTableProvider {
             // Brick piles for firing
             add(GSBlocks.UNFIRED_BRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.UNFIRED_BRICK_CLAMP.get(), Items.CLAY_BALL, ConstantValue.exactly(4)));
             add(GSBlocks.FIRED_BRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRED_BRICK_CLAMP.get(), Items.BRICK, ConstantValue.exactly(4)));
+            add(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), GSItems.FIRECLAY_BALL, ConstantValue.exactly(4)));
+            add(GSBlocks.FIRED_FIREBRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRED_FIREBRICK_CLAMP.get(), GSItems.FIREBRICK, ConstantValue.exactly(4)));
             // Resulting ash
             add(GSBlocks.PYROLYTIC_ASH.get(), LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(GSItems.ASH.asItem(), LootPool.lootPool()

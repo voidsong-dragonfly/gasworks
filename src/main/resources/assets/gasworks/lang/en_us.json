@@ -14,6 +14,8 @@
     "block.gasworks.pyrolysis_ash": "Pyrolysis Ash",
     "block.gasworks.unfired_brick_clamp": "Unfired Brick Clamp",
     "block.gasworks.fired_brick_clamp": "Fired Brick Clamp",
+    "block.gasworks.unfired_firebrick_clamp": "Unfired Firebrick Clamp",
+    "block.gasworks.fired_firebrick_clamp": "Fired Firebrick Clamp",
     "block.gasworks.compost_pile": "Compost Pile",
     "block.gasworks.fireclay": "Fireclay",
     "block.gasworks.firebricks": "Firebricks",

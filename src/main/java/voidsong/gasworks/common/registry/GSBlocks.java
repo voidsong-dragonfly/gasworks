@@ -71,10 +71,20 @@ public class GSBlocks {
         .noOcclusion()
         .strength(0.5f, 0.25f));
     public static final DeferredBlock<ClampBlock> UNFIRED_BRICK_CLAMP = BLOCKS.register("unfired_brick_clamp", () -> new ClampBlock(BlockBehaviour.Properties.of()
-        .mapColor(MapColor.CLAY)
+        .mapColor(MapColor.TERRACOTTA_RED)
         .sound(SoundType.GRAVEL)
         .noOcclusion()
         .strength(0.5f, 0.25f), FIRED_BRICK_CLAMP.get().defaultBlockState().setValue(BrickStackBlock.FIRED, true)));
+    public static final DeferredBlock<BrickStackBlock> FIRED_FIREBRICK_CLAMP = BLOCKS.registerBlock("fired_firebrick_clamp", BrickStackBlock::new, BlockBehaviour.Properties.of()
+        .mapColor(MapColor.COLOR_RED)
+        .sound(SoundType.NETHER_BRICKS)
+        .noOcclusion()
+        .strength(0.625f, 0.375f));
+    public static final DeferredBlock<ClampBlock> UNFIRED_FIREBRICK_CLAMP = BLOCKS.register("unfired_firebrick_clamp", () -> new ClampBlock(BlockBehaviour.Properties.of()
+        .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+        .sound(SoundType.GRAVEL)
+        .noOcclusion()
+        .strength(0.625f, 0.375f), FIRED_FIREBRICK_CLAMP.get().defaultBlockState().setValue(BrickStackBlock.FIRED, true)));
     // Compost piles for fertilizer
     public static final DeferredBlock<CompostBlock> COMPOST_PILE = BLOCKS.register("compost_pile", () -> new CompostBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.PODZOL)
