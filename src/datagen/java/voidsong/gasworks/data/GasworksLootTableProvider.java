@@ -128,6 +128,7 @@ public class GasworksLootTableProvider extends LootTableProvider {
             /*
              * Building blocks, including various 'functional' blocks
              */
+            add(GSBlocks.FIRECLAY.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRECLAY.get(), GSItems.FIRECLAY_BALL, ConstantValue.exactly(4)));
             dropSelf(GSBlocks.FIREBRICKS.get());
             dropSelf(GSBlocks.FIREBRICK_STAIRS.get());
             dropSelf(GSBlocks.FIREBRICK_SLAB.get());

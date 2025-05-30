@@ -57,6 +57,18 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         /*
          * Building blocks, including various 'functional' blocks
          */
+        tag(BlockTags.AZALEA_ROOT_REPLACEABLE)
+            .add(GSBlocks.FIRECLAY.get());
+        tag(BlockTags.AXOLOTLS_SPAWNABLE_ON)
+            .add(GSBlocks.FIRECLAY.get());
+        tag(BlockTags.SMALL_DRIPLEAF_PLACEABLE)
+            .add(GSBlocks.FIRECLAY.get());
+        tag(BlockTags.BIG_DRIPLEAF_PLACEABLE)
+            .add(GSBlocks.FIRECLAY.get());
+        tag(BlockTags.SCULK_REPLACEABLE)
+            .add(GSBlocks.FIRECLAY.get());
+        tag(BlockTags.LUSH_GROUND_REPLACEABLE)
+            .add(GSBlocks.FIRECLAY.get());
         tag(BlockTags.WALLS)
             .add(GSBlocks.FIREBRICK_WALL.get());
         /*
@@ -72,7 +84,8 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.FIRED_BRICK_CLAMP.get())
             .add(GSBlocks.COAL_PILE.get())
             .add(GSBlocks.CHARCOAL_PILE.get())
-            .add(GSBlocks.COMPOST_PILE.get());
+            .add(GSBlocks.COMPOST_PILE.get())
+            .add(GSBlocks.FIRECLAY.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(GSBlocks.FIREBRICKS.get(), GSBlocks.FIREBRICK_STAIRS.get(), GSBlocks.FIREBRICK_SLAB.get(), GSBlocks.FIREBRICK_WALL.get());
         /*

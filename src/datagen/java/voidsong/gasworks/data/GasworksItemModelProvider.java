@@ -20,6 +20,7 @@ public class GasworksItemModelProvider extends ItemModelProvider {
         basicItem(GSItems.COKE.asItem(), rl("coke"));
         basicItem(GSItems.ASH.asItem(), rl("ash"));
         basicItem(GSItems.COMPOST.asItem(), rl("compost"));
+        basicItem(GSItems.FIRECLAY_BALL.asItem(), rl("fireclay_ball"));
         basicItem(GSItems.FIREBRICK.asItem(), rl("firebrick"));
         basicItem(GSItems.TRADESWOMANS_JOURNAL.asItem(), rl("tradeswomans_journal"));
     }

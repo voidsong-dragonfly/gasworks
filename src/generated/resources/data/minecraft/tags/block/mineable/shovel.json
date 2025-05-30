@@ -5,6 +5,7 @@
     "gasworks:fired_brick_clamp",
     "gasworks:coal_pile",
     "gasworks:charcoal_pile",
-    "gasworks:compost_pile"
+    "gasworks:compost_pile",
+    "gasworks:fireclay"
   ]
 }

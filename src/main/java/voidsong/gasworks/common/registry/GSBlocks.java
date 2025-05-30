@@ -85,6 +85,11 @@ public class GSBlocks {
     /*
      * Building blocks, including various 'functional' blocks
      */
+    public static DeferredBlock<Block> FIRECLAY = BLOCKS.registerSimpleBlock("fireclay", BlockBehaviour.Properties.of()
+        .mapColor(MapColor.CLAY)
+        .instrument(NoteBlockInstrument.FLUTE)
+        .strength(0.75F)
+        .sound(SoundType.GRAVEL));
     public static DeferredBlock<Block> FIREBRICKS = BLOCKS.registerSimpleBlock("firebricks", FIREBRICKS_PROPERTIES);
     public static DeferredBlock<StairBlock> FIREBRICK_STAIRS = BLOCKS.register("firebrick_stairs", () -> new StairBlock(FIREBRICKS.get().defaultBlockState(), FIREBRICKS_PROPERTIES));
     public static DeferredBlock<SlabBlock> FIREBRICK_SLAB = BLOCKS.registerBlock("firebrick_slab",  SlabBlock::new, FIREBRICKS_PROPERTIES);

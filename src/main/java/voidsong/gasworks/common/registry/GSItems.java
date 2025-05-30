@@ -46,7 +46,10 @@ public class GSItems {
     /*
      * Building blocks, including various 'functional' blocks
      */
+
+    public static final DeferredItem<Item> FIRECLAY_BALL = ITEMS.registerSimpleItem("fireclay_ball");
     public static final DeferredItem<Item> FIREBRICK = ITEMS.registerSimpleItem("firebrick");
+    public static final DeferredItem<BlockItem> FIRECLAY = ITEMS.registerSimpleBlockItem("fireclay", GSBlocks.FIRECLAY);
     public static final DeferredItem<BlockItem> FIREBRICKS = ITEMS.registerSimpleBlockItem("firebricks", GSBlocks.FIREBRICKS);
     public static final DeferredItem<BlockItem> FIREBRICK_STAIRS = ITEMS.registerSimpleBlockItem("firebrick_stairs", GSBlocks.FIREBRICK_STAIRS);
     public static final DeferredItem<BlockItem> FIREBRICK_SLAB = ITEMS.registerSimpleBlockItem("firebrick_slab", GSBlocks.FIREBRICK_SLAB);
@@ -66,6 +69,7 @@ public class GSItems {
             output.accept(COKE);
             output.accept(ASH);
             output.accept(COMPOST);
+            output.accept(FIRECLAY_BALL);
             output.accept(FIREBRICK);
             // Tool items
             output.accept(TRADESWOMANS_JOURNAL);
@@ -84,6 +88,7 @@ public class GSItems {
             output.accept(COMPOST_PILE);
             output.accept(UNFIRED_BRICK_CLAMP);
             output.accept(FIRED_BRICK_CLAMP);
+            output.accept(FIRECLAY);
             output.accept(FIREBRICKS);
             output.accept(FIREBRICK_STAIRS);
             output.accept(FIREBRICK_SLAB);

@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-29T16:25:51.137025165	Block States: gasworks
+// 1.21.1	2025-05-30T12:50:39.804214956	Block States: gasworks
 de8a908e599a8f81036e5ac5eb0c0e3e27953703 assets/gasworks/blockstates/acacia_log_pile.json
 cf06f0765ba7fc504001954dc73e9ddad2e05e8f assets/gasworks/blockstates/bamboo_log_pile.json
 b96b8bc9448644cdc2568c88b44bb4d641293908 assets/gasworks/blockstates/birch_log_pile.json
@@ -11,6 +11,7 @@ b3d0b3a8781a6885178c3254b98ba5b4f4abff38 assets/gasworks/blockstates/dark_oak_lo
 51d91bda0d1d26faffc6b727d103f0c39fc61633 assets/gasworks/blockstates/firebrick_stairs.json
 80bdef2715c63604a12e31b5a2fad76cbeea3364 assets/gasworks/blockstates/firebrick_wall.json
 515986bd2112811d24bf757be885bd608b0f02ec assets/gasworks/blockstates/firebricks.json
+87302c501fa6119a006c8ae1bd33b13737156b86 assets/gasworks/blockstates/fireclay.json
 b1f31b8f6102de04064afa9730b95d9431abd0c9 assets/gasworks/blockstates/fired_brick_clamp.json
 58d2fd3320eb5db7df877d2c7a766e62ede3719e assets/gasworks/blockstates/jungle_log_pile.json
 d0b56067ec149164d85f19782ee52a5a41b2c3a3 assets/gasworks/blockstates/mangrove_log_pile.json
@@ -111,6 +112,7 @@ d9ca1454370486df631a06b50bb548207c9bd280 assets/gasworks/models/block/firebricks
 0f66dac366e28662cae8fa408f3b4fcfc72e5368 assets/gasworks/models/block/firebricks5.json
 0f6c28d185a3bb5cd9bffb0065a4959758b9d0d9 assets/gasworks/models/block/firebricks6.json
 376fd5d730480ed5e7d873805995f7c9d97168f6 assets/gasworks/models/block/firebricks7.json
+196b4eed0840407aff8da3d24310d0ad8466c3a3 assets/gasworks/models/block/fireclay.json
 c96a4b078ed09ca48c004d2520a4fec38b5f7008 assets/gasworks/models/block/fired_brick_clamp.json
 989dd6cf7e1d6bc57c9658372027b96355246741 assets/gasworks/models/block/jungle_log_pile.json
 67c17bf69f3b1d73254f4680779308c95cd1cf9f assets/gasworks/models/block/mangrove_log_pile.json
@@ -137,6 +139,7 @@ dfcb86ed718bf82473e8896d9cf12a2543ed130f assets/gasworks/models/item/firebrick_s
 2cc7ab70527b0ba70eb3ee19c2d2fa083bccc893 assets/gasworks/models/item/firebrick_stairs.json
 ebf54bd2f15d365c3226355099b28143d4042865 assets/gasworks/models/item/firebrick_wall.json
 6298e063e07425bcd85c11714b1407750c15775d assets/gasworks/models/item/firebricks.json
+6fe67f23493bb6393ac761838ec96cc61889e133 assets/gasworks/models/item/fireclay.json
 ee343b1ae5f74bf0d1406a01f73a9df31f8951f7 assets/gasworks/models/item/fired_brick_clamp.json
 d3230de684b70b163f3630d4f17daa5844668b78 assets/gasworks/models/item/jungle_log_pile.json
 6f9e3029991e023526f8992e453922f2cca4f81d assets/gasworks/models/item/mangrove_log_pile.json

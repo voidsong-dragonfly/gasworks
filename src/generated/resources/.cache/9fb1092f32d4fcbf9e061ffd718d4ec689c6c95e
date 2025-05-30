@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-29T17:24:48.567129782	Recipes
+// 1.21.1	2025-05-30T12:38:35.93907621	Recipes
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
 07c8822a56251c4bd7c493790a893aa9a2401e35 data/gasworks/advancement/recipes/building_blocks/crafting/birch_log_pile.json
@@ -10,6 +10,7 @@ e5888d2969e9c380fa3892c635461183871ca15a data/gasworks/advancement/recipes/build
 4cd9d40e4a135b3a9a37f4f38c44b12a41c0a8ae data/gasworks/advancement/recipes/building_blocks/crafting/firebrick_stairs.json
 6fe6e13447f0dbdf0af358a271084f92fc6759a5 data/gasworks/advancement/recipes/building_blocks/crafting/firebrick_wall.json
 4751af20e898e0106a4a90b8eb8ae4549c3fc8cf data/gasworks/advancement/recipes/building_blocks/crafting/firebricks.json
+68fc8f2419795fedeb2e9352a8070cf1ec5a7242 data/gasworks/advancement/recipes/building_blocks/crafting/fireclay.json
 e92b4bfd7595a0062cd4c979b5f404ddfb683c62 data/gasworks/advancement/recipes/building_blocks/crafting/fired_brick_clamp.json
 f5a3306c204e3d46347eb155c7e8088bb68b83d3 data/gasworks/advancement/recipes/building_blocks/crafting/jungle_log_pile.json
 5d372c24ca7924400c39392a8f42e072f6a6b491 data/gasworks/advancement/recipes/building_blocks/crafting/mangrove_log_pile.json
@@ -31,6 +32,7 @@ c05aa27919b85f438930b358c181ed956ae8d16f data/gasworks/recipe/crafting/firebrick
 325e8148b13fc3c759ef965b391d336f1838e930 data/gasworks/recipe/crafting/firebrick_stairs.json
 6485b68754a98654240ea3deadc6f0d74f92b075 data/gasworks/recipe/crafting/firebrick_wall.json
 728b5c68040704b7ebd55a3fc9e7dcf9537cd81d data/gasworks/recipe/crafting/firebricks.json
+1d7939c63c492e05a51e035976d1bce45925c6fa data/gasworks/recipe/crafting/fireclay.json
 935e42297597a67ed28d1e7a8d7348b381cb4587 data/gasworks/recipe/crafting/fired_brick_clamp.json
 bcf47c2d3a9f9cbd28e00bd3490bc7dd73a2803e data/gasworks/recipe/crafting/jungle_log_pile.json
 966a51872a96b662f39d7b303cb8fb90cf5230fe data/gasworks/recipe/crafting/mangrove_log_pile.json

@@ -55,6 +55,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         /*
          * Building blocks, including various 'functional' blocks
          */
+        cubeAll(GSBlocks.FIRECLAY.get(), rl("fireclay"));
         multiEightCubeAll(GSBlocks.FIREBRICKS.get(), rl("firebricks/firebricks"));
         stairsMultiEightAll(GSBlocks.FIREBRICK_STAIRS.get(), rl("firebricks/firebricks"));
         slabMultiEightAll(GSBlocks.FIREBRICK_SLAB.get(), rl("firebricks/firebricks"));
