@@ -1,6 +1,13 @@
  - Compost pile features
      - Possibly change recipe maps for composting recipes?
      - Possibly a compost crafting recipe (dirt + total 1 compost chance)
+ - Sluice
+     - Rightclick with water container in main hand and with block in the offhand
+     - Possibly a special item for filling the sluice with water? Water bowl, plus SIN agrees. Water bowl used for crafting stews.
+     - Two states for the sluice: empty & full. Full requires a rightclick with a shovel to remove sediment.
+     - Have types for gravel at the top (guaranteed) and then choice of types for the bottom? Sand, red sand, mud?
+     - Should I bother with custom recipes at all? Depends if I want to bother with custom output or not.
+     - SIN suggests to put off a BER for now and to have it as a later, more complex feature
  - Other tier 0 features
      - Prospector's Pick
      - Mineral lodes
