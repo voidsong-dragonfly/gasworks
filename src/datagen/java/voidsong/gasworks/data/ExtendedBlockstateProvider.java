@@ -35,7 +35,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.properties.AshType;
-import voidsong.gasworks.common.block.properties.Properties;
+import voidsong.gasworks.common.block.properties.GSProperties;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -422,11 +422,11 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	protected void horizontalFacing(Block block, ModelFile model, int offsetRotY) {
-		rotatedBlock(block, $ -> model, Properties.FACING_HORIZONTAL, List.of(), 0, offsetRotY);
+		rotatedBlock(block, $ -> model, GSProperties.FACING_HORIZONTAL, List.of(), 0, offsetRotY);
 	}
 
 	protected void horizontalFacing(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
-		rotatedBlock(block, model, Properties.FACING_HORIZONTAL, additionalProps, 0, 180);
+		rotatedBlock(block, model, GSProperties.FACING_HORIZONTAL, additionalProps, 0, 180);
 	}
 
 	protected void allFacing(Block block, ModelFile model) {
@@ -434,7 +434,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	protected void allFacing(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
-		rotatedBlock(block, model, Properties.FACING_ALL, additionalProps, 90, 0);
+		rotatedBlock(block, model, GSProperties.FACING_ALL, additionalProps, 90, 0);
 	}
 
 	protected void rotatedBlock(Block block, ModelFile model, Property<Direction> facing, List<Property<?>> additionalProps, int offsetRotX, int offsetRotY) {
