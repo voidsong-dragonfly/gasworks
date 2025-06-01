@@ -1,8 +1,0 @@
-# Blender 4.4.3 MTL File: 'sluice.blend'
-# www.blender.org
-
-newmtl gravel
-map_Kd minecraft:block/gravel.png
-
-newmtl sluice
-map_Kd gasworks:block/machine/rocker_box.png
