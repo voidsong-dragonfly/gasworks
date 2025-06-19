@@ -18,3 +18,4 @@
      - Implement jute & possibly rubber?
  - Tool system
      - Two kinds of durability, 'minor fixes' & 'major fixes'
+ - Nerfs to torches, L => 9 & they burn out in rain

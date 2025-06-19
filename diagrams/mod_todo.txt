@@ -5,7 +5,6 @@ Redstone        | Redstone
 (Nether) Quartz | Quartz, Duralumin
 Iron            | Wrought Iron, Steel
 Copper          | Copper, Duralumin
-Lead            | Lead
 Latenium        | Latenium
 Bauxite         | Duralumin
 Limeclay        | Cement, Fireclay, Clay

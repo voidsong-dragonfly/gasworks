@@ -1,0 +1,44 @@
+RAW MATERIALS
+------------------------------------------
+Coal            | Coal Coke, Steel
+Redstone        | Redstone
+(Nether) Quartz | Quartz, Duralumin
+Iron            | Wrought Iron, Steel
+Copper          | Copper, Duralumin
+Latenium        | Latenium
+Bauxite         | Duralumin
+Limeclay        | Cement, Fireclay, Clay
+
+
+CERAMICS
+------------------------------------------
+Fireclay
+    Fireclay Bricks
+    Fireclay Terracotta
+Red Clay
+    Red Clay Bricks
+    Andesite, Granite, Diorite, Tuff, Stone, Deepslate => Quoins, Sills
+    Red Clay Terracotta
+Concrete
+    Concrete
+    Reinforced Concrete
+    Concrete Bricks
+    Reinforced Concrete Bricks
+Insulation Blocks
+    Bricks, Blocks
+Stone Bricks
+    Andesite, Diorite, Granite
+Framed Glass
+    Panes, Blocks
+
+WOOD
+------------------------------------------
+Treated Wood
+    Planks, Logs (?)
+    Fence, Fence Gate, Door
+
+METALS
+------------------------------------------
+Wrought Iron/Steel (Together maybe?)
+Duralumin?
+Brass/copper? => only for certain things, for example gauges or some pipes
