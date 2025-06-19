@@ -34,7 +34,6 @@ public abstract class AbstractMultiblockEntityBlock extends AbstractRedstoneEnti
             return null;
     }
 
-    @Nonnull
     protected abstract BlockState getGuaranteedStateForPlacement(@Nonnull BlockPlaceContext context, @Nonnull BlockState current);
 
     @Override
