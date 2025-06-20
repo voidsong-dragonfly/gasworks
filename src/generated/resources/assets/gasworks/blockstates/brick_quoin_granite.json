@@ -1,0 +1,132 @@
+{
+  "variants": {
+    "facing=east": [
+      {
+        "model": "gasworks:block/brick_quoin_granite0",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite1",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite2",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite3",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite4",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite5",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite6",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite7",
+        "y": 180
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "gasworks:block/brick_quoin_granite0",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite1",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite2",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite3",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite4",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite5",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite6",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite7",
+        "y": 90
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "gasworks:block/brick_quoin_granite0",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite1",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite2",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite3",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite4",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite5",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite6",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite7",
+        "y": 270
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "gasworks:block/brick_quoin_granite0"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite1"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite2"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite3"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite4"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite5"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite6"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_granite7"
+      }
+    ]
+  }
+}

@@ -8,11 +8,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
-import voidsong.gasworks.common.block.BurnableFuelBlock;
-import voidsong.gasworks.common.block.ClampBlock;
-import voidsong.gasworks.common.block.CompostBlock;
-import voidsong.gasworks.common.block.PyrolyticAshBlock;
-import voidsong.gasworks.common.block.BrickStackBlock;
+import voidsong.gasworks.common.block.*;
 import voidsong.gasworks.common.block.properties.AshType;
 
 public class GSBlocks {
@@ -30,6 +26,11 @@ public class GSBlocks {
         .instrument(NoteBlockInstrument.BASEDRUM)
         .requiresCorrectToolForDrops()
         .strength(2.5F, 8.0F);
+    private static final BlockBehaviour.Properties BRICKS_PROPERTIES = BlockBehaviour.Properties.of()
+        .mapColor(MapColor.COLOR_RED)
+        .instrument(NoteBlockInstrument.BASEDRUM)
+        .requiresCorrectToolForDrops()
+        .strength(2.0F, 6.0F);
 
     /*
      * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
@@ -95,6 +96,7 @@ public class GSBlocks {
     /*
      * Building blocks, including various 'functional' blocks
      */
+    // Fireclay blocks of various types
     public static DeferredBlock<Block> FIRECLAY = BLOCKS.registerSimpleBlock("fireclay", BlockBehaviour.Properties.of()
         .mapColor(MapColor.CLAY)
         .instrument(NoteBlockInstrument.FLUTE)
@@ -104,4 +106,13 @@ public class GSBlocks {
     public static DeferredBlock<StairBlock> FIREBRICK_STAIRS = BLOCKS.register("firebrick_stairs", () -> new StairBlock(FIREBRICKS.get().defaultBlockState(), FIREBRICKS_PROPERTIES));
     public static DeferredBlock<SlabBlock> FIREBRICK_SLAB = BLOCKS.registerBlock("firebrick_slab",  SlabBlock::new, FIREBRICKS_PROPERTIES);
     public static DeferredBlock<WallBlock> FIREBRICK_WALL = BLOCKS.registerBlock("firebrick_wall",  WallBlock::new, FIREBRICKS_PROPERTIES);
+    // Normal brick quoins & specialty blocks
+    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_ANDESITE = BLOCKS.registerBlock("brick_quoin_andesite",  QuoinBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_DEEPSLATE = BLOCKS.registerBlock("brick_quoin_deepslate",  QuoinBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_DIORITE = BLOCKS.registerBlock("brick_quoin_diorite",  QuoinBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_GRANITE = BLOCKS.registerBlock("brick_quoin_granite",  QuoinBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_POLISHED_BLACKSTONE = BLOCKS.registerBlock("brick_quoin_polished_blackstone",  QuoinBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_STONE = BLOCKS.registerBlock("brick_quoin_stone",  QuoinBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_TUFF = BLOCKS.registerBlock("brick_quoin_tuff",  QuoinBlock::new, BRICKS_PROPERTIES);
+    
 }

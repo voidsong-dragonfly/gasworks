@@ -1,0 +1,132 @@
+{
+  "variants": {
+    "facing=east": [
+      {
+        "model": "gasworks:block/brick_quoin_diorite0",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite1",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite2",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite3",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite4",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite5",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite6",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite7",
+        "y": 180
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "gasworks:block/brick_quoin_diorite0",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite1",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite2",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite3",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite4",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite5",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite6",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite7",
+        "y": 90
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "gasworks:block/brick_quoin_diorite0",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite1",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite2",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite3",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite4",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite5",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite6",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite7",
+        "y": 270
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "gasworks:block/brick_quoin_diorite0"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite1"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite2"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite3"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite4"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite5"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite6"
+      },
+      {
+        "model": "gasworks:block/brick_quoin_diorite7"
+      }
+    ]
+  }
+}

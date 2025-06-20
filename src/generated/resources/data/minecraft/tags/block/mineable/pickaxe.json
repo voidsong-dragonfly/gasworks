@@ -3,6 +3,13 @@
     "gasworks:firebricks",
     "gasworks:firebrick_stairs",
     "gasworks:firebrick_slab",
-    "gasworks:firebrick_wall"
+    "gasworks:firebrick_wall",
+    "gasworks:brick_quoin_andesite",
+    "gasworks:brick_quoin_deepslate",
+    "gasworks:brick_quoin_diorite",
+    "gasworks:brick_quoin_granite",
+    "gasworks:brick_quoin_polished_blackstone",
+    "gasworks:brick_quoin_stone",
+    "gasworks:brick_quoin_tuff"
   ]
 }

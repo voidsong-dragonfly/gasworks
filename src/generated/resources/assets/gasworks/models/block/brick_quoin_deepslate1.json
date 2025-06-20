@@ -1,0 +1,10 @@
+{
+  "parent": "gasworks:block/quoin",
+  "textures": {
+    "brick": "gasworks:block/bricks/bricks1",
+    "quoin": "gasworks:block/stone/quoins/deepslate",
+    "quoin_bottom": "gasworks:block/stone/quoins/deepslate_bottom",
+    "quoin_reversed": "gasworks:block/stone/quoins/deepslate_reversed",
+    "quoin_top": "gasworks:block/stone/quoins/deepslate_top"
+  }
+}

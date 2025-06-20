@@ -48,7 +48,7 @@ public class GSItems {
     /*
      * Building blocks, including various 'functional' blocks
      */
-
+    // Fireclay blocks of various types
     public static final DeferredItem<Item> FIRECLAY_BALL = ITEMS.registerSimpleItem("fireclay_ball");
     public static final DeferredItem<Item> FIREBRICK = ITEMS.registerSimpleItem("firebrick");
     public static final DeferredItem<BlockItem> FIRECLAY = ITEMS.registerSimpleBlockItem("fireclay", GSBlocks.FIRECLAY);
@@ -56,6 +56,14 @@ public class GSItems {
     public static final DeferredItem<BlockItem> FIREBRICK_STAIRS = ITEMS.registerSimpleBlockItem("firebrick_stairs", GSBlocks.FIREBRICK_STAIRS);
     public static final DeferredItem<BlockItem> FIREBRICK_SLAB = ITEMS.registerSimpleBlockItem("firebrick_slab", GSBlocks.FIREBRICK_SLAB);
     public static final DeferredItem<BlockItem> FIREBRICK_WALL = ITEMS.registerSimpleBlockItem("firebrick_wall", GSBlocks.FIREBRICK_WALL);
+    // Normal brick quoins & specialty blocks
+    public static final DeferredItem<BlockItem> BRICK_QUOIN_ANDESITE = ITEMS.registerSimpleBlockItem("brick_quoin_andesite", GSBlocks.BRICK_QUOIN_ANDESITE);
+    public static final DeferredItem<BlockItem> BRICK_QUOIN_DEEPSLATE = ITEMS.registerSimpleBlockItem("brick_quoin_deepslate", GSBlocks.BRICK_QUOIN_DEEPSLATE);
+    public static final DeferredItem<BlockItem> BRICK_QUOIN_DIORITE = ITEMS.registerSimpleBlockItem("brick_quoin_diorite", GSBlocks.BRICK_QUOIN_DIORITE);
+    public static final DeferredItem<BlockItem> BRICK_QUOIN_GRANITE = ITEMS.registerSimpleBlockItem("brick_quoin_granite", GSBlocks.BRICK_QUOIN_GRANITE);
+    public static final DeferredItem<BlockItem> BRICK_QUOIN_POLISHED_BLACKSTONE = ITEMS.registerSimpleBlockItem("brick_quoin_polished_blackstone", GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE);
+    public static final DeferredItem<BlockItem> BRICK_QUOIN_STONE = ITEMS.registerSimpleBlockItem("brick_quoin_stone", GSBlocks.BRICK_QUOIN_STONE);
+    public static final DeferredItem<BlockItem> BRICK_QUOIN_TUFF = ITEMS.registerSimpleBlockItem("brick_quoin_tuff", GSBlocks.BRICK_QUOIN_TUFF);
     /*
      * Tool items & other useful items
      */
@@ -97,5 +105,12 @@ public class GSItems {
             output.accept(FIREBRICK_STAIRS);
             output.accept(FIREBRICK_SLAB);
             output.accept(FIREBRICK_WALL);
+            output.accept(BRICK_QUOIN_ANDESITE);
+            output.accept(BRICK_QUOIN_DEEPSLATE);
+            output.accept(BRICK_QUOIN_DIORITE);
+            output.accept(BRICK_QUOIN_GRANITE);
+            output.accept(BRICK_QUOIN_POLISHED_BLACKSTONE);
+            output.accept(BRICK_QUOIN_STONE);
+            output.accept(BRICK_QUOIN_TUFF);
         }).build());
 }

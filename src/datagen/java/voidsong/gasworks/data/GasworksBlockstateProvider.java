@@ -66,12 +66,21 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
             state -> models().cubeAll(getName(GSBlocks.COMPOST_PILE.get())+"_"+state.getSetStates().get(CompostBlock.AGE),
                 rl("compost/compost_pile_"+state.getSetStates().get(CompostBlock.AGE))), List.of(CompostBlock.AGE));
         /*
-         * Building blocks, including various 'functional' blocks
+         * Building blocks, including various 'fuquoin/nctional' blocks
          */
+        // Fireclay blocks of various types
         cubeAll(GSBlocks.FIRECLAY.get(), rl("fireclay"));
         multiEightCubeAll(GSBlocks.FIREBRICKS.get(), rl("firebricks/firebricks"));
         stairsMultiEightAll(GSBlocks.FIREBRICK_STAIRS.get(), rl("firebricks/firebricks"));
         slabMultiEightAll(GSBlocks.FIREBRICK_SLAB.get(), rl("firebricks/firebricks"));
         wallMultiEight(GSBlocks.FIREBRICK_WALL.get(), rl("firebricks/firebricks"), rl("firebricks/firebricks_wall"), rl("firebricks/firebricks_top"), false);
+        // Normal brick quoins & specialty blocks
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_ANDESITE.get(), rl("bricks/bricks"), rl("stone/quoins/andesite"));
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_DEEPSLATE.get(), rl("bricks/bricks"), rl("stone/quoins/deepslate"));
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_DIORITE.get(), rl("bricks/bricks"), rl("stone/quoins/diorite"));
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_GRANITE.get(), rl("bricks/bricks"), rl("stone/quoins/granite"));
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get(), rl("bricks/bricks"), rl("stone/quoins/polished_blackstone"));
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_STONE.get(), rl("bricks/bricks"), rl("stone/quoins/stone"));
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_TUFF.get(), rl("bricks/bricks"), rl("stone/quoins/tuff"));
     }
 }

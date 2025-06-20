@@ -5,11 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.SlabType;
@@ -393,6 +389,20 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	 * Axially rotatable blocks of some kind, incl. 3-axis & 2-axis (horizontal); as well as full-6-angle
 	 */
 
+	public void quoinMultiEight(HorizontalDirectionalBlock block, ResourceLocation brick, ResourceLocation quoin) {
+		ModelFile[] models = new ModelFile[8];
+		for(int i = 0; i < 8; i++) {
+			models[i] = models().withExistingParent(getName(block)+i, rl("quoin"))
+				.texture("brick", brick.withSuffix(Integer.toString(i)))
+				.texture("quoin", quoin)
+				.texture("quoin_reversed", quoin.withSuffix("_reversed"))
+				.texture("quoin_top", quoin.withSuffix("_top"))
+				.texture("quoin_bottom", quoin.withSuffix("_bottom"));
+		}
+		rotatedBlock(block, $ -> models, HorizontalDirectionalBlock.FACING, List.of(), 0, 270);
+		itemModel(block, models[0]);
+	}
+
 	public void logPileBlock(RotatedPillarBlock block, ResourceLocation log) {
 		logPileBlock(block, log, ResourceLocation.fromNamespaceAndPath(log.getNamespace(), log.getPath() + "_top"));
 	}
@@ -415,33 +425,33 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	protected void horizontalFacing(Block block, ModelFile model) {
-		horizontalFacing(block, $ -> model, List.of());
+		horizontalFacing(block, $ -> new ModelFile[]{model}, List.of());
 	}
 
 	protected void horizontalFacing(Block block, ModelFile model, int offsetRotY) {
-		rotatedBlock(block, $ -> model, GSProperties.FACING_HORIZONTAL, List.of(), 0, offsetRotY);
+		rotatedBlock(block, $ -> new ModelFile[]{model}, GSProperties.FACING_HORIZONTAL, List.of(), 0, offsetRotY);
 	}
 
-	protected void horizontalFacing(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
-		rotatedBlock(block, model, GSProperties.FACING_HORIZONTAL, additionalProps, 0, 180);
+	protected void horizontalFacing(Block block, Function<PartialBlockstate, ModelFile[]> models, List<Property<?>> additionalProps) {
+		rotatedBlock(block, models, GSProperties.FACING_HORIZONTAL, additionalProps, 0, 180);
 	}
 
 	protected void allFacing(Block block, ModelFile model) {
-		allFacing(block, $ -> model, List.of());
+		allFacing(block, $ -> new ModelFile[]{model}, List.of());
 	}
 
-	protected void allFacing(Block block, Function<PartialBlockstate, ModelFile> model, List<Property<?>> additionalProps) {
-		rotatedBlock(block, model, GSProperties.FACING_ALL, additionalProps, 90, 0);
+	protected void allFacing(Block block, Function<PartialBlockstate, ModelFile[]> models, List<Property<?>> additionalProps) {
+		rotatedBlock(block, models, GSProperties.FACING_ALL, additionalProps, 90, 0);
 	}
 
 	protected void rotatedBlock(Block block, ModelFile model, Property<Direction> facing, List<Property<?>> additionalProps, int offsetRotX, int offsetRotY) {
-		rotatedBlock(block, $ -> model, facing, additionalProps, offsetRotX, offsetRotY);
+		rotatedBlock(block, $ -> new ModelFile[]{model}, facing, additionalProps, offsetRotX, offsetRotY);
 	}
 
-	protected void rotatedBlock(Block block, Function<PartialBlockstate, ModelFile> model, Property<Direction> facing, List<Property<?>> additionalProps, int offsetRotX, int offsetRotY) {
+	protected void rotatedBlock(Block block, Function<PartialBlockstate, ModelFile[]> model, Property<Direction> facing, List<Property<?>> additionalProps, int offsetRotX, int offsetRotY) {
 		VariantBlockStateBuilder stateBuilder = getVariantBuilder(block);
 		forEachState(stateBuilder.partialState(), additionalProps, state -> {
-			ModelFile modelLoc = model.apply(state);
+			ModelFile[] modelLoc = model.apply(state);
 			for(Direction d : facing.getPossibleValues()) {
 				int x;
 				int y;
@@ -459,7 +469,10 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 						x = 0;
 					}
 				}
-				state.with(facing, d).setModels(new ConfiguredModel(modelLoc, x+offsetRotX, y, false));
+				ConfiguredModel[] models = new ConfiguredModel[modelLoc.length];
+				for(int i = 0; i < models.length; i++)
+					models[i] = new ConfiguredModel(modelLoc[i], x+offsetRotX, y, false);
+				state.with(facing, d).setModels(models);
 			}
 		});
 	}

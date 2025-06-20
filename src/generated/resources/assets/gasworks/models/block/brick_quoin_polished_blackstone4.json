@@ -1,0 +1,10 @@
+{
+  "parent": "gasworks:block/quoin",
+  "textures": {
+    "brick": "gasworks:block/bricks/bricks4",
+    "quoin": "gasworks:block/stone/quoins/polished_blackstone",
+    "quoin_bottom": "gasworks:block/stone/quoins/polished_blackstone_bottom",
+    "quoin_reversed": "gasworks:block/stone/quoins/polished_blackstone_reversed",
+    "quoin_top": "gasworks:block/stone/quoins/polished_blackstone_top"
+  }
+}

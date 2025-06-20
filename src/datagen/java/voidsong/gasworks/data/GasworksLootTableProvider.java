@@ -130,11 +130,20 @@ public class GasworksLootTableProvider extends LootTableProvider {
             /*
              * Building blocks, including various 'functional' blocks
              */
+            // Fireclay blocks of various types
             add(GSBlocks.FIRECLAY.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRECLAY.get(), GSItems.FIRECLAY_BALL, ConstantValue.exactly(4)));
             dropSelf(GSBlocks.FIREBRICKS.get());
             dropSelf(GSBlocks.FIREBRICK_STAIRS.get());
             dropSelf(GSBlocks.FIREBRICK_SLAB.get());
             dropSelf(GSBlocks.FIREBRICK_WALL.get());
+            // Normal brick quoins & specialty blocks
+            dropSelf(GSBlocks.BRICK_QUOIN_ANDESITE.get());
+            dropSelf(GSBlocks.BRICK_QUOIN_DEEPSLATE.get());
+            dropSelf(GSBlocks.BRICK_QUOIN_DIORITE.get());
+            dropSelf(GSBlocks.BRICK_QUOIN_GRANITE.get());
+            dropSelf(GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get());
+            dropSelf(GSBlocks.BRICK_QUOIN_STONE.get());
+            dropSelf(GSBlocks.BRICK_QUOIN_TUFF.get());
         }
     }
 

@@ -14,10 +14,11 @@ CERAMICS
 ------------------------------------------
 Fireclay
     Fireclay Bricks
-    Fireclay Terracotta
+    Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blacstone? => Quoins, Sills
+    Fireclay Terracotta (?)
 Red Clay
     Red Clay Bricks
-    Andesite, Granite, Diorite, Tuff, Stone, Deepslate => Quoins, Sills
+    Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blacstone? => Quoins, Sills
     Red Clay Terracotta
 Concrete
     Concrete
@@ -26,7 +27,7 @@ Concrete
     Reinforced Concrete Bricks
 Insulation Blocks
     Bricks, Blocks
-Stone Bricks
+Stone Bricks (?)
     Andesite, Diorite, Granite
 Framed Glass
     Panes, Blocks

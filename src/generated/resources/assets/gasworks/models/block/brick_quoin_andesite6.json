@@ -1,0 +1,10 @@
+{
+  "parent": "gasworks:block/quoin",
+  "textures": {
+    "brick": "gasworks:block/bricks/bricks6",
+    "quoin": "gasworks:block/stone/quoins/andesite",
+    "quoin_bottom": "gasworks:block/stone/quoins/andesite_bottom",
+    "quoin_reversed": "gasworks:block/stone/quoins/andesite_reversed",
+    "quoin_top": "gasworks:block/stone/quoins/andesite_top"
+  }
+}
