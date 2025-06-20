@@ -1,689 +1,392 @@
 {
   "multipart": [
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_post"
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_post"
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_post"
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_post"
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_post"
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_post"
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_post"
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_post"
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_post"
+        }
+      ],
       "when": {
         "up": "true"
       }
     },
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_side",
-        "uvlock": true,
-        "y": 90
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_side",
+          "uvlock": true,
+          "y": 90
+        }
+      ],
       "when": {
         "east": "low"
       }
     },
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_side_tall",
+          "uvlock": true,
+          "y": 90
+        }
+      ],
       "when": {
         "east": "tall"
       }
     },
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_side",
-        "uvlock": true
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_side",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_side",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_side",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_side",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_side",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_side",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_side",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_side",
+          "uvlock": true
+        }
+      ],
       "when": {
         "north": "low"
       }
     },
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_side_tall",
-        "uvlock": true
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_side_tall",
+          "uvlock": true
+        }
+      ],
       "when": {
         "north": "tall"
       }
     },
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_side",
-        "uvlock": true,
-        "y": 180
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_side",
+          "uvlock": true,
+          "y": 180
+        }
+      ],
       "when": {
         "south": "low"
       }
     },
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_side_tall",
+          "uvlock": true,
+          "y": 180
+        }
+      ],
       "when": {
         "south": "tall"
       }
     },
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_side",
-        "uvlock": true,
-        "y": 270
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_side",
+          "uvlock": true,
+          "y": 270
+        }
+      ],
       "when": {
         "west": "low"
       }
     },
     {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall0_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_post"
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_side",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_side",
-        "uvlock": true
-      },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_side_tall",
-        "uvlock": true
-      },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_side",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_side",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall1_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_post"
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_side",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_side",
-        "uvlock": true
-      },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_side_tall",
-        "uvlock": true
-      },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_side",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_side",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall2_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_post"
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_side",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_side",
-        "uvlock": true
-      },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_side_tall",
-        "uvlock": true
-      },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_side",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_side",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall3_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_post"
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_side",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_side",
-        "uvlock": true
-      },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_side_tall",
-        "uvlock": true
-      },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_side",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_side",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall4_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_post"
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_side",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_side",
-        "uvlock": true
-      },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_side_tall",
-        "uvlock": true
-      },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_side",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_side",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall5_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_post"
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_side",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_side",
-        "uvlock": true
-      },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_side_tall",
-        "uvlock": true
-      },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_side",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_side",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall6_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_post"
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_side",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_side",
-        "uvlock": true
-      },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_side_tall",
-        "uvlock": true
-      },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_side",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_side",
-        "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "west": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "gasworks:block/firebrick_wall7_side_tall",
-        "uvlock": true,
-        "y": 270
-      },
+      "apply": [
+        {
+          "model": "gasworks:block/firebrick_wall0_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall1_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall2_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall3_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall4_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall5_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall6_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "gasworks:block/firebrick_wall7_side_tall",
+          "uvlock": true,
+          "y": 270
+        }
+      ],
       "when": {
         "west": "tall"
       }

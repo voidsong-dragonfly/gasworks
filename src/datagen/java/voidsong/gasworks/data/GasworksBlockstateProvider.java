@@ -2,6 +2,7 @@ package voidsong.gasworks.data;
 
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
     public GasworksBlockstateProvider(PackOutput output, ExistingFileHelper exHelper) {
-        super(output, exHelper);
+        super(output, Gasworks.MOD_ID, exHelper);
     }
 
     @Override

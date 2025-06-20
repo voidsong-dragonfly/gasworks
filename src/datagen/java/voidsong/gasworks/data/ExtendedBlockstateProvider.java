@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.state.properties.WallSide;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel.Builder;
 import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
@@ -52,8 +53,8 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 
 	protected final ExistingFileHelper existingFileHelper;
 
-	public ExtendedBlockstateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-		super(output, Gasworks.MOD_ID, exFileHelper);
+	public ExtendedBlockstateProvider(PackOutput output, String mod, ExistingFileHelper exFileHelper) {
+		super(output, mod, exFileHelper);
 		this.existingFileHelper = exFileHelper;
 	}
 
@@ -351,29 +352,33 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 
 	//Forge method does not allow random textures for walls, instead creating ConfiguredModel directly from input file
 	private void wallBlock(WallBlock block, ModelFile[] posts, ModelFile[] sides, ModelFile[] sidesTall) {
-		for(int i = 0; i < posts.length; i++) {
-			ModelFile side = sides[i];
-			ModelFile sideTall = sidesTall[i];
-			MultiPartBlockStateBuilder builder = getMultipartBuilder(block)
-				.part().modelFile(posts[i]).addModel()
-				.condition(WallBlock.UP, true).end();
-			WALL_PROPS.entrySet().stream()
-				.filter(e -> e.getKey().getAxis().isHorizontal())
-				.forEach(e -> {
-					wallSidePart(builder, side, e, WallSide.LOW);
-					wallSidePart(builder, sideTall, e, WallSide.TALL);
-				});
-		}
+		MultiPartBlockStateBuilder builder = getMultipartBuilder(block);
+		Builder<MultiPartBlockStateBuilder.PartBuilder> part = builder.part();
+        for (int i = 0; i < posts.length; i++) {
+            part = part.modelFile(posts[i]);
+			if ((i + 1) < posts.length)
+				part = part.nextModel();
+        }
+		part.addModel().condition(WallBlock.UP, true);
+		WALL_PROPS.entrySet().stream()
+			.filter(e -> e.getKey().getAxis().isHorizontal())
+			.forEach(e -> {
+				wallSidePart(builder, sides, e, WallSide.LOW);
+				wallSidePart(builder, sidesTall, e, WallSide.TALL);
+			});
 	}
 
 	//This method is private in BlockStateProvider & we need access to it
-	private void wallSidePart(MultiPartBlockStateBuilder builder, ModelFile model, Entry<Direction, Property<WallSide>> entry, WallSide height) {
-		builder.part()
-			.modelFile(model)
-			.rotationY((((int)entry.getKey().toYRot())+180)%360)
-			.uvLock(true)
-			.addModel()
-			.condition(entry.getValue(), height);
+	private void wallSidePart(MultiPartBlockStateBuilder builder, ModelFile[] models, Entry<Direction, Property<WallSide>> entry, WallSide height) {
+		Builder<MultiPartBlockStateBuilder.PartBuilder> part = builder.part();
+		for (int i = 0; i < models.length; i++) {
+			part = part.modelFile(models[i])
+				.rotationY((((int)entry.getKey().toYRot())+180)%360)
+				.uvLock(true);
+			if ((i + 1) < models.length)
+				part = part.nextModel();
+		}
+		part.addModel().condition(entry.getValue(), height);
 	}
 
 
