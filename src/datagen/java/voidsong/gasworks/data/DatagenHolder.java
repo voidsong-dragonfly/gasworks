@@ -29,6 +29,7 @@ public class DatagenHolder {
             generator.addProvider(true, new GasworksDataMapProvider(output, lookupProvider));
         }
         if(event.includeClient()) {
+            generator.addProvider(true, new MinecraftBlockstateProvider(output, existingFileHelper));
             generator.addProvider(true, new GasworksBlockstateProvider(output, existingFileHelper));
             generator.addProvider(true, new GasworksItemModelProvider(output, existingFileHelper));
         }

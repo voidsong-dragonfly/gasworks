@@ -1,0 +1,1724 @@
+{
+  "variants": {
+    "facing=east,half=bottom,shape=inner_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "y": 270
+      }
+    ],
+    "facing=east,half=bottom,shape=inner_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner"
+      }
+    ],
+    "facing=east,half=bottom,shape=outer_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "y": 270
+      }
+    ],
+    "facing=east,half=bottom,shape=outer_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer"
+      }
+    ],
+    "facing=east,half=bottom,shape=straight": [
+      {
+        "model": "minecraft:block/brick_stairs0"
+      },
+      {
+        "model": "minecraft:block/brick_stairs1"
+      },
+      {
+        "model": "minecraft:block/brick_stairs2"
+      },
+      {
+        "model": "minecraft:block/brick_stairs3"
+      },
+      {
+        "model": "minecraft:block/brick_stairs4"
+      },
+      {
+        "model": "minecraft:block/brick_stairs5"
+      },
+      {
+        "model": "minecraft:block/brick_stairs6"
+      },
+      {
+        "model": "minecraft:block/brick_stairs7"
+      }
+    ],
+    "facing=east,half=top,shape=inner_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "x": 180
+      }
+    ],
+    "facing=east,half=top,shape=inner_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      }
+    ],
+    "facing=east,half=top,shape=outer_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "x": 180
+      }
+    ],
+    "facing=east,half=top,shape=outer_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      }
+    ],
+    "facing=east,half=top,shape=straight": [
+      {
+        "model": "minecraft:block/brick_stairs0",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7",
+        "uvlock": true,
+        "x": 180
+      }
+    ],
+    "facing=north,half=bottom,shape=inner_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "y": 180
+      }
+    ],
+    "facing=north,half=bottom,shape=inner_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "y": 270
+      }
+    ],
+    "facing=north,half=bottom,shape=outer_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "y": 180
+      }
+    ],
+    "facing=north,half=bottom,shape=outer_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "y": 270
+      }
+    ],
+    "facing=north,half=bottom,shape=straight": [
+      {
+        "model": "minecraft:block/brick_stairs0",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6",
+        "uvlock": true,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7",
+        "uvlock": true,
+        "y": 270
+      }
+    ],
+    "facing=north,half=top,shape=inner_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      }
+    ],
+    "facing=north,half=top,shape=inner_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "x": 180
+      }
+    ],
+    "facing=north,half=top,shape=outer_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      }
+    ],
+    "facing=north,half=top,shape=outer_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "x": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "x": 180
+      }
+    ],
+    "facing=north,half=top,shape=straight": [
+      {
+        "model": "minecraft:block/brick_stairs0",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      }
+    ],
+    "facing=south,half=bottom,shape=inner_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner"
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner"
+      }
+    ],
+    "facing=south,half=bottom,shape=inner_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "y": 90
+      }
+    ],
+    "facing=south,half=bottom,shape=outer_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer"
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer"
+      }
+    ],
+    "facing=south,half=bottom,shape=outer_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "y": 90
+      }
+    ],
+    "facing=south,half=bottom,shape=straight": [
+      {
+        "model": "minecraft:block/brick_stairs0",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7",
+        "uvlock": true,
+        "y": 90
+      }
+    ],
+    "facing=south,half=top,shape=inner_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      }
+    ],
+    "facing=south,half=top,shape=inner_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      }
+    ],
+    "facing=south,half=top,shape=outer_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      }
+    ],
+    "facing=south,half=top,shape=outer_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      }
+    ],
+    "facing=south,half=top,shape=straight": [
+      {
+        "model": "minecraft:block/brick_stairs0",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7",
+        "uvlock": true,
+        "x": 180,
+        "y": 90
+      }
+    ],
+    "facing=west,half=bottom,shape=inner_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "y": 90
+      }
+    ],
+    "facing=west,half=bottom,shape=inner_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "y": 180
+      }
+    ],
+    "facing=west,half=bottom,shape=outer_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "y": 90
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "y": 90
+      }
+    ],
+    "facing=west,half=bottom,shape=outer_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "y": 180
+      }
+    ],
+    "facing=west,half=bottom,shape=straight": [
+      {
+        "model": "minecraft:block/brick_stairs0",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6",
+        "uvlock": true,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7",
+        "uvlock": true,
+        "y": 180
+      }
+    ],
+    "facing=west,half=top,shape=inner_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      }
+    ],
+    "facing=west,half=top,shape=inner_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_inner",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      }
+    ],
+    "facing=west,half=top,shape=outer_left": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      }
+    ],
+    "facing=west,half=top,shape=outer_right": [
+      {
+        "model": "minecraft:block/brick_stairs0_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs1_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs2_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs3_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs4_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs5_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs6_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "minecraft:block/brick_stairs7_outer",
+        "uvlock": true,
+        "x": 180,
+        "y": 270
+      }
+    ],
+    "facing=west,half=top,shape=straight": [
+      {
+        "model": "minecraft:block/brick_stairs0",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs1",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs2",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs3",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs4",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs5",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs6",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "minecraft:block/brick_stairs7",
+        "uvlock": true,
+        "x": 180,
+        "y": 180
+      }
+    ]
+  }
+}

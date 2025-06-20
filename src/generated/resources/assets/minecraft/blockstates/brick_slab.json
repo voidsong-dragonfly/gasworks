@@ -1,0 +1,82 @@
+{
+  "variants": {
+    "type=bottom": [
+      {
+        "model": "minecraft:block/brick_slab0_bottom"
+      },
+      {
+        "model": "minecraft:block/brick_slab1_bottom"
+      },
+      {
+        "model": "minecraft:block/brick_slab2_bottom"
+      },
+      {
+        "model": "minecraft:block/brick_slab3_bottom"
+      },
+      {
+        "model": "minecraft:block/brick_slab4_bottom"
+      },
+      {
+        "model": "minecraft:block/brick_slab5_bottom"
+      },
+      {
+        "model": "minecraft:block/brick_slab6_bottom"
+      },
+      {
+        "model": "minecraft:block/brick_slab7_bottom"
+      }
+    ],
+    "type=double": [
+      {
+        "model": "minecraft:block/brick_slab0_double"
+      },
+      {
+        "model": "minecraft:block/brick_slab1_double"
+      },
+      {
+        "model": "minecraft:block/brick_slab2_double"
+      },
+      {
+        "model": "minecraft:block/brick_slab3_double"
+      },
+      {
+        "model": "minecraft:block/brick_slab4_double"
+      },
+      {
+        "model": "minecraft:block/brick_slab5_double"
+      },
+      {
+        "model": "minecraft:block/brick_slab6_double"
+      },
+      {
+        "model": "minecraft:block/brick_slab7_double"
+      }
+    ],
+    "type=top": [
+      {
+        "model": "minecraft:block/brick_slab0_top"
+      },
+      {
+        "model": "minecraft:block/brick_slab1_top"
+      },
+      {
+        "model": "minecraft:block/brick_slab2_top"
+      },
+      {
+        "model": "minecraft:block/brick_slab3_top"
+      },
+      {
+        "model": "minecraft:block/brick_slab4_top"
+      },
+      {
+        "model": "minecraft:block/brick_slab5_top"
+      },
+      {
+        "model": "minecraft:block/brick_slab6_top"
+      },
+      {
+        "model": "minecraft:block/brick_slab7_top"
+      }
+    ]
+  }
+}
