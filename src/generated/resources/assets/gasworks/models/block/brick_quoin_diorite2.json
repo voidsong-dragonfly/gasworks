@@ -4,7 +4,9 @@
     "brick": "gasworks:block/bricks/bricks2",
     "quoin": "gasworks:block/stone/quoins/diorite",
     "quoin_bottom": "gasworks:block/stone/quoins/diorite_bottom",
+    "quoin_left": "gasworks:block/stone/quoins/diorite_left",
     "quoin_reversed": "gasworks:block/stone/quoins/diorite_reversed",
+    "quoin_right": "gasworks:block/stone/quoins/diorite_right",
     "quoin_top": "gasworks:block/stone/quoins/diorite_top"
   }
 }

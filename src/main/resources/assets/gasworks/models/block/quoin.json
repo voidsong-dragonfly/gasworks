@@ -12,8 +12,8 @@
     "east_overlay": "#quoin",
     "north_overlay": "#quoin_reversed",
     "particle_overlay": "#brick",
-    "south_overlay": "#brick",
+    "south_overlay": "#quoin_left",
     "up_overlay": "#quoin_bottom",
-    "west_overlay": "#brick"
+    "west_overlay": "#quoin_right"
   }
 }

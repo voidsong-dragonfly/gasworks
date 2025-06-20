@@ -4,7 +4,9 @@
     "brick": "gasworks:block/bricks/bricks2",
     "quoin": "gasworks:block/stone/quoins/andesite",
     "quoin_bottom": "gasworks:block/stone/quoins/andesite_bottom",
+    "quoin_left": "gasworks:block/stone/quoins/andesite_left",
     "quoin_reversed": "gasworks:block/stone/quoins/andesite_reversed",
+    "quoin_right": "gasworks:block/stone/quoins/andesite_right",
     "quoin_top": "gasworks:block/stone/quoins/andesite_top"
   }
 }

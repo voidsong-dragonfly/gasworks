@@ -4,7 +4,9 @@
     "brick": "gasworks:block/bricks/bricks1",
     "quoin": "gasworks:block/stone/quoins/granite",
     "quoin_bottom": "gasworks:block/stone/quoins/granite_bottom",
+    "quoin_left": "gasworks:block/stone/quoins/granite_left",
     "quoin_reversed": "gasworks:block/stone/quoins/granite_reversed",
+    "quoin_right": "gasworks:block/stone/quoins/granite_right",
     "quoin_top": "gasworks:block/stone/quoins/granite_top"
   }
 }

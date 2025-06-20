@@ -397,7 +397,9 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 				.texture("quoin", quoin)
 				.texture("quoin_reversed", quoin.withSuffix("_reversed"))
 				.texture("quoin_top", quoin.withSuffix("_top"))
-				.texture("quoin_bottom", quoin.withSuffix("_bottom"));
+				.texture("quoin_bottom", quoin.withSuffix("_bottom"))
+				.texture("quoin_left", quoin.withSuffix("_left"))
+				.texture("quoin_right", quoin.withSuffix("_right"));
 		}
 		rotatedBlock(block, $ -> models, HorizontalDirectionalBlock.FACING, List.of(), 0, 270);
 		itemModel(block, models[0]);

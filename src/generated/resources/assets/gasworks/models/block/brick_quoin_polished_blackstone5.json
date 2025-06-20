@@ -4,7 +4,9 @@
     "brick": "gasworks:block/bricks/bricks5",
     "quoin": "gasworks:block/stone/quoins/polished_blackstone",
     "quoin_bottom": "gasworks:block/stone/quoins/polished_blackstone_bottom",
+    "quoin_left": "gasworks:block/stone/quoins/polished_blackstone_left",
     "quoin_reversed": "gasworks:block/stone/quoins/polished_blackstone_reversed",
+    "quoin_right": "gasworks:block/stone/quoins/polished_blackstone_right",
     "quoin_top": "gasworks:block/stone/quoins/polished_blackstone_top"
   }
 }
