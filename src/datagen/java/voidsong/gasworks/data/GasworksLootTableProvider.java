@@ -136,6 +136,13 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.FIREBRICK_STAIRS.get());
             dropSelf(GSBlocks.FIREBRICK_SLAB.get());
             dropSelf(GSBlocks.FIREBRICK_WALL.get());
+            dropSelf(GSBlocks.FIREBRICK_QUOIN_ANDESITE.get());
+            dropSelf(GSBlocks.FIREBRICK_QUOIN_DEEPSLATE.get());
+            dropSelf(GSBlocks.FIREBRICK_QUOIN_DIORITE.get());
+            dropSelf(GSBlocks.FIREBRICK_QUOIN_GRANITE.get());
+            dropSelf(GSBlocks.FIREBRICK_QUOIN_POLISHED_BLACKSTONE.get());
+            dropSelf(GSBlocks.FIREBRICK_QUOIN_STONE.get());
+            dropSelf(GSBlocks.FIREBRICK_QUOIN_TUFF.get());
             // Normal brick quoins & specialty blocks
             dropSelf(GSBlocks.BRICK_QUOIN_ANDESITE.get());
             dropSelf(GSBlocks.BRICK_QUOIN_DEEPSLATE.get());

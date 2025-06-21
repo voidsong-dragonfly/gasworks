@@ -356,7 +356,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 			});
 	}
 
-	//This method is private in BlockStateProvider & we need access to it
+	//The equivalent method is private in BlockStateProvider & we need access to it
 	private void wallSidePart(MultiPartBlockStateBuilder builder, ModelFile[] models, Entry<Direction, Property<WallSide>> entry, WallSide height) {
 		Builder<MultiPartBlockStateBuilder.PartBuilder> part = builder.part();
 		for (int i = 0; i < models.length; i++) {

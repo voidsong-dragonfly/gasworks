@@ -106,6 +106,13 @@ public class GSBlocks {
     public static DeferredBlock<StairBlock> FIREBRICK_STAIRS = BLOCKS.register("firebrick_stairs", () -> new StairBlock(FIREBRICKS.get().defaultBlockState(), FIREBRICKS_PROPERTIES));
     public static DeferredBlock<SlabBlock> FIREBRICK_SLAB = BLOCKS.registerBlock("firebrick_slab",  SlabBlock::new, FIREBRICKS_PROPERTIES);
     public static DeferredBlock<WallBlock> FIREBRICK_WALL = BLOCKS.registerBlock("firebrick_wall",  WallBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_ANDESITE = BLOCKS.registerBlock("firebrick_quoin_andesite",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_DEEPSLATE = BLOCKS.registerBlock("firebrick_quoin_deepslate",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_DIORITE = BLOCKS.registerBlock("firebrick_quoin_diorite",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_GRANITE = BLOCKS.registerBlock("firebrick_quoin_granite",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_POLISHED_BLACKSTONE = BLOCKS.registerBlock("firebrick_quoin_polished_blackstone",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_STONE = BLOCKS.registerBlock("firebrick_quoin_stone",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_TUFF = BLOCKS.registerBlock("firebrick_quoin_tuff",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
     // Normal brick quoins & specialty blocks
     public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_ANDESITE = BLOCKS.registerBlock("brick_quoin_andesite",  QuoinBlock::new, BRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_DEEPSLATE = BLOCKS.registerBlock("brick_quoin_deepslate",  QuoinBlock::new, BRICKS_PROPERTIES);

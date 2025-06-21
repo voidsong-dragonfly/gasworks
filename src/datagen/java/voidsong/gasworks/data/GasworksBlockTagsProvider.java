@@ -90,6 +90,8 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.FIRECLAY.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(GSBlocks.FIREBRICKS.get(), GSBlocks.FIREBRICK_STAIRS.get(), GSBlocks.FIREBRICK_SLAB.get(), GSBlocks.FIREBRICK_WALL.get())
+            .add(GSBlocks.FIREBRICK_QUOIN_ANDESITE.get(), GSBlocks.FIREBRICK_QUOIN_DEEPSLATE.get(), GSBlocks.FIREBRICK_QUOIN_DIORITE.get(), GSBlocks.FIREBRICK_QUOIN_GRANITE.get(),
+                GSBlocks.FIREBRICK_QUOIN_POLISHED_BLACKSTONE.get(), GSBlocks.FIREBRICK_QUOIN_STONE.get(), GSBlocks.FIREBRICK_QUOIN_TUFF.get())
             .add(GSBlocks.BRICK_QUOIN_ANDESITE.get(), GSBlocks.BRICK_QUOIN_DEEPSLATE.get(), GSBlocks.BRICK_QUOIN_DIORITE.get(), GSBlocks.BRICK_QUOIN_GRANITE.get(),
                 GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get(), GSBlocks.BRICK_QUOIN_STONE.get(), GSBlocks.BRICK_QUOIN_TUFF.get());
         /*

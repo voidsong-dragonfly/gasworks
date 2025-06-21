@@ -1,0 +1,132 @@
+{
+  "variants": {
+    "facing=east": [
+      {
+        "model": "gasworks:block/firebrick_quoin_stone0",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone1",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone2",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone3",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone4",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone5",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone6",
+        "y": 180
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone7",
+        "y": 180
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "gasworks:block/firebrick_quoin_stone0",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone1",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone2",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone3",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone4",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone5",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone6",
+        "y": 90
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone7",
+        "y": 90
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "gasworks:block/firebrick_quoin_stone0",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone1",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone2",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone3",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone4",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone5",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone6",
+        "y": 270
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone7",
+        "y": 270
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "gasworks:block/firebrick_quoin_stone0"
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone1"
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone2"
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone3"
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone4"
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone5"
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone6"
+      },
+      {
+        "model": "gasworks:block/firebrick_quoin_stone7"
+      }
+    ]
+  }
+}

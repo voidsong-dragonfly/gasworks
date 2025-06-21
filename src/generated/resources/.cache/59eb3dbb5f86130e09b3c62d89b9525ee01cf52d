@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-20T14:01:59.267390726	Loot Tables
+// 1.21.1	2025-06-20T15:22:52.864023821	Loot Tables
 394ac4f1686355bd610a3744fb95fab5af139d3d data/gasworks/loot_table/blocks/acacia_log_pile.json
 192e75516869bd21dfc63e7454703e49c2c02f4e data/gasworks/loot_table/blocks/bamboo_log_pile.json
 d03f896bf2c75947527a8e8f379ae176a987f38e data/gasworks/loot_table/blocks/birch_log_pile.json
@@ -14,6 +14,13 @@ d268adc23eebe8fb07f8d89889320394deb0baec data/gasworks/loot_table/blocks/charcoa
 6be9720a87ccbd043f38cbf35af548c283c8f7ba data/gasworks/loot_table/blocks/coal_pile.json
 847dfd8c21e2113667aec9792e7e177cfc5b3a87 data/gasworks/loot_table/blocks/compost_pile.json
 3374b2d39cee217fac3ee01b507a1dbc076e6fa5 data/gasworks/loot_table/blocks/dark_oak_log_pile.json
+c1acc47536f9e5e3d6f65ec94cf8e45a6ec91147 data/gasworks/loot_table/blocks/firebrick_quoin_andesite.json
+28231c63e8310cb595711ffaaeff4da435c6f36d data/gasworks/loot_table/blocks/firebrick_quoin_deepslate.json
+8e5e0795df7af92f9cb9f705414e4e415ef5fa9c data/gasworks/loot_table/blocks/firebrick_quoin_diorite.json
+15e3d302fc1b05595841e2436fbc1b78035e9947 data/gasworks/loot_table/blocks/firebrick_quoin_granite.json
+98c785ec1842d91861307426afb32ad422d31042 data/gasworks/loot_table/blocks/firebrick_quoin_polished_blackstone.json
+8fab910809986369ef954e931efad4ad39b5d1c3 data/gasworks/loot_table/blocks/firebrick_quoin_stone.json
+59e9e473e6a9583c87aa62e47eff29f2966b8580 data/gasworks/loot_table/blocks/firebrick_quoin_tuff.json
 c764dcee291c6ace48d7f4c5815b870d5a38d9bc data/gasworks/loot_table/blocks/firebrick_slab.json
 ee733ada456444fe86dd7b09109908ede7dc7afd data/gasworks/loot_table/blocks/firebrick_stairs.json
 a10a33af202ee4bc7612d08d53cea7ea3d888966 data/gasworks/loot_table/blocks/firebrick_wall.json
