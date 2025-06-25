@@ -6,11 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.Half;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.SlabType;
-import net.minecraft.world.level.block.state.properties.StairsShape;
-import net.minecraft.world.level.block.state.properties.WallSide;
+import net.minecraft.world.level.block.state.properties.*;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -23,6 +19,7 @@ import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder.P
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
+import voidsong.gasworks.common.block.SillBlock;
 import voidsong.gasworks.common.block.properties.AshType;
 import voidsong.gasworks.common.block.properties.GSProperties;
 
@@ -134,6 +131,18 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		});
 	}
 
+	protected void multiPartialBlockAndItem(Block b, ModelFile item, Function<PartialBlockstate, ModelFile[]> model, List<Property<?>> additionalProps) {
+		itemModel(b, item);
+		VariantBlockStateBuilder stateBuilder = getVariantBuilder(b);
+		forEachState(stateBuilder.partialState(), additionalProps, state -> {
+			ModelFile[] modelLoc = model.apply(state);
+			ConfiguredModel[] models = new ConfiguredModel[modelLoc.length];
+			for(int i = 0; i < models.length; i++)
+				models[i] = new ConfiguredModel(modelLoc[i]);
+			state.setModels(models);
+		});
+	}
+
 	/*
 	 * Six-sided cubes & other simple singular models
 	 */
@@ -166,6 +175,32 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 			setRenderType(type, models[i]);
 		}
 		multiBlockAndItem(b, models);
+	}
+
+	public void sillMultiEight(SillBlock block, ResourceLocation brick, String stone) {
+		sillMultiEight(block, brick, rlMC("polished_" + stone), stone);
+	}
+
+	public void sillMultiEight(SillBlock block, ResourceLocation brick, ResourceLocation full, String stone) {
+		ResourceLocation sill = rl("stone/sills/" + stone);
+		ResourceLocation single = rl("stone/bricks/single/" + stone);
+		ModelFile[] topModels = new ModelFile[8];
+		for(int i = 0; i < 8; i++) {
+			topModels[i] = models().withExistingParent(getName(block)+"_top"+i, rl("sill"))
+				.texture("brick", brick.withSuffix(Integer.toString(i)))
+				.texture("down_overlay", brick.withSuffix(Integer.toString(i)))
+				.texture("up_overlay", full)
+				.texture("sill", sill);
+		}
+		ModelFile[] bottomModels = new ModelFile[8];
+		for(int i = 0; i < 8; i++) {
+			bottomModels[i] = models().withExistingParent(getName(block)+"_bottom"+i, rl("sill"))
+				.texture("brick", brick.withSuffix(Integer.toString(i)))
+				.texture("down_overlay", full)
+				.texture("up_overlay", brick.withSuffix(Integer.toString(i)))
+				.texture("sill", single);
+		}
+		multiPartialBlockAndItem(block, topModels[0], state -> (state.getSetStates().get(BlockStateProperties.HALF).equals(Half.TOP)) ? topModels : bottomModels, List.of(BlockStateProperties.HALF));
 	}
 
 	/*
@@ -369,8 +404,6 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 		part.addModel().condition(entry.getValue(), height);
 	}
 
-
-
 	private BlockModelBuilder wallModelTopped(String name, String type, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
 		return models().withExistingParent(name, Gasworks.rl("block/"+type))
 			.texture("wall_bottom", bottom)
@@ -384,6 +417,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 			.texture("wall_side", side)
 			.texture("wall_top", top);
 	}
+
 
 	/*
 	 * Axially rotatable blocks of some kind, incl. 3-axis & 2-axis (horizontal); as well as full-6-angle
@@ -399,7 +433,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 				.texture("quoin", quoin)
 				.texture("quoin_reversed", quoin.withSuffix("_reversed"))
 				.texture("single_brick", single)
-				.texture("brick_end", quoin.withSuffix("_left"))
+				.texture("quoin_left", quoin.withSuffix("_left"))
 				.texture("quoin_right", quoin.withSuffix("_right"));
 		}
 		rotatedBlock(block, $ -> models, HorizontalDirectionalBlock.FACING, List.of(), 0, 270);

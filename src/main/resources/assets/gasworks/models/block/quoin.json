@@ -1,6 +1,10 @@
 {
   "parent": "block/block",
   "render_type": "cutout_mipped",
+  "textures": {
+    "particle": "#brick",
+    "particle_overlay": "#brick"
+  },
   "elements": [
     {
       "from": [ 0, 0, 0 ],
