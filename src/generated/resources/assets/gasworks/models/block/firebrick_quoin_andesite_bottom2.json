@@ -2,10 +2,10 @@
   "parent": "gasworks:block/quoin_reversed",
   "textures": {
     "brick": "gasworks:block/firebricks/firebricks2",
-    "quoin": "gasworks:block/stone/quoins/andesite",
-    "quoin_left": "gasworks:block/stone/quoins/andesite_left",
-    "quoin_reversed": "gasworks:block/stone/quoins/andesite_reversed",
-    "quoin_right": "gasworks:block/stone/quoins/andesite_right",
+    "quoin": "gasworks:block/stone/quoins/andesite_top_reversed",
+    "quoin_left": "gasworks:block/stone/bricks/corner/andesite_top_left",
+    "quoin_reversed": "gasworks:block/stone/quoins/andesite_bottom_reversed",
+    "quoin_right": "gasworks:block/stone/bricks/corner/andesite_bottom_right",
     "single_brick": "gasworks:block/stone/bricks/single/andesite"
   }
 }

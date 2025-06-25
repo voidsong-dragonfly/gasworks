@@ -2,10 +2,10 @@
   "parent": "gasworks:block/quoin",
   "textures": {
     "brick": "gasworks:block/bricks/bricks5",
-    "quoin": "gasworks:block/stone/quoins/deepslate",
-    "quoin_left": "gasworks:block/stone/quoins/deepslate_left",
-    "quoin_reversed": "gasworks:block/stone/quoins/deepslate_reversed",
-    "quoin_right": "gasworks:block/stone/quoins/deepslate_right",
+    "quoin": "gasworks:block/stone/quoins/deepslate_top",
+    "quoin_left": "gasworks:block/stone/bricks/corner/deepslate_top_right",
+    "quoin_reversed": "gasworks:block/stone/quoins/deepslate_bottom",
+    "quoin_right": "gasworks:block/stone/bricks/corner/deepslate_bottom_left",
     "single_brick": "gasworks:block/stone/bricks/single/deepslate"
   }
 }

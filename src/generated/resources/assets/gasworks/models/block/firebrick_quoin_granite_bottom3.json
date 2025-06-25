@@ -2,10 +2,10 @@
   "parent": "gasworks:block/quoin_reversed",
   "textures": {
     "brick": "gasworks:block/firebricks/firebricks3",
-    "quoin": "gasworks:block/stone/quoins/granite",
-    "quoin_left": "gasworks:block/stone/quoins/granite_left",
-    "quoin_reversed": "gasworks:block/stone/quoins/granite_reversed",
-    "quoin_right": "gasworks:block/stone/quoins/granite_right",
+    "quoin": "gasworks:block/stone/quoins/granite_top_reversed",
+    "quoin_left": "gasworks:block/stone/bricks/corner/granite_top_left",
+    "quoin_reversed": "gasworks:block/stone/quoins/granite_bottom_reversed",
+    "quoin_right": "gasworks:block/stone/bricks/corner/granite_bottom_right",
     "single_brick": "gasworks:block/stone/bricks/single/granite"
   }
 }

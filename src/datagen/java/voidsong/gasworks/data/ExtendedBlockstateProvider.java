@@ -426,25 +426,26 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	public void quoinMultiEight(HorizontalDirectionalBlock block, ResourceLocation brick, String stone) {
 		ResourceLocation quoin = rl("stone/quoins/" + stone);
 		ResourceLocation single = rl("stone/bricks/single/" + stone);
+		ResourceLocation corner = rl("stone/bricks/corner/" + stone);
 		ModelFile[] topModels = new ModelFile[8];
 		for(int i = 0; i < 8; i++) {
 			topModels[i] = models().withExistingParent(getName(block)+"_top"+i, rl("quoin"))
 				.texture("brick", brick.withSuffix(Integer.toString(i)))
-				.texture("quoin", quoin)
-				.texture("quoin_reversed", quoin.withSuffix("_reversed"))
+				.texture("quoin", quoin.withSuffix("_top"))
+				.texture("quoin_reversed", quoin.withSuffix("_bottom"))
 				.texture("single_brick", single)
-				.texture("quoin_left", quoin.withSuffix("_left"))
-				.texture("quoin_right", quoin.withSuffix("_right"));
+				.texture("quoin_right", corner.withSuffix("_bottom_left"))
+				.texture("quoin_left", corner.withSuffix("_top_right"));
 		}
 		ModelFile[] bottomModels = new ModelFile[8];
 		for(int i = 0; i < 8; i++) {
 			bottomModels[i] = models().withExistingParent(getName(block)+"_bottom"+i, rl("quoin_reversed"))
 				.texture("brick", brick.withSuffix(Integer.toString(i)))
-				.texture("quoin", quoin)
-				.texture("quoin_reversed", quoin.withSuffix("_reversed"))
+				.texture("quoin", quoin.withSuffix("_top_reversed"))
+				.texture("quoin_reversed", quoin.withSuffix("_bottom_reversed"))
 				.texture("single_brick", single)
-				.texture("quoin_left", quoin.withSuffix("_left"))
-				.texture("quoin_right", quoin.withSuffix("_right"));
+				.texture("quoin_right", corner.withSuffix("_bottom_right"))
+				.texture("quoin_left", corner.withSuffix("_top_left"));
 		}
 		rotatedBlock(block, state -> (state.getSetStates().get(BlockStateProperties.HALF).equals(Half.TOP)) ? topModels : bottomModels, HorizontalDirectionalBlock.FACING, List.of(BlockStateProperties.HALF), 0, 270);
 		itemModel(block, topModels[0]);

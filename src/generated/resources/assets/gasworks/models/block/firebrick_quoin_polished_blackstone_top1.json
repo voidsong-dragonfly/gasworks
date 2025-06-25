@@ -2,10 +2,10 @@
   "parent": "gasworks:block/quoin",
   "textures": {
     "brick": "gasworks:block/firebricks/firebricks1",
-    "quoin": "gasworks:block/stone/quoins/polished_blackstone",
-    "quoin_left": "gasworks:block/stone/quoins/polished_blackstone_left",
-    "quoin_reversed": "gasworks:block/stone/quoins/polished_blackstone_reversed",
-    "quoin_right": "gasworks:block/stone/quoins/polished_blackstone_right",
+    "quoin": "gasworks:block/stone/quoins/polished_blackstone_top",
+    "quoin_left": "gasworks:block/stone/bricks/corner/polished_blackstone_top_right",
+    "quoin_reversed": "gasworks:block/stone/quoins/polished_blackstone_bottom",
+    "quoin_right": "gasworks:block/stone/bricks/corner/polished_blackstone_bottom_left",
     "single_brick": "gasworks:block/stone/bricks/single/polished_blackstone"
   }
 }
