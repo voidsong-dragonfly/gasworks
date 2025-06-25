@@ -1,0 +1,11 @@
+{
+  "parent": "gasworks:block/quoin_reversed",
+  "textures": {
+    "brick": "gasworks:block/bricks/bricks6",
+    "quoin": "gasworks:block/stone/quoins/stone",
+    "quoin_left": "gasworks:block/stone/quoins/stone_left",
+    "quoin_reversed": "gasworks:block/stone/quoins/stone_reversed",
+    "quoin_right": "gasworks:block/stone/quoins/stone_right",
+    "single_brick": "gasworks:block/stone/bricks/single/stone"
+  }
+}

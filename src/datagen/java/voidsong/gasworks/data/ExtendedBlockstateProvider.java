@@ -426,9 +426,9 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	public void quoinMultiEight(HorizontalDirectionalBlock block, ResourceLocation brick, String stone) {
 		ResourceLocation quoin = rl("stone/quoins/" + stone);
 		ResourceLocation single = rl("stone/bricks/single/" + stone);
-		ModelFile[] models = new ModelFile[8];
+		ModelFile[] topModels = new ModelFile[8];
 		for(int i = 0; i < 8; i++) {
-			models[i] = models().withExistingParent(getName(block)+i, rl("quoin"))
+			topModels[i] = models().withExistingParent(getName(block)+"_top"+i, rl("quoin"))
 				.texture("brick", brick.withSuffix(Integer.toString(i)))
 				.texture("quoin", quoin)
 				.texture("quoin_reversed", quoin.withSuffix("_reversed"))
@@ -436,8 +436,18 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 				.texture("quoin_left", quoin.withSuffix("_left"))
 				.texture("quoin_right", quoin.withSuffix("_right"));
 		}
-		rotatedBlock(block, $ -> models, HorizontalDirectionalBlock.FACING, List.of(), 0, 270);
-		itemModel(block, models[0]);
+		ModelFile[] bottomModels = new ModelFile[8];
+		for(int i = 0; i < 8; i++) {
+			bottomModels[i] = models().withExistingParent(getName(block)+"_bottom"+i, rl("quoin_reversed"))
+				.texture("brick", brick.withSuffix(Integer.toString(i)))
+				.texture("quoin", quoin)
+				.texture("quoin_reversed", quoin.withSuffix("_reversed"))
+				.texture("single_brick", single)
+				.texture("quoin_left", quoin.withSuffix("_left"))
+				.texture("quoin_right", quoin.withSuffix("_right"));
+		}
+		rotatedBlock(block, state -> (state.getSetStates().get(BlockStateProperties.HALF).equals(Half.TOP)) ? topModels : bottomModels, HorizontalDirectionalBlock.FACING, List.of(BlockStateProperties.HALF), 0, 270);
+		itemModel(block, topModels[0]);
 	}
 
 	public void logPileBlock(RotatedPillarBlock block, ResourceLocation log) {

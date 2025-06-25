@@ -1,0 +1,11 @@
+{
+  "parent": "gasworks:block/quoin_reversed",
+  "textures": {
+    "brick": "gasworks:block/bricks/bricks0",
+    "quoin": "gasworks:block/stone/quoins/diorite",
+    "quoin_left": "gasworks:block/stone/quoins/diorite_left",
+    "quoin_reversed": "gasworks:block/stone/quoins/diorite_reversed",
+    "quoin_right": "gasworks:block/stone/quoins/diorite_right",
+    "single_brick": "gasworks:block/stone/bricks/single/diorite"
+  }
+}
