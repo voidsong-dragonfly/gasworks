@@ -74,20 +74,20 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         stairsMultiEightAll(GSBlocks.FIREBRICK_STAIRS.get(), rl("firebricks/firebricks"));
         slabMultiEightAll(GSBlocks.FIREBRICK_SLAB.get(), rl("firebricks/firebricks"));
         wallMultiEight(GSBlocks.FIREBRICK_WALL.get(), rl("firebricks/firebricks"), rl("firebricks/firebricks_wall"), rl("firebricks/firebricks_top"), false);
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_ANDESITE.get(), rl("firebricks/firebricks"), rl("stone/quoins/andesite"));
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_DEEPSLATE.get(), rl("firebricks/firebricks"), rl("stone/quoins/deepslate"));
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_DIORITE.get(), rl("firebricks/firebricks"), rl("stone/quoins/diorite"));
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_GRANITE.get(), rl("firebricks/firebricks"), rl("stone/quoins/granite"));
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_POLISHED_BLACKSTONE.get(), rl("firebricks/firebricks"), rl("stone/quoins/polished_blackstone"));
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_STONE.get(), rl("firebricks/firebricks"), rl("stone/quoins/stone"));
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_TUFF.get(), rl("firebricks/firebricks"), rl("stone/quoins/tuff"));
+        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_ANDESITE.get(), rl("firebricks/firebricks"), "andesite");
+        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_DEEPSLATE.get(), rl("firebricks/firebricks"), "deepslate");
+        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_DIORITE.get(), rl("firebricks/firebricks"), "diorite");
+        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_GRANITE.get(), rl("firebricks/firebricks"), "granite");
+        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_POLISHED_BLACKSTONE.get(), rl("firebricks/firebricks"), "polished_blackstone");
+        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_STONE.get(), rl("firebricks/firebricks"), "stone");
+        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_TUFF.get(), rl("firebricks/firebricks"), "tuff");
         // Normal brick quoins & specialty blocks
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_ANDESITE.get(), rl("bricks/bricks"), rl("stone/quoins/andesite"));
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_DEEPSLATE.get(), rl("bricks/bricks"), rl("stone/quoins/deepslate"));
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_DIORITE.get(), rl("bricks/bricks"), rl("stone/quoins/diorite"));
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_GRANITE.get(), rl("bricks/bricks"), rl("stone/quoins/granite"));
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get(), rl("bricks/bricks"), rl("stone/quoins/polished_blackstone"));
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_STONE.get(), rl("bricks/bricks"), rl("stone/quoins/stone"));
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_TUFF.get(), rl("bricks/bricks"), rl("stone/quoins/tuff"));
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_ANDESITE.get(), rl("bricks/bricks"), "andesite");
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_DEEPSLATE.get(), rl("bricks/bricks"), "deepslate");
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_DIORITE.get(), rl("bricks/bricks"), "diorite");
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_GRANITE.get(), rl("bricks/bricks"), "granite");
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get(), rl("bricks/bricks"), "polished_blackstone");
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_STONE.get(), rl("bricks/bricks"), "stone");
+        quoinMultiEight(GSBlocks.BRICK_QUOIN_TUFF.get(), rl("bricks/bricks"), "tuff");
     }
 }

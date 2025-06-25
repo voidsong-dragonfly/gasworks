@@ -1,19 +1,30 @@
 {
-  "parent": "gasworks:block/cube_overlay",
-  "textures": {
-    "down": "#brick",
-    "east": "#brick",
-    "north": "#brick",
-    "particle": "#brick",
-    "south": "#brick",
-    "up": "#brick",
-    "west": "#brick",
-    "down_overlay": "#quoin_top",
-    "east_overlay": "#quoin",
-    "north_overlay": "#quoin_reversed",
-    "particle_overlay": "#brick",
-    "south_overlay": "#quoin_left",
-    "up_overlay": "#quoin_bottom",
-    "west_overlay": "#quoin_right"
-  }
+  "parent": "block/block",
+  "render_type": "cutout_mipped",
+  "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "texture": "#brick", "cullface": "down" },
+        "up":    { "texture": "#brick", "cullface": "up" },
+        "north": { "texture": "#brick", "cullface": "north" },
+        "south": { "texture": "#brick", "cullface": "south" },
+        "west":  { "texture": "#brick", "cullface": "west" },
+        "east":  { "texture": "#brick", "cullface": "east" }
+      }
+    },
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "texture": "#single_brick", "cullface": "down" },
+        "up":    { "texture": "#single_brick", "cullface": "up", "rotation": 270 },
+        "north": { "texture": "#quoin_reversed", "cullface": "north" },
+        "south": { "texture": "#quoin_left", "cullface": "south" },
+        "west":  { "texture": "#quoin_right", "cullface": "west" },
+        "east":  { "texture": "#quoin", "cullface": "east" }
+      }
+    }
+  ]
 }

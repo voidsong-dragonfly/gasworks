@@ -389,16 +389,17 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	 * Axially rotatable blocks of some kind, incl. 3-axis & 2-axis (horizontal); as well as full-6-angle
 	 */
 
-	public void quoinMultiEight(HorizontalDirectionalBlock block, ResourceLocation brick, ResourceLocation quoin) {
+	public void quoinMultiEight(HorizontalDirectionalBlock block, ResourceLocation brick, String stone) {
+		ResourceLocation quoin = rl("stone/quoins/" + stone);
+		ResourceLocation single = rl("stone/bricks/single/" + stone);
 		ModelFile[] models = new ModelFile[8];
 		for(int i = 0; i < 8; i++) {
 			models[i] = models().withExistingParent(getName(block)+i, rl("quoin"))
 				.texture("brick", brick.withSuffix(Integer.toString(i)))
 				.texture("quoin", quoin)
 				.texture("quoin_reversed", quoin.withSuffix("_reversed"))
-				.texture("quoin_top", quoin.withSuffix("_top"))
-				.texture("quoin_bottom", quoin.withSuffix("_bottom"))
-				.texture("quoin_left", quoin.withSuffix("_left"))
+				.texture("single_brick", single)
+				.texture("brick_end", quoin.withSuffix("_left"))
 				.texture("quoin_right", quoin.withSuffix("_right"));
 		}
 		rotatedBlock(block, $ -> models, HorizontalDirectionalBlock.FACING, List.of(), 0, 270);
