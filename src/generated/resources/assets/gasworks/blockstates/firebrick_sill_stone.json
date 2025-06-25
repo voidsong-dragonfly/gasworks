@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "half=bottom": [
+      {
+        "model": "gasworks:block/firebrick_sill_stone_bottom0"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_bottom1"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_bottom2"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_bottom3"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_bottom4"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_bottom5"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_bottom6"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_bottom7"
+      }
+    ],
+    "half=top": [
+      {
+        "model": "gasworks:block/firebrick_sill_stone_top0"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_top1"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_top2"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_top3"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_top4"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_top5"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_top6"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_stone_top7"
+      }
+    ]
+  }
+}

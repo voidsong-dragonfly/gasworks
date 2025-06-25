@@ -106,6 +106,13 @@ public class GSBlocks {
     public static DeferredBlock<StairBlock> FIREBRICK_STAIRS = BLOCKS.register("firebrick_stairs", () -> new StairBlock(FIREBRICKS.get().defaultBlockState(), FIREBRICKS_PROPERTIES));
     public static DeferredBlock<SlabBlock> FIREBRICK_SLAB = BLOCKS.registerBlock("firebrick_slab",  SlabBlock::new, FIREBRICKS_PROPERTIES);
     public static DeferredBlock<WallBlock> FIREBRICK_WALL = BLOCKS.registerBlock("firebrick_wall",  WallBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> FIREBRICK_SILL_ANDESITE = BLOCKS.registerBlock("firebrick_sill_andesite",  SillBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> FIREBRICK_SILL_DEEPSLATE = BLOCKS.registerBlock("firebrick_sill_deepslate",  SillBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> FIREBRICK_SILL_DIORITE = BLOCKS.registerBlock("firebrick_sill_diorite",  SillBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> FIREBRICK_SILL_GRANITE = BLOCKS.registerBlock("firebrick_sill_granite",  SillBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> FIREBRICK_SILL_POLISHED_BLACKSTONE = BLOCKS.registerBlock("firebrick_sill_polished_blackstone",  SillBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> FIREBRICK_SILL_STONE = BLOCKS.registerBlock("firebrick_sill_stone",  SillBlock::new, FIREBRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> FIREBRICK_SILL_TUFF = BLOCKS.registerBlock("firebrick_sill_tuff",  SillBlock::new, FIREBRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_ANDESITE = BLOCKS.registerBlock("firebrick_quoin_andesite",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_DEEPSLATE = BLOCKS.registerBlock("firebrick_quoin_deepslate",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_DIORITE = BLOCKS.registerBlock("firebrick_quoin_diorite",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
@@ -114,6 +121,13 @@ public class GSBlocks {
     public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_STONE = BLOCKS.registerBlock("firebrick_quoin_stone",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_TUFF = BLOCKS.registerBlock("firebrick_quoin_tuff",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
     // Normal brick quoins & specialty blocks
+    public static DeferredBlock<SillBlock> BRICK_SILL_ANDESITE = BLOCKS.registerBlock("brick_sill_andesite",  SillBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> BRICK_SILL_DEEPSLATE = BLOCKS.registerBlock("brick_sill_deepslate",  SillBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> BRICK_SILL_DIORITE = BLOCKS.registerBlock("brick_sill_diorite",  SillBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> BRICK_SILL_GRANITE = BLOCKS.registerBlock("brick_sill_granite",  SillBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> BRICK_SILL_POLISHED_BLACKSTONE = BLOCKS.registerBlock("brick_sill_polished_blackstone",  SillBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> BRICK_SILL_STONE = BLOCKS.registerBlock("brick_sill_stone",  SillBlock::new, BRICKS_PROPERTIES);
+    public static DeferredBlock<SillBlock> BRICK_SILL_TUFF = BLOCKS.registerBlock("brick_sill_tuff",  SillBlock::new, BRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_ANDESITE = BLOCKS.registerBlock("brick_quoin_andesite",  QuoinBlock::new, BRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_DEEPSLATE = BLOCKS.registerBlock("brick_quoin_deepslate",  QuoinBlock::new, BRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_DIORITE = BLOCKS.registerBlock("brick_quoin_diorite",  QuoinBlock::new, BRICKS_PROPERTIES);

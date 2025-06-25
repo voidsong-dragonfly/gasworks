@@ -56,6 +56,13 @@ public class GSItems {
     public static final DeferredItem<BlockItem> FIREBRICK_STAIRS = ITEMS.registerSimpleBlockItem("firebrick_stairs", GSBlocks.FIREBRICK_STAIRS);
     public static final DeferredItem<BlockItem> FIREBRICK_SLAB = ITEMS.registerSimpleBlockItem("firebrick_slab", GSBlocks.FIREBRICK_SLAB);
     public static final DeferredItem<BlockItem> FIREBRICK_WALL = ITEMS.registerSimpleBlockItem("firebrick_wall", GSBlocks.FIREBRICK_WALL);
+    public static final DeferredItem<BlockItem> FIREBRICK_SILL_ANDESITE = ITEMS.registerSimpleBlockItem("firebrick_sill_andesite", GSBlocks.FIREBRICK_SILL_ANDESITE);
+    public static final DeferredItem<BlockItem> FIREBRICK_SILL_DEEPSLATE = ITEMS.registerSimpleBlockItem("firebrick_sill_deepslate", GSBlocks.FIREBRICK_SILL_DEEPSLATE);
+    public static final DeferredItem<BlockItem> FIREBRICK_SILL_DIORITE = ITEMS.registerSimpleBlockItem("firebrick_sill_diorite", GSBlocks.FIREBRICK_SILL_DIORITE);
+    public static final DeferredItem<BlockItem> FIREBRICK_SILL_GRANITE = ITEMS.registerSimpleBlockItem("firebrick_sill_granite", GSBlocks.FIREBRICK_SILL_GRANITE);
+    public static final DeferredItem<BlockItem> FIREBRICK_SILL_POLISHED_BLACKSTONE = ITEMS.registerSimpleBlockItem("firebrick_sill_polished_blackstone", GSBlocks.FIREBRICK_SILL_POLISHED_BLACKSTONE);
+    public static final DeferredItem<BlockItem> FIREBRICK_SILL_STONE = ITEMS.registerSimpleBlockItem("firebrick_sill_stone", GSBlocks.FIREBRICK_SILL_STONE);
+    public static final DeferredItem<BlockItem> FIREBRICK_SILL_TUFF = ITEMS.registerSimpleBlockItem("firebrick_sill_tuff", GSBlocks.FIREBRICK_SILL_TUFF);
     public static final DeferredItem<BlockItem> FIREBRICK_QUOIN_ANDESITE = ITEMS.registerSimpleBlockItem("firebrick_quoin_andesite", GSBlocks.FIREBRICK_QUOIN_ANDESITE);
     public static final DeferredItem<BlockItem> FIREBRICK_QUOIN_DEEPSLATE = ITEMS.registerSimpleBlockItem("firebrick_quoin_deepslate", GSBlocks.FIREBRICK_QUOIN_DEEPSLATE);
     public static final DeferredItem<BlockItem> FIREBRICK_QUOIN_DIORITE = ITEMS.registerSimpleBlockItem("firebrick_quoin_diorite", GSBlocks.FIREBRICK_QUOIN_DIORITE);
@@ -64,6 +71,13 @@ public class GSItems {
     public static final DeferredItem<BlockItem> FIREBRICK_QUOIN_STONE = ITEMS.registerSimpleBlockItem("firebrick_quoin_stone", GSBlocks.FIREBRICK_QUOIN_STONE);
     public static final DeferredItem<BlockItem> FIREBRICK_QUOIN_TUFF = ITEMS.registerSimpleBlockItem("firebrick_quoin_tuff", GSBlocks.FIREBRICK_QUOIN_TUFF);
     // Normal brick quoins & specialty blocks
+    public static final DeferredItem<BlockItem> BRICK_SILL_ANDESITE = ITEMS.registerSimpleBlockItem("brick_sill_andesite", GSBlocks.BRICK_SILL_ANDESITE);
+    public static final DeferredItem<BlockItem> BRICK_SILL_DEEPSLATE = ITEMS.registerSimpleBlockItem("brick_sill_deepslate", GSBlocks.BRICK_SILL_DEEPSLATE);
+    public static final DeferredItem<BlockItem> BRICK_SILL_DIORITE = ITEMS.registerSimpleBlockItem("brick_sill_diorite", GSBlocks.BRICK_SILL_DIORITE);
+    public static final DeferredItem<BlockItem> BRICK_SILL_GRANITE = ITEMS.registerSimpleBlockItem("brick_sill_granite", GSBlocks.BRICK_SILL_GRANITE);
+    public static final DeferredItem<BlockItem> BRICK_SILL_POLISHED_BLACKSTONE = ITEMS.registerSimpleBlockItem("brick_sill_polished_blackstone", GSBlocks.BRICK_SILL_POLISHED_BLACKSTONE);
+    public static final DeferredItem<BlockItem> BRICK_SILL_STONE = ITEMS.registerSimpleBlockItem("brick_sill_stone", GSBlocks.BRICK_SILL_STONE);
+    public static final DeferredItem<BlockItem> BRICK_SILL_TUFF = ITEMS.registerSimpleBlockItem("brick_sill_tuff", GSBlocks.BRICK_SILL_TUFF);
     public static final DeferredItem<BlockItem> BRICK_QUOIN_ANDESITE = ITEMS.registerSimpleBlockItem("brick_quoin_andesite", GSBlocks.BRICK_QUOIN_ANDESITE);
     public static final DeferredItem<BlockItem> BRICK_QUOIN_DEEPSLATE = ITEMS.registerSimpleBlockItem("brick_quoin_deepslate", GSBlocks.BRICK_QUOIN_DEEPSLATE);
     public static final DeferredItem<BlockItem> BRICK_QUOIN_DIORITE = ITEMS.registerSimpleBlockItem("brick_quoin_diorite", GSBlocks.BRICK_QUOIN_DIORITE);
@@ -112,6 +126,13 @@ public class GSItems {
             output.accept(FIREBRICK_STAIRS);
             output.accept(FIREBRICK_SLAB);
             output.accept(FIREBRICK_WALL);
+            output.accept(FIREBRICK_SILL_ANDESITE);
+            output.accept(FIREBRICK_SILL_DEEPSLATE);
+            output.accept(FIREBRICK_SILL_DIORITE);
+            output.accept(FIREBRICK_SILL_GRANITE);
+            output.accept(FIREBRICK_SILL_POLISHED_BLACKSTONE);
+            output.accept(FIREBRICK_SILL_STONE);
+            output.accept(FIREBRICK_SILL_TUFF);
             output.accept(FIREBRICK_QUOIN_ANDESITE);
             output.accept(FIREBRICK_QUOIN_DEEPSLATE);
             output.accept(FIREBRICK_QUOIN_DIORITE);
@@ -119,6 +140,13 @@ public class GSItems {
             output.accept(FIREBRICK_QUOIN_POLISHED_BLACKSTONE);
             output.accept(FIREBRICK_QUOIN_STONE);
             output.accept(FIREBRICK_QUOIN_TUFF);
+            output.accept(BRICK_SILL_ANDESITE);
+            output.accept(BRICK_SILL_DEEPSLATE);
+            output.accept(BRICK_SILL_DIORITE);
+            output.accept(BRICK_SILL_GRANITE);
+            output.accept(BRICK_SILL_POLISHED_BLACKSTONE);
+            output.accept(BRICK_SILL_STONE);
+            output.accept(BRICK_SILL_TUFF);
             output.accept(BRICK_QUOIN_ANDESITE);
             output.accept(BRICK_QUOIN_DEEPSLATE);
             output.accept(BRICK_QUOIN_DIORITE);

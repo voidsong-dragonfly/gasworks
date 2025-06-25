@@ -136,6 +136,13 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.FIREBRICK_STAIRS.get());
             dropSelf(GSBlocks.FIREBRICK_SLAB.get());
             dropSelf(GSBlocks.FIREBRICK_WALL.get());
+            dropSelf(GSBlocks.FIREBRICK_SILL_ANDESITE.get());
+            dropSelf(GSBlocks.FIREBRICK_SILL_DEEPSLATE.get());
+            dropSelf(GSBlocks.FIREBRICK_SILL_DIORITE.get());
+            dropSelf(GSBlocks.FIREBRICK_SILL_GRANITE.get());
+            dropSelf(GSBlocks.FIREBRICK_SILL_POLISHED_BLACKSTONE.get());
+            dropSelf(GSBlocks.FIREBRICK_SILL_STONE.get());
+            dropSelf(GSBlocks.FIREBRICK_SILL_TUFF.get());
             dropSelf(GSBlocks.FIREBRICK_QUOIN_ANDESITE.get());
             dropSelf(GSBlocks.FIREBRICK_QUOIN_DEEPSLATE.get());
             dropSelf(GSBlocks.FIREBRICK_QUOIN_DIORITE.get());
@@ -144,6 +151,13 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.FIREBRICK_QUOIN_STONE.get());
             dropSelf(GSBlocks.FIREBRICK_QUOIN_TUFF.get());
             // Normal brick quoins & specialty blocks
+            dropSelf(GSBlocks.BRICK_SILL_ANDESITE.get());
+            dropSelf(GSBlocks.BRICK_SILL_DEEPSLATE.get());
+            dropSelf(GSBlocks.BRICK_SILL_DIORITE.get());
+            dropSelf(GSBlocks.BRICK_SILL_GRANITE.get());
+            dropSelf(GSBlocks.BRICK_SILL_POLISHED_BLACKSTONE.get());
+            dropSelf(GSBlocks.BRICK_SILL_STONE.get());
+            dropSelf(GSBlocks.BRICK_SILL_TUFF.get());
             dropSelf(GSBlocks.BRICK_QUOIN_ANDESITE.get());
             dropSelf(GSBlocks.BRICK_QUOIN_DEEPSLATE.get());
             dropSelf(GSBlocks.BRICK_QUOIN_DIORITE.get());

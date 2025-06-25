@@ -1,0 +1,9 @@
+{
+  "parent": "gasworks:block/sill",
+  "textures": {
+    "brick": "gasworks:block/bricks/bricks0",
+    "down_overlay": "gasworks:block/bricks/bricks0",
+    "sill": "gasworks:block/stone/sills/diorite",
+    "up_overlay": "minecraft:block/polished_diorite"
+  }
+}

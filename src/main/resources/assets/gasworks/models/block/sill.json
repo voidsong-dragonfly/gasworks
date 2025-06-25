@@ -1,0 +1,17 @@
+{
+	"parent": "gasworks:block/cube_overlay",
+	"textures": {
+			"down": "#brick",
+			"east": "#brick",
+			"north": "#brick",
+			"particle": "#brick",
+			"south": "#brick",
+			"up": "#brick",
+			"west": "#brick",
+			"east_overlay": "#sill",
+			"north_overlay": "#sill",
+			"particle_overlay": "#brick",
+			"south_overlay": "#sill",
+			"west_overlay": "#sill"
+	}
+}

@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "half=bottom": [
+      {
+        "model": "gasworks:block/brick_sill_andesite_bottom0"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_bottom1"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_bottom2"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_bottom3"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_bottom4"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_bottom5"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_bottom6"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_bottom7"
+      }
+    ],
+    "half=top": [
+      {
+        "model": "gasworks:block/brick_sill_andesite_top0"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_top1"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_top2"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_top3"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_top4"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_top5"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_top6"
+      },
+      {
+        "model": "gasworks:block/brick_sill_andesite_top7"
+      }
+    ]
+  }
+}

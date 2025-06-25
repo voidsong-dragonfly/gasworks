@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "half=bottom": [
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_bottom0"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_bottom1"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_bottom2"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_bottom3"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_bottom4"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_bottom5"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_bottom6"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_bottom7"
+      }
+    ],
+    "half=top": [
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_top0"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_top1"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_top2"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_top3"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_top4"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_top5"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_top6"
+      },
+      {
+        "model": "gasworks:block/firebrick_sill_deepslate_top7"
+      }
+    ]
+  }
+}

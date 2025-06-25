@@ -13,24 +13,23 @@ Limeclay        | Cement, Fireclay, Clay
 CERAMICS
 ------------------------------------------
 Fireclay
-    Fireclay Bricks
-    Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blacstone? => Quoins, Sills
+    ✓ Fireclay Bricks
+    Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blackstone? => ✓ Quoins, Sills
     Fireclay Terracotta (?)
 Red Clay
-    Red Clay Bricks
-    Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blacstone? => Quoins, Sills
-    Red Clay Terracotta
+    ✓ Red Clay Bricks
+    Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blackstone? => ✓ Quoins, Sills
+    ✓ Red Clay Terracotta
 Concrete
-    Concrete
-    Reinforced Concrete
-    Concrete Bricks
+    Reinforced Concrete => Fibers, wrought bar, sand, gravel, cement == powder; powder + water == concrete
     Reinforced Concrete Bricks
-Insulation Blocks
-    Bricks, Blocks
-Stone Bricks (?)
-    Andesite, Diorite, Granite
+    Tar-Macadam Pavement
 Framed Glass
     Panes, Blocks
+Insulation Blocks (?)
+Stone Bricks (?)
+    Andesite, Diorite, Granite
+
 
 WOOD
 ------------------------------------------
