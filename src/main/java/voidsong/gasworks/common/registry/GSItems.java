@@ -2,17 +2,19 @@ package voidsong.gasworks.common.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BoneMealItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.Item.Properties;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.StainedGlassBlock;
+import net.minecraft.world.level.block.StainedGlassPaneBlock;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.item.TradeswomansJournalItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GSItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Gasworks.MOD_ID);
@@ -85,6 +87,11 @@ public class GSItems {
     public static final DeferredItem<BlockItem> BRICK_QUOIN_POLISHED_BLACKSTONE = ITEMS.registerSimpleBlockItem("brick_quoin_polished_blackstone", GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE);
     public static final DeferredItem<BlockItem> BRICK_QUOIN_STONE = ITEMS.registerSimpleBlockItem("brick_quoin_stone", GSBlocks.BRICK_QUOIN_STONE);
     public static final DeferredItem<BlockItem> BRICK_QUOIN_TUFF = ITEMS.registerSimpleBlockItem("brick_quoin_tuff", GSBlocks.BRICK_QUOIN_TUFF);
+    // Framed glass
+    public static final DeferredItem<BlockItem> FRAMED_GLASS = ITEMS.registerSimpleBlockItem("framed_glass", GSBlocks.FRAMED_GLASS);
+    public static final DeferredItem<BlockItem> FRAMED_GLASS_PANE = ITEMS.registerSimpleBlockItem("framed_glass_pane", GSBlocks.FRAMED_GLASS_PANE);
+    public static List<DeferredItem<BlockItem>> STAINED_FRAMED_GLASS = createStainedGlasses();
+    public static List<DeferredItem<BlockItem>> STAINED_FRAMED_GLASS_PANES = createStainedGlassPanes();
     /*
      * Tool items & other useful items
      */
@@ -154,5 +161,30 @@ public class GSItems {
             output.accept(BRICK_QUOIN_POLISHED_BLACKSTONE);
             output.accept(BRICK_QUOIN_STONE);
             output.accept(BRICK_QUOIN_TUFF);
+            output.accept(GSItems.FRAMED_GLASS);
+            output.accept(GSItems.FRAMED_GLASS_PANE);
+            output.acceptAll(STAINED_FRAMED_GLASS.stream().map(item -> new ItemStack(item.get())).toList());
+            output.acceptAll(STAINED_FRAMED_GLASS_PANES.stream().map(item -> new ItemStack(item.get())).toList());
         }).build());
+
+    /*
+     * Utility function for dyed blocks, etc
+     */
+    public static List<DeferredItem<BlockItem>> createStainedGlasses() {
+        List<DeferredItem<BlockItem>> items = new ArrayList<>();
+        for(DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS) {
+            DeferredItem<BlockItem> item = ITEMS.registerSimpleBlockItem(block.getRegisteredName().split(":")[1], block);
+            items.add(item);
+        }
+        return items;
+    }
+
+    public static List<DeferredItem<BlockItem>> createStainedGlassPanes() {
+        List<DeferredItem<BlockItem>> items = new ArrayList<>();
+        for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
+            DeferredItem<BlockItem> item = ITEMS.registerSimpleBlockItem(block.getRegisteredName().split(":")[1], block);
+            items.add(item);
+        }
+        return items;
+    }
 }

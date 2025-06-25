@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "render_type": "minecraft:transparent",
+  "textures": {
+    "layer0": "gasworks:block/framed_glass/orange_stained_framed_glass"
+  }
+}

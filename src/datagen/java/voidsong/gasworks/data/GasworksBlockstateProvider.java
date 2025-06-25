@@ -1,7 +1,13 @@
 package voidsong.gasworks.data;
 
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.StainedGlassBlock;
+import net.minecraft.world.level.block.StainedGlassPaneBlock;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.CompostBlock;
@@ -103,5 +109,19 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         quoinMultiEight(GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get(), rl("bricks/bricks"), "polished_blackstone");
         quoinMultiEight(GSBlocks.BRICK_QUOIN_STONE.get(), rl("bricks/bricks"), "stone");
         quoinMultiEight(GSBlocks.BRICK_QUOIN_TUFF.get(), rl("bricks/bricks"), "tuff");
+        // Framed Glass
+        cubeAll(GSBlocks.FRAMED_GLASS.get(), rl("framed_glass/framed_glass"), RenderType.CUTOUT_MIPPED);
+        paneBlockWithRenderType(GSBlocks.FRAMED_GLASS_PANE.get(), rl("framed_glass/framed_glass"), rl("framed_glass/framed_glass_pane_top"), "cutout_mipped");
+        itemModels().getBuilder(BuiltInRegistries.BLOCK.getKey(GSBlocks.FRAMED_GLASS_PANE.get()).getPath())
+            .parent(new ModelFile.UncheckedModelFile("item/generated"))
+            .texture("layer0", rl("framed_glass/framed_glass"));
+        for(DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS)
+            cubeAll(block.get(), rl("framed_glass/" + block.get().getColor()+ "_stained_framed_glass"), RenderType.TRANSLUCENT);
+        for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
+            paneBlockWithRenderType(block.get(), rl("framed_glass/" + block.get().getColor() + "_stained_framed_glass"), rl("framed_glass/framed_glass_pane_top"), "translucent");
+            itemModels().getBuilder(BuiltInRegistries.BLOCK.getKey(block.get()).getPath())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", rl("framed_glass/" + block.get().getColor() + "_stained_framed_glass"));
+        }
     }
 }

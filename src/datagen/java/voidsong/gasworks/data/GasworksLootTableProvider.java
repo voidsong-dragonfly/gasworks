@@ -14,6 +14,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StainedGlassBlock;
+import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
@@ -24,6 +26,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.properties.AshType;
@@ -165,6 +168,13 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get());
             dropSelf(GSBlocks.BRICK_QUOIN_STONE.get());
             dropSelf(GSBlocks.BRICK_QUOIN_TUFF.get());
+            // Framed glass
+            dropWhenSilkTouch(GSBlocks.FRAMED_GLASS.get());
+            dropWhenSilkTouch(GSBlocks.FRAMED_GLASS_PANE.get());
+            for(DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS)
+                dropWhenSilkTouch(block.get());
+            for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES)
+                dropWhenSilkTouch(block.get());
         }
     }
 

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "edge": "gasworks:block/framed_glass/framed_glass_pane_top",
+    "pane": "gasworks:block/framed_glass/cyan_stained_framed_glass"
+  }
+}

@@ -1,6 +1,7 @@
 package voidsong.gasworks.common.registry;
 
 import net.minecraft.util.ColorRGBA;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -10,6 +11,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.*;
 import voidsong.gasworks.common.block.properties.AshType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GSBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Gasworks.MOD_ID);
@@ -31,6 +35,15 @@ public class GSBlocks {
         .instrument(NoteBlockInstrument.BASEDRUM)
         .requiresCorrectToolForDrops()
         .strength(2.0F, 6.0F);
+    public static final BlockBehaviour.Properties FRAMED_GLASS_PROPERTIES = BlockBehaviour.Properties.of()
+        .instrument(NoteBlockInstrument.HAT)
+        .strength(0.75F)
+        .sound(SoundType.GLASS)
+        .noOcclusion()
+        .isValidSpawn((state, getter, pos, type) -> false)
+        .isRedstoneConductor((state, getter, pos) -> false)
+        .isSuffocating((state, getter, pos) -> false)
+        .isViewBlocking((state, getter, pos) -> false);
 
     /*
      * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
@@ -135,5 +148,33 @@ public class GSBlocks {
     public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_POLISHED_BLACKSTONE = BLOCKS.registerBlock("brick_quoin_polished_blackstone",  QuoinBlock::new, BRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_STONE = BLOCKS.registerBlock("brick_quoin_stone",  QuoinBlock::new, BRICKS_PROPERTIES);
     public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_TUFF = BLOCKS.registerBlock("brick_quoin_tuff",  QuoinBlock::new, BRICKS_PROPERTIES);
-    
+    // Framed glass
+    public static DeferredBlock<TransparentBlock> FRAMED_GLASS = BLOCKS.registerBlock("framed_glass", TransparentBlock::new, FRAMED_GLASS_PROPERTIES);
+    public static DeferredBlock<IronBarsBlock> FRAMED_GLASS_PANE = BLOCKS.registerBlock("framed_glass_pane", IronBarsBlock::new, FRAMED_GLASS_PROPERTIES);
+    public static List<DeferredBlock<StainedGlassBlock>> STAINED_FRAMED_GLASS = createStainedGlasses();
+    public static List<DeferredBlock<StainedGlassPaneBlock>> STAINED_FRAMED_GLASS_PANES = createStainedGlassPanes();
+
+
+
+
+    /*
+     * Utility function for dyed blocks, etc
+     */
+    public static List<DeferredBlock<StainedGlassBlock>> createStainedGlasses() {
+        List<DeferredBlock<StainedGlassBlock>> blocks = new ArrayList<>();
+        for(DyeColor color : DyeColor.values()) {
+            DeferredBlock<StainedGlassBlock> block = BLOCKS.register(color.getName()+"_stained_framed_glass", () -> (new StainedGlassBlock(color, FRAMED_GLASS_PROPERTIES)));
+            blocks.add(block);
+        }
+        return blocks;
+    }
+
+    public static List<DeferredBlock<StainedGlassPaneBlock>> createStainedGlassPanes() {
+        List<DeferredBlock<StainedGlassPaneBlock>> blocks = new ArrayList<>();
+        for(DyeColor color : DyeColor.values()) {
+            DeferredBlock<StainedGlassPaneBlock> block = BLOCKS.register(color.getName()+"_stained_framed_glass_pane", () -> (new StainedGlassPaneBlock(color, FRAMED_GLASS_PROPERTIES)));
+            blocks.add(block);
+        }
+        return blocks;
+    }
 }

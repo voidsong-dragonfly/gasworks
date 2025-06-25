@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gasworks:block/framed_glass/framed_glass"
+  }
+}
