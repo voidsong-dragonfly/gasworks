@@ -3,6 +3,7 @@ package voidsong.gasworks.data;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -12,6 +13,7 @@ import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
+import voidsong.gasworks.common.block.SillBlock;
 import voidsong.gasworks.common.registry.GSBlocks;
 
 import java.util.List;
@@ -80,35 +82,23 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
         stairsMultiEightAll(GSBlocks.FIREBRICK_STAIRS.get(), rl("firebricks/firebricks"));
         slabMultiEightAll(GSBlocks.FIREBRICK_SLAB.get(), rl("firebricks/firebricks"));
         wallMultiEight(GSBlocks.FIREBRICK_WALL.get(), rl("firebricks/firebricks"), rl("firebricks/firebricks_wall"), rl("firebricks/firebricks_top"), false);
-        sillMultiEight(GSBlocks.FIREBRICK_SILL_ANDESITE.get(), rl("firebricks/firebricks"), "andesite");
-        sillMultiEight(GSBlocks.FIREBRICK_SILL_DEEPSLATE.get(), rl("firebricks/firebricks"), "deepslate");
-        sillMultiEight(GSBlocks.FIREBRICK_SILL_DIORITE.get(), rl("firebricks/firebricks"), "diorite");
-        sillMultiEight(GSBlocks.FIREBRICK_SILL_GRANITE.get(), rl("firebricks/firebricks"), "granite");
-        sillMultiEight(GSBlocks.FIREBRICK_SILL_POLISHED_BLACKSTONE.get(), rl("firebricks/firebricks"), rlMC("polished_blackstone"), "polished_blackstone");
-        sillMultiEight(GSBlocks.FIREBRICK_SILL_STONE.get(), rl("firebricks/firebricks"), rl("stone/polished/stone"), "stone");
-        sillMultiEight(GSBlocks.FIREBRICK_SILL_TUFF.get(), rl("firebricks/firebricks"), "tuff");
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_ANDESITE.get(), rl("firebricks/firebricks"), "andesite");
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_DEEPSLATE.get(), rl("firebricks/firebricks"), "deepslate");
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_DIORITE.get(), rl("firebricks/firebricks"), "diorite");
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_GRANITE.get(), rl("firebricks/firebricks"), "granite");
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_POLISHED_BLACKSTONE.get(), rl("firebricks/firebricks"), "polished_blackstone");
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_STONE.get(), rl("firebricks/firebricks"), "stone");
-        quoinMultiEight(GSBlocks.FIREBRICK_QUOIN_TUFF.get(), rl("firebricks/firebricks"), "tuff");
+        for(DeferredBlock<SillBlock> block : GSBlocks.FIREBRICK_SILLS) {
+            SillBlock sill = block.get();
+            sillMultiEight(sill, rl("firebricks/firebricks"), getName(sill).substring("firebrick_sill_".length()));
+        }
+        for(DeferredBlock<HorizontalDirectionalBlock> block : GSBlocks.FIREBRICK_QUOINS) {
+            HorizontalDirectionalBlock quoin = block.get();
+            quoinMultiEight(quoin, rl("firebricks/firebricks"), getName(quoin).substring("firebrick_quoin_".length()));
+        }
         // Normal brick quoins & specialty blocks
-        sillMultiEight(GSBlocks.BRICK_SILL_ANDESITE.get(), rl("bricks/bricks"), "andesite");
-        sillMultiEight(GSBlocks.BRICK_SILL_DEEPSLATE.get(), rl("bricks/bricks"), "deepslate");
-        sillMultiEight(GSBlocks.BRICK_SILL_DIORITE.get(), rl("bricks/bricks"), "diorite");
-        sillMultiEight(GSBlocks.BRICK_SILL_GRANITE.get(), rl("bricks/bricks"), "granite");
-        sillMultiEight(GSBlocks.BRICK_SILL_POLISHED_BLACKSTONE.get(), rl("bricks/bricks"), rlMC("polished_blackstone"), "polished_blackstone");
-        sillMultiEight(GSBlocks.BRICK_SILL_STONE.get(), rl("bricks/bricks"), rl("stone/polished/stone"), "stone");
-        sillMultiEight(GSBlocks.BRICK_SILL_TUFF.get(), rl("bricks/bricks"), "tuff");
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_ANDESITE.get(), rl("bricks/bricks"), "andesite");
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_DEEPSLATE.get(), rl("bricks/bricks"), "deepslate");
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_DIORITE.get(), rl("bricks/bricks"), "diorite");
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_GRANITE.get(), rl("bricks/bricks"), "granite");
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get(), rl("bricks/bricks"), "polished_blackstone");
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_STONE.get(), rl("bricks/bricks"), "stone");
-        quoinMultiEight(GSBlocks.BRICK_QUOIN_TUFF.get(), rl("bricks/bricks"), "tuff");
+        for(DeferredBlock<SillBlock> block : GSBlocks.BRICK_SILLS) {
+            SillBlock sill = block.get();
+            sillMultiEight(sill, rl("bricks/bricks"), getName(sill).substring("brick_sill_".length()));
+        }
+        for(DeferredBlock<HorizontalDirectionalBlock> block : GSBlocks.BRICK_QUOINS) {
+            HorizontalDirectionalBlock quoin = block.get();
+            quoinMultiEight(quoin, rl("bricks/bricks"), getName(quoin).substring("brick_quoin_".length()));
+        }
         // Framed Glass
         cubeAll(GSBlocks.FRAMED_GLASS.get(), rl("framed_glass/framed_glass"), RenderType.CUTOUT_MIPPED);
         paneBlockWithRenderType(GSBlocks.FRAMED_GLASS_PANE.get(), rl("framed_glass/framed_glass"), rl("framed_glass/framed_glass_pane_top"), "cutout_mipped");
@@ -121,6 +111,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
             paneBlockWithRenderType(block.get(), rl("framed_glass/" + block.get().getColor() + "_stained_framed_glass"), rl("framed_glass/framed_glass_pane_top"), "translucent");
             itemModels().getBuilder(BuiltInRegistries.BLOCK.getKey(block.get()).getPath())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .renderType("transparent")
                 .texture("layer0", rl("framed_glass/" + block.get().getColor() + "_stained_framed_glass"));
         }
     }

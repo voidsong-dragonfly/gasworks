@@ -178,7 +178,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	public void sillMultiEight(SillBlock block, ResourceLocation brick, String stone) {
-		sillMultiEight(block, brick, rlMC("polished_" + stone), stone);
+		sillMultiEight(block, brick, stone.equals("stone") ? rl("stone/polished/stone") : rlMC(stone.equals("polished_blackstone") ? stone : "polished_" + stone), stone);
 	}
 
 	public void sillMultiEight(SillBlock block, ResourceLocation brick, ResourceLocation full, String stone) {

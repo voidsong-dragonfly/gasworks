@@ -109,6 +109,8 @@ public class GSBlocks {
     /*
      * Building blocks, including various 'functional' blocks
      */
+    // Stone types for use in building blocks
+    public static List<String> stones = List.of("andesite", "deepslate", "diorite", "granite", "polished_blackstone", "stone", "tuff");
     // Fireclay blocks of various types
     public static DeferredBlock<Block> FIRECLAY = BLOCKS.registerSimpleBlock("fireclay", BlockBehaviour.Properties.of()
         .mapColor(MapColor.CLAY)
@@ -119,47 +121,21 @@ public class GSBlocks {
     public static DeferredBlock<StairBlock> FIREBRICK_STAIRS = BLOCKS.register("firebrick_stairs", () -> new StairBlock(FIREBRICKS.get().defaultBlockState(), FIREBRICKS_PROPERTIES));
     public static DeferredBlock<SlabBlock> FIREBRICK_SLAB = BLOCKS.registerBlock("firebrick_slab",  SlabBlock::new, FIREBRICKS_PROPERTIES);
     public static DeferredBlock<WallBlock> FIREBRICK_WALL = BLOCKS.registerBlock("firebrick_wall",  WallBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> FIREBRICK_SILL_ANDESITE = BLOCKS.registerBlock("firebrick_sill_andesite",  SillBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> FIREBRICK_SILL_DEEPSLATE = BLOCKS.registerBlock("firebrick_sill_deepslate",  SillBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> FIREBRICK_SILL_DIORITE = BLOCKS.registerBlock("firebrick_sill_diorite",  SillBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> FIREBRICK_SILL_GRANITE = BLOCKS.registerBlock("firebrick_sill_granite",  SillBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> FIREBRICK_SILL_POLISHED_BLACKSTONE = BLOCKS.registerBlock("firebrick_sill_polished_blackstone",  SillBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> FIREBRICK_SILL_STONE = BLOCKS.registerBlock("firebrick_sill_stone",  SillBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> FIREBRICK_SILL_TUFF = BLOCKS.registerBlock("firebrick_sill_tuff",  SillBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_ANDESITE = BLOCKS.registerBlock("firebrick_quoin_andesite",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_DEEPSLATE = BLOCKS.registerBlock("firebrick_quoin_deepslate",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_DIORITE = BLOCKS.registerBlock("firebrick_quoin_diorite",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_GRANITE = BLOCKS.registerBlock("firebrick_quoin_granite",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_POLISHED_BLACKSTONE = BLOCKS.registerBlock("firebrick_quoin_polished_blackstone",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_STONE = BLOCKS.registerBlock("firebrick_quoin_stone",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> FIREBRICK_QUOIN_TUFF = BLOCKS.registerBlock("firebrick_quoin_tuff",  QuoinBlock::new, FIREBRICKS_PROPERTIES);
+    public static List<DeferredBlock<SillBlock>> FIREBRICK_SILLS = createSills("firebrick", FIREBRICKS_PROPERTIES);
+    public static List<DeferredBlock<HorizontalDirectionalBlock>> FIREBRICK_QUOINS = createQuoins("firebrick", FIREBRICKS_PROPERTIES);
     // Normal brick quoins & specialty blocks
-    public static DeferredBlock<SillBlock> BRICK_SILL_ANDESITE = BLOCKS.registerBlock("brick_sill_andesite",  SillBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> BRICK_SILL_DEEPSLATE = BLOCKS.registerBlock("brick_sill_deepslate",  SillBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> BRICK_SILL_DIORITE = BLOCKS.registerBlock("brick_sill_diorite",  SillBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> BRICK_SILL_GRANITE = BLOCKS.registerBlock("brick_sill_granite",  SillBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> BRICK_SILL_POLISHED_BLACKSTONE = BLOCKS.registerBlock("brick_sill_polished_blackstone",  SillBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> BRICK_SILL_STONE = BLOCKS.registerBlock("brick_sill_stone",  SillBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<SillBlock> BRICK_SILL_TUFF = BLOCKS.registerBlock("brick_sill_tuff",  SillBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_ANDESITE = BLOCKS.registerBlock("brick_quoin_andesite",  QuoinBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_DEEPSLATE = BLOCKS.registerBlock("brick_quoin_deepslate",  QuoinBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_DIORITE = BLOCKS.registerBlock("brick_quoin_diorite",  QuoinBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_GRANITE = BLOCKS.registerBlock("brick_quoin_granite",  QuoinBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_POLISHED_BLACKSTONE = BLOCKS.registerBlock("brick_quoin_polished_blackstone",  QuoinBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_STONE = BLOCKS.registerBlock("brick_quoin_stone",  QuoinBlock::new, BRICKS_PROPERTIES);
-    public static DeferredBlock<HorizontalDirectionalBlock> BRICK_QUOIN_TUFF = BLOCKS.registerBlock("brick_quoin_tuff",  QuoinBlock::new, BRICKS_PROPERTIES);
+    public static List<DeferredBlock<SillBlock>> BRICK_SILLS = createSills("brick", BRICKS_PROPERTIES);
+    public static List<DeferredBlock<HorizontalDirectionalBlock>> BRICK_QUOINS = createQuoins("brick", BRICKS_PROPERTIES);
     // Framed glass
     public static DeferredBlock<TransparentBlock> FRAMED_GLASS = BLOCKS.registerBlock("framed_glass", TransparentBlock::new, FRAMED_GLASS_PROPERTIES);
     public static DeferredBlock<IronBarsBlock> FRAMED_GLASS_PANE = BLOCKS.registerBlock("framed_glass_pane", IronBarsBlock::new, FRAMED_GLASS_PROPERTIES);
     public static List<DeferredBlock<StainedGlassBlock>> STAINED_FRAMED_GLASS = createStainedGlasses();
     public static List<DeferredBlock<StainedGlassPaneBlock>> STAINED_FRAMED_GLASS_PANES = createStainedGlassPanes();
 
-
-
-
     /*
      * Utility function for dyed blocks, etc
      */
+    // Stained glasses
     public static List<DeferredBlock<StainedGlassBlock>> createStainedGlasses() {
         List<DeferredBlock<StainedGlassBlock>> blocks = new ArrayList<>();
         for(DyeColor color : DyeColor.values()) {
@@ -168,11 +144,27 @@ public class GSBlocks {
         }
         return blocks;
     }
-
     public static List<DeferredBlock<StainedGlassPaneBlock>> createStainedGlassPanes() {
         List<DeferredBlock<StainedGlassPaneBlock>> blocks = new ArrayList<>();
         for(DyeColor color : DyeColor.values()) {
             DeferredBlock<StainedGlassPaneBlock> block = BLOCKS.register(color.getName()+"_stained_framed_glass_pane", () -> (new StainedGlassPaneBlock(color, FRAMED_GLASS_PROPERTIES)));
+            blocks.add(block);
+        }
+        return blocks;
+    }
+    // Stone-variant blocks
+    public static List<DeferredBlock<HorizontalDirectionalBlock>> createQuoins(String base, BlockBehaviour.Properties properties) {
+        List<DeferredBlock<HorizontalDirectionalBlock>> blocks = new ArrayList<>();
+        for (String type : stones) {
+            DeferredBlock<HorizontalDirectionalBlock> block = BLOCKS.registerBlock(base + "_quoin_" + type, QuoinBlock::new, properties);
+            blocks.add(block);
+        }
+        return blocks;
+    }
+    public static List<DeferredBlock<SillBlock>> createSills(String base, BlockBehaviour.Properties properties) {
+        List<DeferredBlock<SillBlock>> blocks = new ArrayList<>();
+        for (String type : stones) {
+            DeferredBlock<SillBlock> block = BLOCKS.registerBlock(base + "_sill_" + type, SillBlock::new, properties);
             blocks.add(block);
         }
         return blocks;

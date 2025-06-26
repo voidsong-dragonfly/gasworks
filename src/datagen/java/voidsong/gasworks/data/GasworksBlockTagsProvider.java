@@ -6,6 +6,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.registry.GSBlocks;
@@ -90,10 +91,10 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.FIRECLAY.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(GSBlocks.FIREBRICKS.get(), GSBlocks.FIREBRICK_STAIRS.get(), GSBlocks.FIREBRICK_SLAB.get(), GSBlocks.FIREBRICK_WALL.get())
-            .add(GSBlocks.FIREBRICK_QUOIN_ANDESITE.get(), GSBlocks.FIREBRICK_QUOIN_DEEPSLATE.get(), GSBlocks.FIREBRICK_QUOIN_DIORITE.get(), GSBlocks.FIREBRICK_QUOIN_GRANITE.get(),
-                GSBlocks.FIREBRICK_QUOIN_POLISHED_BLACKSTONE.get(), GSBlocks.FIREBRICK_QUOIN_STONE.get(), GSBlocks.FIREBRICK_QUOIN_TUFF.get())
-            .add(GSBlocks.BRICK_QUOIN_ANDESITE.get(), GSBlocks.BRICK_QUOIN_DEEPSLATE.get(), GSBlocks.BRICK_QUOIN_DIORITE.get(), GSBlocks.BRICK_QUOIN_GRANITE.get(),
-                GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get(), GSBlocks.BRICK_QUOIN_STONE.get(), GSBlocks.BRICK_QUOIN_TUFF.get());
+            .addAll(GSBlocks.FIREBRICK_SILLS.stream().map(DeferredHolder::getKey).toList())
+            .addAll(GSBlocks.FIREBRICK_QUOINS.stream().map(DeferredHolder::getKey).toList())
+            .addAll(GSBlocks.BRICK_SILLS.stream().map(DeferredHolder::getKey).toList())
+            .addAll(GSBlocks.BRICK_QUOINS.stream().map(DeferredHolder::getKey).toList());
         /*
          * Compatibility tags
          */

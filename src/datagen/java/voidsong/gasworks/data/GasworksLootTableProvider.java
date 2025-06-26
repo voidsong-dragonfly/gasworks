@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
+import voidsong.gasworks.common.block.SillBlock;
 import voidsong.gasworks.common.block.properties.AshType;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSItems;
@@ -139,35 +141,15 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.FIREBRICK_STAIRS.get());
             dropSelf(GSBlocks.FIREBRICK_SLAB.get());
             dropSelf(GSBlocks.FIREBRICK_WALL.get());
-            dropSelf(GSBlocks.FIREBRICK_SILL_ANDESITE.get());
-            dropSelf(GSBlocks.FIREBRICK_SILL_DEEPSLATE.get());
-            dropSelf(GSBlocks.FIREBRICK_SILL_DIORITE.get());
-            dropSelf(GSBlocks.FIREBRICK_SILL_GRANITE.get());
-            dropSelf(GSBlocks.FIREBRICK_SILL_POLISHED_BLACKSTONE.get());
-            dropSelf(GSBlocks.FIREBRICK_SILL_STONE.get());
-            dropSelf(GSBlocks.FIREBRICK_SILL_TUFF.get());
-            dropSelf(GSBlocks.FIREBRICK_QUOIN_ANDESITE.get());
-            dropSelf(GSBlocks.FIREBRICK_QUOIN_DEEPSLATE.get());
-            dropSelf(GSBlocks.FIREBRICK_QUOIN_DIORITE.get());
-            dropSelf(GSBlocks.FIREBRICK_QUOIN_GRANITE.get());
-            dropSelf(GSBlocks.FIREBRICK_QUOIN_POLISHED_BLACKSTONE.get());
-            dropSelf(GSBlocks.FIREBRICK_QUOIN_STONE.get());
-            dropSelf(GSBlocks.FIREBRICK_QUOIN_TUFF.get());
+            for(DeferredBlock<SillBlock> block : GSBlocks.FIREBRICK_SILLS)
+                dropSelf(block.get());
+            for(DeferredBlock<HorizontalDirectionalBlock> block : GSBlocks.FIREBRICK_QUOINS)
+                dropSelf(block.get());
             // Normal brick quoins & specialty blocks
-            dropSelf(GSBlocks.BRICK_SILL_ANDESITE.get());
-            dropSelf(GSBlocks.BRICK_SILL_DEEPSLATE.get());
-            dropSelf(GSBlocks.BRICK_SILL_DIORITE.get());
-            dropSelf(GSBlocks.BRICK_SILL_GRANITE.get());
-            dropSelf(GSBlocks.BRICK_SILL_POLISHED_BLACKSTONE.get());
-            dropSelf(GSBlocks.BRICK_SILL_STONE.get());
-            dropSelf(GSBlocks.BRICK_SILL_TUFF.get());
-            dropSelf(GSBlocks.BRICK_QUOIN_ANDESITE.get());
-            dropSelf(GSBlocks.BRICK_QUOIN_DEEPSLATE.get());
-            dropSelf(GSBlocks.BRICK_QUOIN_DIORITE.get());
-            dropSelf(GSBlocks.BRICK_QUOIN_GRANITE.get());
-            dropSelf(GSBlocks.BRICK_QUOIN_POLISHED_BLACKSTONE.get());
-            dropSelf(GSBlocks.BRICK_QUOIN_STONE.get());
-            dropSelf(GSBlocks.BRICK_QUOIN_TUFF.get());
+            for(DeferredBlock<SillBlock> block : GSBlocks.BRICK_SILLS)
+                dropSelf(block.get());
+            for(DeferredBlock<HorizontalDirectionalBlock> block : GSBlocks.BRICK_QUOINS)
+                dropSelf(block.get());
             // Framed glass
             dropWhenSilkTouch(GSBlocks.FRAMED_GLASS.get());
             dropWhenSilkTouch(GSBlocks.FRAMED_GLASS_PANE.get());
