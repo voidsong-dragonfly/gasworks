@@ -2,10 +2,15 @@ package voidsong.gasworks.data;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.StainedGlassBlock;
+import net.minecraft.world.level.block.StainedGlassPaneBlock;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import voidsong.gasworks.Gasworks;
@@ -58,6 +63,7 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         /*
          * Building blocks, including various 'functional' blocks
          */
+        // Fireclay blocks of various types
         tag(BlockTags.AZALEA_ROOT_REPLACEABLE)
             .add(GSBlocks.FIRECLAY.get());
         tag(BlockTags.AXOLOTLS_SPAWNABLE_ON)
@@ -72,6 +78,32 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.FIRECLAY.get());
         tag(BlockTags.WALLS)
             .add(GSBlocks.FIREBRICK_WALL.get());
+        // Framed glass
+        tag(BlockTags.IMPERMEABLE)
+            .add(GSBlocks.FRAMED_GLASS.get());
+        tag(Tags.Blocks.GLASS_BLOCKS)
+            .add(GSBlocks.FRAMED_GLASS.get());
+        tag(Tags.Blocks.GLASS_BLOCKS_COLORLESS)
+            .add(GSBlocks.FRAMED_GLASS.get());
+        tag(Tags.Blocks.GLASS_PANES)
+            .add(GSBlocks.FRAMED_GLASS_PANE.get());
+        tag(Tags.Blocks.GLASS_PANES_COLORLESS)
+            .add(GSBlocks.FRAMED_GLASS_PANE.get());
+        for(DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS) {
+            StainedGlassBlock glass = block.get();
+            tag(BlockTags.IMPERMEABLE).add(glass);
+            tag(Tags.Blocks.GLASS_BLOCKS).add(glass);
+            tag(Tags.Blocks.DYED).add(glass);
+            tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + glass.getColor())))
+                .add(glass);
+        }
+        for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
+            StainedGlassPaneBlock glass = block.get();
+            tag(Tags.Blocks.GLASS_PANES).add(glass);
+            tag(Tags.Blocks.DYED).add(glass);
+            tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + glass.getColor())))
+                .add(glass);
+        }
         /*
          * Tool tags for block breaking
          */

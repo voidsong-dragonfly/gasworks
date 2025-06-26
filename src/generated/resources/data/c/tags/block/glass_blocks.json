@@ -1,0 +1,21 @@
+{
+  "values": [
+    "gasworks:framed_glass",
+    "gasworks:white_stained_framed_glass",
+    "gasworks:orange_stained_framed_glass",
+    "gasworks:magenta_stained_framed_glass",
+    "gasworks:light_blue_stained_framed_glass",
+    "gasworks:yellow_stained_framed_glass",
+    "gasworks:lime_stained_framed_glass",
+    "gasworks:pink_stained_framed_glass",
+    "gasworks:gray_stained_framed_glass",
+    "gasworks:light_gray_stained_framed_glass",
+    "gasworks:cyan_stained_framed_glass",
+    "gasworks:purple_stained_framed_glass",
+    "gasworks:blue_stained_framed_glass",
+    "gasworks:brown_stained_framed_glass",
+    "gasworks:green_stained_framed_glass",
+    "gasworks:red_stained_framed_glass",
+    "gasworks:black_stained_framed_glass"
+  ]
+}

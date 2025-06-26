@@ -7,9 +7,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StainedGlassBlock;
+import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSItems;
 import voidsong.gasworks.api.GSTags;
 
@@ -74,11 +78,35 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
         /*
          * Building blocks, including various 'functional' blocks
          */
+        // Fireclay blocks of various types
         tag(Tags.Items.BRICKS)
             .add(GSItems.FIREBRICK.get());
         tag(GSTags.ItemTags.REFRACTORY_BRICK)
             .add(GSItems.FIREBRICK.get());
         tag(GSTags.ItemTags.FIREBRICK)
             .add(GSItems.FIREBRICK.get());
+        // Framed glass
+        tag(Tags.Items.GLASS_BLOCKS)
+            .add(GSItems.FRAMED_GLASS.get());
+        tag(Tags.Items.GLASS_BLOCKS_COLORLESS)
+            .add(GSItems.FRAMED_GLASS.get());
+        tag(Tags.Items.GLASS_PANES)
+            .add(GSItems.FRAMED_GLASS_PANE.get());
+        tag(Tags.Items.GLASS_PANES_COLORLESS)
+            .add(GSItems.FRAMED_GLASS_PANE.get());
+        for(DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS) {
+            StainedGlassBlock glass = block.get();
+            tag(Tags.Items.GLASS_BLOCKS).add(glass.asItem());
+            tag(Tags.Items.DYED).add(glass.asItem());
+            tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + glass.getColor())))
+                .add(glass.asItem());
+        }
+        for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
+            StainedGlassPaneBlock glass = block.get();
+            tag(Tags.Items.GLASS_PANES).add(glass.asItem());
+            tag(Tags.Items.DYED).add(glass.asItem());
+            tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + glass.getColor())))
+                .add(glass.asItem());
+        }
     }
 }
