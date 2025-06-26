@@ -100,6 +100,8 @@ public class JEIPlugin implements IModPlugin {
         // Log piles, but since we don't have easy access to tags, we do it manually
         recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_wood"), new ClampRecipe(GSTags.ItemTags.LOG_PILES, 6, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(Items.BRICK, 4), 1.5f)));
         recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_coallike"), new ClampRecipe(GSTags.ItemTags.COALLIKE_PILES, 1, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(Items.BRICK, 4), 1.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_fireclay_wood"), new ClampRecipe(GSTags.ItemTags.LOG_PILES, 6, GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), new ItemStack(GSItems.FIREBRICK.get(), 4), 1.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_fireclay_coallike"), new ClampRecipe(GSTags.ItemTags.COALLIKE_PILES, 1, GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), new ItemStack(GSItems.FIREBRICK.get(), 4), 1.5f)));
         return recipes;
     }
 
