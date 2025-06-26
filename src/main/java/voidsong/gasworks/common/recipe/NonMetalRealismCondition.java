@@ -11,7 +11,7 @@ public class NonMetalRealismCondition implements ICondition {
 
     public static final MapCodec<NonMetalRealismCondition> CODEC = MapCodec.unit(INSTANCE).stable();
 
-    private NonMetalRealismCondition() {}
+    public NonMetalRealismCondition() {}
 
     @Override
     public boolean test(@Nonnull IContext condition) {

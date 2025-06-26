@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "gasworks:non_metal_realism"
+      }
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "g": {
+      "item": "gasworks:red_stained_framed_glass_pane"
+    }
+  },
+  "pattern": [
+    "ggg",
+    "ggg"
+  ],
+  "result": {
+    "count": 16,
+    "id": "gasworks:red_stained_framed_glass_pane"
+  }
+}

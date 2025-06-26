@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "b": {
+      "item": "minecraft:bricks"
+    },
+    "s": {
+      "item": "minecraft:polished_blackstone_bricks"
+    }
+  },
+  "pattern": [
+    "sb",
+    "bs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "gasworks:brick_quoin_polished_blackstone"
+  }
+}

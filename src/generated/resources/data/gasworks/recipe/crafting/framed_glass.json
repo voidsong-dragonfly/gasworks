@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "g": {
+      "tag": "c:glass_blocks/cheap"
+    },
+    "i": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "gig",
+    "igi",
+    "gig"
+  ],
+  "result": {
+    "count": 5,
+    "id": "gasworks:framed_glass"
+  }
+}

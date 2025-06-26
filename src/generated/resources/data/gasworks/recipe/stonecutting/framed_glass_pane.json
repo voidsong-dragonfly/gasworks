@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gasworks:framed_glass"
+  },
+  "result": {
+    "count": 4,
+    "id": "gasworks:framed_glass_pane"
+  }
+}

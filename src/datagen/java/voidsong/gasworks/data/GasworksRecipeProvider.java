@@ -6,11 +6,20 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.StainedGlassBlock;
+import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.conditions.NotCondition;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.recipe.NonMetalRealismCondition;
+import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSItems;
 
 import javax.annotation.Nonnull;
@@ -137,6 +146,7 @@ public class GasworksRecipeProvider extends RecipeProvider {
         /*
          * Building blocks, including various 'functional' blocks
          */
+        // Fireclay blocks of various types
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIRECLAY)
             .pattern("cc")
             .pattern("cc")
@@ -176,6 +186,117 @@ public class GasworksRecipeProvider extends RecipeProvider {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FIREBRICKS), RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_WALL)
             .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
             .save(output, rl(GSItems.FIREBRICK_WALL, "stonecutting"));
+        // Temporary recipe for firebrick;
+        // TODO: Implement ore generation so firebrick doesn't need a recipe
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, GSItems.FIRECLAY_BALL, 8)
+            .requires(Tags.Items.SANDS)
+            .requires(Items.CLAY_BALL, 4)
+            .unlockedBy("has_clay", has(Items.CLAY_BALL))
+            .save(output, rl(GSItems.FIRECLAY_BALL, "crafting"));
+        for(DeferredItem<BlockItem> item : GSItems.FIREBRICK_SILLS) {
+            // This is a hack to make generating the recipes easier; since stone doesn't have a polished variant we specialcase it until I get around to adding it
+            // TODO: Add polished stone
+            Item polished = BuiltInRegistries.ITEM.get(ResourceLocation.parse("polished_" + BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("firebrick_sill_", "").replace("polished_", "")));
+            polished = polished.equals(Items.AIR) ? Items.STONE_BRICKS : polished;
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 4)
+                .pattern("ss")
+                .pattern("bb")
+                .define('s', polished)
+                .define('b', GSItems.FIREBRICKS)
+                .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+                .save(output, rl(item, "crafting"));
+        }
+        for(DeferredItem<BlockItem> item : GSItems.FIREBRICK_QUOINS) {
+            // This is a hack to make generating the recipes easier; since andesite, etc don't have a bricks variant we specialcase it until I get around to adding it
+            // TODO: Add andesite, diorite, etc bricks
+            Item bricks = BuiltInRegistries.ITEM.get(ResourceLocation.parse(BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("firebrick_quoin_", "") + "_bricks"));
+            bricks = bricks.equals(Items.AIR) ? BuiltInRegistries.ITEM.get(ResourceLocation.parse("polished_" + BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("firebrick_quoin_", ""))) : bricks;
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 4)
+                .pattern("sb")
+                .pattern("bs")
+                .define('s', bricks)
+                .define('b', GSItems.FIREBRICKS)
+                .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
+                .save(output, rl(item, "crafting"));
+        }
+        // Normal brick quoins & specialty blocks
+        for(DeferredItem<BlockItem> item : GSItems.BRICK_SILLS) {
+            // This is a hack to make generating the recipes easier; since stone doesn't have a polished variant we specialcase it until I get around to adding it
+            // TODO: Add polished stone
+            Item polished = BuiltInRegistries.ITEM.get(ResourceLocation.parse("polished_" + BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("brick_sill_", "").replace("polished_", "")));
+            polished = polished.equals(Items.AIR) ? Items.STONE_BRICKS : polished;
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 4)
+                .pattern("ss")
+                .pattern("bb")
+                .define('s', polished)
+                .define('b', Items.BRICKS)
+                .unlockedBy("has_brick", has(Items.BRICK))
+                .save(output, rl(item, "crafting"));
+        }
+        for(DeferredItem<BlockItem> item : GSItems.BRICK_QUOINS) {
+            // This is a hack to make generating the recipes easier; since andesite, etc don't have a bricks variant we specialcase it until I get around to adding it
+            // TODO: Add andesite, diorite, etc bricks
+            Item bricks = BuiltInRegistries.ITEM.get(ResourceLocation.parse(BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("brick_quoin_", "") + "_bricks"));
+            bricks = bricks.equals(Items.AIR) ? BuiltInRegistries.ITEM.get(ResourceLocation.parse("polished_" + BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("brick_quoin_", ""))) : bricks;
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 4)
+                .pattern("sb")
+                .pattern("bs")
+                .define('s', bricks)
+                .define('b', Items.BRICKS)
+                .unlockedBy("has_brick", has(Items.BRICK))
+                .save(output, rl(item, "crafting"));
+        }
+        // Framed glass
+        // TODO: Fix these recipes once I get more of the crafting infrastructure implemented: Should all be framing, not otherwise. One rod bundle per block, one per four panes
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FRAMED_GLASS, 5)
+            .pattern("gig")
+            .pattern("igi")
+            .pattern("gig")
+            .define('i', Tags.Items.INGOTS_IRON)
+            .define('g', Tags.Items.GLASS_BLOCKS_CHEAP)
+            .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS_CHEAP))
+            .save(output, rl(GSItems.FRAMED_GLASS, "crafting"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FRAMED_GLASS_PANE, 16)
+            .pattern("ggg")
+            .pattern("ggg")
+            .define('g', GSItems.FRAMED_GLASS)
+            .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS_CHEAP))
+            .save(output.withConditions(new NotCondition(new NonMetalRealismCondition())), rl(GSItems.FRAMED_GLASS_PANE, "crafting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FRAMED_GLASS), RecipeCategory.BUILDING_BLOCKS, GSItems.FRAMED_GLASS_PANE, 4)
+            .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS_CHEAP))
+            .save(output, rl(GSItems.FRAMED_GLASS_PANE, "stonecutting"));
+        for(DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS) {
+            Item item = block.get().asItem();
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 8)
+                .pattern("ggg")
+                .pattern("gdg")
+                .pattern("ggg")
+                .define('g', GSItems.FRAMED_GLASS)
+                .define('d', block.get().getColor().getTag())
+                .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS_CHEAP))
+                .save(output, rl(item, "crafting"));
+        }
+        for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
+            Item item = block.get().asItem();
+            Item full = GSBlocks.STAINED_FRAMED_GLASS_PANES.stream().filter(b -> b.get().getColor().equals(block.get().getColor())).map(DeferredBlock::asItem).toList().getFirst();
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 16)
+                .pattern("ggg")
+                .pattern("ggg")
+                .define('g', full)
+                .unlockedBy("has_glass", has(full))
+                .save(output.withConditions(new NotCondition(new NonMetalRealismCondition())), rl(item, "crafting"));
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 8)
+                .pattern("ggg")
+                .pattern("gdg")
+                .pattern("ggg")
+                .define('g', GSItems.FRAMED_GLASS_PANE)
+                .define('d', block.get().getColor().getTag())
+                .unlockedBy("has_glass", has(GSItems.FRAMED_GLASS_PANE))
+                .save(output, rl(item, "crafting", "_from_glass_pane"));
+            SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), RecipeCategory.BUILDING_BLOCKS, item, 4)
+                .unlockedBy("has_glass", has(full))
+                .save(output, rl(item, "stonecutting"));
+        }
         /*
          * Tool items & other useful items
          */
@@ -195,6 +316,10 @@ public class GasworksRecipeProvider extends RecipeProvider {
 
     protected ResourceLocation rl(ItemLike src, String path) {
         return ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, path+"/"+BuiltInRegistries.ITEM.getKey(src.asItem()).getPath());
+    }
+
+    protected ResourceLocation rl(ItemLike src, String path, String suffix) {
+        return ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, path+"/"+BuiltInRegistries.ITEM.getKey(src.asItem()).getPath()+suffix);
     }
 
     protected ShapedRecipeBuilder shapedMisc(ItemLike output) {

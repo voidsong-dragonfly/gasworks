@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "gasworks:gray_stained_framed_glass_pane"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "gasworks:stonecutting/gray_stained_framed_glass_pane"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glass"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "gasworks:stonecutting/gray_stained_framed_glass_pane"
+    ]
+  }
+}

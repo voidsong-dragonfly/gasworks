@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "b": {
+      "item": "gasworks:firebricks"
+    },
+    "s": {
+      "item": "minecraft:polished_tuff"
+    }
+  },
+  "pattern": [
+    "ss",
+    "bb"
+  ],
+  "result": {
+    "count": 4,
+    "id": "gasworks:firebrick_sill_tuff"
+  }
+}
