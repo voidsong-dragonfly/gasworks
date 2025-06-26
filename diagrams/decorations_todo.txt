@@ -14,21 +14,22 @@ CERAMICS
 ------------------------------------------
 Fireclay
     ✓ Fireclay Bricks
-    Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blackstone? => ✓ Quoins, Sills
+    ✓ Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blackstone? => ✓ Quoins, ✓ Sills
     Fireclay Terracotta (?)
-Red Clay
+✓ Red Clay
     ✓ Red Clay Bricks
-    Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blackstone? => ✓ Quoins, Sills
+    ✓ Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blackstone? => ✓ Quoins, ✓ Sills
     ✓ Red Clay Terracotta
 Concrete
     Reinforced Concrete => Fibers, wrought bar, sand, gravel, cement == powder; powder + water == concrete
     Reinforced Concrete Bricks
     Tar-Macadam Pavement
-Framed Glass
-    Panes, Blocks
+✓ Framed Glass
+    ✓ Panes, ✓ Blocks
 Insulation Blocks (?)
 Stone Bricks (?)
     Andesite, Diorite, Granite
+Sandstone, Red Sandstone quoins, sills (?)
 
 
 WOOD
