@@ -261,10 +261,7 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .pattern("ggg")
             .define('g', GSItems.FRAMED_GLASS)
             .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS_CHEAP))
-            .save(output.withConditions(new NotCondition(new NonMetalRealismCondition())), rl(GSItems.FRAMED_GLASS_PANE, "crafting"));
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FRAMED_GLASS), RecipeCategory.BUILDING_BLOCKS, GSItems.FRAMED_GLASS_PANE, 4)
-            .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS_CHEAP))
-            .save(output, rl(GSItems.FRAMED_GLASS_PANE, "stonecutting"));
+            .save(output, rl(GSItems.FRAMED_GLASS_PANE, "crafting"));
         for(DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS) {
             Item item = block.get().asItem();
             ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 8)
@@ -284,7 +281,7 @@ public class GasworksRecipeProvider extends RecipeProvider {
                 .pattern("ggg")
                 .define('g', full)
                 .unlockedBy("has_glass", has(full))
-                .save(output.withConditions(new NotCondition(new NonMetalRealismCondition())), rl(item, "crafting"));
+                .save(output, rl(item, "crafting"));
             ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 8)
                 .pattern("ggg")
                 .pattern("gdg")
@@ -293,9 +290,6 @@ public class GasworksRecipeProvider extends RecipeProvider {
                 .define('d', block.get().getColor().getTag())
                 .unlockedBy("has_glass", has(GSItems.FRAMED_GLASS_PANE))
                 .save(output, rl(item, "crafting", "_from_glass_pane"));
-            SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), RecipeCategory.BUILDING_BLOCKS, item, 4)
-                .unlockedBy("has_glass", has(full))
-                .save(output, rl(item, "stonecutting"));
         }
         /*
          * Tool items & other useful items
