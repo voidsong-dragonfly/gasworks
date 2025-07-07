@@ -111,7 +111,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
             paneBlockWithRenderType(block.get(), rl("framed_glass/" + block.get().getColor() + "_stained_framed_glass"), rl("framed_glass/framed_glass_pane_top"), "translucent");
             itemModels().getBuilder(BuiltInRegistries.BLOCK.getKey(block.get()).getPath())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .renderType("transparent")
+                .renderType("translucent")
                 .texture("layer0", rl("framed_glass/" + block.get().getColor() + "_stained_framed_glass"));
         }
     }
