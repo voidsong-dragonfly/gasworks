@@ -278,7 +278,7 @@ public class GasworksRecipeProvider extends RecipeProvider {
         }
         for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
             Item item = block.get().asItem();
-            Item full = GSBlocks.STAINED_FRAMED_GLASS_PANES.stream().filter(b -> b.get().getColor().equals(block.get().getColor())).map(DeferredBlock::asItem).toList().getFirst();
+            Item full = GSBlocks.STAINED_FRAMED_GLASS.stream().filter(b -> b.get().getColor().equals(block.get().getColor())).map(DeferredBlock::asItem).toList().getFirst();
             ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 16)
                 .pattern("ggg")
                 .pattern("ggg")

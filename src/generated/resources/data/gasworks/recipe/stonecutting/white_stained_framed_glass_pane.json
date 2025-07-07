@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "gasworks:white_stained_framed_glass_pane"
+    "item": "gasworks:white_stained_framed_glass"
   },
   "result": {
     "count": 4,
