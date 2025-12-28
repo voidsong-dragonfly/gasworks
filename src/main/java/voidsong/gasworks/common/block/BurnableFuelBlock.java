@@ -20,33 +20,32 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.Nullable;
 import voidsong.gasworks.common.block.properties.AshType;
+import voidsong.gasworks.common.block.properties.GSProperties;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.api.GSTags;
 
 import javax.annotation.Nonnull;
 
 public class BurnableFuelBlock extends RotatedPillarBlock {
-    public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 15);
     private final AshType product;
     private final int clampCookMult;
 
     public BurnableFuelBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(GSProperties.LIT, false).setValue(AGE, 0));
         product = AshType.NONE;
         clampCookMult = 1;
     }
 
     public BurnableFuelBlock(BlockBehaviour.Properties properties, @Nonnull AshType type, int speed) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false).setValue(AGE, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(GSProperties.LIT, false).setValue(AGE, 0));
         product = type;
         clampCookMult = speed;
     }
@@ -54,7 +53,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
     @Override
     protected void createBlockStateDefinition(@Nonnull StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(LIT).add(AGE);
+        builder.add(GSProperties.LIT).add(AGE);
     }
 
     @Override
@@ -65,19 +64,19 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
 
     @Override
     public void onCaughtFire(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
-        level.setBlockAndUpdate(pos, state.setValue(LIT, true));
+        level.setBlockAndUpdate(pos, state.setValue(GSProperties.LIT, true));
         super.onCaughtFire(state, level, pos, direction, igniter);
     }
 
     @Override
     @Nonnull
     protected BlockState updateShape(@Nonnull BlockState state, @Nonnull Direction direction, BlockState neighborState, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull BlockPos neighborPos) {
-        return neighborState.isBurning(level, neighborPos) ? state.setValue(LIT, true) : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+        return neighborState.isBurning(level, neighborPos) ? state.setValue(GSProperties.LIT, true) : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @Override
     public @Nullable BlockState getToolModifiedState(@Nonnull BlockState state, @Nonnull UseOnContext context, @Nonnull ItemAbility itemAbility, boolean simulate) {
-        return ItemAbility.getActions().contains(ItemAbilities.FIRESTARTER_LIGHT) ? state.setValue(LIT, true) : super.getToolModifiedState(state, context, itemAbility, simulate);
+        return ItemAbility.getActions().contains(ItemAbilities.FIRESTARTER_LIGHT) ? state.setValue(GSProperties.LIT, true) : super.getToolModifiedState(state, context, itemAbility, simulate);
     }
 
     @Override
@@ -85,7 +84,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
         //Schedule our next time to tick
         level.scheduleTick(pos, this, getFireTickDelay(level.random));
         //Only want to progress burning if firetick is enabled, the pile is not lit, & the block has not been put out by rain
-        if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)&&state.getValue(LIT)&&!this.isNearRain(level, pos)) {
+        if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)&&state.getValue(GSProperties.LIT)&&!this.isNearRain(level, pos)) {
             int age = state.getValue(AGE)+1;
             //Increment burn time to make sure state is tracked
             if(age < 16) level.setBlockAndUpdate(pos, state.setValue(AGE, age));
@@ -109,7 +108,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
                 for (Direction dir : Direction.values()) {
                     BlockPos next = pos.offset(dir.getNormal());
                     if (level.getBlockState(next).getBlock() instanceof BurnableFuelBlock)
-                        level.setBlockAndUpdate(next, level.getBlockState(next).setValue(LIT, true));
+                        level.setBlockAndUpdate(next, level.getBlockState(next).setValue(GSProperties.LIT, true));
                 }
             }
             //If age is >5, it's burned long enough to go out if it's not undergoing pyrolysis, so we have additional checks
@@ -122,8 +121,8 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
                     level.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
                 }
             }
-        } else if (state.getValue(LIT))
-            level.setBlockAndUpdate(pos, state.setValue(LIT, false));
+        } else if (state.getValue(GSProperties.LIT))
+            level.setBlockAndUpdate(pos, state.setValue(GSProperties.LIT, false));
     }
 
     /**
@@ -180,7 +179,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
      */
     @Override
     public void animateTick(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
-        if(!state.getValue(LIT)) return;
+        if(!state.getValue(GSProperties.LIT)) return;
         if (random.nextInt(36) == 0) {
             level.playLocalSound(
                 (double) pos.getX() + 0.5,

@@ -3,8 +3,11 @@
   "package": "voidsong.gasworks.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "CampfireMixin",
     "ComposterMixin",
-    "ComposterMixin$OutputContainer"
+    "ComposterMixin$OutputContainer",
+    "TorchMixin",
+    "WallTorchMixin"
   ],
   "client": [],
   "injectors": {
