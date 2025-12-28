@@ -6,6 +6,7 @@
     "CampfireMixin",
     "ComposterMixin",
     "ComposterMixin$OutputContainer",
+    "ThrownPotionMixin",
     "TorchMixin",
     "WallTorchMixin"
   ],
