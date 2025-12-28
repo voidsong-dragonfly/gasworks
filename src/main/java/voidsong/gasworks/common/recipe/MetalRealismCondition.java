@@ -2,7 +2,7 @@ package voidsong.gasworks.common.recipe;
 
 import com.mojang.serialization.MapCodec;
 import net.neoforged.neoforge.common.conditions.ICondition;
-import voidsong.gasworks.common.Config;
+import voidsong.gasworks.common.config.GSServerConfig;
 
 import javax.annotation.Nonnull;
 
@@ -15,7 +15,7 @@ public class MetalRealismCondition implements ICondition {
 
     @Override
     public boolean test(@Nonnull IContext condition) {
-        return Config.metalRecipeModifications;
+        return GSServerConfig.METAL_RECIPE_MODIFICATIONS.get();
     }
 
     @Override
@@ -25,6 +25,6 @@ public class MetalRealismCondition implements ICondition {
     }
 
     public String toString() {
-        return String.valueOf(Config.metalRecipeModifications);
+        return String.valueOf(GSServerConfig.METAL_RECIPE_MODIFICATIONS.get());
     }
 }

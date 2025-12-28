@@ -6,7 +6,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import voidsong.gasworks.api.recipe.GSRecipeTypes;
-import voidsong.gasworks.common.Config;
+import voidsong.gasworks.common.config.GSServerConfig;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSDataComponents;
 import voidsong.gasworks.common.registry.GSItems;
@@ -20,7 +20,7 @@ public class Gasworks {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
-    public Gasworks(IEventBus modEventBus, ModContainer modContainer) {
+    public Gasworks(IEventBus modEventBus, ModContainer container) {
         // Register mod content
         GSBlocks.BLOCKS.register(modEventBus);
         GSItems.ITEMS.register(modEventBus);
@@ -29,6 +29,6 @@ public class Gasworks {
         GSDataComponents.COMPONENTS.register(modEventBus);
         GSRecipeTypes.RECIPE_TYPES.register(modEventBus);
         // Register configs
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        container.registerConfig(ModConfig.Type.SERVER, GSServerConfig.CONFIG_SPEC);
     }
 }
