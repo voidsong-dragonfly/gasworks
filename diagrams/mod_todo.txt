@@ -1,6 +1,6 @@
 RAW MATERIALS
 ------------------------------------------
-Coal            | Coal Coke, Steel
+Coal            | Coal Coke, Hardened Steel
 Redstone        | Redstone
 (Nether) Quartz | Quartz, Duralumin
 Iron            | Wrought Iron, Steel
@@ -13,11 +13,23 @@ Limeclay        | Cement, Fireclay, Clay
 PROCESSED MATERIALS
 ------------------------------------------
 Wrought Iron
-Steel
 Coal Coke
 Duralumin
 Cement
 Latenium
+
+
+FULL MATERIALS LIST
+------------------------------------------                      ------------------------------------------
+INGOTS (Plate, Rod, Components, Wire)                           OTHER
+------------------------------------------                      ------------------------------------------
+Wrought Iron                                                    Cement
+Copper                                                          Fireclay
+Latenium                                                        Clay
+Duralumin                                                       Coal
+Hardened Steel (+Tool BIts)                                     Coke
+HSNA Steel (+Tool Bits)                                         Redstone
+                                                                Quartz
 
 
 MACHINES (EARLY GAME)                                   		UTILITIES (EARLY GAME)
@@ -32,7 +44,7 @@ Machine Shop 0
 ------------------------------------------              		------------------------------------------
 MACHINES (EARLY-MID GAME: Wrought Iron, Fireclay)       		UTILITIES (EARLY-MID GAME)
 ------------------------------------------              		------------------------------------------
-Blast Furnace & Heaters                                 		Case Hardening
+Blast Furnace & Heaters                                 		Case Hardening & Hardened Steel (Case Hardened Wrought + Steam Hammer => Steel)
 Kiln                                                    		Steam Drill
 Coking Retort                                           		Steam Saw
 Condensation Column                                     		Gas Lighting

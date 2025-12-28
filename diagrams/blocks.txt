@@ -1,0 +1,7 @@
+blocks to possibly include in Gasworks:
+
+chiseled bricks for mossy. variants for mossy stone bricks, and possibly stone bricks as well.
+chiseled bricks for purpur & endstone. cracked bricks for endstone.
+chiseled bricks for red nether, prismarine, mud
+smooth stone stairs.
+move some of these blocks from the Gasworks tab to the Vanilla tab, perhaps?
