@@ -15,7 +15,6 @@
      - Machine shop 0
      - Crude Blast Furnace & bellows
      - Crude mechanical power
-     - Implement jute & possibly rubber?
+     - Implement jute, hemp, & possibly rubber?
  - Tool system
      - Two kinds of durability, 'minor fixes' & 'major fixes'
- - Nerfs to torches, L => 9 & they burn out in rain

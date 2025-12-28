@@ -43,6 +43,10 @@ public class CampfireMixin extends Block {
         }
     }
 
+    /*
+     * I'm not 100% on whether this method is effective, but it's copied from BurnableFuelBlock
+     */
+
     @Override
     public void onCaughtFire(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
         if (!state.getValue(GSProperties.LIT))
