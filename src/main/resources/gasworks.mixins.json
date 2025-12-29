@@ -9,7 +9,15 @@
     "tweak.ComposterMixin$OutputContainer",
     "tweak.ThrownPotionMixin",
     "tweak.TorchMixin",
-    "tweak.WallTorchMixin"
+    "tweak.WallTorchMixin",
+    "waterlogging.BannerMixin",
+    "waterlogging.BasePressurePlateMixin",
+    "waterlogging.BasePressurePlateMixin$PressurePlateMixin",
+    "waterlogging.BasePressurePlateMixin$WeightedPressurePlateMixin",
+    "waterlogging.DoorMixin",
+    "waterlogging.EndRodMixin",
+    "waterlogging.FenceGateMixin",
+    "waterlogging.WallBannerMixin"
   ],
   "client": [],
   "injectors": {
