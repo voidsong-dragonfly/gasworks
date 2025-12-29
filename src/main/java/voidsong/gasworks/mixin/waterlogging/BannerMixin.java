@@ -65,16 +65,4 @@ public class BannerMixin extends Block implements SimpleWaterloggedBlock {
     protected FluidState getFluidState(BlockState state) {
         return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
-
-    @Override
-    public boolean placeLiquid(@Nonnull LevelAccessor level, @Nonnull BlockPos pos, BlockState state, @Nonnull FluidState fluidState) {
-        if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
-            BlockState blockstate = state.setValue(BlockStateProperties.WATERLOGGED, true);
-            level.setBlock(pos, blockstate, 3);
-            level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

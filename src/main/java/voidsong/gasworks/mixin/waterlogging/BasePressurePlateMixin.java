@@ -57,18 +57,6 @@ public class BasePressurePlateMixin extends Block implements SimpleWaterloggedBl
         return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    @Override
-    public boolean placeLiquid(@Nonnull LevelAccessor level, @Nonnull BlockPos pos, BlockState state, @Nonnull FluidState fluidState) {
-        if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
-            BlockState blockstate = state.setValue(BlockStateProperties.WATERLOGGED, true);
-            level.setBlock(pos, blockstate, 3);
-            level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /*
      * We have these two mixins because WeightedPressurePlateBlock and PressurePlateBlock have different versions of
      * Block#createBlockStateDefinition, so we need to mix in to each separately

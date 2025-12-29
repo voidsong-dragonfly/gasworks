@@ -5,7 +5,6 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.WallBannerBlock;
@@ -65,17 +64,5 @@ public class WallBannerMixin extends Block implements SimpleWaterloggedBlock {
     @Nonnull
     protected FluidState getFluidState(BlockState state) {
         return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    public boolean placeLiquid(@Nonnull LevelAccessor level, @Nonnull BlockPos pos, BlockState state, @Nonnull FluidState fluidState) {
-        if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
-            BlockState blockstate = state.setValue(BlockStateProperties.WATERLOGGED, true);
-            level.setBlock(pos, blockstate, 3);
-            level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-            return true;
-        } else {
-            return false;
-        }
     }
 }
