@@ -2,32 +2,36 @@ package voidsong.gasworks.mixin;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
@@ -39,7 +43,7 @@ import javax.annotation.Nonnull;
 import java.util.function.BiConsumer;
 
 @Mixin(TorchBlock.class)
-public class TorchMixin extends Block {
+public class TorchMixin extends Block implements SimpleWaterloggedBlock {
     /**
      * This constructor is the default & will be ignored, it exists so we can extend Block
      * @param properties ignored & should not be used!
@@ -49,13 +53,13 @@ public class TorchMixin extends Block {
     }
 
     @Inject(method = "<init>", at = @At(value = "RETURN"))
-    private void addQuenchToConstructor(SimpleParticleType flameParticle, BlockBehaviour.Properties properties, CallbackInfo ci) {
-        registerDefaultState(this.stateDefinition.any().setValue(GSProperties.LIT, true));
+    private void addQuenchAndWaterloggingToConstructor(SimpleParticleType flameParticle, BlockBehaviour.Properties properties, CallbackInfo ci) {
+        registerDefaultState(this.stateDefinition.any().setValue(GSProperties.LIT, true).setValue(BlockStateProperties.WATERLOGGED, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(GSProperties.LIT);
+        builder.add(GSProperties.LIT, BlockStateProperties.WATERLOGGED);
     }
 
     @Override
@@ -72,21 +76,43 @@ public class TorchMixin extends Block {
     @Override
     @SuppressWarnings("deprecation")
     public int getLightEmission(BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos) {
-        return (state.is(Blocks.TORCH) || state.is(Blocks.WALL_TORCH)) ? (state.getValue(GSProperties.LIT) ? 10 : 1) : state.getLightEmission();
+        return (state.is(Blocks.TORCH) || state.is(Blocks.WALL_TORCH)) ? (state.getValue(GSProperties.LIT) ? 10 : 0) : state.getLightEmission();
     }
 
     @Override
     public @Nullable BlockState getToolModifiedState(@Nonnull BlockState state, @Nonnull UseOnContext context, @Nonnull ItemAbility itemAbility, boolean simulate) {
-        return ItemAbility.getActions().contains(ItemAbilities.FIRESTARTER_LIGHT) ? state.setValue(GSProperties.LIT, true) : super.getToolModifiedState(state, context, itemAbility, simulate);
+        if (ItemAbility.getActions().contains(ItemAbilities.FIRESTARTER_LIGHT) && canBeLit(state))
+            return state.setValue(GSProperties.LIT, true);
+        return super.getToolModifiedState(state, context, itemAbility, simulate);
     }
 
     @Override
     @Nonnull
     protected InteractionResult useWithoutItem(BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull Player player, @Nonnull BlockHitResult hitResult) {
         boolean lit = state.getValue(GSProperties.LIT);
-        if (!lit)
+        boolean waterlogged = state.getValue(BlockStateProperties.WATERLOGGED);
+        if (!lit && !waterlogged)
             level.setBlockAndUpdate(pos, state.setValue(GSProperties.LIT, true));
-        return lit ? InteractionResult.PASS : InteractionResult.SUCCESS;
+        return lit ? InteractionResult.PASS : (waterlogged ? InteractionResult.FAIL : InteractionResult.SUCCESS);
+    }
+
+    @Unique
+    @SuppressWarnings("all")
+    private static boolean canBeLit(BlockState state) {
+        return !state.getValue(GSProperties.LIT) && !state.getValue(BlockStateProperties.WATERLOGGED);
+    }
+
+    @Inject(method = "animateTick", at = @At(value = "HEAD"), cancellable = true)
+    private void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo ci) {
+        if(state.getValue(BlockStateProperties.WATERLOGGED))
+            ci.cancel();
+        else if (!state.getValue(GSProperties.LIT)) {
+            double d0 = (double)pos.getX() + 0.5;
+            double d1 = (double)pos.getY() + 0.7;
+            double d2 = (double)pos.getZ() + 0.5;
+            level.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 0.0, 0.0);
+            ci.cancel();
+        }
     }
 
     /*
@@ -95,15 +121,15 @@ public class TorchMixin extends Block {
 
     @Override
     public void onCaughtFire(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
-        if (!state.getValue(GSProperties.LIT))
+        if (canBeLit(state))
             level.setBlockAndUpdate(pos, state.setValue(GSProperties.LIT, true));
         super.onCaughtFire(state, level, pos, direction, igniter);
     }
 
     /*
-     * The method below was copied from AbstractCandleBlock, to give torches similar behaviors to candles.
+     * The methods below were copied from AbstractCandleBlock, to give torches similar behaviors to candles.
      * While torches are not the same as candles, they should be lit and unlit by the same non-player mechanisms. However,
-     * torches do not have a hitbox and thus cannot be lit by on-fire projectiles
+     * torches do not have a hitbox and thus cannot be lit by on-fire projectiles. Most of these relate to waterlogging
      */
 
     @Override
@@ -111,5 +137,42 @@ public class TorchMixin extends Block {
         if (explosion.canTriggerBlocks() && state.getValue(GSProperties.LIT))
             BlockUtil.dowseTorch(null, state, level, pos);
         super.onExplosionHit(state, level, pos, explosion, dropConsumer);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
+        BlockState state = super.getStateForPlacement(context);
+        boolean waterlogged = fluid.getType() == Fluids.WATER;
+        return state == null ? null : state.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !waterlogged);
+    }
+
+    @Override
+    @Nonnull
+    protected BlockState updateShape(@Nonnull BlockState state, @Nonnull Direction direction, @Nonnull BlockState neighborState, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull BlockPos neighborPos) {
+        if (state.getValue(BlockStateProperties.WATERLOGGED))
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+    }
+
+    @Override
+    @Nonnull
+    protected FluidState getFluidState(BlockState state) {
+        return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public boolean placeLiquid(@Nonnull LevelAccessor level, @Nonnull BlockPos pos, BlockState state, @Nonnull FluidState fluidState) {
+        if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
+            BlockState blockstate = state.setValue(BlockStateProperties.WATERLOGGED, true);
+            if (state.getValue(GSProperties.LIT))
+                BlockUtil.dowseTorch(null, blockstate, level, pos);
+            else
+                level.setBlock(pos, blockstate, 3);
+            level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
+            return true;
+        } else {
+            return false;
+        }
     }
 }
