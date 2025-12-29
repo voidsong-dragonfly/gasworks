@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin;
+package voidsong.gasworks.mixin.tweak;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

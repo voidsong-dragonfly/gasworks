@@ -3,13 +3,13 @@
   "package": "voidsong.gasworks.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "CampfireMixin",
-    "ComposterMixin",
-    "ComposterMixin$OutputContainer",
-    "ThrownPotionMixin",
-    "TorchMixin",
-    "WallTorchMixin",
-    "accessor.FlowingFluidAccessor"
+    "accessor.FlowingFluidAccessor",
+    "tweak.CampfireMixin",
+    "tweak.ComposterMixin",
+    "tweak.ComposterMixin$OutputContainer",
+    "tweak.ThrownPotionMixin",
+    "tweak.TorchMixin",
+    "tweak.WallTorchMixin"
   ],
   "client": [],
   "injectors": {

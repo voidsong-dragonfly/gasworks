@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin;
+package voidsong.gasworks.mixin.tweak;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -129,7 +129,7 @@ public class TorchMixin extends Block implements SimpleWaterloggedBlock {
     }
 
     /*
-     * The methods below were copied from AbstractCandleBlock, to give torches similar behaviors to candles.
+     * The methods below were copied from CandleBlock, to give torches similar behaviors to candles.
      * While torches are not the same as candles, they should be lit and unlit by the same non-player mechanisms. However,
      * torches do not have a hitbox and thus cannot be lit by on-fire projectiles. Most of these relate to waterlogging
      */
@@ -144,17 +144,17 @@ public class TorchMixin extends Block implements SimpleWaterloggedBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
-        BlockState state = super.getStateForPlacement(context);
+        BlockState toPlace = super.getStateForPlacement(context);
         boolean waterlogged = fluid.getType() == Fluids.WATER;
-        return state == null ? null : state.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && state.is(GSTags.BlockTags.DOWSE_IN_WATER)));
+        return toPlace == null ? null : toPlace.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && toPlace.is(GSTags.BlockTags.DOWSE_IN_WATER)));
     }
 
     @Override
     @Nonnull
-    protected BlockState updateShape(@Nonnull BlockState state, @Nonnull Direction direction, @Nonnull BlockState neighborState, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull BlockPos neighborPos) {
-        if (state.getValue(BlockStateProperties.WATERLOGGED))
+    protected BlockState updateShape(@Nonnull BlockState updated, @Nonnull Direction direction, @Nonnull BlockState neighborState, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull BlockPos neighborPos) {
+        if (updated.getValue(BlockStateProperties.WATERLOGGED))
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+        return super.updateShape(updated, direction, neighborState, level, pos, neighborPos);
     }
 
     @Override

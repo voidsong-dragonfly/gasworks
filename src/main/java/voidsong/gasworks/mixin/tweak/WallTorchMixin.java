@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin;
+package voidsong.gasworks.mixin.tweak;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -38,7 +38,7 @@ public class WallTorchMixin extends Block implements SimpleWaterloggedBlock {
     }
 
     @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/WallTorchBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
-    private BlockState useCorrectHeightmapType(BlockState defaultState) {
+    private BlockState addQuenchAndWaterloggingToConstructor(BlockState defaultState) {
         return defaultState.setValue(GSProperties.LIT, true).setValue(BlockStateProperties.WATERLOGGED, false);
     }
 
@@ -71,21 +71,21 @@ public class WallTorchMixin extends Block implements SimpleWaterloggedBlock {
     }
 
     /*
-     * The methods below were copied & modified from AbstractCandleBlock, to give torches similar behaviors to candles.
+     * The methods below were copied & modified from CandleBlock, to give torches similar behaviors to candles.
      * These relate to waterlogging;  they have been modified to not overwrite but instead tack onto the default methods
      */
 
     @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
-    private BlockState getStateForPlacement(BlockState original, @Local(argsOnly = true) BlockPlaceContext context) {
+    private BlockState getStateForPlacement(BlockState toPlace, @Local(argsOnly = true) BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         boolean waterlogged = fluid.getType() == Fluids.WATER;
-        return original == null ? null : original.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && original.is(GSTags.BlockTags.DOWSE_IN_WATER)));
+        return toPlace == null ? null : toPlace.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && toPlace.is(GSTags.BlockTags.DOWSE_IN_WATER)));
     }
 
     @ModifyReturnValue(method = "updateShape", at = @At(value = "RETURN"))
-    private BlockState updateShape(BlockState original, @Local(argsOnly = true) LevelAccessor level, @Local(ordinal = 0, argsOnly = true) BlockPos pos) {
-        if (original.hasProperty(BlockStateProperties.WATERLOGGED) && original.getValue(BlockStateProperties.WATERLOGGED))
+    private BlockState updateShape(BlockState updated, @Local(argsOnly = true) LevelAccessor level, @Local(ordinal = 0, argsOnly = true) BlockPos pos) {
+        if (updated.hasProperty(BlockStateProperties.WATERLOGGED) && updated.getValue(BlockStateProperties.WATERLOGGED))
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        return original;
+        return updated;
     }
 }

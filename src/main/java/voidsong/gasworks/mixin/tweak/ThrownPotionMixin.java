@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin;
+package voidsong.gasworks.mixin.tweak;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
