@@ -26,6 +26,6 @@ public abstract class ThrownPotionMixin extends ThrowableItemProjectile {
 
     @Inject(method = "dowseFire", at = @At(value = "RETURN"))
     private void addTorchesToDowseFire(BlockPos pos, CallbackInfo ci, @Local(name = "blockstate") BlockState state) {
-        BlockUtil.dowseTorch(this.getOwner(), state, level(), pos);
+        BlockUtil.dowseTorch(this.getOwner(), state, level(), pos, true);
     }
 }

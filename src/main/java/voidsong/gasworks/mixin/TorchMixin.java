@@ -17,7 +17,6 @@ import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -36,6 +35,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.common.block.properties.GSProperties;
 import voidsong.gasworks.common.util.BlockUtil;
 
@@ -64,19 +64,19 @@ public class TorchMixin extends Block implements SimpleWaterloggedBlock {
 
     @Override
     protected boolean isRandomlyTicking(BlockState state) {
-        return (state.is(Blocks.TORCH) || state.is(Blocks.WALL_TORCH) && state.getValue(GSProperties.LIT));
+        return state.is(GSTags.BlockTags.DOWSE_IN_RAIN) && state.getValue(GSProperties.LIT);
     }
 
     @Override
     protected void randomTick(@Nonnull BlockState state, ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
         if (level.isRainingAt(pos))
-            BlockUtil.dowseTorch(null, state, level, pos);
+            BlockUtil.dowseTorch(null, state, level, pos, true);
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public int getLightEmission(BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos) {
-        return (state.is(Blocks.TORCH) || state.is(Blocks.WALL_TORCH)) ? (state.getValue(GSProperties.LIT) ? 10 : 0) : state.getLightEmission();
+        return state.is(GSTags.BlockTags.LOW_LIGHT_TORCHES) ? (state.getValue(GSProperties.LIT) ? 10 : 0) : state.getLightEmission();
     }
 
     @Override
@@ -135,7 +135,7 @@ public class TorchMixin extends Block implements SimpleWaterloggedBlock {
     @Override
     protected void onExplosionHit(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, Explosion explosion, @Nonnull BiConsumer<ItemStack, BlockPos> dropConsumer) {
         if (explosion.canTriggerBlocks() && state.getValue(GSProperties.LIT))
-            BlockUtil.dowseTorch(null, state, level, pos);
+            BlockUtil.dowseTorch(null, state, level, pos, true);
         super.onExplosionHit(state, level, pos, explosion, dropConsumer);
     }
 
@@ -144,7 +144,7 @@ public class TorchMixin extends Block implements SimpleWaterloggedBlock {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         BlockState state = super.getStateForPlacement(context);
         boolean waterlogged = fluid.getType() == Fluids.WATER;
-        return state == null ? null : state.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !waterlogged);
+        return state == null ? null : state.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && state.is(GSTags.BlockTags.DOWSE_IN_WATER)));
     }
 
     @Override
@@ -166,7 +166,7 @@ public class TorchMixin extends Block implements SimpleWaterloggedBlock {
         if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
             BlockState blockstate = state.setValue(BlockStateProperties.WATERLOGGED, true);
             if (state.getValue(GSProperties.LIT))
-                BlockUtil.dowseTorch(null, blockstate, level, pos);
+                BlockUtil.dowseTorch(null, blockstate, level, pos, false);
             else
                 level.setBlock(pos, blockstate, 3);
             level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));

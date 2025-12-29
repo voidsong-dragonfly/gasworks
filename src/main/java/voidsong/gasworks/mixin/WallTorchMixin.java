@@ -23,6 +23,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.common.block.properties.GSProperties;
 
 
@@ -78,7 +79,7 @@ public class WallTorchMixin extends Block implements SimpleWaterloggedBlock {
     private BlockState getStateForPlacement(BlockState original, @Local(argsOnly = true) BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         boolean waterlogged = fluid.getType() == Fluids.WATER;
-        return original == null ? null : original.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !waterlogged);
+        return original == null ? null : original.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && original.is(GSTags.BlockTags.DOWSE_IN_WATER)));
     }
 
     @ModifyReturnValue(method = "updateShape", at = @At(value = "RETURN"))

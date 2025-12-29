@@ -128,8 +128,18 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .addAll(GSBlocks.BRICK_SILLS.stream().map(DeferredHolder::getKey).toList())
             .addAll(GSBlocks.BRICK_QUOINS.stream().map(DeferredHolder::getKey).toList());
         /*
-         * Compatibility tags
+         * Compatibility tags, other mods & Gasworks
          */
+        // Tags from Gasworks
+        tag(GSTags.BlockTags.DOWSE_IN_RAIN)
+            .add(Blocks.TORCH, Blocks.WALL_TORCH);
+        tag(GSTags.BlockTags.DOWSE_IN_WATER)
+            .add(Blocks.TORCH, Blocks.WALL_TORCH)
+            .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH);
+        tag(GSTags.BlockTags.LOW_LIGHT_TORCHES)
+            .add(Blocks.TORCH, Blocks.WALL_TORCH)
+            .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH);
+        // Tags from other mods
         tag(ModTags.MUSHROOM_COLONY_GROWABLE_ON)
             .add(GSBlocks.COMPOST_PILE.get());
         tag(ModTags.COMPOST_ACTIVATORS)

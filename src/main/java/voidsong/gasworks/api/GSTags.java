@@ -33,6 +33,13 @@ public class GSTags {
         public static final TagKey<Block> COALLIKE_PILES = blockTag(Gasworks.rl("coallike_piles"));
         // Compost-accelerating blocks
         public static final TagKey<Block> COMPOST_ACCELERATORS = blockTag(Gasworks.rl("compost_accelerators"));
+        /*
+         * Compatibility tags, other mods & Gasworks
+         */
+        // Tags for torch dowsing
+        public static final TagKey<Block> DOWSE_IN_RAIN = blockTag(Gasworks.rl("dowse_in_rain"));
+        public static final TagKey<Block> DOWSE_IN_WATER = blockTag(Gasworks.rl("dowse_in_water"));
+        public static final TagKey<Block> LOW_LIGHT_TORCHES = blockTag(Gasworks.rl("low_light_torches"));
     }
 
     public static class ItemTags {
