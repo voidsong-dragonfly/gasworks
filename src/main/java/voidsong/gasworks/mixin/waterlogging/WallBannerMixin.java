@@ -31,7 +31,7 @@ public class WallBannerMixin extends Block implements SimpleWaterloggedBlock {
         super(properties);
     }
 
-    @ModifyArg(method = "<init>(Lnet/minecraft/world/item/DyeColor;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/WallBannerBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/WallBannerBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
     private BlockState addWaterloggingToConstructor(BlockState defaultState) {
         return defaultState.setValue(BlockStateProperties.WATERLOGGED, false);
     }
