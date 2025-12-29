@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
@@ -38,6 +39,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.common.block.properties.GSProperties;
 import voidsong.gasworks.common.util.BlockUtil;
+import voidsong.gasworks.mixin.accessor.FlowingFluidAccessor;
 
 import javax.annotation.Nonnull;
 import java.util.function.BiConsumer;
@@ -163,16 +165,35 @@ public class TorchMixin extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public boolean placeLiquid(@Nonnull LevelAccessor level, @Nonnull BlockPos pos, BlockState state, @Nonnull FluidState fluidState) {
-        if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
-            BlockState blockstate = state.setValue(BlockStateProperties.WATERLOGGED, true);
-            if (state.getValue(GSProperties.LIT))
-                BlockUtil.dowseTorch(null, blockstate, level, pos, false);
-            else
-                level.setBlock(pos, blockstate, 3);
-            level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
+        if (!state.getValue(BlockStateProperties.WATERLOGGED)) {
+            if(fluidState.getType() == Fluids.WATER) {
+                BlockState blockstate = state.setValue(BlockStateProperties.WATERLOGGED, true);
+                if (state.getValue(GSProperties.LIT))
+                    BlockUtil.dowseTorch(null, blockstate, level, pos, false);
+                else
+                    level.setBlock(pos, blockstate, 3);
+                level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
+            // These exceptions to the placeLiquid code from SimpleWaterloggedBlock exists explicitly to allow torches
+            // to be washed away, while also containing waterlogging, it is copied from FlowingFluid#spreadTo
+            } else if (fluidState.getType() instanceof FlowingFluidAccessor flowingFluid) {
+                flowingFluid.callBeforeDestroyingBlock(level, pos, state);
+                level.setBlock(pos, fluidState.createLegacyBlock(), 3);
+            } else {
+                level.setBlock(pos, fluidState.createLegacyBlock(), 3);
+            }
             return true;
         } else {
             return false;
         }
+    }
+
+    /*
+     * The method below is modified from SimpleWaterloggedBlock & LiquidBlockContainer to allow torches to still be
+     * washed away by flowing water, while also containing waterlogging
+     */
+
+    @Override
+    public boolean canPlaceLiquid(@Nullable Player player, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull Fluid fluid) {
+        return true;
     }
 }
