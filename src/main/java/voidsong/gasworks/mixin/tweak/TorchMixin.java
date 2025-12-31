@@ -29,7 +29,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -42,6 +41,7 @@ import voidsong.gasworks.common.util.BlockUtil;
 import voidsong.gasworks.mixin.accessor.FlowingFluidAccessor;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 @Mixin(TorchBlock.class)

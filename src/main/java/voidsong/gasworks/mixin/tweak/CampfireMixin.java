@@ -12,11 +12,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import voidsong.gasworks.common.block.properties.GSProperties;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 @Mixin(CampfireBlock.class)
 public class CampfireMixin extends Block {

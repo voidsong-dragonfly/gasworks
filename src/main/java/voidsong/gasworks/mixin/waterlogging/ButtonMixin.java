@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,6 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import voidsong.gasworks.mixin.accessor.FlowingFluidAccessor;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 @Mixin(ButtonBlock.class)
 public class ButtonMixin extends Block implements SimpleWaterloggedBlock {
