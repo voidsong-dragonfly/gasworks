@@ -13,16 +13,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.CandelabraBlock;
-import voidsong.gasworks.common.recipe.NonMetalRealismCondition;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSItems;
 
@@ -304,6 +301,13 @@ public class GasworksRecipeProvider extends RecipeProvider {
             //    .save(output, rl(item, "stonecutting"));
         }
         // Candelabras
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.CANDELABRA, 1)
+            .pattern("c")
+            .pattern("n")
+            .define('c', Items.CANDLE)
+            .define('n', Tags.Items.NUGGETS_IRON)
+            .unlockedBy("has_candle", has(ItemTags.CANDLES))
+            .save(output, rl(GSItems.CANDELABRA, "crafting"));
         for(Pair<DyeColor, DeferredBlock<CandelabraBlock>> pair : GSBlocks.CANDELABRAS) {
             Item item = pair.getSecond().get().asItem();
             ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 1)

@@ -64,8 +64,48 @@ public class CandelabraBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     @Nonnull
     protected VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return Shapes.box(0.25, 0.25, 0.25, 0.75, 0.75, 0.75);
-        // TODO: DEFINE STATES
+        return switch (state.getValue(GSProperties.FACING_ALL)) {
+            case DOWN -> switch(state.getValue(CANDLES)) {
+                case 1, 2 -> Shapes.box(0.3125, 0, 0.3125, 0.6875, 0.8125, 0.6875);
+                case 3 -> Shapes.box(0.125, 0, 0.125, 0.875, 0.9375, 0.875);
+                case 4 -> Shapes.box(0.0625, 0, 0.0625, 0.9375, 0.9375, 0.9375);
+                default -> Shapes.block();
+            };
+            case NORTH -> switch(state.getValue(CANDLES)) {
+                case 1 -> Shapes.box(0.375, 0.0625, 0, 0.625, 0.875, 0.3125);
+                case 2 -> Shapes.box(0.1875, 0.0625, 0, 0.8125, 0.875, 0.3125);
+                case 3 -> Shapes.box(0.0625, 0.0625, 0, 0.9375, 0.875, 0.4375);
+                case 4 -> Shapes.box(0.0625, 0.0625, 0, 0.9375, 0.875, 0.5);
+                default -> Shapes.block();
+            };
+            case EAST -> switch(state.getValue(CANDLES)) {
+                case 1 -> Shapes.box(0.6875, 0.0625, 0.375, 1, 0.875, 0.625);
+                case 2 -> Shapes.box(0.6875, 0.0625, 0.1875, 1, 0.875, 0.8125);
+                case 3 -> Shapes.box(0.5625, 0.0625, 0.0625, 1, 0.875, 0.9375);
+                case 4 -> Shapes.box(0.5, 0.0625, 0.0625, 1, 0.875, 0.9375);
+                default -> Shapes.block();
+            };
+            case WEST -> switch(state.getValue(CANDLES)) {
+                case 1 -> Shapes.box(0, 0.0625, 0.375, 0.3125, 0.875, 0.625);
+                case 2 -> Shapes.box(0, 0.0625, 0.1875, 0.3125, 0.875, 0.8125);
+                case 3 -> Shapes.box(0, 0.0625, 0.0625, 0.4375, 0.875, 0.9375);
+                case 4 -> Shapes.box(0, 0.0625, 0.0625, 0.5, 0.875, 0.9375);
+                default -> Shapes.block();
+            };
+            case SOUTH -> switch(state.getValue(CANDLES)) {
+                case 1 -> Shapes.box(0.375, 0.6875, 0.375, 0.625, 0.875, 1);
+                case 2 -> Shapes.box(0.0625, 0.6875, 0.1875, 0.8125, 0.875, 1);
+                case 3 -> Shapes.box(0.0625, 0.5625, 0.0625, 0.9375, 0.875, 1);
+                case 4 -> Shapes.box(0.0625, 0.5, 0.0625, 0.9375, 0.875, 1);
+                default -> Shapes.block();
+            };
+            case UP -> switch(state.getValue(CANDLES)) {
+                case 1, 2 -> Shapes.box(0.3125, 0.0625, 0.3125, 0.6875, 0.6875, 0.6875);
+                case 3 -> Shapes.box(0.125, 0.0625, 0.125, 0.875, 0.9375, 0.875);
+                case 4 -> Shapes.box(0.0625, 0.0625, 0.0625, 0.9375, 1, 0.9375);
+                default -> Shapes.block();
+            };
+        };
     }
 
     protected Iterable<Vec3> getParticleOffsets(BlockState state) {

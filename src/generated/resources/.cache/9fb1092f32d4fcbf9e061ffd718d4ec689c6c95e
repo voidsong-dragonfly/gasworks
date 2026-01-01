@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-31T16:40:05.023406413	Recipes
+// 1.21.1	2025-12-31T22:54:33.352620291	Recipes
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
 07c8822a56251c4bd7c493790a893aa9a2401e35 data/gasworks/advancement/recipes/building_blocks/crafting/birch_log_pile.json
@@ -31,6 +31,7 @@ db9a5000cbda8320a541216891a5af92d7980e55 data/gasworks/advancement/recipes/build
 85e6f7a4327943b368986b1fd821760dda3e3746 data/gasworks/advancement/recipes/building_blocks/crafting/brown_stained_framed_glass.json
 0cc3c4e66a514f130508bfbb196d2b110638b477 data/gasworks/advancement/recipes/building_blocks/crafting/brown_stained_framed_glass_pane.json
 17c571de4e91a92a69417d40841054acb0f1bffa data/gasworks/advancement/recipes/building_blocks/crafting/brown_stained_framed_glass_pane_from_glass_pane.json
+e56081feb3cc71621766f20b54f09e7712dfe038 data/gasworks/advancement/recipes/building_blocks/crafting/candelabra.json
 0b4bfe9ac0aa7e3c7f08e98893fc7f80123c2e91 data/gasworks/advancement/recipes/building_blocks/crafting/charcoal_pile.json
 e5888d2969e9c380fa3892c635461183871ca15a data/gasworks/advancement/recipes/building_blocks/crafting/cherry_log_pile.json
 9665d26cc99645512457cfc31dedcf91d582d824 data/gasworks/advancement/recipes/building_blocks/crafting/coal_pile.json
@@ -166,6 +167,7 @@ a8592f5ae84b994216053b07b77c760317b5c2ed data/gasworks/recipe/crafting/brick_sil
 dfa3dcb02cc3dafea591b1adda3d8efae7897376 data/gasworks/recipe/crafting/brown_stained_framed_glass.json
 2cba5a56021057e907e795543309e1780d35c410 data/gasworks/recipe/crafting/brown_stained_framed_glass_pane.json
 30fc89b7144fe39b4abcd4a4f140cd9c909352ef data/gasworks/recipe/crafting/brown_stained_framed_glass_pane_from_glass_pane.json
+c9d453e44baeef0901f28150aebbed2759a8736b data/gasworks/recipe/crafting/candelabra.json
 1aad858fe0aad2a66178e07c8c177d84d9a862e1 data/gasworks/recipe/crafting/charcoal_pile.json
 a98105fd5cc49e771cc0b16eb096938b8e393bd3 data/gasworks/recipe/crafting/cherry_log_pile.json
 4ca38b9bc3ccef30bf72f6fb297b9c09042c10d9 data/gasworks/recipe/crafting/coal_pile.json
