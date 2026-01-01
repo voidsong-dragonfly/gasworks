@@ -118,6 +118,7 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
                 .texture("layer0", rl("framed_glass/" + block.get().getColor() + "_stained_framed_glass"));
         }
         // Candelabras
+        candelabraBlockAndItem(GSBlocks.CANDELABRA.get(), null, 0,0);
         for(Pair<DyeColor, DeferredBlock<CandelabraBlock>> pair : GSBlocks.CANDELABRAS) {
             CandelabraBlock block = pair.getSecond().get();
             candelabraBlockAndItem(block, pair.getFirst(), 0,0);

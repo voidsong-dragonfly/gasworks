@@ -92,6 +92,9 @@ public class GSItems {
             output.accept(COMPOST);
             output.accept(FIRECLAY_BALL);
             output.accept(FIREBRICK);
+            // Blocks with specialty items
+            output.accept(GSItems.CANDELABRA);
+            output.acceptAll(CANDELABRAS.stream().map(item -> new ItemStack(item.get())).toList());
             // Tool items
             output.accept(TRADESWOMANS_JOURNAL);
             // Blocks

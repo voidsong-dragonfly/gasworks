@@ -543,8 +543,9 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	 * Candelabras use this right now to attach to walls on the horizontals, but floor/ceiling models for top/bottom
 	 */
 
-	protected void candelabraBlockAndItem(Block block, DyeColor color, int offsetRotX, int offsetRotY) {
-		itemModels().getBuilder(getName(block)).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", rlItem("candelabras/" +color));
+	protected void candelabraBlockAndItem(Block block, @Nullable DyeColor dye, int offsetRotX, int offsetRotY) {
+		String color = (dye == null) ? "" : (dye + "_");
+		itemModels().getBuilder(getName(block)).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", rlItem("candelabras/" + ((dye == null) ? "candle" : dye)));
 		getVariantBuilder(block).forAllStates(state -> {
 			 switch (state.getValue(GSProperties.FACING_ALL)) {
 					case NORTH:
@@ -558,7 +559,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 								getName(block) +"_"+state.getValue(GSProperties.FACING_ALL)+(state.getValue(CandelabraBlock.LIT)?"_lit_":"_") + state.getValue(CandelabraBlock.CANDLES),
 								rl("candelabra/wall_" + state.getValue(CandelabraBlock.CANDLES))
 							)
-							.texture("candle", rlMC(color + (state.getValue(CandelabraBlock.LIT) ? "_candle_lit" : "_candle")));
+							.texture("candle", rlMC(color + (state.getValue(CandelabraBlock.LIT) ? "candle_lit" : "candle")));
 						return ConfiguredModel.builder().modelFile(model).rotationX(offsetRotX).rotationY(y).uvLock(false).build();
 					}
 					case UP: {
@@ -567,7 +568,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 								getName(block) +"_"+state.getValue(GSProperties.FACING_ALL)+(state.getValue(CandelabraBlock.LIT)?"_lit_":"_") + state.getValue(CandelabraBlock.CANDLES),
 								rl("candelabra/ceiling_" + state.getValue(CandelabraBlock.CANDLES))
 							)
-							.texture("candle", rlMC(color + ((state.getValue(CandelabraBlock.LIT) ? "_candle_lit" : "_candle"))));
+							.texture("candle", rlMC(color + ((state.getValue(CandelabraBlock.LIT) ? "candle_lit" : "candle"))));
 						return ConfiguredModel.builder().modelFile(model).rotationX(offsetRotX).rotationY(offsetRotY).uvLock(false).build();
 					}
 					default: {
@@ -576,7 +577,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 								getName(block) +"_"+state.getValue(GSProperties.FACING_ALL)+(state.getValue(CandelabraBlock.LIT)?"_lit_":"_") + state.getValue(CandelabraBlock.CANDLES),
 								rl("candelabra/floor_" + state.getValue(CandelabraBlock.CANDLES))
 							)
-							.texture("candle", rlMC(color + (state.getValue(CandelabraBlock.LIT) ? "_candle_lit" : "_candle")));
+							.texture("candle", rlMC(color + (state.getValue(CandelabraBlock.LIT) ? "candle_lit" : "candle")));
 						return ConfiguredModel.builder().modelFile(model).rotationX(offsetRotX).rotationY(offsetRotY).uvLock(false).build();
 					}
 				}

@@ -50,6 +50,7 @@ public class GSBlocks {
         .strength(3.5F)
         .sound(SoundType.METAL)
         .noOcclusion()
+        .isViewBlocking((state, getter, pos) -> false)
         .lightLevel(CandelabraBlock.LIGHT_EMISSION)
         .pushReaction(PushReaction.DESTROY);
 

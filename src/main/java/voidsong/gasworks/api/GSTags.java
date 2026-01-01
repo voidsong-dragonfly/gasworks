@@ -36,7 +36,7 @@ public class GSTags {
         /*
          * Building blocks, including various 'functional' blocks
          */
-        public static final TagKey<Block> CANDELABRAS = blockTag(cLoc("candelabras"));
+        public static final TagKey<Block> CANDELABRAS = blockTag(Gasworks.rl("candelabras"));
         /*
          * Compatibility tags, other mods & Gasworks
          */
@@ -66,7 +66,7 @@ public class GSTags {
         /*
          * Building blocks, including various 'functional' blocks
          */
-        public static final TagKey<Item> CANDELABRAS = itemTag(cLoc("candelabras"));
+        public static final TagKey<Item> CANDELABRAS = itemTag(Gasworks.rl("candelabras"));
         /*
          * Building blocks, including various 'functional' blocks
          */

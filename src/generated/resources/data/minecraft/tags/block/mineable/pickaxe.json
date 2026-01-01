@@ -4,6 +4,7 @@
     "gasworks:firebrick_stairs",
     "gasworks:firebrick_slab",
     "gasworks:firebrick_wall",
+    "gasworks:candelabra",
     "gasworks:firebrick_sill_andesite",
     "gasworks:firebrick_sill_deepslate",
     "gasworks:firebrick_sill_diorite",
@@ -31,6 +32,22 @@
     "gasworks:brick_quoin_granite",
     "gasworks:brick_quoin_polished_blackstone",
     "gasworks:brick_quoin_stone",
-    "gasworks:brick_quoin_tuff"
+    "gasworks:brick_quoin_tuff",
+    "gasworks:white_candelabra",
+    "gasworks:orange_candelabra",
+    "gasworks:magenta_candelabra",
+    "gasworks:light_blue_candelabra",
+    "gasworks:yellow_candelabra",
+    "gasworks:lime_candelabra",
+    "gasworks:pink_candelabra",
+    "gasworks:gray_candelabra",
+    "gasworks:light_gray_candelabra",
+    "gasworks:cyan_candelabra",
+    "gasworks:purple_candelabra",
+    "gasworks:blue_candelabra",
+    "gasworks:brown_candelabra",
+    "gasworks:green_candelabra",
+    "gasworks:red_candelabra",
+    "gasworks:black_candelabra"
   ]
 }

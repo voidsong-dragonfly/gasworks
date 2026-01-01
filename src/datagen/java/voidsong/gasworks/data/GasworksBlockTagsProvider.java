@@ -136,10 +136,12 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.FIRECLAY.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(GSBlocks.FIREBRICKS.get(), GSBlocks.FIREBRICK_STAIRS.get(), GSBlocks.FIREBRICK_SLAB.get(), GSBlocks.FIREBRICK_WALL.get())
+            .add(GSBlocks.CANDELABRA.get())
             .addAll(GSBlocks.FIREBRICK_SILLS.stream().map(DeferredHolder::getKey).toList())
             .addAll(GSBlocks.FIREBRICK_QUOINS.stream().map(DeferredHolder::getKey).toList())
             .addAll(GSBlocks.BRICK_SILLS.stream().map(DeferredHolder::getKey).toList())
-            .addAll(GSBlocks.BRICK_QUOINS.stream().map(DeferredHolder::getKey).toList());
+            .addAll(GSBlocks.BRICK_QUOINS.stream().map(DeferredHolder::getKey).toList())
+            .addAll(GSBlocks.CANDELABRAS.stream().map(pair -> pair.getSecond().getKey()).toList());
         /*
          * Compatibility tags, other mods & Gasworks
          */
