@@ -31,6 +31,22 @@
     "gasworks:brown_stained_framed_glass_pane",
     "gasworks:green_stained_framed_glass_pane",
     "gasworks:red_stained_framed_glass_pane",
-    "gasworks:black_stained_framed_glass_pane"
+    "gasworks:black_stained_framed_glass_pane",
+    "gasworks:white_candelabra",
+    "gasworks:orange_candelabra",
+    "gasworks:magenta_candelabra",
+    "gasworks:light_blue_candelabra",
+    "gasworks:yellow_candelabra",
+    "gasworks:lime_candelabra",
+    "gasworks:pink_candelabra",
+    "gasworks:gray_candelabra",
+    "gasworks:light_gray_candelabra",
+    "gasworks:cyan_candelabra",
+    "gasworks:purple_candelabra",
+    "gasworks:blue_candelabra",
+    "gasworks:brown_candelabra",
+    "gasworks:green_candelabra",
+    "gasworks:red_candelabra",
+    "gasworks:black_candelabra"
   ]
 }

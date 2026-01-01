@@ -1,6 +1,7 @@
 package voidsong.gasworks.data;
 
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.WritableRegistry;
@@ -10,6 +11,7 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -28,6 +30,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.SillBlock;
@@ -157,6 +160,10 @@ public class GasworksLootTableProvider extends LootTableProvider {
                 dropWhenSilkTouch(block.get());
             for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES)
                 dropWhenSilkTouch(block.get());
+            // Candelabras
+            dropSelf(GSBlocks.CANDELABRA.get());
+            for(Pair<DyeColor, DeferredBlock<CandelabraBlock>> pair : GSBlocks.CANDELABRAS)
+                dropSelf(pair.getSecond().get());
         }
     }
 

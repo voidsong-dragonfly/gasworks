@@ -1,5 +1,6 @@
 package voidsong.gasworks.common.registry;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -12,6 +13,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.block.SillBlock;
 import voidsong.gasworks.common.item.TradeswomansJournalItem;
 
@@ -70,6 +72,9 @@ public class GSItems {
     public static final DeferredItem<BlockItem> FRAMED_GLASS_PANE = ITEMS.registerSimpleBlockItem("framed_glass_pane", GSBlocks.FRAMED_GLASS_PANE);
     public static List<DeferredItem<BlockItem>> STAINED_FRAMED_GLASS = createStainedGlasses();
     public static List<DeferredItem<BlockItem>> STAINED_FRAMED_GLASS_PANES = createStainedGlassPanes();
+    // Candelabra
+    public static DeferredItem<BlockItem> CANDELABRA = ITEMS.registerSimpleBlockItem("candelabra", GSBlocks.CANDELABRA);
+    public static List<DeferredItem<BlockItem>> CANDELABRAS = createCandelabras();
     /*
      * Tool items & other useful items
      */
@@ -136,6 +141,16 @@ public class GSItems {
     public static List<DeferredItem<BlockItem>> createStainedGlassPanes() {
         List<DeferredItem<BlockItem>> items = new ArrayList<>();
         for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
+            DeferredItem<BlockItem> item = ITEMS.registerSimpleBlockItem(block.getRegisteredName().split(":")[1], block);
+            items.add(item);
+        }
+        return items;
+    }
+    // Candelabra
+    public static List<DeferredItem<BlockItem>> createCandelabras() {
+        List<DeferredItem<BlockItem>> items = new ArrayList<>();
+        for(Pair<DyeColor, DeferredBlock<CandelabraBlock>> pair : GSBlocks.CANDELABRAS) {
+            DeferredBlock<CandelabraBlock> block = pair.getSecond();
             DeferredItem<BlockItem> item = ITEMS.registerSimpleBlockItem(block.getRegisteredName().split(":")[1], block);
             items.add(item);
         }

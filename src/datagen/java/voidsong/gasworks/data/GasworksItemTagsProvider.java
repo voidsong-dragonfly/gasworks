@@ -1,10 +1,13 @@
 package voidsong.gasworks.data;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StainedGlassBlock;
@@ -13,6 +16,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSItems;
 import voidsong.gasworks.api.GSTags;
@@ -73,7 +77,7 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
             .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "organic_compost"))
             .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "rich_soil"))
             .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "rich_soil_farmland"))
-            .addOptional(ResourceLocation.fromNamespaceAndPath( "farmersdelight", "brown_mushroom_colony"))
+            .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "brown_mushroom_colony"))
             .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "red_mushroom_colony"));
         /*
          * Building blocks, including various 'functional' blocks
@@ -94,19 +98,29 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
             .add(GSItems.FRAMED_GLASS_PANE.get());
         tag(Tags.Items.GLASS_PANES_COLORLESS)
             .add(GSItems.FRAMED_GLASS_PANE.get());
-        for(DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS) {
+        for (DeferredBlock<StainedGlassBlock> block : GSBlocks.STAINED_FRAMED_GLASS) {
             StainedGlassBlock glass = block.get();
             tag(Tags.Items.GLASS_BLOCKS).add(glass.asItem());
             tag(Tags.Items.DYED).add(glass.asItem());
             tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + glass.getColor())))
                 .add(glass.asItem());
         }
-        for(DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
+        for (DeferredBlock<StainedGlassPaneBlock> block : GSBlocks.STAINED_FRAMED_GLASS_PANES) {
             StainedGlassPaneBlock glass = block.get();
             tag(Tags.Items.GLASS_PANES).add(glass.asItem());
             tag(Tags.Items.DYED).add(glass.asItem());
             tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + glass.getColor())))
                 .add(glass.asItem());
+        }
+        // Candelabras
+        tag(GSTags.ItemTags.CANDELABRAS)
+            .add(GSItems.CANDELABRA.get());
+        for (Pair<DyeColor, DeferredBlock<CandelabraBlock>> pair : GSBlocks.CANDELABRAS) {
+            CandelabraBlock candelabra = pair.getSecond().get();
+            tag(GSTags.ItemTags.CANDELABRAS).add(candelabra.asItem());
+            tag(Tags.Items.DYED).add(candelabra.asItem());
+            tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + pair.getFirst())))
+                .add(candelabra.asItem());
         }
     }
 }

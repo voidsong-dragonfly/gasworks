@@ -1,9 +1,11 @@
 package voidsong.gasworks.data;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
@@ -14,6 +16,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.api.GSTags;
 
@@ -103,6 +106,16 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             tag(Tags.Blocks.DYED).add(glass);
             tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + glass.getColor())))
                 .add(glass);
+        }
+        // Candelabras
+        tag(GSTags.BlockTags.CANDELABRAS)
+            .add(GSBlocks.CANDELABRA.get());
+        for(Pair<DyeColor, DeferredBlock<CandelabraBlock>> pair : GSBlocks.CANDELABRAS) {
+            CandelabraBlock candelabra = pair.getSecond().get();
+            tag(GSTags.BlockTags.CANDELABRAS).add(candelabra);
+            tag(Tags.Blocks.DYED).add(candelabra);
+            tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + pair.getFirst())))
+                .add(candelabra);
         }
         /*
          * Tool tags for block breaking

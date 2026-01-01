@@ -1,11 +1,13 @@
 package voidsong.gasworks.common.registry;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
@@ -44,6 +46,12 @@ public class GSBlocks {
         .isRedstoneConductor((state, getter, pos) -> false)
         .isSuffocating((state, getter, pos) -> false)
         .isViewBlocking((state, getter, pos) -> false);
+    public static final BlockBehaviour.Properties CANDELABRA_PROPERTIES = BlockBehaviour.Properties.of()
+        .strength(3.5F)
+        .sound(SoundType.METAL)
+        .noOcclusion()
+        .lightLevel(CandelabraBlock.LIGHT_EMISSION)
+        .pushReaction(PushReaction.DESTROY);
 
     /*
      * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
@@ -131,6 +139,9 @@ public class GSBlocks {
     public static DeferredBlock<IronBarsBlock> FRAMED_GLASS_PANE = BLOCKS.registerBlock("framed_glass_pane", IronBarsBlock::new, FRAMED_GLASS_PROPERTIES);
     public static List<DeferredBlock<StainedGlassBlock>> STAINED_FRAMED_GLASS = createStainedGlasses();
     public static List<DeferredBlock<StainedGlassPaneBlock>> STAINED_FRAMED_GLASS_PANES = createStainedGlassPanes();
+    // Candelabra
+    public static DeferredBlock<CandelabraBlock> CANDELABRA = BLOCKS.registerBlock("candelabra", CandelabraBlock::new, CANDELABRA_PROPERTIES.mapColor(MapColor.SAND));
+    public static List<Pair<DyeColor, DeferredBlock<CandelabraBlock>>> CANDELABRAS = createCandelabras();
 
     /*
      * Utility function for dyed blocks, etc
@@ -149,6 +160,15 @@ public class GSBlocks {
         for(DyeColor color : DyeColor.values()) {
             DeferredBlock<StainedGlassPaneBlock> block = BLOCKS.register(color.getName()+"_stained_framed_glass_pane", () -> (new StainedGlassPaneBlock(color, FRAMED_GLASS_PROPERTIES)));
             blocks.add(block);
+        }
+        return blocks;
+    }
+    // Candelabra
+    public static List<Pair<DyeColor, DeferredBlock<CandelabraBlock>>> createCandelabras() {
+        List<Pair<DyeColor, DeferredBlock<CandelabraBlock>>> blocks = new ArrayList<>();
+        for(DyeColor color : DyeColor.values()) {
+            DeferredBlock<CandelabraBlock> block = BLOCKS.register(color.getName()+"_candelabra", () -> (new CandelabraBlock(CANDELABRA_PROPERTIES.mapColor(color))));
+            blocks.add(Pair.of(color, block));
         }
         return blocks;
     }

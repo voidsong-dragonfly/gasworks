@@ -5,9 +5,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.*;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel.Builder;
@@ -18,6 +20,7 @@ import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder.PartialBlockstate;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.SillBlock;
 import voidsong.gasworks.common.block.properties.AshType;
@@ -49,6 +52,10 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 
 	protected static ResourceLocation rl(String path) {
 		return ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "block/" + path);
+	}
+
+	protected static ResourceLocation rlItem(String path) {
+		return ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "item/" + path);
 	}
 
 	protected static ResourceLocation rlMC(String path) {
@@ -420,7 +427,7 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 
 
 	/*
-	 * Axially rotatable blocks of some kind, incl. 3-axis & 2-axis (horizontal); as well as full-6-angle
+	 * Specialty functions for creating complex rotatable blocks; generic impl below
 	 */
 
 	public void quoinMultiEight(HorizontalDirectionalBlock block, ResourceLocation brick, String stone) {
@@ -471,6 +478,11 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 			.modelForState().modelFile(model).rotationX(90).rotationY(90).addModel();
 		itemModel(block, model);
 	}
+
+	/*
+	 * Generic rotated block functions, cascading in complexity from "model/model set, rotated" in horiz/all directions.
+	 * up to the full impl that scans all input directions and rotates the given model/model set in those directions
+	 */
 
 	protected void horizontalFacing(Block block, ModelFile model) {
 		horizontalFacing(block, $ -> new ModelFile[]{model}, List.of());
@@ -526,7 +538,54 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	}
 
 	/*
-	 * Randomized horizontal rotation blocks such as sand & dirt
+	 * Specialty rotation functions for blocks which have rotation on the horizontal direction and "something else"
+	 * on their vertical faces, for example a different top/bottom facing models.
+	 * Candelabras use this right now to attach to walls on the horizontals, but floor/ceiling models for top/bottom
+	 */
+
+	protected void candelabraBlockAndItem(Block block, DyeColor color, int offsetRotX, int offsetRotY) {
+		itemModels().getBuilder(getName(block)).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", rlItem("candelabras/" +color));
+		getVariantBuilder(block).forAllStates(state -> {
+			 switch (state.getValue(GSProperties.FACING_ALL)) {
+					case NORTH:
+					case EAST:
+					case SOUTH:
+					case WEST: {
+						Direction d = state.getValue(GSProperties.FACING_ALL);
+						int y = getAngle(d, offsetRotY);
+						ModelFile model = models()
+							.withExistingParent(
+								getName(block) +"_"+state.getValue(GSProperties.FACING_ALL)+(state.getValue(CandelabraBlock.LIT)?"_lit_":"_") + state.getValue(CandelabraBlock.CANDLES),
+								rl("candelabra/wall_" + state.getValue(CandelabraBlock.CANDLES))
+							)
+							.texture("candle", rlMC(color + (state.getValue(CandelabraBlock.LIT) ? "_candle_lit" : "_candle")));
+						return ConfiguredModel.builder().modelFile(model).rotationX(offsetRotX).rotationY(y).uvLock(false).build();
+					}
+					case UP: {
+						ModelFile model = models()
+							.withExistingParent(
+								getName(block) +"_"+state.getValue(GSProperties.FACING_ALL)+(state.getValue(CandelabraBlock.LIT)?"_lit_":"_") + state.getValue(CandelabraBlock.CANDLES),
+								rl("candelabra/ceiling_" + state.getValue(CandelabraBlock.CANDLES))
+							)
+							.texture("candle", rlMC(color + ((state.getValue(CandelabraBlock.LIT) ? "_candle_lit" : "_candle"))));
+						return ConfiguredModel.builder().modelFile(model).rotationX(offsetRotX).rotationY(offsetRotY).uvLock(false).build();
+					}
+					default: {
+						ModelFile model = models()
+							.withExistingParent(
+								getName(block) +"_"+state.getValue(GSProperties.FACING_ALL)+(state.getValue(CandelabraBlock.LIT)?"_lit_":"_") + state.getValue(CandelabraBlock.CANDLES),
+								rl("candelabra/floor_" + state.getValue(CandelabraBlock.CANDLES))
+							)
+							.texture("candle", rlMC(color + (state.getValue(CandelabraBlock.LIT) ? "_candle_lit" : "_candle")));
+						return ConfiguredModel.builder().modelFile(model).rotationX(offsetRotX).rotationY(offsetRotY).uvLock(false).build();
+					}
+				}
+			}
+		);
+	}
+
+	/*
+	 * Specialty functions for creating complex randomly rotatable blocks; generic impl below
 	 */
 
 	protected void ashPileCubeAll(Block b, List<Property<?>> additionalProps, ResourceLocation charcoal, ResourceLocation coke) {
@@ -538,6 +597,11 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 	protected void ashPileCubeAll(Block b, List<Property<?>> additionalProps, ModelFile charcoal, ModelFile coke) {
 		horizontalRandomBlock(b, state -> state.getSetStates().get(PyrolyticAshBlock.ASH_TYPE).equals(AshType.CHARCOAL)?charcoal:coke, additionalProps);
 	}
+
+	/*
+	 * Generic randomly rotated block functions, cascading in complexity from "model/model set, rotated randomly"
+	 * up to the full impl that scans all input directions and rotates the given model/model set in those directions
+	 */
 
 	protected void horizontalRandomCubeAllAndItem(Block b, List<Property<?>> additionalProps, ResourceLocation texture) {
 		final BlockModelBuilder model = models().cubeAll(getName(b), texture);

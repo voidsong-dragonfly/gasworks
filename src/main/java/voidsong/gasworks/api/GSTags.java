@@ -34,6 +34,10 @@ public class GSTags {
         // Compost-accelerating blocks
         public static final TagKey<Block> COMPOST_ACCELERATORS = blockTag(Gasworks.rl("compost_accelerators"));
         /*
+         * Building blocks, including various 'functional' blocks
+         */
+        public static final TagKey<Block> CANDELABRAS = blockTag(cLoc("candelabras"));
+        /*
          * Compatibility tags, other mods & Gasworks
          */
         // Tags for torch dowsing
@@ -59,6 +63,10 @@ public class GSTags {
         // Coke products
         public static final TagKey<Item> COAL_COKE = itemTag(cLoc("coal_coke"));
         public static final TagKey<Item> COMPOST_ACCELERATORS_DISPLAY = itemTag(Gasworks.rl("compost_accelerators_display"));
+        /*
+         * Building blocks, including various 'functional' blocks
+         */
+        public static final TagKey<Item> CANDELABRAS = itemTag(cLoc("candelabras"));
         /*
          * Building blocks, including various 'functional' blocks
          */

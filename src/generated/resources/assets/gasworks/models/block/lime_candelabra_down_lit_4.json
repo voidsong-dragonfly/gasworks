@@ -1,0 +1,6 @@
+{
+  "parent": "gasworks:block/candelabra/floor_4",
+  "textures": {
+    "candle": "minecraft:block/lime_candle_lit"
+  }
+}

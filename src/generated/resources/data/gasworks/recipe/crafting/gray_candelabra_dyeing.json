@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "gasworks:candelabra"
+    },
+    {
+      "tag": "c:dyes/gray"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "gasworks:gray_candelabra"
+  }
+}

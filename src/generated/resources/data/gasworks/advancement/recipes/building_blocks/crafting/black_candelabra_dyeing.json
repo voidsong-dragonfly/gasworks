@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_candle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:candles"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "gasworks:crafting/black_candelabra_dyeing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_candle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "gasworks:crafting/black_candelabra_dyeing"
+    ]
+  }
+}

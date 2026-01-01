@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "gasworks:light_blue_candelabra"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "gasworks:blocks/light_blue_candelabra"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "gasworks:block/candelabra/ceiling_3",
+  "textures": {
+    "candle": "minecraft:block/black_candle"
+  }
+}

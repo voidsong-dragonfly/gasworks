@@ -1,8 +1,10 @@
 package voidsong.gasworks.data;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
@@ -10,6 +12,7 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.block.ClampBlock;
 import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
@@ -113,6 +116,11 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .renderType("translucent")
                 .texture("layer0", rl("framed_glass/" + block.get().getColor() + "_stained_framed_glass"));
+        }
+        // Candelabras
+        for(Pair<DyeColor, DeferredBlock<CandelabraBlock>> pair : GSBlocks.CANDELABRAS) {
+            CandelabraBlock block = pair.getSecond().get();
+            candelabraBlockAndItem(block, pair.getFirst(), 0,0);
         }
     }
 }

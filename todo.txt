@@ -16,5 +16,33 @@
      - Crude Blast Furnace & bellows
      - Crude mechanical power
      - Implement jute, hemp, & possibly rubber?
+ - possible features i might like from Suppl
+     - Ash from burning blocks => decide if I want to entirely redo fire spread first
+     - Quiver, Barometer & other useful tools
+     - Useful small blocks; turntable, adjustable lever, & wind vane?
+     - Full-light candle blocks (1-5 candle candelabra)
+     - Feeding & nesting blocks to help with automation
+     - Fabric blocks such as awnings, bales, etc
+     - Tweaks to recovery compasses to make them much more useful & cheaper
+     - Map icons for portals, beacons, etc?
  - Tool system
      - Two kinds of durability, 'minor fixes' & 'major fixes'
+ - Enchanting system
+     - Books stacked; used for journals as well as normal books
+     - Refactor enchanting power to depend on a much larger library & actual accessibility system
+     - Bias enchantments via journals of skill (invested levels)
+     - Other things like Anvil can use the library system to decrease costs
+ - prevent the player from breaking blocks without tools
+     - possibly use Player#blockActionRestricted & restrict to hardness 0.3 or under broken w/o tool?
+     - Would need to move Daylight Detector & bed out of that cat. if so; possibly incr. hardness of tinted glass a little; possibly reduce hardness of cake
+     - would need to add tools for beacon, piston head (?) (axe?), honeycomb (axe?), frosted ice (pick?), cactus (axe?), glowstone (pick?)
+     - Would need exceptions for some tool-less blocks (eggs, heads?)
+     - Can use PlayerEvent.BreakSpeed event as it is cancellable
+
+
+next focus:
+ - candelabra
+ - tweaks to recipes for candles & campfires
+ - tweaks to recovery compasses
+ - quiver & barometer
+ -

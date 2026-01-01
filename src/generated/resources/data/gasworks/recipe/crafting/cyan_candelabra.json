@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "c": {
+      "item": "minecraft:cyan_candle"
+    },
+    "n": {
+      "tag": "c:nuggets/iron"
+    }
+  },
+  "pattern": [
+    "c",
+    "n"
+  ],
+  "result": {
+    "count": 1,
+    "id": "gasworks:cyan_candelabra"
+  }
+}
