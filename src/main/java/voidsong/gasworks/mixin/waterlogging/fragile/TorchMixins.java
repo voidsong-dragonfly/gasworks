@@ -3,6 +3,7 @@ package voidsong.gasworks.mixin.waterlogging.fragile;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.ItemAbilities;
@@ -36,6 +38,7 @@ import voidsong.gasworks.common.block.properties.GSProperties;
 import voidsong.gasworks.common.util.BlockUtil;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("unused")
@@ -67,8 +70,8 @@ public class TorchMixins {
         }
 
         @Override
-        public void gasworks$addStatesToBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-            builder.add(BlockStateProperties.WATERLOGGED, GSProperties.LIT);
+        public List<Property<?>> gasworks$newStatesForStateDefinition() {
+            return List.of(BlockStateProperties.WATERLOGGED, GSProperties.LIT);
         }
 
         @Override
@@ -111,9 +114,51 @@ public class TorchMixins {
         }
     }
 
+    @Mixin(WallTorchBlock.class)
+    public static class WallTorchMixin {
+        /*
+         * WallTorchBlock overrides three methods in TorchBlock without calling their super; we need to re-override these
+         * to be the correct values to have the correct behavior; I have decided that this is better than trying to
+         * re-apply some of the interfaces here
+         */
+        @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
+        private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
+            builder.add(GSProperties.LIT, BlockStateProperties.WATERLOGGED);
+        }
 
-    private static boolean canBeLit(BlockState state) {
-        return !state.getValue(GSProperties.LIT) && !state.getValue(BlockStateProperties.WATERLOGGED);
+        @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
+        @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
+        private BlockState getStateForPlacement(BlockState previous, @Local(argsOnly = true) BlockPlaceContext context) {
+            FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
+            boolean waterlogged = fluid.getType() == Fluids.WATER;
+            if (previous != null && this.getClass().equals(WallTorchBlock.class))
+                return previous.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && previous.is(GSTags.BlockTags.DOWSE_IN_WATER)));
+            return previous;
+        }
+
+        @ModifyReturnValue(method = "updateShape", at = @At(value = "RETURN"))
+        private BlockState updateShape(BlockState updated, @Local(argsOnly = true) LevelAccessor level, @Local(ordinal = 0, argsOnly = true) BlockPos pos) {
+            if (updated.hasProperty(BlockStateProperties.WATERLOGGED) && updated.getValue(BlockStateProperties.WATERLOGGED))
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            return updated;
+        }
+
+        @Inject(method = "animateTick", at = @At(value = "HEAD"), cancellable = true)
+        private void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo ci) {
+            if(state.getValue(BlockStateProperties.WATERLOGGED))
+                ci.cancel();
+            else if (!state.getValue(GSProperties.LIT)) {
+                Direction direction = state.getValue(WallTorchBlock.FACING);
+                double d0 = (double)pos.getX() + 0.5;
+                double d1 = (double)pos.getY() + 0.7;
+                double d2 = (double)pos.getZ() + 0.5;
+                Direction direction1 = direction.getOpposite();
+                level.addParticle(
+                    ParticleTypes.SMOKE, d0 + 0.27 * (double)direction1.getStepX(), d1 + 0.22, d2 + 0.27 * (double)direction1.getStepZ(), 0.0, 0.0, 0.0
+                );
+                ci.cancel();
+            }
+        }
     }
 
     @Mixin(IBlockExtension.class)
@@ -131,7 +176,7 @@ public class TorchMixins {
         @ModifyReturnValue(method = "getToolModifiedState", at = @At(value = "RETURN"))
         private BlockState getToolModifiedState(BlockState modified, @Local(argsOnly = true) BlockState state) {
             if (this.getClass().equals(TorchBlock.class) || this.getClass().equals(WallTorchBlock.class)) {
-                if (ItemAbility.getActions().contains(ItemAbilities.FIRESTARTER_LIGHT) && canBeLit(state)) {
+                if (ItemAbility.getActions().contains(ItemAbilities.FIRESTARTER_LIGHT) && (!state.getValue(GSProperties.LIT) && !state.getValue(BlockStateProperties.WATERLOGGED))) {
                     return state.setValue(GSProperties.LIT, true);
                 }
             }
@@ -142,7 +187,7 @@ public class TorchMixins {
     @Mixin(BlockBehaviour.class)
     public static class BlockBehaviorMixin {
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        @Inject(method = "onExplosionHit", at = @At(value = "RETURN"))
+        @Inject(method = "onExplosionHit", at = @At(value = "HEAD"))
         private void onExplosionHit(BlockState state, Level level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer, CallbackInfo ci) {
             if (this.getClass().equals(TorchBlock.class) || this.getClass().equals(WallTorchBlock.class)) {
                 if (explosion.canTriggerBlocks() && state.getValue(GSProperties.LIT)) {

@@ -1,13 +1,14 @@
 package voidsong.gasworks.common.block.interfaces;
 
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+
+import java.util.List;
 
 /**
  * This interface is an extension of {@link net.minecraft.world.level.block.SimpleWaterloggedBlock} for use in mixins to
@@ -25,8 +26,8 @@ public interface VanillaWaterloggedBlock extends SimpleWaterloggedBlock {
         return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state : state.setValue(BlockStateProperties.WATERLOGGED, false);
     }
 
-    default void gasworks$addStatesToBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(BlockStateProperties.WATERLOGGED);
+    default List<Property<?>> gasworks$newStatesForStateDefinition() {
+        return List.of(BlockStateProperties.WATERLOGGED);
     }
 
     default BlockState gasworks$modifyStateForPlacement(BlockState place, BlockPlaceContext context) {

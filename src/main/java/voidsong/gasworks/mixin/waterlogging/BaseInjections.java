@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
@@ -39,11 +40,12 @@ public class BaseInjections {
         @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
         private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
             if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
-                block.gasworks$addStatesToBlockStateDefinition(builder);
+                for(Property<?> property : block.gasworks$newStatesForStateDefinition())
+                    builder.add(property);
             }
         }
 
-
+        // TODO this won't run if there's an override; some blocks will need to mixin into their class' variant
         @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
         private BlockState getStateForPlacement(BlockState original, @Local(argsOnly = true) BlockPlaceContext context) {
             if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
@@ -55,6 +57,7 @@ public class BaseInjections {
 
     @Mixin(BlockBehaviour.class)
     public static class BlockBehaviorMixin {
+        // TODO this won't run if there's an override; some blocks will need to mixin into their class' variant
         @Inject(method = "updateShape", at = @At(value = "RETURN"))
         private void updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
             if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
@@ -82,7 +85,7 @@ public class BaseInjections {
             return original;
         }
 
-        @Inject(method = "randomTick", at = @At(value = "RETURN"))
+        @Inject(method = "randomTick", at = @At(value = "HEAD"))
         private void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
             if (this instanceof VanillaRandomTickBlock block && block.gasworks$shouldRandomTickMixinApply(this.getClass())) {
                 block.gasworks$divertRandomTick(state, level, pos, random);

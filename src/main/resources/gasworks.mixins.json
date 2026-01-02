@@ -33,7 +33,7 @@
     "waterlogging.fragile.TorchMixins$BlockBehaviorMixin",
     "waterlogging.fragile.TorchMixins$BlockExtensionMixin",
     "waterlogging.fragile.TorchMixins$TorchBlockMixin",
-    "waterlogging.fragile.WallTorchMixin"
+    "waterlogging.fragile.TorchMixins$WallTorchMixin"
   ],
   "client": [],
   "injectors": {
