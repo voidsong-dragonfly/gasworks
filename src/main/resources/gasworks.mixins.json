@@ -32,6 +32,7 @@
     "waterlogging.fragile.EndRodMixin",
     "waterlogging.fragile.TorchMixins$BlockBehaviorMixin",
     "waterlogging.fragile.TorchMixins$BlockExtensionMixin",
+    "waterlogging.fragile.TorchMixins$BlockMixin",
     "waterlogging.fragile.TorchMixins$TorchBlockMixin",
     "waterlogging.fragile.TorchMixins$WallTorchMixin"
   ],

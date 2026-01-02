@@ -11,9 +11,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
@@ -37,18 +35,9 @@ public class BaseInjections {
             return defaultState;
         }
 
-        @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
-        private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
-                for(Property<?> property : block.gasworks$newStatesForStateDefinition())
-                    builder.add(property);
-            }
-        }
-
-        // TODO this won't run if there's an override; some blocks will need to mixin into their class' variant
         @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
         private BlockState getStateForPlacement(BlockState original, @Local(argsOnly = true) BlockPlaceContext context) {
-            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
+            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass(), false, true)) {
                 return block.gasworks$modifyStateForPlacement(original, context);
             }
             return original;
@@ -57,10 +46,9 @@ public class BaseInjections {
 
     @Mixin(BlockBehaviour.class)
     public static class BlockBehaviorMixin {
-        // TODO this won't run if there's an override; some blocks will need to mixin into their class' variant
         @Inject(method = "updateShape", at = @At(value = "RETURN"))
         private void updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
-            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
+            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass(), true, false)) {
                 if (cir.getReturnValue().hasProperty(BlockStateProperties.WATERLOGGED) && cir.getReturnValue().getValue(BlockStateProperties.WATERLOGGED)) {
                     level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
                 }

@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.ItemAbilities;
@@ -34,11 +33,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.common.block.interfaces.FragileVanillaWaterloggedBlock;
 import voidsong.gasworks.common.block.interfaces.VanillaRandomTickBlock;
+import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 import voidsong.gasworks.common.block.properties.GSProperties;
 import voidsong.gasworks.common.util.BlockUtil;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("unused")
@@ -46,12 +45,13 @@ public class TorchMixins {
     @Mixin(TorchBlock.class)
     public static class TorchBlockMixin implements FragileVanillaWaterloggedBlock, VanillaRandomTickBlock {
         /*
-         * These are to ensure we know what classes the changes should be applied to
+         * These are to ensure we know what classes the changes should be applied to; WallTorchBlock overrides two methods,
+         * so we need to tell the interface that we should not override those
          */
         @Override
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz) {
-            return this.getClass().equals(TorchBlock.class) || this.getClass().equals(WallTorchBlock.class);
+        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride) {
+            return this.getClass().equals(TorchBlock.class) || (this.getClass().equals(WallTorchBlock.class) && !(getShapeOverride || getStateForPlacementOverride));
         }
 
         @Override
@@ -70,11 +70,6 @@ public class TorchMixins {
         }
 
         @Override
-        public List<Property<?>> gasworks$newStatesForStateDefinition() {
-            return List.of(BlockStateProperties.WATERLOGGED, GSProperties.LIT);
-        }
-
-        @Override
         public boolean gasworks$modifyIsRandomlyTicking(BlockState state, Boolean ticking) {
             return ticking || (state.is(GSTags.BlockTags.DOWSE_IN_RAIN) && state.getValue(GSProperties.LIT));
         }
@@ -87,9 +82,9 @@ public class TorchMixins {
 
         @Inject(method = "animateTick", at = @At(value = "HEAD"), cancellable = true)
         private void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo ci) {
-            if (state.getValue(BlockStateProperties.WATERLOGGED))
+            if(state.hasProperty(BlockStateProperties.WATERLOGGED) && state.getValue(BlockStateProperties.WATERLOGGED))
                 ci.cancel();
-            else if (!state.getValue(GSProperties.LIT)) {
+            else if (state.hasProperty(GSProperties.LIT) && !state.getValue(GSProperties.LIT)) {
                 double d0 = (double) pos.getX() + 0.5;
                 double d1 = (double) pos.getY() + 0.7;
                 double d2 = (double) pos.getZ() + 0.5;
@@ -117,9 +112,8 @@ public class TorchMixins {
     @Mixin(WallTorchBlock.class)
     public static class WallTorchMixin {
         /*
-         * WallTorchBlock overrides three methods in TorchBlock without calling their super; we need to re-override these
-         * to be the correct values to have the correct behavior; I have decided that this is better than trying to
-         * re-apply some of the interfaces here
+         * WallTorchBlock overrides two methods in TorchBlock without calling their super; we need to re-override these
+         * to be the correct values to have the correct behavior; filtering for the common ones can be seen above
          */
         @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
         private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
@@ -129,11 +123,7 @@ public class TorchMixins {
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
         @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
         private BlockState getStateForPlacement(BlockState previous, @Local(argsOnly = true) BlockPlaceContext context) {
-            FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
-            boolean waterlogged = fluid.getType() == Fluids.WATER;
-            if (previous != null && this.getClass().equals(WallTorchBlock.class))
-                return previous.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && previous.is(GSTags.BlockTags.DOWSE_IN_WATER)));
-            return previous;
+            return this.getClass().equals(WallTorchBlock.class) ? ((VanillaWaterloggedBlock)previous.getBlock()).gasworks$modifyStateForPlacement(previous, context) : previous;
         }
 
         @ModifyReturnValue(method = "updateShape", at = @At(value = "RETURN"))
@@ -145,9 +135,9 @@ public class TorchMixins {
 
         @Inject(method = "animateTick", at = @At(value = "HEAD"), cancellable = true)
         private void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo ci) {
-            if(state.getValue(BlockStateProperties.WATERLOGGED))
+            if(state.hasProperty(BlockStateProperties.WATERLOGGED) && state.getValue(BlockStateProperties.WATERLOGGED))
                 ci.cancel();
-            else if (!state.getValue(GSProperties.LIT)) {
+            else if (state.hasProperty(GSProperties.LIT) && !state.getValue(GSProperties.LIT)) {
                 Direction direction = state.getValue(WallTorchBlock.FACING);
                 double d0 = (double)pos.getX() + 0.5;
                 double d1 = (double)pos.getY() + 0.7;
@@ -160,6 +150,12 @@ public class TorchMixins {
             }
         }
     }
+
+    /*
+     * The methods below are for torch-specific behavior it does not make sense to include in the generic classes,
+     * mixing into IBlockExtension, Block, and BlockBehavior. We do BlockStateDefinition registry here for torches, as
+     * they do not have a method we can inject into, unlike most blocks.
+     */
 
     @Mixin(IBlockExtension.class)
     public interface BlockExtensionMixin {
@@ -181,6 +177,17 @@ public class TorchMixins {
                 }
             }
             return modified;
+        }
+    }
+
+    @Mixin(Block.class)
+    public static class BlockMixin {
+        @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
+        @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
+        private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
+            if (this instanceof VanillaWaterloggedBlock block && this.getClass().equals(TorchBlock.class)) {
+                builder.add(BlockStateProperties.WATERLOGGED, GSProperties.LIT);
+            }
         }
     }
 

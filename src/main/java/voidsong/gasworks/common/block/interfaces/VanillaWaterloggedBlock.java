@@ -4,11 +4,9 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
-import java.util.List;
 
 /**
  * This interface is an extension of {@link net.minecraft.world.level.block.SimpleWaterloggedBlock} for use in mixins to
@@ -20,14 +18,13 @@ import java.util.List;
  * waterlogging implemented on them!
  */
 public interface VanillaWaterloggedBlock extends SimpleWaterloggedBlock {
-    boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz);
+    default boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz) {
+        return gasworks$shouldWaterlogMixinApply(clazz, false, false);
+    }
+    boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride);
 
     default BlockState gasworks$addStatesToDefaultState(BlockState state) {
         return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state : state.setValue(BlockStateProperties.WATERLOGGED, false);
-    }
-
-    default List<Property<?>> gasworks$newStatesForStateDefinition() {
-        return List.of(BlockStateProperties.WATERLOGGED);
     }
 
     default BlockState gasworks$modifyStateForPlacement(BlockState place, BlockPlaceContext context) {
