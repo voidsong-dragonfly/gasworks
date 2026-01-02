@@ -7,7 +7,6 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -115,17 +114,6 @@ public class TorchMixin extends Block implements SimpleWaterloggedBlock {
             level.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 0.0, 0.0);
             ci.cancel();
         }
-    }
-
-    /*
-     * I'm not 100% on whether this method is effective, but it's copied from BurnableFuelBlock
-     */
-
-    @Override
-    public void onCaughtFire(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nullable Direction direction, @Nullable LivingEntity igniter) {
-        if (canBeLit(state))
-            level.setBlockAndUpdate(pos, state.setValue(GSProperties.LIT, true));
-        super.onCaughtFire(state, level, pos, direction, igniter);
     }
 
     /*
