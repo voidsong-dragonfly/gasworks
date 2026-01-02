@@ -1,11 +1,13 @@
-package voidsong.gasworks.mixin.waterlogging;
+package voidsong.gasworks.mixin.waterlogging.basic;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EnchantingTableBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -15,27 +17,28 @@ import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nonnull;
 
-@Mixin(EnchantingTableBlock.class)
-public class EnchantingTableMixin extends Block implements SimpleWaterloggedBlock {
+@Mixin(AnvilBlock.class)
+public class AnvilMixin extends Block implements SimpleWaterloggedBlock {
     /**
      * This constructor is the default & will be ignored, it exists so we can extend Block
      * @param properties ignored & should not be used!
      */
-    public EnchantingTableMixin(Properties properties) {
+    public AnvilMixin(Properties properties) {
         super(properties);
     }
 
-    @Inject(method = "<init>", at = @At(value = "RETURN"))
-    private void addWaterloggingToConstructor(Properties properties, CallbackInfo ci) {
-        registerDefaultState(this.stateDefinition.any().setValue(BlockStateProperties.WATERLOGGED, false));
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/AnvilBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    private BlockState addWaterloggingToConstructor(BlockState defaultState) {
+        return defaultState.setValue(BlockStateProperties.WATERLOGGED, false);
     }
 
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+    @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
+    private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
         builder.add(BlockStateProperties.WATERLOGGED);
     }
 
@@ -44,11 +47,11 @@ public class EnchantingTableMixin extends Block implements SimpleWaterloggedBloc
      * blocks. These are generalized to remove references to lit & only add state-dependent waterlogging behavior
      */
 
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
+    @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
+    private BlockState getStateForPlacement(BlockState toPlace, @Local(argsOnly = true) BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
-        BlockState toPlace = super.getStateForPlacement(context);
-        return toPlace == null ? null : toPlace.setValue(BlockStateProperties.WATERLOGGED, fluid.getType() == Fluids.WATER);
+        boolean waterlogged = fluid.getType() == Fluids.WATER;
+        return toPlace == null ? null : toPlace.setValue(BlockStateProperties.WATERLOGGED, waterlogged);
     }
 
     @Override

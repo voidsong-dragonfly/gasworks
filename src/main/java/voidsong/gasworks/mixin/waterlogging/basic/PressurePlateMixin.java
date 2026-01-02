@@ -1,11 +1,11 @@
-package voidsong.gasworks.mixin.waterlogging;
+package voidsong.gasworks.mixin.waterlogging.basic;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BrewingStandBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -20,17 +20,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nonnull;
 
-@Mixin(BrewingStandBlock.class)
-public class BrewingStandMixin extends Block implements SimpleWaterloggedBlock {
+@Mixin(PressurePlateBlock.class)
+public class PressurePlateMixin  extends Block implements SimpleWaterloggedBlock {
     /**
      * This constructor is the default & will be ignored, it exists so we can extend Block
      * @param properties ignored & should not be used!
      */
-    public BrewingStandMixin(Properties properties) {
+    public PressurePlateMixin(Properties properties) {
         super(properties);
     }
 
-    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/BrewingStandBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/PressurePlateBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
     private BlockState addWaterloggingToConstructor(BlockState defaultState) {
         return defaultState.setValue(BlockStateProperties.WATERLOGGED, false);
     }
@@ -66,3 +66,4 @@ public class BrewingStandMixin extends Block implements SimpleWaterloggedBlock {
         return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 }
+

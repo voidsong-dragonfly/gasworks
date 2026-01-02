@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin.waterlogging;
+package voidsong.gasworks.mixin.waterlogging.fragile;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;

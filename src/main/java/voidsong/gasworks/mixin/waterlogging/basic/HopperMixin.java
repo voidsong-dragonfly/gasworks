@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin.waterlogging;
+package voidsong.gasworks.mixin.waterlogging.basic;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -6,8 +6,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HopperBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -22,17 +22,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nonnull;
 
-@Mixin(AnvilBlock.class)
-public class AnvilMixin extends Block implements SimpleWaterloggedBlock {
+@Mixin(HopperBlock.class)
+public class HopperMixin extends Block implements SimpleWaterloggedBlock {
     /**
      * This constructor is the default & will be ignored, it exists so we can extend Block
      * @param properties ignored & should not be used!
      */
-    public AnvilMixin(Properties properties) {
+    public HopperMixin(Properties properties) {
         super(properties);
     }
 
-    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/AnvilBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/HopperBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
     private BlockState addWaterloggingToConstructor(BlockState defaultState) {
         return defaultState.setValue(BlockStateProperties.WATERLOGGED, false);
     }

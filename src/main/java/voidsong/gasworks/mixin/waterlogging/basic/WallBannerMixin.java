@@ -1,15 +1,13 @@
-package voidsong.gasworks.mixin.waterlogging;
+package voidsong.gasworks.mixin.waterlogging.basic;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.WallBannerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -23,17 +21,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nonnull;
 
-@Mixin(DoorBlock.class)
-public class DoorMixin extends Block implements SimpleWaterloggedBlock {
+@Mixin(WallBannerBlock.class)
+public class WallBannerMixin extends Block implements SimpleWaterloggedBlock {
     /**
      * This constructor is the default & will be ignored, it exists so we can extend Block
      * @param properties ignored & should not be used!
      */
-    public DoorMixin(Properties properties) {
+    public WallBannerMixin(Properties properties) {
         super(properties);
     }
 
-    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/DoorBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/WallBannerBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
     private BlockState addWaterloggingToConstructor(BlockState defaultState) {
         return defaultState.setValue(BlockStateProperties.WATERLOGGED, false);
     }
@@ -56,19 +54,10 @@ public class DoorMixin extends Block implements SimpleWaterloggedBlock {
     }
 
     @ModifyReturnValue(method = "updateShape", at = @At(value = "RETURN"))
-    private BlockState updateShape(BlockState updated, @Local(argsOnly = true) LevelAccessor level, @Local(ordinal = 0, argsOnly = true) BlockPos pos, @Local(ordinal = 0, argsOnly = true) BlockState state) {
+    private BlockState updateShape(BlockState updated, @Local(argsOnly = true) LevelAccessor level, @Local(ordinal = 0, argsOnly = true) BlockPos pos) {
         if (updated.hasProperty(BlockStateProperties.WATERLOGGED) && updated.getValue(BlockStateProperties.WATERLOGGED))
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        if (updated.isAir())
-            return state.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : updated;
-        else
-            return updated.setValue(BlockStateProperties.WATERLOGGED, state.getValue(BlockStateProperties.WATERLOGGED));
-    }
-
-    @ModifyArg(method = "setPlacedBy", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z"), index = 1)
-    private BlockState setPlacedBy(BlockState defaultState, @Local(ordinal = 0, argsOnly = true) BlockPos pos, @Local(ordinal = 0, argsOnly = true) Level level) {
-        boolean waterloggedTop = level.getFluidState(pos.above()).is(Fluids.WATER);
-        return defaultState.setValue(BlockStateProperties.WATERLOGGED, waterloggedTop);
+        return updated;
     }
 
     @Override
@@ -77,4 +66,3 @@ public class DoorMixin extends Block implements SimpleWaterloggedBlock {
         return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 }
-

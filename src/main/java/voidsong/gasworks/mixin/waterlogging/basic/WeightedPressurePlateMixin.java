@@ -1,12 +1,12 @@
-package voidsong.gasworks.mixin.waterlogging;
+package voidsong.gasworks.mixin.waterlogging.basic;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DaylightDetectorBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.WeightedPressurePlateBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -20,17 +20,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nonnull;
 
-@Mixin(DaylightDetectorBlock.class)
-public class DaylightDetectorMixin extends Block implements SimpleWaterloggedBlock {
+@Mixin(WeightedPressurePlateBlock.class)
+public class WeightedPressurePlateMixin  extends Block implements SimpleWaterloggedBlock {
     /**
      * This constructor is the default & will be ignored, it exists so we can extend Block
      * @param properties ignored & should not be used!
      */
-    public DaylightDetectorMixin(Properties properties) {
+    public WeightedPressurePlateMixin(Properties properties) {
         super(properties);
     }
 
-    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/DaylightDetectorBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/WeightedPressurePlateBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
     private BlockState addWaterloggingToConstructor(BlockState defaultState) {
         return defaultState.setValue(BlockStateProperties.WATERLOGGED, false);
     }
@@ -66,3 +66,4 @@ public class DaylightDetectorMixin extends Block implements SimpleWaterloggedBlo
         return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 }
+

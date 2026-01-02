@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin.tweak;
+package voidsong.gasworks.mixin.waterlogging.fragile;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
