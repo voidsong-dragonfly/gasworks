@@ -14,13 +14,13 @@
      - Trip hammer
      - Machine shop 0
      - Crude Blast Furnace & bellows
+     - Kiln
      - Crude mechanical power
      - Implement jute, hemp, & possibly rubber?
  - possible features i might like from Suppl
      - Ash from burning blocks => decide if I want to entirely redo fire spread first
      - Quiver, Barometer & other useful tools
      - Useful small blocks; turntable, adjustable lever, & wind vane?
-     - Full-light candle blocks (1-5 candle candelabra)
      - Feeding & nesting blocks to help with automation
      - Fabric blocks such as awnings, bales, etc
      - Tweaks to recovery compasses to make them much more useful & cheaper
@@ -38,11 +38,27 @@
      - would need to add tools for beacon, piston head (?) (axe?), honeycomb (axe?), frosted ice (pick?), cactus (axe?), glowstone (pick?)
      - Would need exceptions for some tool-less blocks (eggs, heads?)
      - Can use PlayerEvent.BreakSpeed event as it is cancellable
-
+ - flour & some minor food tweaks
+     - FD compat: rice flour, dough from them for bread, etc
+     - other mod compat maybe?
+     - create flour in the crafting grid for now?
+ - hardness tweaks for some blocks not related to tools, & blast resistance
+     - up sandstone hardness to 1.25; BR to 4.2
+     - up quartz hardness/BR up to 1.5 (match with amethyst)
+     - up dripstone/calcite hardness/BR up to 2 (match with bone)
+     - Bump lapis BR up to 6 to match other mineral blocks
+     - Bump mudbrick hardness up to 4.2 to match other soft "stones" & be better than packed mud
+     - Bump rooted dirt BR up to 0.7 to match mangrove roots
+     - Drop frosted ice down to 0.3/0.3 to match glass
+     - Bump packed ice up to 1.5/1.5 to make it a middle between ice & blue ice
+     - Drop dried kelp down to 0.5/1 to make it similar to hay bales (?)
+     - Bump beacon BR up to 1,200 to match enchanting table/obsidian
+     - Drop coral/dead coral down to match other similar stones
+     - Bump colored concrete to match theoretical final concrete? 1.5/10?
+ - Crafting tweaks to mudbrick? Add literal mud bricks?
 
 next focus:
- - candelabra
- - tweaks to recipes for candles & campfires
+ - recipe for
  - tweaks to recovery compasses
  - quiver & barometer
  -
