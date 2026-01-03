@@ -9,6 +9,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -37,7 +38,7 @@ public class BaseInjections {
 
         @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
         private BlockState getStateForPlacement(BlockState original, @Local(argsOnly = true) BlockPlaceContext context) {
-            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass(), false, true)) {
+            if (original != null && this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass(), false, true)) {
                 return block.gasworks$modifyStateForPlacement(original, context);
             }
             return original;
@@ -78,6 +79,27 @@ public class BaseInjections {
             if (this instanceof VanillaRandomTickBlock block && block.gasworks$shouldRandomTickMixinApply(this.getClass())) {
                 block.gasworks$divertRandomTick(state, level, pos, random);
             }
+        }
+
+        @Mixin(FaceAttachedHorizontalDirectionalBlock.class)
+        public static class FaceAttachedHorizontalDirectionalBlockMixin {
+            @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
+            private BlockState getStateForPlacement(BlockState original, @Local(argsOnly = true) BlockPlaceContext context) {
+                if (original != null && this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
+                    return block.gasworks$modifyStateForPlacement(original, context);
+                }
+                return original;
+            }
+
+            @Inject(method = "updateShape", at = @At(value = "RETURN"))
+            private void updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
+                if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
+                    if (cir.getReturnValue().hasProperty(BlockStateProperties.WATERLOGGED) && cir.getReturnValue().getValue(BlockStateProperties.WATERLOGGED)) {
+                        level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+                    }
+                }
+            }
+
         }
     }
 }

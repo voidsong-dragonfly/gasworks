@@ -9,6 +9,7 @@
     "tweak.ComposterMixin$OutputContainer",
     "tweak.ThrownPotionMixin",
     "waterlogging.BaseInjections$BlockBehaviorMixin",
+    "waterlogging.BaseInjections$BlockBehaviorMixin$FaceAttachedHorizontalDirectionalBlockMixin",
     "waterlogging.BaseInjections$BlockMixin",
     "waterlogging.basic.AnvilMixin",
     "waterlogging.basic.BannerMixin",

@@ -13,6 +13,11 @@ import net.minecraft.world.level.material.Fluids;
  * add waterlogging to more blocks. Blocks of this class will have the included "before" or "modify" methods called from
  * those in {@link net.minecraft.world.level.block.Block} so as not to have @Override conflicts in their classes.
  * <p>
+ * If this block has an override for {@link net.minecraft.world.level.block.Block#getShape} or {@link net.minecraft.world.level.block.Block#getStateForPlacement},
+ * somewhere in its inheritance chain, it should check for those booleans in gasworks$shouldWaterlogMixinApply! Blocks
+ * that extend {@link net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock} should check these,
+ * even if the block itself does not override these methods; it has its own special handling for these methods
+ * <p>
  * This interface SHOULD NOT be used outside of mixins!
  * Mixins that use this interface or its subclasses should limit the applicable classes to ensure no subclass blocks have
  * waterlogging implemented on them!
