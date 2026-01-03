@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "accessor.FlowingFluidAccessor",
+    "tweak.BlocksHardnessMixin",
     "tweak.CampfireMixin",
     "tweak.ComposterMixin",
     "tweak.ComposterMixin$OutputContainer",
