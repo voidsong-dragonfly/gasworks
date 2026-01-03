@@ -6,8 +6,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Explosion;
@@ -123,7 +126,7 @@ public class TorchMixins {
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
         @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
         private BlockState getStateForPlacement(BlockState previous, @Local(argsOnly = true) BlockPlaceContext context) {
-            return this.getClass().equals(WallTorchBlock.class) ? ((VanillaWaterloggedBlock)previous.getBlock()).gasworks$modifyStateForPlacement(previous, context) : previous;
+            return (this.getClass().equals(WallTorchBlock.class) && previous != null) ? ((VanillaWaterloggedBlock)previous.getBlock()).gasworks$modifyStateForPlacement(previous, context) : previous;
         }
 
         @ModifyReturnValue(method = "updateShape", at = @At(value = "RETURN"))
@@ -203,14 +206,32 @@ public class TorchMixins {
             }
         }
 
+        /*
+         * This method uses BlockBehavior#useItemOn rather than BlockBehavior#useWithoutItem as we want context-specific
+         * behavior. In this case, we want open hands to relight the torch with a 1 in 4 chance; flint & steel or other
+         * methods will light with a 100% chance.
+         *
+         * Getting the random value is not the same between client & server; because of this any logic that depends upon
+         * it is run only on the server and the values are sent to the client. Sounds are played on the server with no
+         * owning player to ensure they are sent to all players, rather than all but the activator.
+         */
+
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        @ModifyReturnValue(method = "useWithoutItem", at = @At(value = "RETURN"))
-        private InteractionResult useWithoutItem(InteractionResult original, @Local(argsOnly = true) BlockState state, @Local(argsOnly = true) Level level, @Local(argsOnly = true) BlockPos pos) {
-            if (this.getClass().equals(TorchBlock.class) || this.getClass().equals(WallTorchBlock.class)) {boolean lit = state.getValue(GSProperties.LIT);
-                boolean waterlogged = state.getValue(BlockStateProperties.WATERLOGGED);
-                if (!lit && !waterlogged)
-                    level.setBlockAndUpdate(pos, state.setValue(GSProperties.LIT, true));
-                return lit ? InteractionResult.PASS : (waterlogged ? InteractionResult.FAIL : InteractionResult.SUCCESS);
+        @ModifyReturnValue(method = "useItemOn", at = @At(value = "RETURN"))
+        private ItemInteractionResult useItemOn(ItemInteractionResult original, @Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) BlockState state, @Local(argsOnly = true) Level level, @Local(argsOnly = true) BlockPos pos, @Local(argsOnly = true) Player player) {
+            if (this.getClass().equals(TorchBlock.class) || this.getClass().equals(WallTorchBlock.class)) {
+                if (stack.isEmpty() && state.hasProperty(GSProperties.LIT) && !state.getValue(GSProperties.LIT)) {
+                    boolean waterlogged = state.hasProperty(BlockStateProperties.WATERLOGGED) && state.getValue(BlockStateProperties.WATERLOGGED);
+                    if (!waterlogged && !level.isClientSide()) {
+                        if (level.random.nextInt(4) == 0) {
+                            level.setBlockAndUpdate(pos, state.setValue(GSProperties.LIT, true));
+                            level.playSound(null, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 0.0625F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                        } else {
+                            level.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                        }
+                    }
+                    return !waterlogged ? ItemInteractionResult.SUCCESS : ItemInteractionResult.FAIL;
+                }
             }
             return original;
         }
