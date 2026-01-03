@@ -20,7 +20,7 @@ import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 public class StonecutterMixin implements VanillaWaterloggedBlock {
     @Override
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride) {
+    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
         return this.getClass().equals(StonecutterBlock.class) && !getStateForPlacementOverride;
     }
 
@@ -30,10 +30,11 @@ public class StonecutterMixin implements VanillaWaterloggedBlock {
         builder.add(BlockStateProperties.WATERLOGGED);
     }
 
+    @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
-    private BlockState getStateForPlacement(BlockState toPlace, @Local(argsOnly = true) BlockPlaceContext context) {
+    private BlockState getStateForPlacement(BlockState place, @Local(argsOnly = true) BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
-        boolean waterlogged = fluid.getType() == Fluids.WATER;
-        return toPlace == null ? null : toPlace.setValue(BlockStateProperties.WATERLOGGED, waterlogged);
+        boolean waterlogged = fluid.getType() == Fluids.WATER && place.hasProperty(BlockStateProperties.WATERLOGGED);
+        return (this.getClass().equals(StonecutterBlock.class) && place != null) ? place.setValue(BlockStateProperties.WATERLOGGED, waterlogged) : place;
     }
 }

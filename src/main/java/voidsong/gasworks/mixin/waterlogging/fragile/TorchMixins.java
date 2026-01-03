@@ -53,8 +53,8 @@ public class TorchMixins {
          */
         @Override
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride) {
-            return this.getClass().equals(TorchBlock.class) || (this.getClass().equals(WallTorchBlock.class) && !(getShapeOverride || getStateForPlacementOverride));
+        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
+            return this.getClass().equals(TorchBlock.class) || (this.getClass().equals(WallTorchBlock.class) && !(updateShapeOverride || getStateForPlacementOverride));
         }
 
         @Override
@@ -125,8 +125,8 @@ public class TorchMixins {
 
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
         @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
-        private BlockState getStateForPlacement(BlockState previous, @Local(argsOnly = true) BlockPlaceContext context) {
-            return (this.getClass().equals(WallTorchBlock.class) && previous != null) ? ((VanillaWaterloggedBlock)previous.getBlock()).gasworks$modifyStateForPlacement(previous, context) : previous;
+        private BlockState getStateForPlacement(BlockState place, @Local(argsOnly = true) BlockPlaceContext context) {
+            return (this.getClass().equals(WallTorchBlock.class) && place != null) ? ((VanillaWaterloggedBlock)place.getBlock()).gasworks$modifyStateForPlacement(place, context) : place;
         }
 
         @ModifyReturnValue(method = "updateShape", at = @At(value = "RETURN"))

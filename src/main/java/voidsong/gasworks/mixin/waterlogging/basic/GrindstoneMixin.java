@@ -15,8 +15,8 @@ import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 public class GrindstoneMixin implements VanillaWaterloggedBlock {
     @Override
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride) {
-        return this.getClass().equals(GrindstoneBlock.class) && !(getShapeOverride || getStateForPlacementOverride);
+    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
+        return this.getClass().equals(GrindstoneBlock.class) && !(updateShapeOverride || getStateForPlacementOverride);
     }
 
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))

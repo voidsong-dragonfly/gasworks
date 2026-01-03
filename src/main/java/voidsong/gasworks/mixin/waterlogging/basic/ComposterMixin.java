@@ -10,11 +10,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
+
 @Mixin(ComposterBlock.class)
 public class ComposterMixin implements VanillaWaterloggedBlock {
     @Override
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride) {
+    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
         return this.getClass().equals(ComposterBlock.class);
     }
 

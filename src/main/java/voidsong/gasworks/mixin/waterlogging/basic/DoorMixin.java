@@ -25,8 +25,8 @@ import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 public class DoorMixin implements VanillaWaterloggedBlock {
     @Override
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride) {
-        return this.getClass().equals(DoorBlock.class) && !(getShapeOverride || getStateForPlacementOverride);
+    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
+        return this.getClass().equals(DoorBlock.class) && !(updateShapeOverride || getStateForPlacementOverride);
     }
 
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))

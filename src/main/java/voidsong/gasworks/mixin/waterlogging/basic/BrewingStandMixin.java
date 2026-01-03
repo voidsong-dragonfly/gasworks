@@ -15,7 +15,7 @@ import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 public class BrewingStandMixin implements VanillaWaterloggedBlock {
     @Override
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride) {
+    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
         return this.getClass().equals(BrewingStandBlock.class);
     }
 

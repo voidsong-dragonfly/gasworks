@@ -17,7 +17,7 @@ public class EnchantingTableMixins {
     public static class EnchantingTableMixin implements VanillaWaterloggedBlock {
         @Override
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride) {
+        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
             return this.getClass().equals(EnchantingTableBlock.class);
         }
     }

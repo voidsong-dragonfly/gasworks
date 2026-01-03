@@ -7,13 +7,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
-
 /**
  * This interface is an extension of {@link net.minecraft.world.level.block.SimpleWaterloggedBlock} for use in mixins to
  * add waterlogging to more blocks. Blocks of this class will have the included "before" or "modify" methods called from
  * those in {@link net.minecraft.world.level.block.Block} so as not to have @Override conflicts in their classes.
  * <p>
- * If this block has an override for {@link net.minecraft.world.level.block.Block#getShape} or {@link net.minecraft.world.level.block.Block#getStateForPlacement},
+ * If this block has an override for {@link net.minecraft.world.level.block.Block#updateShape} or {@link net.minecraft.world.level.block.Block#getStateForPlacement},
  * somewhere in its inheritance chain, it should check for those booleans in gasworks$shouldWaterlogMixinApply! Blocks
  * that extend {@link net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock} should check these,
  * even if the block itself does not override these methods; it has its own special handling for these methods
@@ -26,7 +25,7 @@ public interface VanillaWaterloggedBlock extends SimpleWaterloggedBlock {
     default boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz) {
         return gasworks$shouldWaterlogMixinApply(clazz, false, false);
     }
-    boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean getShapeOverride, boolean getStateForPlacementOverride);
+    boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride);
 
     default BlockState gasworks$addStatesToDefaultState(BlockState state) {
         return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state : state.setValue(BlockStateProperties.WATERLOGGED, false);
