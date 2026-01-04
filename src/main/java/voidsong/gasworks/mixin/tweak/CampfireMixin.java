@@ -1,15 +1,19 @@
 package voidsong.gasworks.mixin.tweak;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
 
 import javax.annotation.Nonnull;
 
@@ -36,5 +40,10 @@ public class CampfireMixin extends Block {
             CampfireBlock.dowse(null, level, pos, state);
             level.setBlockAndUpdate(pos, state.setValue(CampfireBlock.LIT, false));
         }
+    }
+
+    @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
+    private BlockState getStateForPlacement(BlockState place, @Local(argsOnly = true) BlockPlaceContext context) {
+        return place.setValue(CampfireBlock.LIT, false);
     }
 }
