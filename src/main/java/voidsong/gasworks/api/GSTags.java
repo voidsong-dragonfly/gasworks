@@ -44,6 +44,9 @@ public class GSTags {
         public static final TagKey<Block> DOWSE_IN_RAIN = blockTag(Gasworks.rl("dowse_in_rain"));
         public static final TagKey<Block> DOWSE_IN_WATER = blockTag(Gasworks.rl("dowse_in_water"));
         public static final TagKey<Block> LOW_LIGHT_TORCHES = blockTag(Gasworks.rl("low_light_torches"));
+        // Tags for Fire Drill lighting
+        public static final TagKey<Block> CONTAINS_TINDER = blockTag(Gasworks.rl("contains_tinder"));
+
     }
 
     public static class ItemTags {

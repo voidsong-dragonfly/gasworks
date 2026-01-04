@@ -121,5 +121,9 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
             tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + pair.getFirst())))
                 .add(candelabra.asItem());
         }
+        // Tools
+        tag(ItemTags.BOOKSHELF_BOOKS).add(GSItems.TRADESWOMANS_JOURNAL.asItem());
+        tag(Tags.Items.TOOLS).add(GSItems.FIRE_DRILL.asItem());
+        tag(Tags.Items.TOOLS_IGNITER).add(GSItems.FIRE_DRILL.asItem());
     }
 }

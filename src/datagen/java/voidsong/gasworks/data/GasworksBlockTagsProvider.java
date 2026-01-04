@@ -146,6 +146,7 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
          * Compatibility tags, other mods & Gasworks
          */
         // Tags from Gasworks
+        // Tags for torch dowsing
         tag(GSTags.BlockTags.DOWSE_IN_RAIN)
             .add(Blocks.TORCH, Blocks.WALL_TORCH);
         tag(GSTags.BlockTags.DOWSE_IN_WATER)
@@ -154,6 +155,10 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         tag(GSTags.BlockTags.LOW_LIGHT_TORCHES)
             .add(Blocks.TORCH, Blocks.WALL_TORCH)
             .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH);
+        // Tags for Fire Drill lighting
+        tag(GSTags.BlockTags.CONTAINS_TINDER)
+            .add(Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE);
+
         // Tags from other mods
         tag(ModTags.MUSHROOM_COLONY_GROWABLE_ON)
             .add(GSBlocks.COMPOST_PILE.get());

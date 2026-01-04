@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-31T20:08:43.827586445	Tags for minecraft:block mod id gasworks
+// 1.21.1	2026-01-04T17:44:47.613564668	Tags for minecraft:block mod id gasworks
 b2f575b2d90308fd6a6aa7b164665d347aa1b248 data/c/tags/block/dyed.json
 1e075c00d3ce69f16d3a4fe6f9036618c2230784 data/c/tags/block/dyed/black.json
 0ba6a48630e9163b597fc1a74a22b51768884623 data/c/tags/block/dyed/blue.json
@@ -25,6 +25,7 @@ b44a9ec610c6b135929a1118b9538fa1431a6320 data/farmersdelight/tags/block/mushroom
 835dde27f1b7de2c4b2003128f8c3537d64c3d5c data/gasworks/tags/block/candelabras.json
 9da7a0167d541dd2a039ce4048e150e7a2f1347c data/gasworks/tags/block/coallike_piles.json
 386b025051ee79be1293a21547f0f3051ef5924a data/gasworks/tags/block/compost_accelerators.json
+6d490afecf539c9dd8b01e455d3db4eebb2dcdfa data/gasworks/tags/block/contains_tinder.json
 9ce6f447583ac2cd42c7f67f7dc0cca0ec3fa843 data/gasworks/tags/block/dowse_in_rain.json
 ccf3da9f66c1f44791f3532b0f0360ed760105d8 data/gasworks/tags/block/dowse_in_water.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/gasworks/tags/block/log_piles.json
