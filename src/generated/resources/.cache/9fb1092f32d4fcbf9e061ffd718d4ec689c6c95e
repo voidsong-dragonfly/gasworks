@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-31T22:54:33.352620291	Recipes
+// 1.21.1	2026-01-04T18:37:49.954759864	Recipes
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
 07c8822a56251c4bd7c493790a893aa9a2401e35 data/gasworks/advancement/recipes/building_blocks/crafting/birch_log_pile.json
@@ -134,6 +134,7 @@ a8f51dbb8858390892d6b7ed6367f17151a35d11 data/gasworks/advancement/recipes/build
 9133ce6f20d1a3dc0b5aeb101532ecdce545c3ca data/gasworks/advancement/recipes/building_blocks/stonecutting/firebrick_slab.json
 0a848f9bbe1585396699ab73ca0a8f31160a6ebf data/gasworks/advancement/recipes/building_blocks/stonecutting/firebrick_stairs.json
 a84d27d66928acd0d5560afed6e5710a131a2601 data/gasworks/advancement/recipes/building_blocks/stonecutting/firebrick_wall.json
+36260d80732f7c39ea2e14da2eb747d2227ee6b2 data/gasworks/advancement/recipes/tools/crafting/fire_drill.json
 83cfe39d498bca71af0b1ecc407d9a2fdbd14895 data/gasworks/advancement/recipes/tools/crafting/tradeswomans_journal.json
 fba92137f10bbc2cc67049556de5d7a49073c102 data/gasworks/recipe/crafting/acacia_log_pile.json
 86722bae7b730516e2b94c9628cee188eb2b0be5 data/gasworks/recipe/crafting/bamboo_log_pile.json
@@ -177,6 +178,7 @@ d28e3277346a62a375237b0b9bb39226f621beec data/gasworks/recipe/crafting/cyan_stai
 847d263421d50d861ac19779033e74f9ffc46db2 data/gasworks/recipe/crafting/cyan_stained_framed_glass_pane.json
 4bd9d13644376cc89552683a0c01f09d7f96bb71 data/gasworks/recipe/crafting/cyan_stained_framed_glass_pane_from_glass_pane.json
 2b6b33ba4051aa4155e33d2886bbef83d2c9b348 data/gasworks/recipe/crafting/dark_oak_log_pile.json
+867deb855f1c12c71313279b024653ec420d900d data/gasworks/recipe/crafting/fire_drill.json
 baa2a0341baff060c7c32e136696049b8c6d0533 data/gasworks/recipe/crafting/firebrick_quoin_andesite.json
 f7f4116661d5aec623b65d31c29468162afc79e6 data/gasworks/recipe/crafting/firebrick_quoin_deepslate.json
 b7aa4c034d62e9ac86bbc4444f18e6fdcd86de6c data/gasworks/recipe/crafting/firebrick_quoin_diorite.json

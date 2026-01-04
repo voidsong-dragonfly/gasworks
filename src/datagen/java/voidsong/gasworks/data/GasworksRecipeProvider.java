@@ -333,6 +333,11 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .requires(Tags.Items.NUGGETS_GOLD)
             .unlockedBy("has_book", has(Items.BOOK))
             .save(output, rl(GSItems.TRADESWOMANS_JOURNAL, "crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, GSItems.FIRE_DRILL)
+            .requires(Tags.Items.RODS_WOODEN)
+            .requires(ItemTags.WOODEN_SLABS)
+            .unlockedBy("has_wood", has(ItemTags.PLANKS))
+            .save(output, rl(GSItems.FIRE_DRILL, "crafting"));
     }
 
 

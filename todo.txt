@@ -49,11 +49,7 @@
      - possibly increase bed hardness from 0.2? unsure...
  - Crafting tweaks to mudbrick? Add literal mud bricks?
  - finish updating torch tweaks
-     - Keep torches lit-in-item-form-by-default, but have them crafted earlygame from 1 stick in a campfire
-     - unlit torches break into one stick
-     - new item, the hand drill (one stick above a slab in a crafting grid), which can light specific blocks (campfires) but is consumed
      - later game, torches can be crafted in the workbench with a lot of sticks, some wool, and a bucket of creosote/coal tar
-     - soul torches are crafted with 4 lit torches and a piece of soul sand or soul soil
      - if I ever add soul oil, soul torches can be crafted via the same method as 4 but with soul oil
 
 next focus:
