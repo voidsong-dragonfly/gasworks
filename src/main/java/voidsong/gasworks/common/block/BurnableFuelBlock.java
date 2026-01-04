@@ -76,7 +76,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
 
     @Override
     public @Nullable BlockState getToolModifiedState(@Nonnull BlockState state, @Nonnull UseOnContext context, @Nonnull ItemAbility itemAbility, boolean simulate) {
-        return ItemAbility.getActions().contains(ItemAbilities.FIRESTARTER_LIGHT) ? state.setValue(GSProperties.LIT, true) : super.getToolModifiedState(state, context, itemAbility, simulate);
+        return itemAbility.equals(ItemAbilities.FIRESTARTER_LIGHT) ? state.setValue(GSProperties.LIT, true) : super.getToolModifiedState(state, context, itemAbility, simulate);
     }
 
     @Override
