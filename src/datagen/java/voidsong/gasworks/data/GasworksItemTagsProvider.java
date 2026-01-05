@@ -122,8 +122,8 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
                 .add(candelabra.asItem());
         }
         // Tools
-        tag(ItemTags.BOOKSHELF_BOOKS).add(GSItems.TRADESWOMANS_JOURNAL.asItem());
-        tag(Tags.Items.TOOLS).add(GSItems.FIRE_DRILL.asItem());
-        tag(Tags.Items.TOOLS_IGNITER).add(GSItems.FIRE_DRILL.asItem());
+        tag(ItemTags.BOOKSHELF_BOOKS).add(GSItems.TRADESWOMANS_JOURNAL.get());
+        tag(Tags.Items.TOOLS_IGNITER).add(GSItems.FIRE_DRILL.get());
+        tag(Tags.Items.TOOLS).add(GSItems.FIRE_DRILL.get(), GSItems.BAROMETER.get());
     }
 }

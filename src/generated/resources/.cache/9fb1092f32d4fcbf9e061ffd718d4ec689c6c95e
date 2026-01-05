@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-04T18:37:49.954759864	Recipes
+// 1.21.1	2026-01-05T16:33:15.034126191	Recipes
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
 07c8822a56251c4bd7c493790a893aa9a2401e35 data/gasworks/advancement/recipes/building_blocks/crafting/birch_log_pile.json
@@ -134,10 +134,12 @@ a8f51dbb8858390892d6b7ed6367f17151a35d11 data/gasworks/advancement/recipes/build
 9133ce6f20d1a3dc0b5aeb101532ecdce545c3ca data/gasworks/advancement/recipes/building_blocks/stonecutting/firebrick_slab.json
 0a848f9bbe1585396699ab73ca0a8f31160a6ebf data/gasworks/advancement/recipes/building_blocks/stonecutting/firebrick_stairs.json
 a84d27d66928acd0d5560afed6e5710a131a2601 data/gasworks/advancement/recipes/building_blocks/stonecutting/firebrick_wall.json
+d8a0a0f047f8815bf65ddc0eac1087748e870bb7 data/gasworks/advancement/recipes/tools/crafting/barometer.json
 36260d80732f7c39ea2e14da2eb747d2227ee6b2 data/gasworks/advancement/recipes/tools/crafting/fire_drill.json
 83cfe39d498bca71af0b1ecc407d9a2fdbd14895 data/gasworks/advancement/recipes/tools/crafting/tradeswomans_journal.json
 fba92137f10bbc2cc67049556de5d7a49073c102 data/gasworks/recipe/crafting/acacia_log_pile.json
 86722bae7b730516e2b94c9628cee188eb2b0be5 data/gasworks/recipe/crafting/bamboo_log_pile.json
+4576f923f4facd583cbae38e8d0742b9166b8378 data/gasworks/recipe/crafting/barometer.json
 30bf4c54cddf1c2e78687c09ba318ddb707ddc16 data/gasworks/recipe/crafting/birch_log_pile.json
 e7923d2e8f715491aa7b3f642112ce7607385912 data/gasworks/recipe/crafting/black_candelabra.json
 ffe3a21866e0600de8c574c31d99bf3bc9daee20 data/gasworks/recipe/crafting/black_candelabra_dyeing.json

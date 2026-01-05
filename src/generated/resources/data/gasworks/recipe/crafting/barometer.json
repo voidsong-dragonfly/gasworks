@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "c": {
+      "tag": "c:ingots/copper"
+    },
+    "g": {
+      "tag": "c:glass_blocks/cheap"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    },
+    "r": {
+      "tag": "c:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "cgc",
+    "prp",
+    "cgc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "gasworks:barometer"
+  }
+}

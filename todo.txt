@@ -19,7 +19,7 @@
      - Implement jute, hemp, & possibly rubber?
  - possible features i might like from Suppl
      - Ash from burning blocks => decide if I want to entirely redo fire spread first
-     - Quiver, Barometer & other useful tools
+     - Quiver & other useful tools
      - Useful small blocks; turntable, adjustable lever, & wind vane?
      - Feeding & nesting blocks to help with automation
      - Fabric blocks such as awnings, bales, etc
@@ -51,8 +51,9 @@
  - finish updating torch tweaks
      - later game, torches can be crafted in the workbench with a lot of sticks, some wool, and a bucket of creosote/coal tar
      - if I ever add soul oil, soul torches can be crafted via the same method as 4 but with soul oil
+ - make Barometer model adapt automatically post-1.21.4 with the new update methods for inventory models
 
 next focus:
  - tweaks to recovery compasses
- - quiver & barometer
+ - quiver
  -

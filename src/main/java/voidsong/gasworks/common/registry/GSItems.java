@@ -15,6 +15,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.block.SillBlock;
+import voidsong.gasworks.common.item.BarometerItem;
 import voidsong.gasworks.common.item.FireDrillItem;
 import voidsong.gasworks.common.item.TradeswomansJournalItem;
 
@@ -81,6 +82,7 @@ public class GSItems {
      */
     public static final DeferredItem<Item> TRADESWOMANS_JOURNAL = ITEMS.registerItem("tradeswomans_journal", TradeswomansJournalItem::new, new Properties().stacksTo(1));
     public static final DeferredItem<Item> FIRE_DRILL = ITEMS.registerItem("fire_drill", FireDrillItem::new, new Properties().stacksTo(1));
+    public static final DeferredItem<Item> BAROMETER = ITEMS.registerItem("barometer", BarometerItem::new, new Properties().stacksTo(1));
 
     // Creates a creative tab for the mod & adds all Natural Philosophy items to the tab
     @SuppressWarnings("unused")
@@ -100,6 +102,7 @@ public class GSItems {
             // Tool items
             output.accept(TRADESWOMANS_JOURNAL);
             output.accept(FIRE_DRILL);
+            output.accept(BAROMETER);
             // Blocks
             output.accept(OAK_LOG_PILE);
             output.accept(SPRUCE_LOG_PILE);

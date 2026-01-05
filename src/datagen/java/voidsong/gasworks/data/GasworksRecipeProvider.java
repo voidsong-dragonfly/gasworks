@@ -338,6 +338,16 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .requires(ItemTags.WOODEN_SLABS)
             .unlockedBy("has_wood", has(ItemTags.PLANKS))
             .save(output, rl(GSItems.FIRE_DRILL, "crafting"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GSItems.BAROMETER)
+                .pattern("cgc")
+                .pattern("prp")
+                .pattern("cgc")
+                .define('p', ItemTags.PLANKS)
+                .define('c', Tags.Items.INGOTS_COPPER)
+                .define('r', Tags.Items.DUSTS_REDSTONE)
+                .define('g', Tags.Items.GLASS_BLOCKS_CHEAP)
+                .unlockedBy("has_copper", has(Tags.Items.INGOTS_COPPER))
+                .save(output, rl(GSItems.BAROMETER, "crafting"));
     }
 
 
