@@ -53,7 +53,6 @@
      - if I ever add soul oil, soul torches can be crafted via the same method as 4 but with soul oil
 
 next focus:
- - recipe for
  - tweaks to recovery compasses
  - quiver & barometer
  -
