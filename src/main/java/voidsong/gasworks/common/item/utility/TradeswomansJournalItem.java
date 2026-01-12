@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item;
+package voidsong.gasworks.common.item.utility;
 
 import malte0811.dualcodecs.DualCodec;
 import malte0811.dualcodecs.DualCodecs;

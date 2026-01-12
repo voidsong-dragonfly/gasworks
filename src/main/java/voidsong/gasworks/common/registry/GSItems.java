@@ -15,9 +15,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.block.SillBlock;
-import voidsong.gasworks.common.item.BarometerItem;
-import voidsong.gasworks.common.item.FireDrillItem;
-import voidsong.gasworks.common.item.TradeswomansJournalItem;
+import voidsong.gasworks.common.item.utility.BarometerItem;
+import voidsong.gasworks.common.item.utility.FireDrillItem;
+import voidsong.gasworks.common.item.utility.TradeswomansJournalItem;
 
 import java.util.ArrayList;
 import java.util.List;

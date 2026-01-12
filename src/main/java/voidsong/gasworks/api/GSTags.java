@@ -46,7 +46,19 @@ public class GSTags {
         public static final TagKey<Block> LOW_LIGHT_TORCHES = blockTag(Gasworks.rl("low_light_torches"));
         // Tags for Fire Drill lighting
         public static final TagKey<Block> CONTAINS_TINDER = blockTag(Gasworks.rl("contains_tinder"));
-
+        /*
+         * Block break tags for the tool system
+         */
+        public static final TagKey<Block> INCORRECT_FOR_CRUDE_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_crude_tool"));
+        public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_copper_tool"));
+        public static final TagKey<Block> INCORRECT_FOR_IRON_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_iron_tool"));
+        public static final TagKey<Block> INCORRECT_FOR_STEEL_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_steel_tool"));
+        public static final TagKey<Block> INCORRECT_FOR_HSNA_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_hsna_tool"));
+        public static final TagKey<Block> NEEDS_CRUDE_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_crude_tool"));
+        public static final TagKey<Block> NEEDS_COPPER_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_copper_tool"));
+        public static final TagKey<Block> NEEDS_IRON_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_iron_tool"));
+        public static final TagKey<Block> NEEDS_STEEL_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_steel_tool"));
+        public static final TagKey<Block> NEEDS_HSNA_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_hsna_tool"));
     }
 
     public static class ItemTags {

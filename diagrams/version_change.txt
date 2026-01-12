@@ -1,0 +1,2 @@
+ - make Barometer model adapt automatically post-1.21.4 with the new update methods for inventory models
+ - Add Quiver (post-1.21.2) based on new bundle code, with old bundle UI

@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item;
+package voidsong.gasworks.common.item.utility;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;

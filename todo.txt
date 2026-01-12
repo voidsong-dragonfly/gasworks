@@ -19,14 +19,25 @@
      - Implement jute, hemp, & possibly rubber?
  - possible features i might like from Suppl
      - Ash from burning blocks => decide if I want to entirely redo fire spread first
-     - Quiver & other useful tools
      - Useful small blocks; turntable, adjustable lever, & wind vane?
      - Feeding & nesting blocks to help with automation
      - Fabric blocks such as awnings, bales, etc
-     - Tweaks to recovery compasses to make them much more useful & cheaper
      - Map icons for portals, beacons, etc?
  - Tool system
      - Two kinds of durability, 'minor fixes' & 'major fixes'
+         - Minor fixes can be repaired with N nuggets of the material each time, and can be fixed out in the wild via a maintenance kit
+         - Minor fixes simply increase tool stats back to the default, as they slowly wear down over time
+         - Major breaks mean you lose the tool, but they are telegraphed. these repairs need the entire cost of the tool to fix.
+     - Enchanted tools are different than normal tools: they can't be majorly repaired normally
+         - Enchanted tools also cost more resources and some experience to minorly repair, scaling with the number of repairs
+             - This scaling is much less than the standard Vanilla scaling
+             - This scaling persists even if the tool is fully repaired with Mending
+         - Enchanting a tool with mending will allow it to be fully repaired once, which will strip mending off again
+         - Enchanted tools shatter into EXP when broken somehow, either literally or as some sort of item
+     - Tool speed is increased significantly to make progressing into later tool tiers more beneficial
+     - Efficiency now reduces the breaking speed of harder to break blocks, doing nothing to blocks below a certain speed threshold
+     - Efficiency is incompatible with unbreaking
+     - Unbreaking now prevents the tool from shattering at zero durability, but does nothing to durability
  - Enchanting system
      - Books stacked; used for journals as well as normal books
      - Refactor enchanting power to depend on a much larger library & actual accessibility system
@@ -51,9 +62,16 @@
  - finish updating torch tweaks
      - later game, torches can be crafted in the workbench with a lot of sticks, some wool, and a bucket of creosote/coal tar
      - if I ever add soul oil, soul torches can be crafted via the same method as 4 but with soul oil
- - make Barometer model adapt automatically post-1.21.4 with the new update methods for inventory models
+ - add damage to some more blocks that should have it?
+     - stonecutter
+ - fix mob UI of the issue of walking into shit (?)
+     - needs to be coupled with the above to make sure villagers don't suicide themselves
+ - explosive tweaks to TNT and the addition of gunpowder placement/gunpowder barrels
+     - Port gunpowder barrels from IE to GS
+     - add in lines of gunpowder being able to trigger barrels/TNT
+     - change the name of TNT perhaps?
+ - crates (?)
+ - Weatherproofed Planks/wood/etc
 
-next focus:
- - tweaks to recovery compasses
- - quiver
- -
+
+
