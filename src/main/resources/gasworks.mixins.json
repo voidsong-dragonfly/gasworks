@@ -8,6 +8,7 @@
     "tweak.CampfireMixin",
     "tweak.ComposterMixin",
     "tweak.ComposterMixin$OutputContainer",
+    "tweak.ItemRepairabilityMixin",
     "tweak.ThrownPotionMixin",
     "waterlogging.BaseInjections$BlockBehaviorMixin",
     "waterlogging.BaseInjections$BlockBehaviorMixin$FaceAttachedHorizontalDirectionalBlockMixin",

@@ -37,8 +37,15 @@ public abstract class DualDurabilityItem extends Item {
      * Methods for handling durability. Major durability uses [...damage...] methods, but minor durability has methods
      * added for handling, using the [...wear...] keyword as well. Additionally, we modify minor durability when we
      * modify major durability.
+     * We also disable repairability in the crafting table and Grindstone, as custom items should be repaired using
+     * Gasworks repair methods and not the simple variants.
      * These are copied from IItemExtension!
      */
+
+    @Override
+    public boolean isRepairable(@Nonnull ItemStack stack) {
+        return false;
+    }
 
     // We set wear alongside damage to prevent other methods from modifying it
     public <T extends LivingEntity> int damageItem(@Nonnull ItemStack stack, int amount, @Nullable T entity, @Nonnull Consumer<Item> onBroken) {

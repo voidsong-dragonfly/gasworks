@@ -74,5 +74,9 @@ public class GSTags {
          */
         public static final TagKey<Item> REFRACTORY_BRICK = itemTag(cLoc("bricks/refractory"));
         public static final TagKey<Item> FIREBRICK = itemTag(cLoc("bricks/firebrick"));
+        /*
+         * Compatibility tags, other mods & Gasworks
+         */
+        public static final TagKey<Item> BLOCK_CRAFTING_REPAIR = itemTag(Gasworks.rl("block_crafting_repair"));
     }
 }
