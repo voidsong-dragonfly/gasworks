@@ -22,10 +22,10 @@ import voidsong.gasworks.common.registry.GSDataComponents;
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
-public abstract class DualDurabilityItem extends Item {
+public abstract class DualDurabilityTool extends Item {
     private final Material material;
 
-    public DualDurabilityItem(Material material, Item.Properties properties, TagKey<Block> blocks, float baseToolTypeAttackDamage, boolean addMaterialDamage, float baseToolTypeAttackSpeed) {
+    public DualDurabilityTool(Material material, Item.Properties properties, TagKey<Block> blocks, float baseToolTypeAttackDamage, boolean addMaterialDamage, float baseToolTypeAttackSpeed) {
         super(properties.durability(material.getMajorDurability())
                 .component(GSDataComponents.WEAR, 0)
                 .component(GSDataComponents.MAX_WEAR, material.getMinorDurability())
@@ -34,12 +34,12 @@ public abstract class DualDurabilityItem extends Item {
         this.material = material;
     }
 
-    public DualDurabilityItem(Material material, Item.Properties properties, Tool tool, float baseToolTypeAttackDamage, boolean addMaterialDamage, float baseToolTypeAttackSpeed) {
+    public DualDurabilityTool(Material material, Item.Properties properties, Tool tool, float baseToolTypeAttackDamage, boolean addMaterialDamage, float baseToolTypeAttackSpeed) {
         super(properties.durability(material.getMajorDurability())
-                        .component(GSDataComponents.WEAR, 0)
-                        .component(GSDataComponents.MAX_WEAR, material.getMinorDurability())
-                        .component(DataComponents.TOOL, tool)
-                        .attributes(createAttributes(material, baseToolTypeAttackDamage, addMaterialDamage, baseToolTypeAttackSpeed)));
+                .component(GSDataComponents.WEAR, 0)
+                .component(GSDataComponents.MAX_WEAR, material.getMinorDurability())
+                .component(DataComponents.TOOL, tool)
+                .attributes(createAttributes(material, baseToolTypeAttackDamage, addMaterialDamage, baseToolTypeAttackSpeed)));
         this.material = material;
     }
 
@@ -116,7 +116,7 @@ public abstract class DualDurabilityItem extends Item {
         stack.hurtAndBreak(isWeapon() ? 1 : 2, attacker, EquipmentSlot.MAINHAND);
     }
 
-    private boolean isWeapon() {
+    protected boolean isWeapon() {
         return false;
     }
 
