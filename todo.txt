@@ -38,6 +38,17 @@
      - Efficiency now reduces the breaking speed of harder to break blocks, doing nothing to blocks below a certain speed threshold
      - Efficiency is incompatible with unbreaking
      - Unbreaking now prevents the tool from shattering at zero durability, but does nothing to durability
+     - Figure out how this applies to the following pseudo-tools:
+         - Fishing Rod  | Barely a tool, can't be material-repaired, move from anvil to workbench
+         - Shears       | Metal tool, standard DualDurabilityTool (changes, factor out into Item and Tool ?)
+         - Mace         | Can be repaired, is repaired by breeze rods. Unsure what a second "sharpness" dura would mean
+         - Shield       | Standard durability, modify to not allow repairing in the anvil & instead process via workbench
+         - Trident      | (?)
+         - Bow          | Barely a tool, can't be material-repaired, move from anvil to workbench
+         - Crossbow     | Barely a tool, can't be material-repaired, move from anvil to workbench
+         - Brush        | Barely a tool, can't be material-repaired, move from anvil to workbench
+     - Deal with RepairItemRecipe somehow: delete, modify, blacklist, etc
+     - Deal with Grindstome somehow: 
  - Enchanting system
      - Books stacked; used for journals as well as normal books
      - Refactor enchanting power to depend on a much larger library & actual accessibility system

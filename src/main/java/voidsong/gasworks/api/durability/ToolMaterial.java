@@ -1,4 +1,4 @@
-package voidsong.gasworks.api.tool;
+package voidsong.gasworks.api.durability;
 
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -6,7 +6,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public interface Material extends Tier {
+public interface ToolMaterial extends Tier {
     /**
      * Part of the dual-durability system for Gasworks tools, use instead of {@link Tier#getUses()}
      * @return Int minor (decreases tool stats) durability for this tool material
@@ -34,9 +34,10 @@ public interface Material extends Tier {
     /**
      * Get the result of putting this material in a case-hardening furnace; expected to return null for non-ferrous
      * materials or already case-hardened materials
-     * @return Nullable {@link Material} result of case-hardening this material
+     * @return Nullable {@link ToolMaterial} result of case-hardening this material
      */
-    @Nullable Material caseHardenedVariant();
+    @Nullable
+    ToolMaterial caseHardenedVariant();
 
     /**
      * Get the mining speed for this material, modified by the minor durability left on the item. The default function
@@ -50,8 +51,8 @@ public interface Material extends Tier {
     }
 
     /**
-     * Should not be used for Gasworks materials! Use {@link Material#getMinorDurability()} or
-     * {@link Material#getMajorDurability()} instead, depending on context
+     * Should not be used for Gasworks materials! Use {@link ToolMaterial#getMinorDurability()} or
+     * {@link ToolMaterial#getMajorDurability()} instead, depending on context
      * @return int simple maximum durability for this tool material
      */
     @Deprecated
@@ -61,8 +62,8 @@ public interface Material extends Tier {
     }
 
     /**
-     * Should not be used for Gasworks materials! Use {@link Material#getMinorRepairIngredient()} or
-     * {@link Material#getMajorRepairIngredient()} instead, depending on context
+     * Should not be used for Gasworks materials! Use {@link ToolMaterial#getMinorRepairIngredient()} or
+     * {@link ToolMaterial#getMajorRepairIngredient()} instead, depending on context
      * @return Base case {@link Ingredient} for repairing this tool material
      */
     @Deprecated

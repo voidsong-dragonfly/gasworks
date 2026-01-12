@@ -16,16 +16,16 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-import voidsong.gasworks.api.tool.Material;
+import voidsong.gasworks.api.durability.ToolMaterial;
 import voidsong.gasworks.common.registry.GSDataComponents;
 
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
 public abstract class DualDurabilityTool extends Item {
-    private final Material material;
+    private final ToolMaterial material;
 
-    public DualDurabilityTool(Material material, Item.Properties properties, TagKey<Block> blocks, float baseToolTypeAttackDamage, boolean addMaterialDamage, float baseToolTypeAttackSpeed) {
+    public DualDurabilityTool(ToolMaterial material, Item.Properties properties, TagKey<Block> blocks, float baseToolTypeAttackDamage, boolean addMaterialDamage, float baseToolTypeAttackSpeed) {
         super(properties.durability(material.getMajorDurability())
                 .component(GSDataComponents.WEAR, 0)
                 .component(GSDataComponents.MAX_WEAR, material.getMinorDurability())
@@ -34,7 +34,7 @@ public abstract class DualDurabilityTool extends Item {
         this.material = material;
     }
 
-    public DualDurabilityTool(Material material, Item.Properties properties, Tool tool, float baseToolTypeAttackDamage, boolean addMaterialDamage, float baseToolTypeAttackSpeed) {
+    public DualDurabilityTool(ToolMaterial material, Item.Properties properties, Tool tool, float baseToolTypeAttackDamage, boolean addMaterialDamage, float baseToolTypeAttackSpeed) {
         super(properties.durability(material.getMajorDurability())
                 .component(GSDataComponents.WEAR, 0)
                 .component(GSDataComponents.MAX_WEAR, material.getMinorDurability())
@@ -63,9 +63,9 @@ public abstract class DualDurabilityTool extends Item {
 
     /**
      * Provides the material this tool is made out of, analogous to {@link net.minecraft.world.item.Tier} for Vanilla tools
-     * @return {@link Material} the tool is made out of
+     * @return {@link ToolMaterial} the tool is made out of
      */
-    public Material getMaterial() {
+    public ToolMaterial getMaterial() {
         return this.material;
     }
 

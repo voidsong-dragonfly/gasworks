@@ -1,4 +1,4 @@
-package voidsong.gasworks.api.tool;
+package voidsong.gasworks.api.durability;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -10,7 +10,7 @@ import voidsong.gasworks.api.MaterialTags;
 
 import javax.annotation.Nonnull;
 
-public enum Materials implements Material {
+public enum ToolMaterials implements ToolMaterial {
     CRUDE(GSTags.BlockTags.INCORRECT_FOR_CRUDE_TOOL, GSTags.BlockTags.NEEDS_CRUDE_TOOL,
             200, 200, 4.0F, 0.0F, 5,
             Ingredient.EMPTY, Ingredient.EMPTY),
@@ -23,14 +23,14 @@ public enum Materials implements Material {
     IRON(GSTags.BlockTags.INCORRECT_FOR_IRON_TOOL, GSTags.BlockTags.NEEDS_IRON_TOOL,
             500, 5*500, 8.0F, 2.0F, 15,
             Tags.Items.NUGGETS_IRON, Tags.Items.INGOTS_IRON,
-            Materials.CASE_HARDENED_IRON),
+            ToolMaterials.CASE_HARDENED_IRON),
     CASE_HARDENED_STEEL(GSTags.BlockTags.INCORRECT_FOR_STEEL_TOOL, GSTags.BlockTags.NEEDS_STEEL_TOOL,
             1000, 4*1000, 20.0F, 3.0F, 10,
             Ingredient.of(MaterialTags.ItemTags.NUGGET_STEEL), Ingredient.EMPTY),
     STEEL(GSTags.BlockTags.INCORRECT_FOR_STEEL_TOOL, GSTags.BlockTags.NEEDS_STEEL_TOOL,
             1000, 5*1000, 12.0F, 3.0F, 15,
             MaterialTags.ItemTags.NUGGET_STEEL, MaterialTags.ItemTags.INGOT_STEEL,
-            Materials.CASE_HARDENED_STEEL),
+            ToolMaterials.CASE_HARDENED_STEEL),
     HSNA(GSTags.BlockTags.INCORRECT_FOR_HSNA_TOOL, GSTags.BlockTags.NEEDS_HSNA_TOOL,
             2000, 4*2000, 30.0F, 4.0F, 20,
             MaterialTags.ItemTags.NUGGET_HSNA, MaterialTags.ItemTags.INGOT_HSNA);
@@ -44,15 +44,15 @@ public enum Materials implements Material {
     private final int enchantmentValue;
     private final Ingredient minorRepairIngredient;
     private final Ingredient majorRepairIngredient;
-    private final Material caseHardeningTransform;
+    private final ToolMaterial caseHardeningTransform;
 
-    Materials(TagKey<Block> incorrectBlockForDrops, TagKey<Block> correctBlockForDrops,
-                      int minorDurability, int majorDurability,
-                      float speed,
-                      float damage,
-                      int enchantmentValue,
-                      TagKey<Item> minorRepairIngredient, TagKey<Item> majorRepairIngredient,
-                      Material caseHardeningTransform) {
+    ToolMaterials(TagKey<Block> incorrectBlockForDrops, TagKey<Block> correctBlockForDrops,
+                  int minorDurability, int majorDurability,
+                  float speed,
+                  float damage,
+                  int enchantmentValue,
+                  TagKey<Item> minorRepairIngredient, TagKey<Item> majorRepairIngredient,
+                  ToolMaterial caseHardeningTransform) {
         this.incorrectBlocksForDrops = incorrectBlockForDrops;
         this.correctBlockForDrops = correctBlockForDrops;
         this.minorDurability = minorDurability;
@@ -65,12 +65,12 @@ public enum Materials implements Material {
         this.caseHardeningTransform = caseHardeningTransform;
     }
 
-    Materials(TagKey<Block> incorrectBlockForDrops, TagKey<Block> correctBlockForDrops,
-                      int minorDurability, int majorDurability,
-                      float speed,
-                      float damage,
-                      int enchantmentValue,
-                      Ingredient minorRepairIngredient, Ingredient majorRepairIngredient) {
+    ToolMaterials(TagKey<Block> incorrectBlockForDrops, TagKey<Block> correctBlockForDrops,
+                  int minorDurability, int majorDurability,
+                  float speed,
+                  float damage,
+                  int enchantmentValue,
+                  Ingredient minorRepairIngredient, Ingredient majorRepairIngredient) {
         this.incorrectBlocksForDrops = incorrectBlockForDrops;
         this.correctBlockForDrops = correctBlockForDrops;
         this.minorDurability = minorDurability;
@@ -83,12 +83,12 @@ public enum Materials implements Material {
         this.caseHardeningTransform = null;
     }
 
-    Materials(TagKey<Block> incorrectBlockForDrops, TagKey<Block> correctBlockForDrops,
-                      int minorDurability, int majorDurability,
-                      float speed,
-                      float damage,
-                      int enchantmentValue,
-                      TagKey<Item> minorRepairIngredient, TagKey<Item> majorRepairIngredient) {
+    ToolMaterials(TagKey<Block> incorrectBlockForDrops, TagKey<Block> correctBlockForDrops,
+                  int minorDurability, int majorDurability,
+                  float speed,
+                  float damage,
+                  int enchantmentValue,
+                  TagKey<Item> minorRepairIngredient, TagKey<Item> majorRepairIngredient) {
         this.incorrectBlocksForDrops = incorrectBlockForDrops;
         this.correctBlockForDrops = correctBlockForDrops;
         this.minorDurability = minorDurability;
@@ -149,7 +149,7 @@ public enum Materials implements Material {
         return this.majorRepairIngredient;
     }
     @Override
-    public Material caseHardenedVariant() {
+    public ToolMaterial caseHardenedVariant() {
         return caseHardeningTransform;
     }
 }
