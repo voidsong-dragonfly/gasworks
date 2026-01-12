@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item.tool;
+package voidsong.gasworks.common.item.equipment.tool;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -13,7 +13,7 @@ import voidsong.gasworks.api.durability.ToolMaterial;
 
 import javax.annotation.Nonnull;
 
-public class DualDurabilitySwordItem extends DualDurabilityTool {
+public class DualDurabilitySwordItem extends DualDurabilityToolItem {
     public DualDurabilitySwordItem(ToolMaterial material, Item.Properties properties) {
         super(material, properties, SwordItem.createToolProperties(), 3, true, -2.4F);
     }

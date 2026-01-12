@@ -45,8 +45,8 @@ public interface ToolMaterial extends Tier {
      * speed for using a non-fully-repaired tool
      * @return the modified base mining speed for the given minor durability
      */
-    default float getDurabilityModifiedMiningSpeed(float baseSpeed, int minorDurabilityLeft) {
-        float edgeFraction = minorDurabilityLeft/(float)getMinorDurability();
+    default float getDurabilityModifiedMiningSpeed(float baseSpeed, int minorDurability) {
+        float edgeFraction = minorDurability/(float)getMinorDurability();
         return (int)(baseSpeed*Math.pow(Math.cos((0.5*Math.PI)*edgeFraction), 0.1));
     }
 

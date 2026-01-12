@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item.tool;
+package voidsong.gasworks.common.item.equipment.tool;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
@@ -9,7 +9,7 @@ import voidsong.gasworks.api.durability.ToolMaterial;
 
 import javax.annotation.Nonnull;
 
-public class DualDurabilityPickaxeItem extends DualDurabilityTool {
+public class DualDurabilityPickaxeItem extends DualDurabilityToolItem {
     public DualDurabilityPickaxeItem(ToolMaterial material, Item.Properties properties) {
         super(material, properties, BlockTags.MINEABLE_WITH_PICKAXE, 1.0F, true, -2.8F);
     }

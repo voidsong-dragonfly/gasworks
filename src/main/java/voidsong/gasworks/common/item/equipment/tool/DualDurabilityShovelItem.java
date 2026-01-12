@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item.tool;
+package voidsong.gasworks.common.item.equipment.tool;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
@@ -8,7 +8,7 @@ import voidsong.gasworks.api.durability.ToolMaterial;
 
 import javax.annotation.Nonnull;
 
-public class DualDurabilityShovelItem extends DualDurabilityTool {
+public class DualDurabilityShovelItem extends DualDurabilityToolItem {
     public DualDurabilityShovelItem(ToolMaterial material, Properties properties) {
         super(material, properties, BlockTags.MINEABLE_WITH_SHOVEL, 1.5F, true, -3.0F);
     }

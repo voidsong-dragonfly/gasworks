@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item.tool;
+package voidsong.gasworks.common.item.equipment.tool;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
@@ -9,7 +9,7 @@ import voidsong.gasworks.api.durability.ToolMaterials;
 
 import javax.annotation.Nonnull;
 
-public class DualDurabilityHoeItem extends DualDurabilityTool {
+public class DualDurabilityHoeItem extends DualDurabilityToolItem {
     public DualDurabilityHoeItem(ToolMaterials material, Properties properties) {
         super(material, properties, BlockTags.MINEABLE_WITH_HOE, 1.0F, false, getAttackSpeedByMaterial(material));
     }

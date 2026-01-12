@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item.tool;
+package voidsong.gasworks.common.item.equipment.tool;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
@@ -9,7 +9,7 @@ import voidsong.gasworks.api.durability.ToolMaterials;
 
 import javax.annotation.Nonnull;
 
-public class DualDurabilityAxeItem extends DualDurabilityTool {
+public class DualDurabilityAxeItem extends DualDurabilityToolItem {
     public DualDurabilityAxeItem(ToolMaterials material, Properties properties) {
         super(material, properties, BlockTags.MINEABLE_WITH_AXE, getAttackDamageByMaterial(material), false, getAttackSpeedByMaterial(material));
     }
