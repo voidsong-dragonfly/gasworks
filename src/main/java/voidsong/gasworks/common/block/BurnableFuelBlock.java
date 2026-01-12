@@ -15,7 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -118,7 +117,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
                     if (age > 15)
                         level.setBlockAndUpdate(pos, finalProduct());
                 } else {
-                    level.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
+                    level.setBlockAndUpdate(pos, net.minecraft.world.level.block.Blocks.FIRE.defaultBlockState());
                 }
             }
         } else if (state.getValue(GSProperties.LIT))
@@ -150,7 +149,7 @@ public class BurnableFuelBlock extends RotatedPillarBlock {
      * @return validity as a wall or fuel block
      */
     protected boolean validNeighborBlock(@Nonnull LevelReader level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull Direction dir) {
-        return (product!=AshType.NONE&&state.is(GSTags.BlockTags.PYROLIZING_WALLS)&&!state.isFlammable(level, pos, dir))||
+        return (product!=AshType.NONE&&state.is(GSTags.Blocks.PYROLIZING_WALLS)&&!state.isFlammable(level, pos, dir))||
                (state.getBlock() instanceof BurnableFuelBlock)||
                (state.getBlock() instanceof PyrolyticAshBlock);
     }

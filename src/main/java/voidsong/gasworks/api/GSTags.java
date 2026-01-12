@@ -21,7 +21,7 @@ public class GSTags {
         return TagKey.create(Registries.ITEM, name);
     }
 
-    public static class BlockTags {
+    public static class Blocks {
         /*
          * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
          */
@@ -46,27 +46,14 @@ public class GSTags {
         public static final TagKey<Block> LOW_LIGHT_TORCHES = blockTag(Gasworks.rl("low_light_torches"));
         // Tags for Fire Drill lighting
         public static final TagKey<Block> CONTAINS_TINDER = blockTag(Gasworks.rl("contains_tinder"));
-        /*
-         * Block break tags for the tool system
-         */
-        public static final TagKey<Block> INCORRECT_FOR_CRUDE_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_crude_tool"));
-        public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_copper_tool"));
-        public static final TagKey<Block> INCORRECT_FOR_IRON_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_iron_tool"));
-        public static final TagKey<Block> INCORRECT_FOR_STEEL_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_steel_tool"));
-        public static final TagKey<Block> INCORRECT_FOR_HSNA_TOOL = blockTag(Gasworks.rl("tool_tiers/incorrect_for_hsna_tool"));
-        public static final TagKey<Block> NEEDS_CRUDE_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_crude_tool"));
-        public static final TagKey<Block> NEEDS_COPPER_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_copper_tool"));
-        public static final TagKey<Block> NEEDS_IRON_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_iron_tool"));
-        public static final TagKey<Block> NEEDS_STEEL_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_steel_tool"));
-        public static final TagKey<Block> NEEDS_HSNA_TOOL = blockTag(Gasworks.rl("tool_tiers/needs_hsna_tool"));
     }
 
-    public static class ItemTags {
+    public static class Items {
         /*
          * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
          */
         // Pyrolysis walls for use in recipes
-        public static final TagKey<Item> PYROLIZING_WALLS = itemTag(Gasworks.rl("pyrolyzing_walls"));
+        public static final TagKey<Item> PYROLYZING_WALLS = itemTag(Gasworks.rl("pyrolyzing_walls"));
         // Log stacks for fuel
         public static final TagKey<Item> LOG_PILES = itemTag(Gasworks.rl("log_piles"));
         // Coal-like piles for fuel

@@ -9,7 +9,6 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.api.GSTags;
@@ -81,34 +80,34 @@ public class JEIPlugin implements IModPlugin {
     private List<RecipeHolder<PyrolysisRecipe>> getPyrolysisJEIRecipes() {
         List<RecipeHolder<PyrolysisRecipe>> recipes = new ArrayList<>();
         // Log piles, but since we don't have easy access to tags, we do it manually
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_oak"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.OAK_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_spruce"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.SPRUCE_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_birch"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.BIRCH_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_jungle"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.JUNGLE_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_acacia"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.ACACIA_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_dark_oak"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.DARK_OAK_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_cherry"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.CHERRY_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_mangrove"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.MANGROVE_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_bamboo"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.BAMBOO_LOG_PILE.get(), Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_oak"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.OAK_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_spruce"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.SPRUCE_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_birch"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.BIRCH_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_jungle"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.JUNGLE_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_acacia"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.ACACIA_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_dark_oak"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.DARK_OAK_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_cherry"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.CHERRY_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_mangrove"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.MANGROVE_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("charcoal_bamboo"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.BAMBOO_LOG_PILE.get(), net.minecraft.world.item.Items.CHARCOAL, GSItems.ASH.get(), 0.5f)));
         // Coal piles
-        recipes.add(new RecipeHolder<>(Gasworks.rl("coke"), new PyrolysisRecipe(GSTags.ItemTags.PYROLIZING_WALLS, GSBlocks.COAL_PILE.get(), new ItemStack(GSItems.COKE.get(), 5), new ItemStack(GSItems.ASH.get()), 0.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("coke"), new PyrolysisRecipe(GSTags.Items.PYROLYZING_WALLS, GSBlocks.COAL_PILE.get(), new ItemStack(GSItems.COKE.get(), 5), new ItemStack(GSItems.ASH.get()), 0.5f)));
         return recipes;
     }
 
     private List<RecipeHolder<ClampRecipe>> getClampJEIRecipes() {
         List<RecipeHolder<ClampRecipe>> recipes = new ArrayList<>();
         // Log piles, but since we don't have easy access to tags, we do it manually
-        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_wood"), new ClampRecipe(GSTags.ItemTags.LOG_PILES, 6, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(Items.BRICK, 4), 1.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_coallike"), new ClampRecipe(GSTags.ItemTags.COALLIKE_PILES, 1, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(Items.BRICK, 4), 1.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_fireclay_wood"), new ClampRecipe(GSTags.ItemTags.LOG_PILES, 6, GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), new ItemStack(GSItems.FIREBRICK.get(), 4), 1.5f)));
-        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_fireclay_coallike"), new ClampRecipe(GSTags.ItemTags.COALLIKE_PILES, 1, GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), new ItemStack(GSItems.FIREBRICK.get(), 4), 1.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_wood"), new ClampRecipe(GSTags.Items.LOG_PILES, 6, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(net.minecraft.world.item.Items.BRICK, 4), 1.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_clay_coallike"), new ClampRecipe(GSTags.Items.COALLIKE_PILES, 1, GSBlocks.UNFIRED_BRICK_CLAMP.get(), new ItemStack(net.minecraft.world.item.Items.BRICK, 4), 1.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_fireclay_wood"), new ClampRecipe(GSTags.Items.LOG_PILES, 6, GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), new ItemStack(GSItems.FIREBRICK.get(), 4), 1.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("clamp_fireclay_coallike"), new ClampRecipe(GSTags.Items.COALLIKE_PILES, 1, GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), new ItemStack(GSItems.FIREBRICK.get(), 4), 1.5f)));
         return recipes;
     }
 
     private List<RecipeHolder<CompostRecipe>> getCompostJEIRecipes() {
         List<RecipeHolder<CompostRecipe>> recipes = new ArrayList<>();
         // Log piles, but since we don't have easy access to tags, we do it manually
-        recipes.add(new RecipeHolder<>(Gasworks.rl("compost"), new CompostRecipe(GSTags.ItemTags.COMPOST_ACCELERATORS_DISPLAY, GSBlocks.COMPOST_PILE.get(), GSItems.COMPOST.get(), 3, 6, 1.5f)));
+        recipes.add(new RecipeHolder<>(Gasworks.rl("compost"), new CompostRecipe(GSTags.Items.COMPOST_ACCELERATORS_DISPLAY, GSBlocks.COMPOST_PILE.get(), GSItems.COMPOST.get(), 3, 6, 1.5f)));
         return recipes;
     }
 }

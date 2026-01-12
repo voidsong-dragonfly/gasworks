@@ -5,35 +5,34 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.api.MaterialTags;
 
 import javax.annotation.Nonnull;
 
 public enum ToolMaterials implements ToolMaterial {
-    CRUDE(GSTags.BlockTags.INCORRECT_FOR_CRUDE_TOOL, GSTags.BlockTags.NEEDS_CRUDE_TOOL,
+    CRUDE(MaterialTags.Blocks.INCORRECT_FOR_CRUDE_TOOL, MaterialTags.Blocks.NEEDS_CRUDE_TOOL,
             200, 200, 4.0F, 0.0F, 5,
             Ingredient.EMPTY, Ingredient.EMPTY),
-    COPPER(GSTags.BlockTags.INCORRECT_FOR_COPPER_TOOL, GSTags.BlockTags.NEEDS_COPPER_TOOL,
+    COPPER(MaterialTags.Blocks.INCORRECT_FOR_COPPER_TOOL, MaterialTags.Blocks.NEEDS_COPPER_TOOL,
             250, 4*250, 6.0F, 1.0F, 15,
-            MaterialTags.ItemTags.NUGGET_COPPER, Tags.Items.INGOTS_COPPER),
-    CASE_HARDENED_IRON(GSTags.BlockTags.INCORRECT_FOR_STEEL_TOOL, GSTags.BlockTags.NEEDS_STEEL_TOOL,
+            MaterialTags.Items.NUGGET_COPPER, Tags.Items.INGOTS_COPPER),
+    CASE_HARDENED_IRON(MaterialTags.Blocks.INCORRECT_FOR_STEEL_TOOL, MaterialTags.Blocks.NEEDS_STEEL_TOOL,
             500, 4*500, 12.0F, 2.0F, 10,
             Ingredient.of(Tags.Items.NUGGETS_IRON), Ingredient.EMPTY),
-    IRON(GSTags.BlockTags.INCORRECT_FOR_IRON_TOOL, GSTags.BlockTags.NEEDS_IRON_TOOL,
+    IRON(MaterialTags.Blocks.INCORRECT_FOR_IRON_TOOL, MaterialTags.Blocks.NEEDS_IRON_TOOL,
             500, 5*500, 8.0F, 2.0F, 15,
             Tags.Items.NUGGETS_IRON, Tags.Items.INGOTS_IRON,
             ToolMaterials.CASE_HARDENED_IRON),
-    CASE_HARDENED_STEEL(GSTags.BlockTags.INCORRECT_FOR_STEEL_TOOL, GSTags.BlockTags.NEEDS_STEEL_TOOL,
+    CASE_HARDENED_STEEL(MaterialTags.Blocks.INCORRECT_FOR_STEEL_TOOL, MaterialTags.Blocks.NEEDS_STEEL_TOOL,
             1000, 4*1000, 20.0F, 3.0F, 10,
-            Ingredient.of(MaterialTags.ItemTags.NUGGET_STEEL), Ingredient.EMPTY),
-    STEEL(GSTags.BlockTags.INCORRECT_FOR_STEEL_TOOL, GSTags.BlockTags.NEEDS_STEEL_TOOL,
+            Ingredient.of(MaterialTags.Items.NUGGET_STEEL), Ingredient.EMPTY),
+    STEEL(MaterialTags.Blocks.INCORRECT_FOR_STEEL_TOOL, MaterialTags.Blocks.NEEDS_STEEL_TOOL,
             1000, 5*1000, 12.0F, 3.0F, 15,
-            MaterialTags.ItemTags.NUGGET_STEEL, MaterialTags.ItemTags.INGOT_STEEL,
+            MaterialTags.Items.NUGGET_STEEL, MaterialTags.Items.INGOT_STEEL,
             ToolMaterials.CASE_HARDENED_STEEL),
-    HSNA(GSTags.BlockTags.INCORRECT_FOR_HSNA_TOOL, GSTags.BlockTags.NEEDS_HSNA_TOOL,
+    HSNA(MaterialTags.Blocks.INCORRECT_FOR_HSNA_TOOL, MaterialTags.Blocks.NEEDS_HSNA_TOOL,
             2000, 4*2000, 30.0F, 4.0F, 20,
-            MaterialTags.ItemTags.NUGGET_HSNA, MaterialTags.ItemTags.INGOT_HSNA);
+            MaterialTags.Items.NUGGET_HSNA, MaterialTags.Items.INGOT_HSNA);
 
     private final TagKey<Block> incorrectBlocksForDrops;
     private final TagKey<Block> correctBlockForDrops;

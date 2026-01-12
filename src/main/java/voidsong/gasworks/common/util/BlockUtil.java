@@ -25,7 +25,7 @@ public class BlockUtil {
     }
 
     public static void dowseTorch(@Nullable Entity player, BlockState state, LevelAccessor level, BlockPos pos, boolean rain) {
-        if (state.is(rain ? GSTags.BlockTags.DOWSE_IN_RAIN : GSTags.BlockTags.DOWSE_IN_WATER) && state.getValue(GSProperties.LIT)) {
+        if (state.is(rain ? GSTags.Blocks.DOWSE_IN_RAIN : GSTags.Blocks.DOWSE_IN_WATER) && state.getValue(GSProperties.LIT)) {
             level.setBlock(pos, state.setValue(GSProperties.LIT, false), 11);
             level.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);

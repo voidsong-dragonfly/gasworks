@@ -71,7 +71,7 @@ public class CompostBlock extends Block {
         for (BlockPos search : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))) {
             BlockState state = level.getBlockState(search);
             // Blocks by tag are one boost only
-            if (state.is(GSTags.BlockTags.COMPOST_ACCELERATORS))
+            if (state.is(GSTags.Blocks.COMPOST_ACCELERATORS))
                 boost += BASE_BOOST;
             // Silverfish are 3 because they are quite hard to get ahold of
             else if (state.getBlock() instanceof InfestedBlock)

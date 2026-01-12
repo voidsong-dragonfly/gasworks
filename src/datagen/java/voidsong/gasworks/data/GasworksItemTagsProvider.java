@@ -7,7 +7,6 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
@@ -34,42 +33,42 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
          * In-world processes, incl. beehive oven, brick clamp, & fuels/ash
          */
         // Pyrolysis walls for use in recipes
-        tag(GSTags.ItemTags.PYROLIZING_WALLS)
-            .addTag(ItemTags.DIRT).remove(Items.MOSS_BLOCK, Items.MUD, Items.MUDDY_MANGROVE_ROOTS);
+        tag(GSTags.Items.PYROLYZING_WALLS)
+            .addTag(ItemTags.DIRT).remove(net.minecraft.world.item.Items.MOSS_BLOCK, net.minecraft.world.item.Items.MUD, net.minecraft.world.item.Items.MUDDY_MANGROVE_ROOTS);
         // Log stacks for fuel
         tag(ItemTags.LOGS_THAT_BURN)
             .add(GSItems.OAK_LOG_PILE.get(), GSItems.SPRUCE_LOG_PILE.get(), GSItems.BIRCH_LOG_PILE.get(),
                 GSItems.JUNGLE_LOG_PILE.get(), GSItems.ACACIA_LOG_PILE.get(), GSItems.DARK_OAK_LOG_PILE.get(),
                 GSItems.CHERRY_LOG_PILE.get(), GSItems.MANGROVE_LOG_PILE.get(), GSItems.BAMBOO_LOG_PILE.get());
-        tag(GSTags.ItemTags.LOG_PILES)
+        tag(GSTags.Items.LOG_PILES)
             .add(GSItems.OAK_LOG_PILE.get(), GSItems.SPRUCE_LOG_PILE.get(), GSItems.BIRCH_LOG_PILE.get(),
                 GSItems.JUNGLE_LOG_PILE.get(), GSItems.ACACIA_LOG_PILE.get(), GSItems.DARK_OAK_LOG_PILE.get(),
                 GSItems.CHERRY_LOG_PILE.get(), GSItems.MANGROVE_LOG_PILE.get(), GSItems.BAMBOO_LOG_PILE.get());
         // Coal-like piles for fuel
-        tag(GSTags.ItemTags.COALLIKE_PILES)
+        tag(GSTags.Items.COALLIKE_PILES)
             .add(GSItems.CHARCOAL_PILE.get(), GSItems.COAL_PILE.get());
         // Ash products
-        tag(GSTags.ItemTags.DUSTS)
+        tag(GSTags.Items.DUSTS)
             .add(GSItems.ASH.asItem());
-        tag(GSTags.ItemTags.ASH_DUST)
+        tag(GSTags.Items.ASH_DUST)
             .add(GSItems.ASH.asItem());
-        tag(GSTags.ItemTags.ASH)
+        tag(GSTags.Items.ASH)
             .add(GSItems.ASH.asItem());
         // Coke products
-        tag(GSTags.ItemTags.COAL_COKE)
+        tag(GSTags.Items.COAL_COKE)
             .add(GSItems.COKE.asItem());
         // Special-case-encompassing compost-accelerating blocks
-        tag(GSTags.ItemTags.COMPOST_ACCELERATORS_DISPLAY)
+        tag(GSTags.Items.COMPOST_ACCELERATORS_DISPLAY)
             // Standard blocks
-            .add(Items.RED_MUSHROOM, Items.BROWN_MUSHROOM, Items.GLOW_LICHEN)
-            .add(Items.MOSS_BLOCK, Items.MOSS_CARPET)
-            .add(Items.MYCELIUM, Items.RED_MUSHROOM_BLOCK, Items.BROWN_MUSHROOM_BLOCK, Items.MUSHROOM_STEM)
+            .add(net.minecraft.world.item.Items.RED_MUSHROOM, net.minecraft.world.item.Items.BROWN_MUSHROOM, net.minecraft.world.item.Items.GLOW_LICHEN)
+            .add(net.minecraft.world.item.Items.MOSS_BLOCK, net.minecraft.world.item.Items.MOSS_CARPET)
+            .add(net.minecraft.world.item.Items.MYCELIUM, net.minecraft.world.item.Items.RED_MUSHROOM_BLOCK, net.minecraft.world.item.Items.BROWN_MUSHROOM_BLOCK, net.minecraft.world.item.Items.MUSHROOM_STEM)
             // Nether blocks
-            .add(Items.NETHER_WART)
-            .add(Items.WARPED_FUNGUS, Items.CRIMSON_FUNGUS, Items.WARPED_ROOTS, Items.CRIMSON_ROOTS, Items.NETHER_SPROUTS)
-            .add(Items.CRIMSON_NYLIUM, Items.WARPED_NYLIUM)
+            .add(net.minecraft.world.item.Items.NETHER_WART)
+            .add(net.minecraft.world.item.Items.WARPED_FUNGUS, net.minecraft.world.item.Items.CRIMSON_FUNGUS, net.minecraft.world.item.Items.WARPED_ROOTS, net.minecraft.world.item.Items.CRIMSON_ROOTS, net.minecraft.world.item.Items.NETHER_SPROUTS)
+            .add(net.minecraft.world.item.Items.CRIMSON_NYLIUM, net.minecraft.world.item.Items.WARPED_NYLIUM)
             // Special case: Infested blocks
-            .add(Items.INFESTED_COBBLESTONE, Items.INFESTED_DEEPSLATE, Items.INFESTED_STONE, Items.INFESTED_STONE_BRICKS, Items.INFESTED_CRACKED_STONE_BRICKS, Items.INFESTED_CHISELED_STONE_BRICKS, Items.INFESTED_MOSSY_STONE_BRICKS)
+            .add(net.minecraft.world.item.Items.INFESTED_COBBLESTONE, net.minecraft.world.item.Items.INFESTED_DEEPSLATE, net.minecraft.world.item.Items.INFESTED_STONE, net.minecraft.world.item.Items.INFESTED_STONE_BRICKS, net.minecraft.world.item.Items.INFESTED_CRACKED_STONE_BRICKS, net.minecraft.world.item.Items.INFESTED_CHISELED_STONE_BRICKS, net.minecraft.world.item.Items.INFESTED_MOSSY_STONE_BRICKS)
             // Special case: Compost
             .add(GSItems.COMPOST_PILE.get())
             // Farmer's Delight compat
@@ -84,9 +83,9 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
         // Fireclay blocks of various types
         tag(Tags.Items.BRICKS)
             .add(GSItems.FIREBRICK.get());
-        tag(GSTags.ItemTags.REFRACTORY_BRICK)
+        tag(GSTags.Items.REFRACTORY_BRICK)
             .add(GSItems.FIREBRICK.get());
-        tag(GSTags.ItemTags.FIREBRICK)
+        tag(GSTags.Items.FIREBRICK)
             .add(GSItems.FIREBRICK.get());
         // Framed glass
         tag(Tags.Items.GLASS_BLOCKS)
@@ -112,11 +111,11 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
                 .add(glass.asItem());
         }
         // Candelabras
-        tag(GSTags.ItemTags.CANDELABRAS)
+        tag(GSTags.Items.CANDELABRAS)
             .add(GSItems.CANDELABRA.get());
         for (Pair<DyeColor, DeferredBlock<CandelabraBlock>> pair : GSBlocks.CANDELABRAS) {
             CandelabraBlock candelabra = pair.getSecond().get();
-            tag(GSTags.ItemTags.CANDELABRAS).add(candelabra.asItem());
+            tag(GSTags.Items.CANDELABRAS).add(candelabra.asItem());
             tag(Tags.Items.DYED).add(candelabra.asItem());
             tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + pair.getFirst())))
                 .add(candelabra.asItem());

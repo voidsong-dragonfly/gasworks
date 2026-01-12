@@ -74,7 +74,7 @@ public class TorchMixins {
 
         @Override
         public boolean gasworks$modifyIsRandomlyTicking(BlockState state, Boolean ticking) {
-            return ticking || (state.is(GSTags.BlockTags.DOWSE_IN_RAIN) && state.getValue(GSProperties.LIT));
+            return ticking || (state.is(GSTags.Blocks.DOWSE_IN_RAIN) && state.getValue(GSProperties.LIT));
         }
 
         @Override
@@ -100,7 +100,7 @@ public class TorchMixins {
         public BlockState gasworks$modifyStateForPlacement(BlockState original, BlockPlaceContext context) {
             FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
             boolean waterlogged = fluid.getType() == Fluids.WATER;
-            return original == null ? null : original.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && original.is(GSTags.BlockTags.DOWSE_IN_WATER)));
+            return original == null ? null : original.setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(GSProperties.LIT, !(waterlogged && original.is(GSTags.Blocks.DOWSE_IN_WATER)));
         }
 
         @Override
@@ -166,7 +166,7 @@ public class TorchMixins {
         @ModifyReturnValue(method = "getLightEmission", at = @At(value = "RETURN"))
         private int getLightEmission(int original, @Local(argsOnly = true) BlockState state) {
             if (this.getClass().equals(TorchBlock.class) || this.getClass().equals(WallTorchBlock.class)) {
-                return state.is(GSTags.BlockTags.LOW_LIGHT_TORCHES) ? (state.getValue(GSProperties.LIT) ? 10 : 0) : original;
+                return state.is(GSTags.Blocks.LOW_LIGHT_TORCHES) ? (state.getValue(GSProperties.LIT) ? 10 : 0) : original;
             }
             return original;
         }

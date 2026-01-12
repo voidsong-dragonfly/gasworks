@@ -69,7 +69,7 @@ public class FireDrillItem extends Item {
                 // Get the lit state for this state
                 BlockState litState = state.getToolModifiedState(new UseOnContext(player, player.getUsedItemHand(), context), ItemAbilities.FIRESTARTER_LIGHT, false);
                 // Check if we can light the block in front of us & if the block has a lit state
-                if (litState != null && state.is(GSTags.BlockTags.CONTAINS_TINDER)) {
+                if (litState != null && state.is(GSTags.Blocks.CONTAINS_TINDER)) {
                     // Play sound and set for lighting
                     level.playSound(player, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
                     level.setBlockAndUpdate(pos, litState);
