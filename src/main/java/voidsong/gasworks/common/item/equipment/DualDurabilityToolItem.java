@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item.equipment.tool;
+package voidsong.gasworks.common.item.equipment;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.TagKey;
@@ -15,7 +15,6 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import voidsong.gasworks.api.durability.ToolMaterial;
-import voidsong.gasworks.common.item.equipment.DualDurabilityItem;
 
 import javax.annotation.Nonnull;
 

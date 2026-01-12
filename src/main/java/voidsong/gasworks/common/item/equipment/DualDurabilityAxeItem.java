@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.item.equipment.tool;
+package voidsong.gasworks.common.item.equipment;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
