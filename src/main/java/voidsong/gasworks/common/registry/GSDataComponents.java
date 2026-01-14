@@ -7,8 +7,8 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.api.utils.GSDualCodecs;
 import voidsong.gasworks.common.item.utility.TradeswomansJournalItem.StoredExperience;
-import voidsong.gasworks.common.util.GSDualCodecs;
 
 public class GSDataComponents {
     public static final DeferredRegister<DataComponentType<?>> COMPONENTS = DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, Gasworks.MOD_ID);
