@@ -13,6 +13,25 @@
      - Mineral lodes
      - Trip hammer
      - Machine shop 0/workshop system
+         - Each machine can be used independently, though some may not have uses
+         - Workshop itself is interacted with through a 'workshop bench' or 'workshop table'
+             - Three types of workshops: Machine Shop (Technology), Tool Forge (Tool Repair & Crafting), and Library (Enchanting)
+             - "Tier -1 machine shop" tasks can be done directly at the Shaping Anvil
+         - Some types of workshops can coexist (machine shop, tool forge), others cannot (machine shop/tool forge, library)
+         - Several kinds of actions that the workshops shop can provide: Hammer, Grind, Cut, Turn, Assemble, Heat, Forge, Mill
+            --------- PRECISION MODIFYING ---------
+             - Grind:      T0: Grindstone,      T1: Angle Grinder, T2+: N/A
+             - Cut:        T0: Stonecutter,     T1: Chop Saw,      T2+: N/A
+             - Turn:       T0: N/A,             T1: Lathe,         T2+: N/A
+             - Mill:       T0: N/A,             T1: Cutting Mill,  T2+: N/A
+            --------- PRECISION INDEPENDENT ---------
+             - Hammer:     T0: Redstone Hammer, T1: Steam Hammer,  T2+: N/A
+             - Attach:     T0: Toolbox,         T1: Rivet Gun      T2:  N/A, T3: Welding Torch
+             - Hand Tools: T0: Toolbox,         T1+: N/A
+             - Heat:       T0: Forge Hearth,    T1: Gas Hearth,    T2:  N/A, T3: Soulfire Furnace
+            ---------  NOT IN MACHINE-SHOP  ---------
+             - Forge:      T0: Redstone Hammer, T1: Steam Hammer,  T2+: N/A
+             - Knowledge:  (other mechanics)
      - Crude Blast Furnace & bellows
      - Kiln
      - Crude mechanical power
@@ -48,7 +67,14 @@
          - Crossbow     | Barely a tool, can't be material-repaired, move from anvil to workbench
          - Brush        | Barely a tool, can't be material-repaired, move from anvil to workbench
      - Deal with RepairItemRecipe somehow: delete, modify, blacklist, etc
-     - Deal with Grindstome somehow: 
+     - Deal with Grindstome somehow:
+     - Figure out how to work with armor
+         - Will need a custom ArmorMaterial
+         - May want both chain & non-chain variants of armor? Unsure. Would be up to 7 armor types tho...
+         - Crafting recipes should include leather/fabric; less for non-leather armors
+         - May want to degrade protection down towards 50% or so with more minor damage. definitely not zero at low tho.
+         - Want slowdowns from some armors? Minor but can be resolved with less protection? Some other benefit?
+         - Currently, chain basically doesn't have a use, that's not great...
  - Enchanting system
      - Books stacked; used for journals as well as normal books
      - Refactor enchanting power to depend on a much larger library & actual accessibility system

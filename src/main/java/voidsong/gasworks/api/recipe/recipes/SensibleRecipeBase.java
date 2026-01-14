@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
  * Nick Fury, given that it's a stupid-ass [set of] decision[s], I've elected to ignore [them].
  * This class removes a lot of the boilerplate necessary to interact with the Vanilla system by returning empty values.
  * Recipes based on this class should cache their own recipes using {@link voidsong.gasworks.api.recipe.CachedRecipeList CachedRecipeList}
- * and bypass the Vanilla recipe lookup system that iterates over all recipes in the game.
+ * and bypass the, according to Malte, slower Vanilla system
  */
 public abstract class SensibleRecipeBase implements Recipe<RecipeInput> {
     protected final ItemStack dummy;
