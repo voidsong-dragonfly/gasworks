@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
@@ -26,9 +27,12 @@ public class GSDualCodecs {
     public static final DualCodec<ByteBuf, Integer> POSITIVE_INT = new DualCodec<>(ExtraCodecs.POSITIVE_INT, ByteBufCodecs.VAR_INT);
     public static final DualCodec<ByteBuf, Integer> NON_NEGATIVE_INT = new DualCodec<>(ExtraCodecs.NON_NEGATIVE_INT, ByteBufCodecs.VAR_INT);
     public static final DualCodec<RegistryFriendlyByteBuf, FluidStack> FLUID_STACK = new DualCodec<>(
-        FluidStack.OPTIONAL_CODEC, FluidStack.OPTIONAL_STREAM_CODEC
+        FluidStack.CODEC, FluidStack.STREAM_CODEC
     );
-
+    public static final DualCodec<RegistryFriendlyByteBuf, SizedIngredient> SIZED_INGREDIENT = new DualCodec<>(
+            SizedIngredient.FLAT_CODEC,
+            SizedIngredient.STREAM_CODEC
+    );
     public static final DualCodec<RegistryFriendlyByteBuf, SizedFluidIngredient> SIZED_FLUID_INGREDIENT = new DualCodec<>(
         SizedFluidIngredient.FLAT_CODEC,
         SizedFluidIngredient.STREAM_CODEC
