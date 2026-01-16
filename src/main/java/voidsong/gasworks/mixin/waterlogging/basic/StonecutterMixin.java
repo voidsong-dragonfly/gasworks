@@ -24,7 +24,6 @@ public class StonecutterMixin implements VanillaWaterloggedBlock {
         return this.getClass().equals(StonecutterBlock.class) && !getStateForPlacementOverride;
     }
 
-
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
     private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
         builder.add(BlockStateProperties.WATERLOGGED);

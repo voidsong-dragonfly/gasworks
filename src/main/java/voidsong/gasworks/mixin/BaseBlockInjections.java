@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin.waterlogging;
+package voidsong.gasworks.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
@@ -16,16 +17,18 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import voidsong.gasworks.common.block.interfaces.VanillaCapabilityBlock;
 import voidsong.gasworks.common.block.interfaces.VanillaRandomTickBlock;
 import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 
 @SuppressWarnings("unused")
-public class BaseInjections {
+public class BaseBlockInjections {
     @Mixin(Block.class)
     public static class BlockMixin {
         @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
@@ -46,13 +49,21 @@ public class BaseInjections {
     }
 
     @Mixin(BlockBehaviour.class)
-    public static class BlockBehaviorMixin {
+    public static abstract class BlockBehaviorMixin {
+        @Shadow
+        protected abstract Block asBlock();
+
         @Inject(method = "updateShape", at = @At(value = "RETURN"))
         private void updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
+            // Waterlogging updates
             if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass(), true, false)) {
                 if (cir.getReturnValue().hasProperty(BlockStateProperties.WATERLOGGED) && cir.getReturnValue().getValue(BlockStateProperties.WATERLOGGED)) {
                     level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
                 }
+            }
+            // Capability block updates, in case we want to update caps on external block change
+            if (this instanceof VanillaCapabilityBlock block && block.gasworks$shouldProcessCapabilities(this.asBlock(), true)) {
+                block.gasworks$onUpdateShape(state, direction, neighborState, level, pos, neighborPos);
             }
         }
 
@@ -81,25 +92,39 @@ public class BaseInjections {
             }
         }
 
-        @Mixin(FaceAttachedHorizontalDirectionalBlock.class)
-        public static class FaceAttachedHorizontalDirectionalBlockMixin {
-            @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
-            private BlockState getStateForPlacement(BlockState original, @Local(argsOnly = true) BlockPlaceContext context) {
-                if (original != null && this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
-                    return block.gasworks$modifyStateForPlacement(original, context);
-                }
-                return original;
+        @Inject(method = "onPlace", at = @At(value = "HEAD"))
+        private void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston, CallbackInfo ci) {
+            if (this instanceof VanillaCapabilityBlock block && block.gasworks$shouldProcessCapabilities(this.asBlock(), false)) {
+                if (!oldState.is(this.asBlock())) level.invalidateCapabilities(pos);
             }
-
-            @Inject(method = "updateShape", at = @At(value = "RETURN"))
-            private void updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
-                if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
-                    if (cir.getReturnValue().hasProperty(BlockStateProperties.WATERLOGGED) && cir.getReturnValue().getValue(BlockStateProperties.WATERLOGGED)) {
-                        level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-                    }
-                }
-            }
-
         }
+
+        @Inject(method = "onRemove", at = @At(value = "HEAD"))
+        private void onRemove(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston, CallbackInfo ci) {
+            if (this instanceof VanillaCapabilityBlock block && block.gasworks$shouldProcessCapabilities(this.asBlock(), false)) {
+                if (!state.is(oldState.getBlock())) level.invalidateCapabilities(pos);
+            }
+        }
+    }
+
+    @Mixin(FaceAttachedHorizontalDirectionalBlock.class)
+    public static class FaceAttachedHorizontalDirectionalBlockMixin {
+        @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
+        private BlockState getStateForPlacement(BlockState original, @Local(argsOnly = true) BlockPlaceContext context) {
+            if (original != null && this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
+                return block.gasworks$modifyStateForPlacement(original, context);
+            }
+            return original;
+        }
+
+        @Inject(method = "updateShape", at = @At(value = "RETURN"))
+        private void updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
+            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
+                if (cir.getReturnValue().hasProperty(BlockStateProperties.WATERLOGGED) && cir.getReturnValue().getValue(BlockStateProperties.WATERLOGGED)) {
+                    level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+                }
+            }
+        }
+
     }
 }
