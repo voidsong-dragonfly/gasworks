@@ -1,13 +1,6 @@
  - Compost pile features
      - Possibly change recipe maps for composting recipes?
      - Possibly a compost crafting recipe (dirt + total 1 compost chance)
- - Sluice
-     - Rightclick with water container in main hand and with block in the offhand
-     - Possibly a special item for filling the sluice with water? Water bowl, plus SIN agrees. Water bowl used for crafting stews.
-     - Two states for the sluice: empty & full. Full requires a rightclick with a shovel to remove sediment.
-     - Have types for gravel at the top (guaranteed) and then choice of types for the bottom? Sand, red sand, mud?
-     - Should I bother with custom recipes at all? Depends if I want to bother with custom output or not.
-     - SIN suggests to put off a BER for now and to have it as a later, more complex feature
  - Other tier 0 features
      - Prospector's Pick
      - Mineral lodes
@@ -17,6 +10,8 @@
          - Workshop itself is interacted with through a 'workshop bench' or 'workshop table'
              - Three types of workshops: Machine Shop (Technology), Tool Forge (Tool Repair & Crafting), and Library (Enchanting)
              - "Tier -1 machine shop" tasks can be done directly at the Shaping Anvil
+             - workshop manifest system (?) - do we care for tool forge? would need lecterns in some places, possibly, or some other method of storing manifests
+             - library manifest system is the most fleshed out at the moment
          - Some types of workshops can coexist (machine shop, tool forge), others cannot (machine shop/tool forge, library)
          - Several kinds of actions that the workshops shop can provide: Hammer, Grind, Cut, Turn, Assemble, Heat, Forge, Mill
             --------- PRECISION MODIFYING ---------
@@ -25,7 +20,7 @@
              - Turn:       T0: N/A,             T1: Lathe,         T2+: N/A
              - Mill:       T0: N/A,             T1: Cutting Mill,  T2+: N/A
             --------- PRECISION INDEPENDENT ---------
-             - Hammer:     T0: Redstone Hammer, T1: Steam Hammer,  T2+: N/A
+             - Hammer:     T0: Geared Hammer,   T1: Steam Hammer,  T2+: N/A
              - Attach:     T0: Toolbox,         T1: Rivet Gun      T2:  N/A, T3: Welding Torch
              - Hand Tools: T0: Toolbox,         T1+: N/A
              - Heat:       T0: Forge Hearth,    T1: Gas Hearth,    T2:  N/A, T3: Soulfire Furnace
@@ -34,7 +29,7 @@
              - Knowledge:  (other mechanics)
      - Crude Blast Furnace & bellows
      - Kiln
-     - Crude mechanical power
+     - Turntable for blocks that need mechanical power (Geared Hammer, Geared Bellows)
      - Implement jute, hemp, & possibly rubber?
  - possible features i might like from Suppl
      - Ash from burning blocks => decide if I want to entirely redo fire spread first
@@ -78,8 +73,30 @@
  - Enchanting system
      - Books stacked; used for journals as well as normal books
      - Refactor enchanting power to depend on a much larger library & actual accessibility system
-     - Bias enchantments via journals of skill (invested levels)
-     - Other things like Anvil can use the library system to decrease costs
+     - Bias enchantments via treatises of <x> (invested levels)
+         - PROTECTION, UTILITY, DAMAGE, SCAVENGING, ELEMENTAL_AFFINITY, MOVEMENT, TREASURE
+         - DAMAGE: Sharpness, Smite, Bane of Arth, Power, Thorns, Sweeping Edge, Density                 | skull (any), dragon's breath, firework star
+         - UTILITY: Silk Touch, Lure, Respiration, Efficiency, Loyalty, Infinity, Quick Charge           | spyglass, barometer, shulker box, name tag,
+         - SCAVENGING: Luck of the Sea, Fortune, Looting, Prospector, Archaeologist's Touch, Multishot   | amethyst cluster/shard, diamond, emerald, ancient debris/scrap,
+         - PROTECTION: Prot, Fire Prot, Blast Prot, Proj. Prot, Magic. Prot, Breach                      | shulker shell, turtle scute, armadillo scute, horse armor, end crystal, totem of undying
+         - MOVEMENT: Depth Strider, Riptide, Anchoring, Knockback, Punch, Lunge, Feather Fall            | wind charge, eye of ender, elytra, saddle,
+         - ELEMENTAL_AFFINITY: Channeling, Flame, Fire Aspect, Aqua Affinity, Frost Aspect, Impaling     | heart of the sea, nautilus shell, prismarine (etc), breeze rod, blaze rod, blaze powder
+         - TREASURE: Frost Walker, Mending, Soul Speed, Swift Sneak, Wind Burst                          | heart of the sea, heavy core, gilded blackstone, echo shard, music disc
+         - minimum experience: 30L, cost: 1 30L tome, 3L player experience with catalyst (unconsumed), 10L without (?)
+         - need to decide if catalysts are a viable system with enough interesting & unique items (?)
+     - considering a 'library catalogue' system to give more use to lecterns
+         - on a lectern in the 8 blocks surrounding the enchantment table, need a "library catalogue" book
+         - library catalogue stores the location of all of the bookshelves linked to this table
+         - check access on each time, same as usual. no raycasts, all we check is block & then access from floor
+         - 11 distance each access maximum for bookshelves from enchantment table
+         - check for bookshelves (tag, `c:bookshelves`), chiseled bookshelves (by extends it), and Gasworks book piles
+         - each enchanted book in the local area (chiseled bookshelves, piles) decreases difference between levels and points costed by 5%
+         - Treatise on <x> is how you bias the enchantments, only need one. Treatise on local lectern has priority, other nearby treatises bias next enchants
+      - enchantment combination is no longer done through the anvil, it is instead the domain of the scribe's workbench
+         - takes a lectern nearby with library manifest same as the enchanting table does
+         - library manifest reduces costs considerably for prior-work penalties
+         - redo prior-work penalties to make it dependent only on enchantments rather than order (?)
+         -
  - prevent the player from breaking blocks without tools
      - possibly use Player#blockActionRestricted & restrict to hardness 0.3 or under broken w/o tool?
      - would need to add tools for beacon, piston head (?) (axe?), honeycomb (axe?), frosted ice (pick?), cactus (axe?), glowstone (pick?)
@@ -109,6 +126,16 @@
      - change the name of TNT perhaps?
  - crates (?)
  - Weatherproofed Planks/wood/etc
+ - figure out fireclay/nether brick debate I started having in my head recently
+     - do we care about having limeclay specifically, and not using nether resources (?)
+     - nether clay makes nether bricks, netherrack used as flux alongside dripstone or calcite
+     - minecraft clay is very kaolinite-colored, but still fires to the classic red brick. how much do we care?
+     - compat issues with other mods, or the lack thereof
+     - how well does this stuff fit in progression? => pretty well. crude BF uses normal bricks, kiln and normal use nether brick
+     - get nether brick after crude BF which allows building a better BF as well as boilers (?)
+     - will need to keep limeclay around for ironmaking in the overworld. instead just normal clay + dripstone (!) or possibly calcite (!)
+     - will need a way to get that's not standard deposits, suggest keeping ore deposit for now, but on surface. clay pit perhaps (?)
+     - do we care if we use nether clay at all, or can we keep the current method? => finding nether clay, etc
 
 
 

@@ -34,26 +34,23 @@ HSNA Steel (+Tool Bits)                                         Redstone
 
 MACHINES (EARLY GAME)                                   		UTILITIES (EARLY GAME)
 ------------------------------------------              		------------------------------------------
-Crude Blast Furnace & Bellows                           		Prospector's Pick
+Crude Blast Furnace & Geared Bellows                       		Prospector's Pick
 ✓ Brick Clamp                                              		✓ Compost Pile
-Trip Hammer                                             		✓ Tradeswoman's Journal
+Geared Hammer                                                	✓ Tradeswoman's Journal
 ✓ Charcoal & Coke Pit
-Waterwheels & Windmills
-Sluice
-Machine Shop 0
+Workshop System/Machine Shop 0
 ------------------------------------------              		------------------------------------------
 MACHINES (EARLY-MID GAME: Wrought Iron, Fireclay)       		UTILITIES (EARLY-MID GAME)
 ------------------------------------------              		------------------------------------------
-Blast Furnace & Heaters                                 		Case Hardening & Hardened Steel (Case Hardened Wrought + Steam Hammer => Steel)
+Blast Furnace & Steam Blowing Engine                            Case Hardening & Hardened Steel (Case Hardened Wrought + Steam Hammer => Steel)
 Kiln                                                    		Steam Drill
 Coking Retort                                           		Steam Saw
 Condensation Column                                     		Gas Lighting
 Process Boiler                                          		Conveyor Belts [Inclined, Normal, Chute]
-Stationary Engine                                       		Workshop
+Stationary Engine                                       		Storage Tank
 Steam Hammer                                            		Caisson System
 Rock Breaker                                            		Geologic Survey Kit
 Blasting Hammer                                         		Storage Container
-Precision Lathe                                         		Storage Tank
 Sawmill                                                 		Compost Drum
 Machine Shop 1                                          		Warehouse Shelving
 Integrated Arm
