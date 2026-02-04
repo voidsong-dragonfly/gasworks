@@ -1,24 +1,21 @@
 package voidsong.gasworks.mixin.tweak;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import voidsong.gasworks.common.block.interfaces.VanillaRandomTickBlock;
 
 import javax.annotation.Nonnull;
 
 @Mixin(CampfireBlock.class)
-public class CampfireMixin extends Block {
+public class CampfireMixin extends Block implements VanillaRandomTickBlock {
     /**
      * This constructor is the default & will be ignored, it exists so we can extend Block
      * @param properties ignored & should not be used!
@@ -28,12 +25,18 @@ public class CampfireMixin extends Block {
     }
 
     @Override
-    protected boolean isRandomlyTicking(BlockState state) {
-        return state.getValue(CampfireBlock.LIT) && state.is(Blocks.CAMPFIRE);
+    @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
+    public boolean gasworks$shouldRandomTickMixinApply(Class<?> clazz) {
+        return this.getClass().equals(CampfireBlock.class);
     }
 
     @Override
-    protected void randomTick(@Nonnull BlockState state, ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
+    public boolean gasworks$modifyIsRandomlyTicking(BlockState state, Boolean ticking) {
+        return ticking || state.getValue(CampfireBlock.LIT) && state.is(Blocks.CAMPFIRE);
+    }
+
+    @Override
+    public void gasworks$divertRandomTick(@Nonnull BlockState state, ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
         if (level.isRainingAt(pos.above()) && random.nextInt(2) == 0) {
             if (!level.isClientSide())
                 level.playSound(null, pos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -43,7 +46,7 @@ public class CampfireMixin extends Block {
     }
 
     @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
-    private BlockState getStateForPlacement(BlockState place, @Local(argsOnly = true) BlockPlaceContext context) {
+    private BlockState getStateForPlacement(BlockState place) {
         return place.setValue(CampfireBlock.LIT, false);
     }
 }
