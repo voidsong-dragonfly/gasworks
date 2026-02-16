@@ -27,11 +27,6 @@ public class GSBlocks {
         .ignitedByLava()
         .randomTicks()
         .noOcclusion();
-    private static final BlockBehaviour.Properties FIREBRICKS_PROPERTIES = BlockBehaviour.Properties.of()
-        .mapColor(MapColor.TERRACOTTA_WHITE)
-        .instrument(NoteBlockInstrument.BASEDRUM)
-        .requiresCorrectToolForDrops()
-        .strength(2.5F, 8.0F);
     private static final BlockBehaviour.Properties BRICKS_PROPERTIES = BlockBehaviour.Properties.of()
         .mapColor(MapColor.COLOR_RED)
         .instrument(NoteBlockInstrument.BASEDRUM)
@@ -98,16 +93,6 @@ public class GSBlocks {
         .sound(SoundType.GRAVEL)
         .noOcclusion()
         .strength(0.5f, 0.25f), FIRED_BRICK_CLAMP.get().defaultBlockState().setValue(BrickStackBlock.FIRED, true)));
-    public static final DeferredBlock<BrickStackBlock> FIRED_FIREBRICK_CLAMP = BLOCKS.registerBlock("fired_firebrick_clamp", BrickStackBlock::new, BlockBehaviour.Properties.of()
-        .mapColor(MapColor.COLOR_RED)
-        .sound(SoundType.NETHER_BRICKS)
-        .noOcclusion()
-        .strength(0.625f, 0.375f));
-    public static final DeferredBlock<ClampBlock> UNFIRED_FIREBRICK_CLAMP = BLOCKS.register("unfired_firebrick_clamp", () -> new ClampBlock(BlockBehaviour.Properties.of()
-        .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
-        .sound(SoundType.GRAVEL)
-        .noOcclusion()
-        .strength(0.625f, 0.375f), FIRED_FIREBRICK_CLAMP.get().defaultBlockState().setValue(BrickStackBlock.FIRED, true)));
     // Compost piles for fertilizer
     public static final DeferredBlock<CompostBlock> COMPOST_PILE = BLOCKS.register("compost_pile", () -> new CompostBlock(BlockBehaviour.Properties.of()
         .mapColor(MapColor.PODZOL)
@@ -120,18 +105,6 @@ public class GSBlocks {
      */
     // Stone types for use in building blocks
     public static List<String> stones = List.of("andesite", "deepslate", "diorite", "granite", "polished_blackstone", "stone", "tuff");
-    // Fireclay blocks of various types
-    public static DeferredBlock<Block> FIRECLAY = BLOCKS.registerSimpleBlock("fireclay", BlockBehaviour.Properties.of()
-        .mapColor(MapColor.CLAY)
-        .instrument(NoteBlockInstrument.FLUTE)
-        .strength(0.75F)
-        .sound(SoundType.GRAVEL));
-    public static DeferredBlock<Block> FIREBRICKS = BLOCKS.registerSimpleBlock("firebricks", FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<StairBlock> FIREBRICK_STAIRS = BLOCKS.register("firebrick_stairs", () -> new StairBlock(FIREBRICKS.get().defaultBlockState(), FIREBRICKS_PROPERTIES));
-    public static DeferredBlock<SlabBlock> FIREBRICK_SLAB = BLOCKS.registerBlock("firebrick_slab",  SlabBlock::new, FIREBRICKS_PROPERTIES);
-    public static DeferredBlock<WallBlock> FIREBRICK_WALL = BLOCKS.registerBlock("firebrick_wall",  WallBlock::new, FIREBRICKS_PROPERTIES);
-    public static List<DeferredBlock<SillBlock>> FIREBRICK_SILLS = createSills("firebrick", FIREBRICKS_PROPERTIES);
-    public static List<DeferredBlock<HorizontalDirectionalBlock>> FIREBRICK_QUOINS = createQuoins("firebrick", FIREBRICKS_PROPERTIES);
     // Normal brick quoins & specialty blocks
     public static List<DeferredBlock<SillBlock>> BRICK_SILLS = createSills("brick", BRICKS_PROPERTIES);
     public static List<DeferredBlock<HorizontalDirectionalBlock>> BRICK_QUOINS = createQuoins("brick", BRICKS_PROPERTIES);

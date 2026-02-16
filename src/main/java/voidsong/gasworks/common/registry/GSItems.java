@@ -48,24 +48,12 @@ public class GSItems {
     // Brick piles for firing
     public static final DeferredItem<BlockItem> UNFIRED_BRICK_CLAMP = ITEMS.registerSimpleBlockItem("unfired_brick_clamp", GSBlocks.UNFIRED_BRICK_CLAMP);
     public static final DeferredItem<BlockItem> FIRED_BRICK_CLAMP = ITEMS.registerSimpleBlockItem("fired_brick_clamp", GSBlocks.FIRED_BRICK_CLAMP);
-    public static final DeferredItem<BlockItem> UNFIRED_FIREBRICK_CLAMP = ITEMS.registerSimpleBlockItem("unfired_firebrick_clamp", GSBlocks.UNFIRED_FIREBRICK_CLAMP);
-    public static final DeferredItem<BlockItem> FIRED_FIREBRICK_CLAMP = ITEMS.registerSimpleBlockItem("fired_firebrick_clamp", GSBlocks.FIRED_FIREBRICK_CLAMP);
     // Compost piles for fertilizer
     public static final DeferredItem<BlockItem> COMPOST_PILE = ITEMS.registerSimpleBlockItem("compost_pile", GSBlocks.COMPOST_PILE);
     public static final DeferredItem<Item> COMPOST = ITEMS.registerItem("compost", BoneMealItem::new);
     /*
      * Building blocks, including various 'functional' blocks
      */
-    // Fireclay blocks of various types
-    public static final DeferredItem<Item> FIRECLAY_BALL = ITEMS.registerSimpleItem("fireclay_ball");
-    public static final DeferredItem<Item> FIREBRICK = ITEMS.registerSimpleItem("firebrick");
-    public static final DeferredItem<BlockItem> FIRECLAY = ITEMS.registerSimpleBlockItem("fireclay", GSBlocks.FIRECLAY);
-    public static final DeferredItem<BlockItem> FIREBRICKS = ITEMS.registerSimpleBlockItem("firebricks", GSBlocks.FIREBRICKS);
-    public static final DeferredItem<BlockItem> FIREBRICK_STAIRS = ITEMS.registerSimpleBlockItem("firebrick_stairs", GSBlocks.FIREBRICK_STAIRS);
-    public static final DeferredItem<BlockItem> FIREBRICK_SLAB = ITEMS.registerSimpleBlockItem("firebrick_slab", GSBlocks.FIREBRICK_SLAB);
-    public static final DeferredItem<BlockItem> FIREBRICK_WALL = ITEMS.registerSimpleBlockItem("firebrick_wall", GSBlocks.FIREBRICK_WALL);
-    public static final List<DeferredItem<BlockItem>> FIREBRICK_SILLS = createSills(GSBlocks.FIREBRICK_SILLS);
-    public static final List<DeferredItem<BlockItem>> FIREBRICK_QUOINS= createQuoins(GSBlocks.FIREBRICK_QUOINS);
     // Normal brick quoins & specialty blocks
     public static final List<DeferredItem<BlockItem>> BRICK_SILLS = createSills(GSBlocks.BRICK_SILLS);
     public static final List<DeferredItem<BlockItem>> BRICK_QUOINS= createQuoins(GSBlocks.BRICK_QUOINS);
@@ -94,8 +82,6 @@ public class GSItems {
             output.accept(COKE);
             output.accept(ASH);
             output.accept(COMPOST);
-            output.accept(FIRECLAY_BALL);
-            output.accept(FIREBRICK);
             // Blocks with specialty items
             output.accept(GSItems.CANDELABRA);
             output.acceptAll(CANDELABRAS.stream().map(item -> new ItemStack(item.get())).toList());
@@ -116,17 +102,8 @@ public class GSItems {
             output.accept(COAL_PILE);
             output.accept(CHARCOAL_PILE);
             output.accept(COMPOST_PILE);
-            output.accept(UNFIRED_FIREBRICK_CLAMP);
-            output.accept(FIRED_FIREBRICK_CLAMP);
             output.accept(UNFIRED_BRICK_CLAMP);
             output.accept(FIRED_BRICK_CLAMP);
-            output.accept(FIRECLAY);
-            output.accept(FIREBRICKS);
-            output.accept(FIREBRICK_STAIRS);
-            output.accept(FIREBRICK_SLAB);
-            output.accept(FIREBRICK_WALL);
-            output.acceptAll(FIREBRICK_SILLS.stream().map(item -> new ItemStack(item.get())).toList());
-            output.acceptAll(FIREBRICK_QUOINS.stream().map(item -> new ItemStack(item.get())).toList());
             output.acceptAll(BRICK_SILLS.stream().map(item -> new ItemStack(item.get())).toList());
             output.acceptAll(BRICK_QUOINS.stream().map(item -> new ItemStack(item.get())).toList());
             output.accept(GSItems.FRAMED_GLASS);

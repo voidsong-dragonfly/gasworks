@@ -11,7 +11,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
@@ -130,96 +129,9 @@ public class GasworksRecipeProvider extends RecipeProvider {
             .define('b', Items.BRICK)
             .unlockedBy("has_brick", has(Items.BRICK))
             .save(output, rl(GSItems.FIRED_BRICK_CLAMP, "crafting"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.UNFIRED_FIREBRICK_CLAMP, 2)
-            .pattern("ccc")
-            .pattern("c c")
-            .pattern("ccc")
-            .define('c', GSItems.FIRECLAY_BALL)
-            .unlockedBy("has_fireclay", has(GSItems.FIRECLAY_BALL))
-            .save(output, rl(GSItems.UNFIRED_FIREBRICK_CLAMP, "crafting"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIRED_FIREBRICK_CLAMP, 2)
-            .pattern("bbb")
-            .pattern("b b")
-            .pattern("bbb")
-            .define('b', GSItems.FIREBRICK)
-            .unlockedBy("has_fireclay", has(GSItems.FIREBRICK))
-            .save(output, rl(GSItems.FIRED_FIREBRICK_CLAMP, "crafting"));
         /*
          * Building blocks, including various 'functional' blocks
          */
-        // Fireclay blocks of various types
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIRECLAY)
-            .pattern("cc")
-            .pattern("cc")
-            .define('c', GSItems.FIRECLAY_BALL)
-            .unlockedBy("has_fireclay", has(GSItems.FIRECLAY_BALL))
-            .save(output, rl(GSItems.FIRECLAY, "crafting"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICKS)
-            .pattern("bb")
-            .pattern("bb")
-            .define('b', GSItems.FIREBRICK)
-            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-            .save(output, rl(GSItems.FIREBRICKS, "crafting"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_STAIRS, 4)
-            .pattern("b  ")
-            .pattern("bb ")
-            .pattern("bbb")
-            .define('b', GSItems.FIREBRICKS)
-            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-            .save(output, rl(GSItems.FIREBRICK_STAIRS, "crafting"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_SLAB, 6)
-            .pattern("bbb")
-            .define('b', GSItems.FIREBRICKS)
-            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-            .save(output, rl(GSItems.FIREBRICK_SLAB, "crafting"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_WALL, 6)
-            .pattern("bbb")
-            .pattern("bbb")
-            .define('b', GSItems.FIREBRICKS)
-            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-            .save(output, rl(GSItems.FIREBRICK_WALL, "crafting"));
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FIREBRICKS), RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_STAIRS)
-            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-            .save(output, rl(GSItems.FIREBRICK_STAIRS, "stonecutting"));
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FIREBRICKS), RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_SLAB, 2)
-            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-            .save(output, rl(GSItems.FIREBRICK_SLAB, "stonecutting"));
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(GSItems.FIREBRICKS), RecipeCategory.BUILDING_BLOCKS, GSItems.FIREBRICK_WALL)
-            .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-            .save(output, rl(GSItems.FIREBRICK_WALL, "stonecutting"));
-        // Temporary recipe for firebrick;
-        // TODO: Implement ore generation so firebrick doesn't need a recipe
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, GSItems.FIRECLAY_BALL, 8)
-            .requires(Tags.Items.SANDS)
-            .requires(Items.CLAY_BALL, 4)
-            .unlockedBy("has_clay", has(Items.CLAY_BALL))
-            .save(output, rl(GSItems.FIRECLAY_BALL, "crafting"));
-        for(DeferredItem<BlockItem> item : GSItems.FIREBRICK_SILLS) {
-            // This is a hack to make generating the recipes easier; since stone doesn't have a polished variant we specialcase it until I get around to adding it
-            // TODO: Add polished stone
-            Item polished = BuiltInRegistries.ITEM.get(ResourceLocation.parse("polished_" + BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("firebrick_sill_", "").replace("polished_", "")));
-            polished = polished.equals(Items.AIR) ? Items.STONE_BRICKS : polished;
-            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 4)
-                .pattern("ss")
-                .pattern("bb")
-                .define('s', polished)
-                .define('b', GSItems.FIREBRICKS)
-                .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-                .save(output, rl(item, "crafting"));
-        }
-        for(DeferredItem<BlockItem> item : GSItems.FIREBRICK_QUOINS) {
-            // This is a hack to make generating the recipes easier; since andesite, etc don't have a bricks variant we specialcase it until I get around to adding it
-            // TODO: Add andesite, diorite, etc bricks
-            Item bricks = BuiltInRegistries.ITEM.get(ResourceLocation.parse(BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("firebrick_quoin_", "") + "_bricks"));
-            bricks = bricks.equals(Items.AIR) ? BuiltInRegistries.ITEM.get(ResourceLocation.parse("polished_" + BuiltInRegistries.ITEM.getKey(item.get()).getPath().replace("firebrick_quoin_", ""))) : bricks;
-            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, item, 4)
-                .pattern("sb")
-                .pattern("bs")
-                .define('s', bricks)
-                .define('b', GSItems.FIREBRICKS)
-                .unlockedBy("has_firebrick", has(GSItems.FIREBRICK))
-                .save(output, rl(item, "crafting"));
-        }
         // Normal brick quoins & specialty blocks
         for(DeferredItem<BlockItem> item : GSItems.BRICK_SILLS) {
             // This is a hack to make generating the recipes easier; since stone doesn't have a polished variant we specialcase it until I get around to adding it

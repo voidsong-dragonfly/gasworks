@@ -80,13 +80,6 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
         /*
          * Building blocks, including various 'functional' blocks
          */
-        // Fireclay blocks of various types
-        tag(Tags.Items.BRICKS)
-            .add(GSItems.FIREBRICK.get());
-        tag(GSTags.Items.REFRACTORY_BRICK)
-            .add(GSItems.FIREBRICK.get());
-        tag(GSTags.Items.FIREBRICK)
-            .add(GSItems.FIREBRICK.get());
         // Framed glass
         tag(Tags.Items.GLASS_BLOCKS)
             .add(GSItems.FRAMED_GLASS.get());

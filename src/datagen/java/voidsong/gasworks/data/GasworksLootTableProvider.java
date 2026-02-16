@@ -99,8 +99,6 @@ public class GasworksLootTableProvider extends LootTableProvider {
             // Brick piles for firing
             add(GSBlocks.UNFIRED_BRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.UNFIRED_BRICK_CLAMP.get(), Items.CLAY_BALL, ConstantValue.exactly(4)));
             add(GSBlocks.FIRED_BRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRED_BRICK_CLAMP.get(), Items.BRICK, ConstantValue.exactly(4)));
-            add(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get(), GSItems.FIRECLAY_BALL, ConstantValue.exactly(4)));
-            add(GSBlocks.FIRED_FIREBRICK_CLAMP.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRED_FIREBRICK_CLAMP.get(), GSItems.FIREBRICK, ConstantValue.exactly(4)));
             // Resulting ash
             add(GSBlocks.PYROLYTIC_ASH.get(), LootTable.lootTable()
                 .withPool(this.applyExplosionCondition(GSItems.ASH.asItem(), LootPool.lootPool()
@@ -158,16 +156,6 @@ public class GasworksLootTableProvider extends LootTableProvider {
             /*
              * Building blocks, including various 'functional' blocks
              */
-            // Fireclay blocks of various types
-            add(GSBlocks.FIRECLAY.get(), createSingleItemTableWithSilkTouch(GSBlocks.FIRECLAY.get(), GSItems.FIRECLAY_BALL, ConstantValue.exactly(4)));
-            dropSelf(GSBlocks.FIREBRICKS.get());
-            dropSelf(GSBlocks.FIREBRICK_STAIRS.get());
-            dropSelf(GSBlocks.FIREBRICK_SLAB.get());
-            dropSelf(GSBlocks.FIREBRICK_WALL.get());
-            for(DeferredBlock<SillBlock> block : GSBlocks.FIREBRICK_SILLS)
-                dropSelf(block.get());
-            for(DeferredBlock<HorizontalDirectionalBlock> block : GSBlocks.FIREBRICK_QUOINS)
-                dropSelf(block.get());
             // Normal brick quoins & specialty blocks
             for(DeferredBlock<SillBlock> block : GSBlocks.BRICK_SILLS)
                 dropSelf(block.get());

@@ -65,21 +65,6 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         /*
          * Building blocks, including various 'functional' blocks
          */
-        // Fireclay blocks of various types
-        tag(BlockTags.AZALEA_ROOT_REPLACEABLE)
-            .add(GSBlocks.FIRECLAY.get());
-        tag(BlockTags.AXOLOTLS_SPAWNABLE_ON)
-            .add(GSBlocks.FIRECLAY.get());
-        tag(BlockTags.SMALL_DRIPLEAF_PLACEABLE)
-            .add(GSBlocks.FIRECLAY.get());
-        tag(BlockTags.BIG_DRIPLEAF_PLACEABLE)
-            .add(GSBlocks.FIRECLAY.get());
-        tag(BlockTags.SCULK_REPLACEABLE)
-            .add(GSBlocks.FIRECLAY.get());
-        tag(BlockTags.LUSH_GROUND_REPLACEABLE)
-            .add(GSBlocks.FIRECLAY.get());
-        tag(BlockTags.WALLS)
-            .add(GSBlocks.FIREBRICK_WALL.get());
         // Framed glass
         tag(BlockTags.IMPERMEABLE)
             .add(GSBlocks.FRAMED_GLASS.get());
@@ -127,17 +112,11 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.PYROLYTIC_ASH.get())
             .add(GSBlocks.UNFIRED_BRICK_CLAMP.get())
             .add(GSBlocks.FIRED_BRICK_CLAMP.get())
-            .add(GSBlocks.UNFIRED_FIREBRICK_CLAMP.get())
-            .add(GSBlocks.FIRED_FIREBRICK_CLAMP.get())
             .add(GSBlocks.COAL_PILE.get())
             .add(GSBlocks.CHARCOAL_PILE.get())
-            .add(GSBlocks.COMPOST_PILE.get())
-            .add(GSBlocks.FIRECLAY.get());
+            .add(GSBlocks.COMPOST_PILE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-            .add(GSBlocks.FIREBRICKS.get(), GSBlocks.FIREBRICK_STAIRS.get(), GSBlocks.FIREBRICK_SLAB.get(), GSBlocks.FIREBRICK_WALL.get())
             .add(GSBlocks.CANDELABRA.get())
-            .addAll(GSBlocks.FIREBRICK_SILLS.stream().map(DeferredHolder::getKey).toList())
-            .addAll(GSBlocks.FIREBRICK_QUOINS.stream().map(DeferredHolder::getKey).toList())
             .addAll(GSBlocks.BRICK_SILLS.stream().map(DeferredHolder::getKey).toList())
             .addAll(GSBlocks.BRICK_QUOINS.stream().map(DeferredHolder::getKey).toList())
             .addAll(GSBlocks.CANDELABRAS.stream().map(pair -> pair.getSecond().getKey()).toList());
