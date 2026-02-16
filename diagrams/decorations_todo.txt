@@ -12,10 +12,6 @@ Limeclay        | Cement, Fireclay, Clay
 
 CERAMICS
 ------------------------------------------
-Fireclay
-    ✓ Fireclay Bricks
-    ✓ Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blackstone? => ✓ Quoins, ✓ Sills
-    Fireclay Terracotta (?)
 ✓ Red Clay
     ✓ Red Clay Bricks
     ✓ Andesite, Granite, Diorite, Tuff, Stone, Deepslate, Blackstone? => ✓ Quoins, ✓ Sills
@@ -29,7 +25,6 @@ Concrete
 Insulation Blocks (?)
 Stone Bricks (?)
     Andesite, Diorite, Granite
-Sandstone, Red Sandstone quoins, sills (?)
 
 
 WOOD

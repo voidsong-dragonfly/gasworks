@@ -1,6 +1,3 @@
- - Compost pile features
-     - Possibly change recipe maps for composting recipes?
-     - Possibly a compost crafting recipe (dirt + total 1 compost chance)
  - Other tier 0 features
      - Prospector's Pick
      - Mineral lodes

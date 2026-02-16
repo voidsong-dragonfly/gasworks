@@ -104,7 +104,8 @@ public class GSBlocks {
      * Building blocks, including various 'functional' blocks
      */
     // Stone types for use in building blocks
-    public static List<String> stones = List.of("andesite", "deepslate", "diorite", "granite", "polished_blackstone", "stone", "tuff");
+    public static List<String> stones = List.of("stone", "deepslate", "granite", "diorite", "andesite", "tuff");
+    public static List<String> nether_stones = List.of("polished_blackstone", "smooth_basalt");
     // Normal brick quoins & specialty blocks
     public static List<DeferredBlock<SillBlock>> BRICK_SILLS = createSills("brick", BRICKS_PROPERTIES);
     public static List<DeferredBlock<HorizontalDirectionalBlock>> BRICK_QUOINS = createQuoins("brick", BRICKS_PROPERTIES);
