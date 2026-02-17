@@ -34,9 +34,10 @@ public class BedMixin implements VanillaWaterloggedBlock {
         return this.getClass().equals(BedBlock.class) && !(updateShapeOverride || getStateForPlacementOverride);
     }
 
+    @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
     private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-        builder.add(BlockStateProperties.WATERLOGGED);
+        if(this.getClass().equals(BedBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
     }
 
     @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))

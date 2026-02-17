@@ -27,7 +27,7 @@ public class EnchantingTableMixins {
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
         @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
         private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-            if (this instanceof VanillaWaterloggedBlock block && this.getClass().equals(EnchantingTableBlock.class)) {
+            if (this instanceof VanillaWaterloggedBlock && this.getClass().equals(EnchantingTableBlock.class)) {
                 builder.add(BlockStateProperties.WATERLOGGED);
             }
         }

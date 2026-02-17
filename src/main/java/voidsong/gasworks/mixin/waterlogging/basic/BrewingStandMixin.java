@@ -1,5 +1,6 @@
 package voidsong.gasworks.mixin.waterlogging.basic;
 
+import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BrewingStandBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,8 +20,9 @@ public class BrewingStandMixin implements VanillaWaterloggedBlock {
         return this.getClass().equals(BrewingStandBlock.class);
     }
 
+    @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
     private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-        builder.add(BlockStateProperties.WATERLOGGED);
+        if(this.getClass().equals(BrewingStandBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
     }
 }

@@ -16,6 +16,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.block.WallTorchBlock;
@@ -118,9 +119,10 @@ public class TorchMixins {
          * WallTorchBlock overrides two methods in TorchBlock without calling their super; we need to re-override these
          * to be the correct values to have the correct behavior; filtering for the common ones can be seen above
          */
+        @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
         @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
         private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-            builder.add(GSProperties.LIT, BlockStateProperties.WATERLOGGED);
+            if(this.getClass().equals(WallTorchBlock.class)) builder.add(GSProperties.LIT, BlockStateProperties.WATERLOGGED);
         }
 
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})

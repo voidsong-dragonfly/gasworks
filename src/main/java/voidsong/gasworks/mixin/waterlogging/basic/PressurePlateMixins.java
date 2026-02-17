@@ -3,6 +3,7 @@ package voidsong.gasworks.mixin.waterlogging.basic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.BasePressurePlateBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
@@ -28,9 +29,10 @@ public class PressurePlateMixins {
             return this.getClass().equals(PressurePlateBlock.class) && !updateShapeOverride;
         }
 
+        @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
         @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
         private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-            builder.add(BlockStateProperties.WATERLOGGED);
+            if(this.getClass().equals(PressurePlateBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
         }
     }
 
@@ -42,9 +44,10 @@ public class PressurePlateMixins {
             return this.getClass().equals(WeightedPressurePlateBlock.class) && !updateShapeOverride;
         }
 
+        @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
         @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
         private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-            builder.add(BlockStateProperties.WATERLOGGED);
+            if(this.getClass().equals(WeightedPressurePlateBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
         }
     }
 

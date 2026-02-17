@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BannerBlock;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -26,9 +27,10 @@ public class BannerMixin implements VanillaWaterloggedBlock {
         return this.getClass().equals(BannerBlock.class) && !(updateShapeOverride || getStateForPlacementOverride);
     }
 
+    @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
     private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-        builder.add(BlockStateProperties.WATERLOGGED);
+        if(this.getClass().equals(BannerBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
     }
 
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})

@@ -1,5 +1,6 @@
 package voidsong.gasworks.mixin.waterlogging.fragile;
 
+import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,8 +20,9 @@ public class ButtonMixin implements FragileVanillaWaterloggedBlock {
         return this.getClass().equals(ButtonBlock.class) && !(updateShapeOverride || getStateForPlacementOverride);
     }
 
+    @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
     private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-        builder.add(BlockStateProperties.WATERLOGGED);
+        if(this.getClass().equals(ButtonBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
     }
 }
