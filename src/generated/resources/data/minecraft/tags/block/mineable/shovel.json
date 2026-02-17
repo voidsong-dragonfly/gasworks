@@ -3,11 +3,8 @@
     "gasworks:pyrolytic_ash",
     "gasworks:unfired_brick_clamp",
     "gasworks:fired_brick_clamp",
-    "gasworks:unfired_firebrick_clamp",
-    "gasworks:fired_firebrick_clamp",
     "gasworks:coal_pile",
     "gasworks:charcoal_pile",
-    "gasworks:compost_pile",
-    "gasworks:fireclay"
+    "gasworks:compost_pile"
   ]
 }

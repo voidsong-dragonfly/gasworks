@@ -1,7 +1,0 @@
-{
-  "parent": "gasworks:block/brick_pile",
-  "textures": {
-    "brick": "gasworks:block/firebricks/unfired_2",
-    "plate": "gasworks:block/stone_plate"
-  }
-}

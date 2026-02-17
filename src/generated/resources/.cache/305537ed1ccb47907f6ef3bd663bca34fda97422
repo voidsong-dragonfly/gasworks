@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-04T17:44:47.613564668	Tags for minecraft:block mod id gasworks
+// 1.21.1	2026-02-17T13:57:16.584689599	Tags for minecraft:block mod id gasworks
 b2f575b2d90308fd6a6aa7b164665d347aa1b248 data/c/tags/block/dyed.json
 1e075c00d3ce69f16d3a4fe6f9036618c2230784 data/c/tags/block/dyed/black.json
 0ba6a48630e9163b597fc1a74a22b51768884623 data/c/tags/block/dyed/blue.json
@@ -31,16 +31,9 @@ ccf3da9f66c1f44791f3532b0f0360ed760105d8 data/gasworks/tags/block/dowse_in_water
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/gasworks/tags/block/log_piles.json
 ccf3da9f66c1f44791f3532b0f0360ed760105d8 data/gasworks/tags/block/low_light_torches.json
 61fbc864bffc043f62b82e6c418f5f104923c616 data/gasworks/tags/block/pyrolyzing_walls.json
-10c364a79b16efafc553c7cb825fb18fbc0070aa data/minecraft/tags/block/axolotls_spawnable_on.json
-10c364a79b16efafc553c7cb825fb18fbc0070aa data/minecraft/tags/block/azalea_root_replaceable.json
-10c364a79b16efafc553c7cb825fb18fbc0070aa data/minecraft/tags/block/big_dripleaf_placeable.json
 21ac88495b0b49ae717a673558c4f0f4b545356a data/minecraft/tags/block/impermeable.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/minecraft/tags/block/logs_that_burn.json
-10c364a79b16efafc553c7cb825fb18fbc0070aa data/minecraft/tags/block/lush_ground_replaceable.json
 e65a410d27fe92ecd1fea8db1a527b91613d022c data/minecraft/tags/block/mineable/axe.json
-1ffcbb4891366f4b954977e114691c051765dc51 data/minecraft/tags/block/mineable/pickaxe.json
-9cfc6e8fd05913a8ad53bb7988de5db9c6e19db2 data/minecraft/tags/block/mineable/shovel.json
+b1e66b3333b1f3440c00a10588b8eb9572ec728c data/minecraft/tags/block/mineable/pickaxe.json
+d5e02a0c81b647409b91e35afc9d933c59f07114 data/minecraft/tags/block/mineable/shovel.json
 b44a9ec610c6b135929a1118b9538fa1431a6320 data/minecraft/tags/block/mushroom_grow_block.json
-10c364a79b16efafc553c7cb825fb18fbc0070aa data/minecraft/tags/block/sculk_replaceable.json
-10c364a79b16efafc553c7cb825fb18fbc0070aa data/minecraft/tags/block/small_dripleaf_placeable.json
-8b90267c2b8c5cb7b6e503e312c7eec6bd5c546a data/minecraft/tags/block/walls.json
