@@ -4,7 +4,6 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.AnvilBlock;
-import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;

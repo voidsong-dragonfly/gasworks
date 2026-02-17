@@ -1,6 +1,5 @@
 package voidsong.gasworks.mixin.waterlogging.basic;
 
-import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrindstoneBlock;
 import net.minecraft.world.level.block.state.BlockState;

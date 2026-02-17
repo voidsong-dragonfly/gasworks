@@ -1,6 +1,5 @@
 package voidsong.gasworks.mixin.waterlogging.fragile;
 
-import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.state.BlockState;

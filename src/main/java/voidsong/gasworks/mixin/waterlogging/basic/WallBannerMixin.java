@@ -5,7 +5,6 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBannerBlock;
 import net.minecraft.world.level.block.state.BlockState;

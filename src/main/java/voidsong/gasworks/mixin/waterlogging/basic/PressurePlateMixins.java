@@ -3,7 +3,6 @@ package voidsong.gasworks.mixin.waterlogging.basic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.BasePressurePlateBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
