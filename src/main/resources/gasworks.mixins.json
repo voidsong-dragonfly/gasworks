@@ -7,6 +7,7 @@
     "BaseBlockInjections$BlockMixin",
     "BaseBlockInjections$FaceAttachedHorizontalDirectionalBlockMixin",
     "accessor.FlowingFluidAccessor",
+    "tweak.AbstractCauldronMixin",
     "tweak.BlocksHardnessMixin",
     "tweak.CampfireMixin",
     "tweak.ComposterMixin",
