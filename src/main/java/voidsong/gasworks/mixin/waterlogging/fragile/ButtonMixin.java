@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import voidsong.gasworks.common.block.interfaces.FragileVanillaWaterloggedBlock;
 
@@ -17,6 +18,11 @@ public class ButtonMixin implements FragileVanillaWaterloggedBlock {
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
         return this.getClass().equals(ButtonBlock.class) && !(updateShapeOverride || getStateForPlacementOverride);
+    }
+
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/ButtonBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    private BlockState addWaterloggingToConstructor(BlockState defaultState) {
+        return gasworks$shouldWaterlogMixinApply(this.getClass()) ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
     }
 
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})

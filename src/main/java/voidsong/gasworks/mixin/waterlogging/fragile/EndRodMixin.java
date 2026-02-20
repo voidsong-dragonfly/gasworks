@@ -13,8 +13,10 @@ import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import voidsong.gasworks.common.block.interfaces.FragileVanillaWaterloggedBlock;
+import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 
 @Mixin(EndRodBlock.class)
 public class EndRodMixin implements FragileVanillaWaterloggedBlock {
@@ -22,6 +24,11 @@ public class EndRodMixin implements FragileVanillaWaterloggedBlock {
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
         return this.getClass().equals(EndRodBlock.class) && !getStateForPlacementOverride;
+    }
+
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/EndRodBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    private BlockState addWaterloggingToConstructor(BlockState defaultState) {
+        return gasworks$shouldWaterlogMixinApply(this.getClass()) ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
     }
 
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})

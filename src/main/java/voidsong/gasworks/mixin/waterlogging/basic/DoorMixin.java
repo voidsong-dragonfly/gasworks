@@ -29,6 +29,11 @@ public class DoorMixin implements VanillaWaterloggedBlock {
         return this.getClass().equals(DoorBlock.class) && !(updateShapeOverride || getStateForPlacementOverride);
     }
 
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/DoorBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
+    private BlockState addWaterloggingToConstructor(BlockState defaultState) {
+        return gasworks$shouldWaterlogMixinApply(this.getClass()) ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
+    }
+
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
     private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {

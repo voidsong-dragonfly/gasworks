@@ -28,7 +28,7 @@ public interface VanillaWaterloggedBlock extends SimpleWaterloggedBlock {
     boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride);
 
     default BlockState gasworks$addStatesToDefaultState(BlockState state) {
-        return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state : state.setValue(BlockStateProperties.WATERLOGGED, false);
+        return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, false) : state;
     }
 
     default BlockState gasworks$modifyStateForPlacement(BlockState place, BlockPlaceContext context) {
