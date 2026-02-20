@@ -16,13 +16,13 @@ import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 public class ComposterMixin implements VanillaWaterloggedBlock {
     @Override
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-    public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
+    public boolean gasworks$shouldWaterlogMixinApply(boolean updateShapeOverride, boolean getStateForPlacementOverride) {
         return this.getClass().equals(ComposterBlock.class);
     }
 
     @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/ComposterBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
     private BlockState addWaterloggingToConstructor(BlockState defaultState) {
-        return gasworks$shouldWaterlogMixinApply(this.getClass()) ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
+        return gasworks$shouldWaterlogMixinApply() ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
     }
 
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})

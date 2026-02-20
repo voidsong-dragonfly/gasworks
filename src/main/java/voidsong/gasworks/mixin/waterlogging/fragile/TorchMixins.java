@@ -54,13 +54,13 @@ public class TorchMixins {
          */
         @Override
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
+        public boolean gasworks$shouldWaterlogMixinApply(boolean updateShapeOverride, boolean getStateForPlacementOverride) {
             return this.getClass().equals(TorchBlock.class) || (this.getClass().equals(WallTorchBlock.class) && !(updateShapeOverride || getStateForPlacementOverride));
         }
 
         @Override
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        public boolean gasworks$shouldRandomTickMixinApply(Class<?> clazz) {
+        public boolean gasworks$shouldRandomTickMixinApply() {
             return this.getClass().equals(TorchBlock.class) || this.getClass().equals(WallTorchBlock.class);
         }
 
@@ -117,7 +117,7 @@ public class TorchMixins {
     public static class WallTorchMixin {
         @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/WallTorchBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
         private BlockState addQuenchAndWaterloggingToConstructor(BlockState defaultState) {
-            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply(this.getClass())) {
+            if (this instanceof VanillaWaterloggedBlock block && block.gasworks$shouldWaterlogMixinApply()) {
                 return block.gasworks$addStatesToDefaultState(defaultState);
             }
             return defaultState;

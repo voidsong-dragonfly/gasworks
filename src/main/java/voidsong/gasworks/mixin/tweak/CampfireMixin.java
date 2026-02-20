@@ -26,7 +26,7 @@ public class CampfireMixin extends Block implements VanillaRandomTickBlock {
 
     @Override
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-    public boolean gasworks$shouldRandomTickMixinApply(Class<?> clazz) {
+    public boolean gasworks$shouldRandomTickMixinApply() {
         return this.getClass().equals(CampfireBlock.class);
     }
 

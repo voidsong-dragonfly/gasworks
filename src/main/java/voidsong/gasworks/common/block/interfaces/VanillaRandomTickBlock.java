@@ -17,7 +17,7 @@ import javax.annotation.Nonnull;
  * random ticking implemented on them!
  */
 public interface VanillaRandomTickBlock {
-    boolean gasworks$shouldRandomTickMixinApply(Class<?> clazz);
+    boolean gasworks$shouldRandomTickMixinApply();
     boolean gasworks$modifyIsRandomlyTicking(BlockState state, Boolean ticking);
     void gasworks$divertRandomTick(@Nonnull BlockState state, ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random);
 }

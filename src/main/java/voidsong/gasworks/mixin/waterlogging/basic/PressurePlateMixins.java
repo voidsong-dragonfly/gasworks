@@ -25,13 +25,13 @@ public class PressurePlateMixins {
     public static class PressurePlateMixin implements VanillaWaterloggedBlock {
         @Override
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
+        public boolean gasworks$shouldWaterlogMixinApply(boolean updateShapeOverride, boolean getStateForPlacementOverride) {
             return this.getClass().equals(PressurePlateBlock.class) && !updateShapeOverride;
         }
 
         @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/PressurePlateBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
         private BlockState addWaterloggingToConstructor(BlockState defaultState) {
-            return gasworks$shouldWaterlogMixinApply(this.getClass()) ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
+            return gasworks$shouldWaterlogMixinApply() ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
         }
 
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
@@ -45,13 +45,13 @@ public class PressurePlateMixins {
     public static class WeightedPressurePlateMixin implements VanillaWaterloggedBlock {
         @Override
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
-        public boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride) {
+        public boolean gasworks$shouldWaterlogMixinApply(boolean updateShapeOverride, boolean getStateForPlacementOverride) {
             return this.getClass().equals(WeightedPressurePlateBlock.class) && !updateShapeOverride;
         }
 
         @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/WeightedPressurePlateBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
         private BlockState addWaterloggingToConstructor(BlockState defaultState) {
-            return gasworks$shouldWaterlogMixinApply(this.getClass()) ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
+            return gasworks$shouldWaterlogMixinApply() ? gasworks$addStatesToDefaultState(defaultState) : defaultState;
         }
 
         @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})

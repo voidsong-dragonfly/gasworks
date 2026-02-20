@@ -22,10 +22,10 @@ import net.minecraft.world.level.material.Fluids;
  * waterlogging implemented on them!
  */
 public interface VanillaWaterloggedBlock extends SimpleWaterloggedBlock {
-    default boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz) {
-        return gasworks$shouldWaterlogMixinApply(clazz, false, false);
+    default boolean gasworks$shouldWaterlogMixinApply() {
+        return gasworks$shouldWaterlogMixinApply(false, false);
     }
-    boolean gasworks$shouldWaterlogMixinApply(Class<?> clazz, boolean updateShapeOverride, boolean getStateForPlacementOverride);
+    boolean gasworks$shouldWaterlogMixinApply(boolean updateShapeOverride, boolean getStateForPlacementOverride);
 
     default BlockState gasworks$addStatesToDefaultState(BlockState state) {
         return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, false) : state;
