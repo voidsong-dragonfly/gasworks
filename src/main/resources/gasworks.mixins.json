@@ -13,6 +13,7 @@
     "tweak.ComposterMixin",
     "tweak.ComposterMixin$OutputContainer",
     "tweak.ItemRepairabilityMixin",
+    "tweak.ItemStackMixin",
     "tweak.ThrownPotionMixin",
     "waterlogging.basic.AnvilMixin",
     "waterlogging.basic.BannerMixin",
