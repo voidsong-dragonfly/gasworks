@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.neoforged.neoforge.common.Tags;
@@ -34,7 +35,7 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
          */
         // Pyrolysis walls for use in recipes
         tag(GSTags.Blocks.PYROLIZING_WALLS)
-            .addTag(BlockTags.DIRT).remove(net.minecraft.world.level.block.Blocks.MOSS_BLOCK, net.minecraft.world.level.block.Blocks.MUD, net.minecraft.world.level.block.Blocks.MUDDY_MANGROVE_ROOTS);
+            .addTag(BlockTags.DIRT).remove(Blocks.MOSS_BLOCK, Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS);
         // Log stacks for fuel
         tag(BlockTags.LOGS_THAT_BURN)
             .add(GSBlocks.OAK_LOG_PILE.get(), GSBlocks.SPRUCE_LOG_PILE.get(), GSBlocks.BIRCH_LOG_PILE.get(),
@@ -50,15 +51,15 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         // Compost-accelerating blocks
         tag(GSTags.Blocks.COMPOST_ACCELERATORS)
             // Standard blocks
-            .add(net.minecraft.world.level.block.Blocks.RED_MUSHROOM, net.minecraft.world.level.block.Blocks.BROWN_MUSHROOM, net.minecraft.world.level.block.Blocks.GLOW_LICHEN)
-            .add(net.minecraft.world.level.block.Blocks.MOSS_BLOCK, net.minecraft.world.level.block.Blocks.MOSS_CARPET)
-            .add(net.minecraft.world.level.block.Blocks.MYCELIUM, net.minecraft.world.level.block.Blocks.RED_MUSHROOM_BLOCK, net.minecraft.world.level.block.Blocks.BROWN_MUSHROOM_BLOCK, net.minecraft.world.level.block.Blocks.MUSHROOM_STEM)
+            .add(Blocks.RED_MUSHROOM, Blocks.BROWN_MUSHROOM, Blocks.GLOW_LICHEN)
+            .add(Blocks.MOSS_BLOCK, Blocks.MOSS_CARPET)
+            .add(Blocks.MYCELIUM, Blocks.RED_MUSHROOM_BLOCK, Blocks.BROWN_MUSHROOM_BLOCK, Blocks.MUSHROOM_STEM)
             // Nether blocks
-            .add(net.minecraft.world.level.block.Blocks.NETHER_WART)
-            .add(net.minecraft.world.level.block.Blocks.WARPED_FUNGUS, net.minecraft.world.level.block.Blocks.CRIMSON_FUNGUS, net.minecraft.world.level.block.Blocks.WARPED_ROOTS, net.minecraft.world.level.block.Blocks.CRIMSON_ROOTS, net.minecraft.world.level.block.Blocks.NETHER_SPROUTS)
+            .add(Blocks.NETHER_WART)
+            .add(Blocks.WARPED_FUNGUS, Blocks.CRIMSON_FUNGUS, Blocks.WARPED_ROOTS, Blocks.CRIMSON_ROOTS, Blocks.NETHER_SPROUTS)
             .addTag(BlockTags.NYLIUM)
             // Farmer's Delight compat
-            .remove(net.minecraft.world.level.block.Blocks.PODZOL)
+            .remove(Blocks.PODZOL)
             .addOptionalTag(ModTags.COMPOST_ACTIVATORS);
         tag(BlockTags.MUSHROOM_GROW_BLOCK)
             .add(GSBlocks.COMPOST_PILE.get());
@@ -126,17 +127,16 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         // Tags from Gasworks
         // Tags for torch dowsing
         tag(GSTags.Blocks.DOWSE_IN_RAIN)
-            .add(net.minecraft.world.level.block.Blocks.TORCH, net.minecraft.world.level.block.Blocks.WALL_TORCH);
+            .add(Blocks.TORCH, Blocks.WALL_TORCH);
         tag(GSTags.Blocks.DOWSE_IN_WATER)
-            .add(net.minecraft.world.level.block.Blocks.TORCH, net.minecraft.world.level.block.Blocks.WALL_TORCH)
-            .add(net.minecraft.world.level.block.Blocks.SOUL_TORCH, net.minecraft.world.level.block.Blocks.SOUL_WALL_TORCH);
+            .add(Blocks.TORCH, Blocks.WALL_TORCH)
+            .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH);
         tag(GSTags.Blocks.LOW_LIGHT_TORCHES)
-            .add(net.minecraft.world.level.block.Blocks.TORCH, net.minecraft.world.level.block.Blocks.WALL_TORCH)
-            .add(net.minecraft.world.level.block.Blocks.SOUL_TORCH, net.minecraft.world.level.block.Blocks.SOUL_WALL_TORCH);
+            .add(Blocks.TORCH, Blocks.WALL_TORCH)
+            .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH);
         // Tags for Fire Drill lighting
         tag(GSTags.Blocks.CONTAINS_TINDER)
-            .add(net.minecraft.world.level.block.Blocks.CAMPFIRE, net.minecraft.world.level.block.Blocks.SOUL_CAMPFIRE);
-
+            .add(Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE);
         // Tags from other mods
         tag(ModTags.MUSHROOM_COLONY_GROWABLE_ON)
             .add(GSBlocks.COMPOST_PILE.get());
