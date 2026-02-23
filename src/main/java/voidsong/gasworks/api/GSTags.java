@@ -72,7 +72,7 @@ public class GSTags {
         /*
          * Crafting ingredient tags
          */
-        public static final TagKey<Item> FERRIC_STRIKERS = itemTag(cLoc("ferric_strikers"));
+        public static final TagKey<Item> FERRIC_STRIKERS = itemTag(Gasworks.rl("ferric_strikers"));
         /*
          * Compatibility tags, other mods & Gasworks
          */
