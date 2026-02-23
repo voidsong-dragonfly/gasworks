@@ -15,8 +15,10 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
+import vectorwing.farmersdelight.common.registry.ModItems;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.registry.GSBlocks;
@@ -260,6 +262,17 @@ public class GasworksRecipeProvider extends RecipeProvider {
                 .define('g', Tags.Items.GLASS_BLOCKS_CHEAP)
                 .unlockedBy("has_copper", has(Tags.Items.INGOTS_COPPER))
                 .save(output, rl(GSItems.BAROMETER, "crafting"));
+        /*
+         * Compatibility recipes, other mods & Gasworks
+         */
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModItems.RICH_SOIL.get())
+                .requires(Items.DIRT)
+                .requires(GSItems.COMPOST)
+                .requires(GSItems.COMPOST)
+                .requires(GSItems.COMPOST)
+                .requires(GSItems.COMPOST)
+                .unlockedBy("has_compost", has(GSItems.COMPOST))
+                .save(output.withConditions(new ModLoadedCondition("farmersdelight")), rl(ModItems.RICH_SOIL.get(), "compat/farmersdelight/crafting"));
     }
 
 

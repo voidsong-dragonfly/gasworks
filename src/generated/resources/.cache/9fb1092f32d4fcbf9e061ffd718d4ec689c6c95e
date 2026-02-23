@@ -1,4 +1,5 @@
-// 1.21.1	2026-02-17T13:57:16.780590166	Recipes
+// 1.21.1	2026-02-23T18:01:38.242249346	Recipes
+b9e6415daa261d49dfcffed1860338737cf2a986 data/gasworks/advancement/recipes/building_blocks/compat/farmersdelight/crafting/rich_soil.json
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
 07c8822a56251c4bd7c493790a893aa9a2401e35 data/gasworks/advancement/recipes/building_blocks/crafting/birch_log_pile.json
@@ -110,6 +111,7 @@ a8f51dbb8858390892d6b7ed6367f17151a35d11 data/gasworks/advancement/recipes/build
 d8a0a0f047f8815bf65ddc0eac1087748e870bb7 data/gasworks/advancement/recipes/tools/crafting/barometer.json
 36260d80732f7c39ea2e14da2eb747d2227ee6b2 data/gasworks/advancement/recipes/tools/crafting/fire_drill.json
 83cfe39d498bca71af0b1ecc407d9a2fdbd14895 data/gasworks/advancement/recipes/tools/crafting/tradeswomans_journal.json
+ad0b86b42556d5bd4be337cae7a551af53671dfd data/gasworks/recipe/compat/farmersdelight/crafting/rich_soil.json
 fba92137f10bbc2cc67049556de5d7a49073c102 data/gasworks/recipe/crafting/acacia_log_pile.json
 86722bae7b730516e2b94c9628cee188eb2b0be5 data/gasworks/recipe/crafting/bamboo_log_pile.json
 4576f923f4facd583cbae38e8d0742b9166b8378 data/gasworks/recipe/crafting/barometer.json
