@@ -7,6 +7,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
@@ -113,9 +114,16 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
             tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + pair.getFirst())))
                 .add(candelabra.asItem());
         }
+        /*
+         * Tool items & other useful items
+         */
         // Tools
         tag(ItemTags.BOOKSHELF_BOOKS).add(GSItems.TRADESWOMANS_JOURNAL.get());
         tag(Tags.Items.TOOLS_IGNITER).add(GSItems.FIRE_DRILL.get());
         tag(Tags.Items.TOOLS).add(GSItems.FIRE_DRILL.get(), GSItems.BAROMETER.get());
+        /*
+         * Crafting ingredient tags
+         */
+        tag(GSTags.Items.FERRIC_STRIKERS).add(Items.RAW_IRON).addTag(Tags.Items.INGOTS_IRON);
     }
 }

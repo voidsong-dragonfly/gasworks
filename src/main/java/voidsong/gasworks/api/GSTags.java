@@ -70,10 +70,9 @@ public class GSTags {
          */
         public static final TagKey<Item> CANDELABRAS = itemTag(Gasworks.rl("candelabras"));
         /*
-         * Building blocks, including various 'functional' blocks
+         * Crafting ingredient tags
          */
-        public static final TagKey<Item> REFRACTORY_BRICK = itemTag(cLoc("bricks/refractory"));
-        public static final TagKey<Item> FIREBRICK = itemTag(cLoc("bricks/firebrick"));
+        public static final TagKey<Item> FERRIC_STRIKERS = itemTag(cLoc("ferric_strikers"));
         /*
          * Compatibility tags, other mods & Gasworks
          */
