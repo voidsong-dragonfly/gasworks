@@ -110,7 +110,7 @@ public class CompostBlock extends Block {
 
     @Override
     public int getExpDrop(@Nonnull BlockState state, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nullable BlockEntity blockEntity, @Nullable Entity breaker, @Nonnull ItemStack tool) {
-        return state.getValue(AGE) == 5 ? UniformInt.of(1, 3).sample(level.getRandom()) : 0;
+        return state.getValue(AGE) == MAX_AGE ? UniformInt.of(1, 3).sample(level.getRandom()) : 0;
     }
 
     @Override
