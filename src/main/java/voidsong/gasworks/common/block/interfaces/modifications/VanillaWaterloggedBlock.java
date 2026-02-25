@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.block.interfaces;
+package voidsong.gasworks.common.block.interfaces.modifications;
 
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;

@@ -23,9 +23,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import voidsong.gasworks.common.block.interfaces.VanillaCapabilityBlock;
-import voidsong.gasworks.common.block.interfaces.VanillaRandomTickBlock;
-import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
+import voidsong.gasworks.common.block.interfaces.modifications.VanillaCapabilityBlock;
+import voidsong.gasworks.common.block.interfaces.modifications.VanillaRandomTickBlock;
+import voidsong.gasworks.common.block.interfaces.modifications.VanillaWaterloggedBlock;
 
 @SuppressWarnings("unused")
 public class BaseBlockInjections {

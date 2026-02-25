@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
+import voidsong.gasworks.common.block.interfaces.modifications.VanillaWaterloggedBlock;
 
 @Mixin(GrindstoneBlock.class)
 public class GrindstoneMixin implements VanillaWaterloggedBlock {

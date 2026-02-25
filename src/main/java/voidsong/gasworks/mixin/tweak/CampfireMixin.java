@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import voidsong.gasworks.common.block.interfaces.VanillaRandomTickBlock;
+import voidsong.gasworks.common.block.interfaces.modifications.VanillaRandomTickBlock;
 
 import javax.annotation.Nonnull;
 

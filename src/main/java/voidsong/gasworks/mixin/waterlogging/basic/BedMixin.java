@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
+import voidsong.gasworks.common.block.interfaces.modifications.VanillaWaterloggedBlock;
 
 @Mixin(BedBlock.class)
 public class BedMixin implements VanillaWaterloggedBlock {

@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.block.interfaces;
+package voidsong.gasworks.common.block.interfaces.modifications;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
