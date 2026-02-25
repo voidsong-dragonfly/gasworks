@@ -125,5 +125,13 @@ public class GasworksItemTagsProvider extends ItemTagsProvider {
          * Crafting ingredient tags
          */
         tag(GSTags.Items.FERRIC_STRIKERS).add(Items.RAW_IRON).addTag(Tags.Items.INGOTS_IRON);
+        tag(GSTags.Items.TINDER)
+                .add(Items.PAPER)
+                // TODO: Replace sticks with dead leaves once I update to 1.21.5+
+                .addTag(Tags.Items.RODS_WOODEN)
+                .addTag(Tags.Items.STRINGS)
+                .addTag(Tags.Items.CROPS_WHEAT)
+                .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "straw"))
+                .addOptionalTag(ResourceLocation.fromNamespaceAndPath("c", "fiber/hemp"));
     }
 }

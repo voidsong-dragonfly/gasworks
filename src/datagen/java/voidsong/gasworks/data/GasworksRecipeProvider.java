@@ -20,6 +20,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import voidsong.gasworks.Gasworks;
+import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.registry.GSBlocks;
 import voidsong.gasworks.common.registry.GSItems;
@@ -250,6 +251,7 @@ public class GasworksRecipeProvider extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, GSItems.FIRE_DRILL)
             .requires(Tags.Items.RODS_WOODEN)
             .requires(ItemTags.WOODEN_SLABS)
+            .requires(GSTags.Items.TINDER)
             .unlockedBy("has_wood", has(ItemTags.PLANKS))
             .save(output, rl(GSItems.FIRE_DRILL, "crafting"));
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GSItems.BAROMETER)

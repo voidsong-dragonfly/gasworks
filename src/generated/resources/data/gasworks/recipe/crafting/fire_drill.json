@@ -7,6 +7,9 @@
     },
     {
       "tag": "minecraft:wooden_slabs"
+    },
+    {
+      "tag": "gasworks:tinder"
     }
   ],
   "result": {

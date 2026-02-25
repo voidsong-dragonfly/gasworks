@@ -134,9 +134,6 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         tag(GSTags.Blocks.LOW_LIGHT_TORCHES)
             .add(Blocks.TORCH, Blocks.WALL_TORCH)
             .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH);
-        // Tags for Fire Drill lighting
-        tag(GSTags.Blocks.CONTAINS_TINDER)
-            .add(Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE);
         // Tags from other mods
         tag(ModTags.MUSHROOM_COLONY_GROWABLE_ON)
             .add(GSBlocks.COMPOST_PILE.get());

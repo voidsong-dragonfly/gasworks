@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-23T18:01:38.242249346	Recipes
+// 1.21.1	2026-02-24T15:00:09.098533913	Recipes
 b9e6415daa261d49dfcffed1860338737cf2a986 data/gasworks/advancement/recipes/building_blocks/compat/farmersdelight/crafting/rich_soil.json
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
@@ -153,7 +153,7 @@ d28e3277346a62a375237b0b9bb39226f621beec data/gasworks/recipe/crafting/cyan_stai
 847d263421d50d861ac19779033e74f9ffc46db2 data/gasworks/recipe/crafting/cyan_stained_framed_glass_pane.json
 4bd9d13644376cc89552683a0c01f09d7f96bb71 data/gasworks/recipe/crafting/cyan_stained_framed_glass_pane_from_glass_pane.json
 2b6b33ba4051aa4155e33d2886bbef83d2c9b348 data/gasworks/recipe/crafting/dark_oak_log_pile.json
-867deb855f1c12c71313279b024653ec420d900d data/gasworks/recipe/crafting/fire_drill.json
+93ebf00979645ae5ff1c7d9e76e9a026daafcda4 data/gasworks/recipe/crafting/fire_drill.json
 935e42297597a67ed28d1e7a8d7348b381cb4587 data/gasworks/recipe/crafting/fired_brick_clamp.json
 993d3151834c59ec95f77f935f470f47ef64cbe4 data/gasworks/recipe/crafting/framed_glass.json
 b6899011697b455ef76b9e61a0103a38a90253a0 data/gasworks/recipe/crafting/framed_glass_pane.json

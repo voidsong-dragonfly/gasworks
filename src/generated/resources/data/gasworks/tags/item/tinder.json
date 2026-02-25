@@ -1,0 +1,16 @@
+{
+  "values": [
+    "minecraft:paper",
+    "#c:rods/wooden",
+    "#c:strings",
+    "#c:crops/wheat",
+    {
+      "id": "farmersdelight:straw",
+      "required": false
+    },
+    {
+      "id": "#c:fiber/hemp",
+      "required": false
+    }
+  ]
+}
