@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluids;
 import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.common.block.UnlitTorchBlock;
 import voidsong.gasworks.common.block.properties.GSProperties;
