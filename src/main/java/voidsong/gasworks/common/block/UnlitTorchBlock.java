@@ -52,6 +52,11 @@ public class UnlitTorchBlock extends BaseTorchBlock implements SimpleWaterlogged
     }
 
     @Override
+    protected boolean isRandomlyTicking(@Nonnull BlockState state) {
+        return state.getValue(GSProperties.SMOLDERING);
+    }
+
+    @Override
     protected void randomTick(@Nonnull BlockState state, @Nonnull ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
         if (level.isRainingAt(pos) && level.isThundering() && extinguishInRain && state.getValue(GSProperties.SMOLDERING))
             BlockUtil.dowseTorch2(null, state, level, pos, false);

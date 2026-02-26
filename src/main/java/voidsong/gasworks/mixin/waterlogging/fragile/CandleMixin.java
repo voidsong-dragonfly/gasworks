@@ -16,6 +16,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -44,7 +45,6 @@ public class CandleMixin extends Block implements SimpleWaterloggedBlock {
      * still be washed away by flowing water, while also containing waterlogging
      */
 
-
     @Inject(method = "placeLiquid", at = @At(value = "HEAD"), cancellable = true)
     private void placeLiquid(LevelAccessor level, BlockPos pos, BlockState state, FluidState fluidState, CallbackInfoReturnable<Boolean> cir) {
         if (!state.getValue(CandleBlock.WATERLOGGED) && fluidState.getType() != Fluids.WATER) {
@@ -65,7 +65,7 @@ public class CandleMixin extends Block implements SimpleWaterloggedBlock {
      * washed away by flowing water, while also containing waterlogging
      */
 
-    @Override
+    @Unique
     public boolean canPlaceLiquid(@Nullable Player player, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull Fluid fluid) {
         return true;
     }
