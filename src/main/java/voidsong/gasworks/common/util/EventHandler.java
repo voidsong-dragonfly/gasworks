@@ -8,6 +8,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -24,8 +25,10 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void preventFarmlandTrample(BlockEvent.FarmlandTrampleEvent event) {
+        // For some reason, this event passes in Blocks.DIRT for state here??? IDFK.
+        BlockState farmland = event.getLevel().getBlockState(event.getPos());
         // if the fall distance is short & the farmland is hydrated, we don't trample
-        if (event.getFallDistance() < 2 && event.getState().getValue(FarmBlock.MOISTURE) > 0)
+        if (event.getFallDistance() < 2 && farmland.getBlock() instanceof FarmBlock && farmland.getValue(FarmBlock.MOISTURE) > 0)
             event.setCanceled(true);
         // If the mob has feather falling, no trampling regardless
         else if (event.getEntity() instanceof LivingEntity living) {
