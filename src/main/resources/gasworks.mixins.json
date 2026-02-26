@@ -15,6 +15,11 @@
     "tweak.ItemRepairabilityMixin",
     "tweak.ItemStackSizeMixin",
     "tweak.ThrownPotionMixin",
+    "tweak.TorchMixins$BlockBehaviorMixin",
+    "tweak.TorchMixins$BlockExtensionMixin",
+    "tweak.TorchMixins$BlockMixin",
+    "tweak.TorchMixins$TorchBlockMixin",
+    "tweak.TorchMixins$WallTorchMixin",
     "waterlogging.basic.AnvilMixin",
     "waterlogging.basic.BannerMixin",
     "waterlogging.basic.BedMixin",
@@ -36,12 +41,7 @@
     "waterlogging.basic.WallBannerMixin",
     "waterlogging.fragile.ButtonMixin",
     "waterlogging.fragile.CandleMixin",
-    "waterlogging.fragile.EndRodMixin",
-    "waterlogging.fragile.TorchMixins$BlockBehaviorMixin",
-    "waterlogging.fragile.TorchMixins$BlockExtensionMixin",
-    "waterlogging.fragile.TorchMixins$BlockMixin",
-    "waterlogging.fragile.TorchMixins$TorchBlockMixin",
-    "waterlogging.fragile.TorchMixins$WallTorchMixin"
+    "waterlogging.fragile.EndRodMixin"
   ],
   "client": [],
   "injectors": {

@@ -1,4 +1,4 @@
-package voidsong.gasworks.mixin.waterlogging.fragile;
+package voidsong.gasworks.mixin.tweak;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -64,14 +64,13 @@ public class TorchMixins {
         }
 
         @Unique
-        @Override
         public boolean placeLiquid(@Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull FluidState fluidState) {
             if (fluidState.getType() == Fluids.WATER) {
                 // Use BlockUtils#dowseTorch to handle the repetitive action
                 BlockUtil.dowseTorch2(null, state, level, pos, true);
                 level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-                // These exceptions to the placeLiquid code from SimpleWaterloggedBlock exists explicitly to allow torches
-                // to be washed away, while also containing waterlogging, it is copied from FlowingFluid#spreadTo
+            // These exceptions to the placeLiquid code from SimpleWaterloggedBlock exists explicitly to allow torches
+            // to be washed away, while also containing waterlogging, it is copied from FlowingFluid#spreadTo
             } else if (fluidState.getType() instanceof FlowingFluidAccessor flowingFluid) {
                 flowingFluid.callBeforeDestroyingBlock(level, pos, state);
                 level.setBlock(pos, fluidState.createLegacyBlock(), 3);
@@ -82,7 +81,6 @@ public class TorchMixins {
         }
 
         @Unique
-        @Override
         public boolean canPlaceLiquid(@Nullable Player player, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull Fluid fluid) {
             return true;
         }
