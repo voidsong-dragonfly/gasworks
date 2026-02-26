@@ -8,29 +8,24 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseTorchBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import voidsong.gasworks.common.block.interfaces.FragileWaterloggedBlock;
 import voidsong.gasworks.common.block.properties.GSProperties;
 import voidsong.gasworks.common.util.BlockUtil;
-import voidsong.gasworks.mixin.accessor.FlowingFluidAccessor;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
-public class UnlitTorchBlock extends BaseTorchBlock implements SimpleWaterloggedBlock {
+public class UnlitTorchBlock extends BaseTorchBlock implements FragileWaterloggedBlock {
     protected final boolean extinguishInRain;
     public static final MapCodec<UnlitTorchBlock> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(propertiesCodec(), Codec.BOOL.fieldOf("extinguishInRain").forGetter(block -> block.extinguishInRain)).apply(instance, UnlitTorchBlock::new)
@@ -91,37 +86,5 @@ public class UnlitTorchBlock extends BaseTorchBlock implements SimpleWaterlogged
             double d2 = (double) pos.getZ() + 0.5;
             level.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 0.0, 0.0);
         }
-    }
-
-    /*
-     * The following methods are modified from SimpleWaterloggedBlock using code from FlowingFluid#spreadTo to allow
-     * unlit torches to be popped off. It is functionally similar to FragileVanillaWaterloggedBlock without
-     * explicitly for being used with Vanilla blocks
-     */
-
-    @Override
-    public boolean placeLiquid(@Nonnull LevelAccessor level, @Nonnull BlockPos pos, BlockState state, @Nonnull FluidState fluidState) {
-        if (!state.getValue(BlockStateProperties.WATERLOGGED)) {
-            if (fluidState.getType() == Fluids.WATER) {
-                // This departs significantly because we have custom handling for waterlog-forcing
-                BlockUtil.dowseTorch2(null, state, level, pos, true);
-                level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-            // These exceptions to the placeLiquid code from SimpleWaterloggedBlock exists explicitly to allow torches
-            // to be washed away, while also containing waterlogging, it is copied from FlowingFluid#spreadTo
-            } else if (fluidState.getType() instanceof FlowingFluidAccessor flowingFluid) {
-                flowingFluid.callBeforeDestroyingBlock(level, pos, state);
-                level.setBlock(pos, fluidState.createLegacyBlock(), 3);
-            } else {
-                level.setBlock(pos, fluidState.createLegacyBlock(), 3);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean canPlaceLiquid(@Nullable Player player, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull Fluid fluid) {
-        return true;
     }
 }

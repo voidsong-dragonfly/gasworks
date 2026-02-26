@@ -33,7 +33,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.common.block.interfaces.modifications.VanillaRandomTickBlock;
 import voidsong.gasworks.common.util.BlockUtil;
-import voidsong.gasworks.mixin.accessor.FlowingFluidAccessor;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -63,21 +62,24 @@ public class TorchMixins {
                 BlockUtil.dowseTorch2(null, state, level, pos, false);
         }
 
+        /*
+         * The code below is copied from SimpleWaterloggedBlock but modified because torch blocks are not actually
+         * waterloggable with this setup, only able to be replaced by other waterloggable blocks.
+         * Thus, we use BlockUtil#dowseTorch rather than the standard waterloggable block method.
+         * Fluid flow is special-cased in FlowingFluidInjections#allowFragileReplacement for torch classes specifically
+         */
+
         @Unique
         public boolean placeLiquid(@Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull FluidState fluidState) {
-            if (fluidState.getType() == Fluids.WATER) {
-                // Use BlockUtils#dowseTorch to handle the repetitive action
-                BlockUtil.dowseTorch2(null, state, level, pos, true);
-                level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-            // These exceptions to the placeLiquid code from SimpleWaterloggedBlock exists explicitly to allow torches
-            // to be washed away, while also containing waterlogging, it is copied from FlowingFluid#spreadTo
-            } else if (fluidState.getType() instanceof FlowingFluidAccessor flowingFluid) {
-                flowingFluid.callBeforeDestroyingBlock(level, pos, state);
-                level.setBlock(pos, fluidState.createLegacyBlock(), 3);
+            if (fluidState.getType() == Fluids.WATER && state.is(GSTags.Blocks.DOWSE_IN_WATER)) {
+                if (!level.isClientSide()) {
+                    BlockUtil.dowseTorch2(null, state, level, pos, true);
+                    level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
+                }
+                return true;
             } else {
-                level.setBlock(pos, fluidState.createLegacyBlock(), 3);
+                return false;
             }
-            return true;
         }
 
         @Unique
@@ -138,12 +140,10 @@ public class TorchMixins {
 
     @Mixin(BlockBehaviour.class)
     public static class BlockBehaviorMixin {
-        @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
         @Inject(method = "onExplosionHit", at = @At(value = "HEAD"))
         private void onExplosionHit(BlockState state, Level level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer, CallbackInfo ci) {
-            if ((this.getClass().equals(TorchBlock.class) || this.getClass().equals(WallTorchBlock.class)) && explosion.canTriggerBlocks()) {
+            if (explosion.canTriggerBlocks())
                 BlockUtil.dowseTorch2(null, state, level, pos, false);
-            }
         }
     }
 }

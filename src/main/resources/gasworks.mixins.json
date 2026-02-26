@@ -6,7 +6,6 @@
     "BaseBlockInjections$BlockBehaviorMixin",
     "BaseBlockInjections$BlockMixin",
     "BaseBlockInjections$FaceAttachedHorizontalDirectionalBlockMixin",
-    "accessor.FlowingFluidAccessor",
     "tweak.AbstractCauldronMixin",
     "tweak.BlocksHardnessMixin",
     "tweak.CampfireMixin",
@@ -20,6 +19,7 @@
     "tweak.TorchMixins$BlockMixin",
     "tweak.TorchMixins$TorchBlockMixin",
     "tweak.TorchMixins$WallTorchMixin",
+    "waterlogging.FlowingFluidInjections",
     "waterlogging.basic.AnvilMixin",
     "waterlogging.basic.BannerMixin",
     "waterlogging.basic.BedMixin",
@@ -47,5 +47,6 @@
   "injectors": {
     "defaultRequire": 1
   },
+  "mixinextras": {"minVersion": "0.5.0"},
   "minVersion": "0.8"
 }
