@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-17T13:57:16.662823606	Loot Tables
+// 1.21.1	2026-02-25T21:13:10.023158123	Loot Tables
 394ac4f1686355bd610a3744fb95fab5af139d3d data/gasworks/loot_table/blocks/acacia_log_pile.json
 192e75516869bd21dfc63e7454703e49c2c02f4e data/gasworks/loot_table/blocks/bamboo_log_pile.json
 d03f896bf2c75947527a8e8f379ae176a987f38e data/gasworks/loot_table/blocks/birch_log_pile.json
@@ -71,6 +71,10 @@ bab8ff0ef228362c38cae86741afbf56f834442a data/gasworks/loot_table/blocks/red_can
 55ca6e49ddc7fa7852c67fa89e97893e2d57bd82 data/gasworks/loot_table/blocks/red_stained_framed_glass_pane.json
 7898e6db99e5231ec4c4aa9eb01664a610a66e0d data/gasworks/loot_table/blocks/spruce_log_pile.json
 b8cdde12f6833194b1e52d8873039db8c857f2a6 data/gasworks/loot_table/blocks/unfired_brick_clamp.json
+1f298d83f51234311a240d9b449a0e5d1665bc0f data/gasworks/loot_table/blocks/unlit_soul_torch.json
+4418b5e11db3fd7bf9d3a7df82fcfb2de7f6d4e0 data/gasworks/loot_table/blocks/unlit_soul_wall_torch.json
+b2970490b3399e0bd623269e020faa3c51755208 data/gasworks/loot_table/blocks/unlit_torch.json
+a7ddf7186edab13abea6055cdbb4a6e91fe59856 data/gasworks/loot_table/blocks/unlit_wall_torch.json
 af8e941b749281a3bf7fa640071d88d1bbb471fe data/gasworks/loot_table/blocks/white_candelabra.json
 04ff8e067b86cb7140dedbd9c9c0daaac894b70a data/gasworks/loot_table/blocks/white_stained_framed_glass.json
 2f4a5011fae5f4a785cc0feed03cddc4affd5e86 data/gasworks/loot_table/blocks/white_stained_framed_glass_pane.json

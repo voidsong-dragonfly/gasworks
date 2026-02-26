@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gasworks:block/unlit_torch"
+    }
+  }
+}

@@ -78,6 +78,8 @@
     "block.gasworks.green_candelabra": "Green Candelabra",
     "block.gasworks.red_candelabra": "Red Candelabra",
     "block.gasworks.black_candelabra": "Black Candelabra",
+    "block.gasworks.unlit_torch": "Unlit Torch",
+    "block.gasworks.unlit_soul_torch": "Unlit Soul Torch",
     "item.gasworks.coke": "Coke",
     "item.gasworks.ash": "Ash",
     "item.gasworks.compost": "Compost",

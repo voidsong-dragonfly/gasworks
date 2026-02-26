@@ -13,6 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.*;
 import voidsong.gasworks.common.block.properties.AshType;
+import voidsong.gasworks.common.block.properties.GSProperties;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,12 @@ public class GSBlocks {
         .noOcclusion()
         .isViewBlocking((state, getter, pos) -> false)
         .lightLevel(CandelabraBlock.LIGHT_EMISSION)
+        .pushReaction(PushReaction.DESTROY);
+    public static final BlockBehaviour.Properties UNLIT_TORCH_PROPERTIES = BlockBehaviour.Properties.of()
+        .noCollission()
+        .instabreak()
+        .lightLevel(state -> state.getValue(GSProperties.SMOLDERING) ? 1 : 0)
+        .sound(SoundType.WOOD)
         .pushReaction(PushReaction.DESTROY);
 
     /*
@@ -117,6 +124,11 @@ public class GSBlocks {
     // Candelabra
     public static DeferredBlock<CandelabraBlock> CANDELABRA = BLOCKS.registerBlock("candelabra", CandelabraBlock::new, CANDELABRA_PROPERTIES.mapColor(MapColor.SAND));
     public static List<Pair<DyeColor, DeferredBlock<CandelabraBlock>>> CANDELABRAS = createCandelabras();
+    // Unlit torches, soul & otherwise
+    public static DeferredBlock<UnlitTorchBlock> UNLIT_TORCH = BLOCKS.register("unlit_torch", () -> new UnlitTorchBlock(UNLIT_TORCH_PROPERTIES.randomTicks(), true));
+    public static DeferredBlock<UnlitTorchBlock> UNLIT_WALL_TORCH = BLOCKS.register("unlit_wall_torch", () -> new UnlitWallTorchBlock(UNLIT_TORCH_PROPERTIES.randomTicks(), true));
+    public static DeferredBlock<UnlitTorchBlock> UNLIT_SOUL_TORCH = BLOCKS.register("unlit_soul_torch", () -> new UnlitTorchBlock(UNLIT_TORCH_PROPERTIES, false));
+    public static DeferredBlock<UnlitTorchBlock> UNLIT_SOUL_WALL_TORCH = BLOCKS.register("unlit_soul_wall_torch", () -> new UnlitWallTorchBlock(UNLIT_TORCH_PROPERTIES, false));
 
     /*
      * Utility function for dyed blocks, etc

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gasworks:block/unlit_soul_wall_torch"
+    },
+    "facing=north": {
+      "model": "gasworks:block/unlit_soul_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "gasworks:block/unlit_soul_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "gasworks:block/unlit_soul_wall_torch",
+      "y": 180
+    }
+  }
+}

@@ -23,6 +23,8 @@ public class GasworksItemModelProvider extends ItemModelProvider {
         basicItem(GSItems.TRADESWOMANS_JOURNAL.asItem(), rl("tradeswomans_journal"));
         basicItem(GSItems.FIRE_DRILL.asItem(), rl("fire_drill"));
         basicItem(GSItems.BAROMETER.asItem(), rl("barometer/barometer_2"));
+        basicItem(GSItems.UNLIT_TORCH.asItem(), ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "block/torch/unlit"));
+        basicItem(GSItems.UNLIT_SOUL_TORCH.asItem(), ResourceLocation.fromNamespaceAndPath(Gasworks.MOD_ID, "block/torch/unlit_soul"));
     }
 
     /*

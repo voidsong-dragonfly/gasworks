@@ -102,6 +102,11 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + pair.getFirst())))
                 .add(candelabra);
         }
+        // Unlit torches, soul & otherwise
+        tag(BlockTags.WALL_POST_OVERRIDE)
+            .add(GSBlocks.UNLIT_TORCH.get(), GSBlocks.UNLIT_WALL_TORCH.get())
+            .add(GSBlocks.UNLIT_SOUL_TORCH.get(), GSBlocks.UNLIT_SOUL_WALL_TORCH.get());
+
         /*
          * Tool tags for block breaking
          */
@@ -127,10 +132,13 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
         // Tags from Gasworks
         // Tags for torch dowsing
         tag(GSTags.Blocks.DOWSE_IN_RAIN)
-            .add(Blocks.TORCH, Blocks.WALL_TORCH);
+            .add(Blocks.TORCH, Blocks.WALL_TORCH)
+            .add(GSBlocks.UNLIT_TORCH.get(), GSBlocks.UNLIT_WALL_TORCH.get());
         tag(GSTags.Blocks.DOWSE_IN_WATER)
             .add(Blocks.TORCH, Blocks.WALL_TORCH)
-            .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH);
+            .add(GSBlocks.UNLIT_TORCH.get(), GSBlocks.UNLIT_WALL_TORCH.get())
+            .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH)
+            .add(GSBlocks.UNLIT_SOUL_TORCH.get(), GSBlocks.UNLIT_SOUL_WALL_TORCH.get());
         tag(GSTags.Blocks.LOW_LIGHT_TORCHES)
             .add(Blocks.TORCH, Blocks.WALL_TORCH)
             .add(Blocks.SOUL_TORCH, Blocks.SOUL_WALL_TORCH);

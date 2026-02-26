@@ -232,6 +232,11 @@ public class GasworksLootTableProvider extends LootTableProvider {
                         )))
                 );
             }
+            // Unlit torches, soul & otherwise
+            dropSelf(GSBlocks.UNLIT_TORCH.get());
+            dropSelf(GSBlocks.UNLIT_WALL_TORCH.get());
+            dropSelf(GSBlocks.UNLIT_SOUL_TORCH.get());
+            dropSelf(GSBlocks.UNLIT_SOUL_WALL_TORCH.get());
         }
     }
 

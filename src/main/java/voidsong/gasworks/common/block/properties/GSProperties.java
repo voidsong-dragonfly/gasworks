@@ -23,4 +23,5 @@ public class GSProperties {
     public static final BooleanProperty EAST = BooleanProperty.create("east");
     // Specialty properties used in specific blocks
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
+    public static final BooleanProperty SMOLDERING = BooleanProperty.create("smoldering");
 }

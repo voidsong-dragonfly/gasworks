@@ -1,11 +1,7 @@
 {
   "values": [
-    "minecraft:torch",
-    "minecraft:wall_torch",
     "gasworks:unlit_torch",
     "gasworks:unlit_wall_torch",
-    "minecraft:soul_torch",
-    "minecraft:soul_wall_torch",
     "gasworks:unlit_soul_torch",
     "gasworks:unlit_soul_wall_torch"
   ]
