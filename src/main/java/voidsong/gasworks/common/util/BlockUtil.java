@@ -30,6 +30,22 @@ public class BlockUtil {
             });
     }
 
+    public static BlockState getLitTorchState(BlockState state) {
+        Direction facing = state.hasProperty(HorizontalDirectionalBlock.FACING) ? state.getValue(HorizontalDirectionalBlock.FACING) : null;
+        if (state.is(GSBlocks.UNLIT_TORCH)) {
+            return Blocks.TORCH.defaultBlockState();
+        } else if (state.is(GSBlocks.UNLIT_WALL_TORCH)) {
+            BlockState placement = Blocks.WALL_TORCH.defaultBlockState();
+            return facing != null ? placement.setValue(HorizontalDirectionalBlock.FACING, facing) : placement;
+        } else if (state.is(GSBlocks.UNLIT_SOUL_TORCH)) {
+            return Blocks.SOUL_TORCH.defaultBlockState();
+        } else if (state.is(GSBlocks.UNLIT_SOUL_WALL_TORCH)) {
+            BlockState placement = Blocks.SOUL_WALL_TORCH.defaultBlockState();
+            return facing != null ? placement.setValue(HorizontalDirectionalBlock.FACING, facing) : placement;
+        }
+        return state;
+    }
+
     public static BlockState getDowsedTorchState(BlockState state, boolean water) {
         Direction facing = state.hasProperty(HorizontalDirectionalBlock.FACING) ? state.getValue(HorizontalDirectionalBlock.FACING) : null;
         if (state.is(Blocks.TORCH)) {

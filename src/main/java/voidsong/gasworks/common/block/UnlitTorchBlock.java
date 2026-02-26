@@ -7,8 +7,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseTorchBlock;
@@ -19,6 +26,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import voidsong.gasworks.common.block.interfaces.FragileWaterloggedBlock;
 import voidsong.gasworks.common.block.properties.GSProperties;
 import voidsong.gasworks.common.util.BlockUtil;
@@ -76,6 +86,31 @@ public class UnlitTorchBlock extends BaseTorchBlock implements FragileWaterlogge
     @Nonnull
     protected FluidState getFluidState(@Nonnull BlockState state) {
         return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
+    @Nonnull
+    protected ItemInteractionResult useItemOn(ItemStack stack, @Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull Player player, @Nonnull InteractionHand hand, BlockHitResult hitResult) {
+        if (stack.isEmpty() && state.getValue(GSProperties.SMOLDERING) && !state.getValue(BlockStateProperties.WATERLOGGED)) {
+            if (!level.isClientSide()) {
+                if (level.random.nextInt(4) == 0) {
+                    level.setBlockAndUpdate(pos, BlockUtil.getLitTorchState(state));
+                    level.playSound(null, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 0.0625F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                } else {
+                    level.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                }
+            }
+            return ItemInteractionResult.SUCCESS;
+        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    public BlockState getToolModifiedState(@Nonnull BlockState state, @Nonnull UseOnContext context, @Nonnull ItemAbility itemAbility, boolean simulate) {
+        if (ItemAbility.getActions().contains(ItemAbilities.FIRESTARTER_LIGHT) && !state.getValue(BlockStateProperties.WATERLOGGED)) {
+            return BlockUtil.getLitTorchState(state);
+        }
+        return null;
     }
 
     @Override
