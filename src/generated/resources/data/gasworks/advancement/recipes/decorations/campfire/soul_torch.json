@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "gasworks:campfire/soul_torch"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unlit_soul_torch": {
+      "conditions": {
+        "items": [
+          {
+            "items": "gasworks:unlit_soul_torch"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_unlit_soul_torch"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "gasworks:campfire/soul_torch"
+    ]
+  }
+}

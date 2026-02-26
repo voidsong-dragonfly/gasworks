@@ -1,12 +1,25 @@
 {
-  "type": "minecraft:campfire_cooking",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "cookingtime": 100,
-  "experience": 0.35,
-  "ingredient": {
-    "tag": "c:rods/wooden"
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": [
+      {
+        "item": "minecraft:coal"
+      },
+      {
+        "item": "minecraft:charcoal"
+      }
+    ]
   },
+  "pattern": [
+    "X",
+    "#"
+  ],
   "result": {
-    "id": "minecraft:torch"
+    "count": 4,
+    "id": "gasworks:unlit_torch"
   }
 }

@@ -7,10 +7,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
@@ -238,6 +236,25 @@ public class GasworksRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_candle", has(ItemTags.CANDLES))
                 .save(output, rl(item, "crafting",  "_dyeing"));
         }
+        // Unlit torches, soul & otherwise
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(GSItems.UNLIT_TORCH), RecipeCategory.DECORATIONS, Items.TORCH, 0.35f, 100)
+            .unlockedBy("has_unlit_torch", has(GSItems.UNLIT_TORCH))
+            .save(output, rl(Items.TORCH, "campfire"));
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Tags.Items.RODS_WOODEN), RecipeCategory.DECORATIONS, Items.TORCH, 0.35f, 100)
+                .unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+                .save(output, rl(Items.TORCH, "campfire", "_from_stick"));
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(GSItems.UNLIT_SOUL_TORCH), RecipeCategory.DECORATIONS, Items.SOUL_TORCH, 1.0f, 100)
+                .unlockedBy("has_unlit_soul_torch", has(GSItems.UNLIT_SOUL_TORCH))
+                .save(output, rl(Items.SOUL_TORCH, "campfire"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, Items.SOUL_TORCH, 4)
+                .requires(ItemTags.SOUL_FIRE_BASE_BLOCKS)
+                .requires(Items.TORCH)
+                .requires(Items.TORCH)
+                .requires(Items.TORCH)
+                .requires(Items.TORCH)
+                .unlockedBy("has_soul_fire_base_block", has(ItemTags.SOUL_FIRE_BASE_BLOCKS))
+                .save(output, rl(Items.SOUL_TORCH, "crafting",  "_from_torch"));
+
         /*
          * Tool items & other useful items
          */

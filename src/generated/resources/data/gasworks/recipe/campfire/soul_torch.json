@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "ingredient": {
+    "item": "gasworks:unlit_soul_torch"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:soul_torch"
+  }
+}
