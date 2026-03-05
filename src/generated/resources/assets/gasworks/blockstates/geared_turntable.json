@@ -1,0 +1,32 @@
+{
+  "variants": {
+    "facing=down,rotation=180": {
+      "model": "gasworks:block/geared_turntable_flip",
+      "x": 180
+    },
+    "facing=down,rotation=clockwise_90": {
+      "model": "gasworks:block/geared_turntable_clockwise",
+      "x": 180
+    },
+    "facing=down,rotation=counterclockwise_90": {
+      "model": "gasworks:block/geared_turntable_counterclockwise",
+      "x": 180
+    },
+    "facing=down,rotation=none": {
+      "model": "gasworks:block/geared_turntable_none",
+      "x": 180
+    },
+    "facing=up,rotation=180": {
+      "model": "gasworks:block/geared_turntable_flip"
+    },
+    "facing=up,rotation=clockwise_90": {
+      "model": "gasworks:block/geared_turntable_clockwise"
+    },
+    "facing=up,rotation=counterclockwise_90": {
+      "model": "gasworks:block/geared_turntable_counterclockwise"
+    },
+    "facing=up,rotation=none": {
+      "model": "gasworks:block/geared_turntable_none"
+    }
+  }
+}

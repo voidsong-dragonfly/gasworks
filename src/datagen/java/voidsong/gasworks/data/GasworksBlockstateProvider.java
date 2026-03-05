@@ -112,5 +112,10 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
             .withExistingParent(getName(GSBlocks.UNLIT_SOUL_WALL_TORCH.get()), rlMC("template_torch_wall"))
             .texture("torch", rl("torch/unlit_soul")).renderType("cutout"),
             HorizontalDirectionalBlock.FACING, List.of(), 0, 90);
+        /*
+         * Specialty workshop blocks not part of a larger machine, such as the workbench or woodcutter
+         */
+        gearedTurntableBlockAndItem(GSBlocks.GEARED_TURNTABLE.get());
+
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-25T21:13:10.023158123	Loot Tables
+// 1.21.1	2026-03-04T22:03:43.686305355	Loot Tables
 394ac4f1686355bd610a3744fb95fab5af139d3d data/gasworks/loot_table/blocks/acacia_log_pile.json
 192e75516869bd21dfc63e7454703e49c2c02f4e data/gasworks/loot_table/blocks/bamboo_log_pile.json
 d03f896bf2c75947527a8e8f379ae176a987f38e data/gasworks/loot_table/blocks/birch_log_pile.json
@@ -35,6 +35,7 @@ d268adc23eebe8fb07f8d89889320394deb0baec data/gasworks/loot_table/blocks/charcoa
 76cf0a6196cce438cfdf3ade7a3365f85d345123 data/gasworks/loot_table/blocks/fired_brick_clamp.json
 845854ce1b9dc5fbb8af0e8a3ddce29c83c7e4b3 data/gasworks/loot_table/blocks/framed_glass.json
 8cd7e3d76f068dc39c027c6d9d7d11610efc54f6 data/gasworks/loot_table/blocks/framed_glass_pane.json
+c96cbda8e6e3f5d214e1f249c5db53a7fea06d49 data/gasworks/loot_table/blocks/geared_turntable.json
 80b391ffdeb72be1e76ff4c4063e574dada45644 data/gasworks/loot_table/blocks/gray_candelabra.json
 7b818216f7a12c63472a8600308a7b163e685cee data/gasworks/loot_table/blocks/gray_stained_framed_glass.json
 08b3e1a4f85ade7ed72b5a7fdbcbe40c71a96790 data/gasworks/loot_table/blocks/gray_stained_framed_glass_pane.json

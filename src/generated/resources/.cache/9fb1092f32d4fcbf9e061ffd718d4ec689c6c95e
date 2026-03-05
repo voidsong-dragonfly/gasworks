@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-26T12:04:49.059875185	Recipes
+// 1.21.1	2026-03-04T22:03:43.691165626	Recipes
 b9e6415daa261d49dfcffed1860338737cf2a986 data/gasworks/advancement/recipes/building_blocks/compat/farmersdelight/crafting/rich_soil.json
 8d5a68b2e8ce0c3c75fce6d270733811f65a6779 data/gasworks/advancement/recipes/building_blocks/crafting/acacia_log_pile.json
 a3321b12da8ba86852ba54255baf0d0ba5f3d120 data/gasworks/advancement/recipes/building_blocks/crafting/bamboo_log_pile.json
@@ -112,6 +112,7 @@ d889af4afe50df8439d75170141e68d5d52086d8 data/gasworks/advancement/recipes/decor
 4119fda92abea0d393c39193724d6466b416bb33 data/gasworks/advancement/recipes/decorations/campfire/torch.json
 ddc509a6f0db6e63122f007a40542d17988cdbb3 data/gasworks/advancement/recipes/decorations/campfire/torch_from_stick.json
 0cf3156e6c9aef9fbd4df186d373c406805aa4be data/gasworks/advancement/recipes/decorations/crafting/soul_torch_from_torch.json
+fd8070c2f0299575462f71bfc916be58f4114db3 data/gasworks/advancement/recipes/redstone/crafting/geared_turntable.json
 d8a0a0f047f8815bf65ddc0eac1087748e870bb7 data/gasworks/advancement/recipes/tools/crafting/barometer.json
 36260d80732f7c39ea2e14da2eb747d2227ee6b2 data/gasworks/advancement/recipes/tools/crafting/fire_drill.json
 83cfe39d498bca71af0b1ecc407d9a2fdbd14895 data/gasworks/advancement/recipes/tools/crafting/tradeswomans_journal.json
@@ -164,6 +165,7 @@ d28e3277346a62a375237b0b9bb39226f621beec data/gasworks/recipe/crafting/cyan_stai
 935e42297597a67ed28d1e7a8d7348b381cb4587 data/gasworks/recipe/crafting/fired_brick_clamp.json
 993d3151834c59ec95f77f935f470f47ef64cbe4 data/gasworks/recipe/crafting/framed_glass.json
 b6899011697b455ef76b9e61a0103a38a90253a0 data/gasworks/recipe/crafting/framed_glass_pane.json
+0f427be8f6a10479986c88e52afa3805950de531 data/gasworks/recipe/crafting/geared_turntable.json
 be43e1ee4ea3b7caa330a192590f9be3a5c37a87 data/gasworks/recipe/crafting/gray_candelabra.json
 571dce67ce067c2165d19c8ed5b6fa6720dc483e data/gasworks/recipe/crafting/gray_candelabra_dyeing.json
 719c92df7f3f418bbbd2f0be3a0510bf15b59fc2 data/gasworks/recipe/crafting/gray_stained_framed_glass.json

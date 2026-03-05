@@ -20,6 +20,7 @@ import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder.P
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import voidsong.gasworks.Gasworks;
 import voidsong.gasworks.common.block.CandelabraBlock;
+import voidsong.gasworks.common.block.GearedTurntableBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
 import voidsong.gasworks.common.block.SillBlock;
 import voidsong.gasworks.common.block.properties.AshType;
@@ -476,6 +477,48 @@ public abstract class ExtendedBlockstateProvider extends BlockStateProvider {
 			.partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)
 			.modelForState().modelFile(model).rotationX(90).rotationY(90).addModel();
 		itemModel(block, model);
+	}
+
+	public void gearedTurntableBlockAndItem(GearedTurntableBlock block) {
+		// vanilla resources
+		ResourceLocation top = rlMC("smooth_stone");
+		ResourceLocation bottom = rlMC("piston_bottom");
+		// models
+		ModelFile none_top = models().withExistingParent(getName(block)+"_none", rlMC("cube_bottom_top"))
+				.texture("top", top)
+				.texture("side", rl("geared_turntable/side_none"))
+				.texture("bottom", bottom);
+		ModelFile clockwise_top = models().withExistingParent(getName(block)+"_clockwise", rlMC("cube_bottom_top"))
+				.texture("top", top)
+				.texture("side", rl("geared_turntable/side_clockwise"))
+				.texture("bottom", bottom);
+		ModelFile counterclockwise_top = models().withExistingParent(getName(block)+"_counterclockwise", rlMC("cube_bottom_top"))
+				.texture("top", top)
+				.texture("side", rl("geared_turntable/side_counterclockwise"))
+				.texture("bottom", bottom);
+		ModelFile flip_top = models().withExistingParent(getName(block)+"_flip", rlMC("cube_bottom_top"))
+				.texture("top", top)
+				.texture("side", rl("geared_turntable/side_flip"))
+				.texture("bottom", bottom);
+
+		getVariantBuilder(block)
+				.partialState().with(GSProperties.FACING_TOP_DOWN, Direction.UP).with(GearedTurntableBlock.ROTATION_TYPE, Rotation.NONE)
+				.modelForState().modelFile(none_top).addModel()
+				.partialState().with(GSProperties.FACING_TOP_DOWN, Direction.UP).with(GearedTurntableBlock.ROTATION_TYPE, Rotation.CLOCKWISE_90)
+				.modelForState().modelFile(clockwise_top).addModel()
+				.partialState().with(GSProperties.FACING_TOP_DOWN, Direction.UP).with(GearedTurntableBlock.ROTATION_TYPE, Rotation.COUNTERCLOCKWISE_90)
+				.modelForState().modelFile(counterclockwise_top).addModel()
+				.partialState().with(GSProperties.FACING_TOP_DOWN, Direction.UP).with(GearedTurntableBlock.ROTATION_TYPE, Rotation.CLOCKWISE_180)
+				.modelForState().modelFile(flip_top).addModel()
+				.partialState().with(GSProperties.FACING_TOP_DOWN, Direction.DOWN).with(GearedTurntableBlock.ROTATION_TYPE, Rotation.NONE)
+				.modelForState().modelFile(none_top).rotationX(180).addModel()
+				.partialState().with(GSProperties.FACING_TOP_DOWN, Direction.DOWN).with(GearedTurntableBlock.ROTATION_TYPE, Rotation.CLOCKWISE_90)
+				.modelForState().modelFile(clockwise_top).rotationX(180).addModel()
+				.partialState().with(GSProperties.FACING_TOP_DOWN, Direction.DOWN).with(GearedTurntableBlock.ROTATION_TYPE, Rotation.COUNTERCLOCKWISE_90)
+				.modelForState().modelFile(counterclockwise_top).rotationX(180).addModel()
+				.partialState().with(GSProperties.FACING_TOP_DOWN, Direction.DOWN).with(GearedTurntableBlock.ROTATION_TYPE, Rotation.CLOCKWISE_180)
+				.modelForState().modelFile(flip_top).rotationX(180).addModel();
+		itemModel(block, none_top);
 	}
 
 	/*

@@ -129,6 +129,15 @@ public class GSBlocks {
     public static DeferredBlock<UnlitTorchBlock> UNLIT_WALL_TORCH = BLOCKS.register("unlit_wall_torch", () -> new UnlitWallTorchBlock(UNLIT_TORCH_PROPERTIES.randomTicks(), true));
     public static DeferredBlock<UnlitTorchBlock> UNLIT_SOUL_TORCH = BLOCKS.register("unlit_soul_torch", () -> new UnlitTorchBlock(UNLIT_TORCH_PROPERTIES, false));
     public static DeferredBlock<UnlitTorchBlock> UNLIT_SOUL_WALL_TORCH = BLOCKS.register("unlit_soul_wall_torch", () -> new UnlitWallTorchBlock(UNLIT_TORCH_PROPERTIES, false));
+    /*
+     * Specialty workshop blocks not part of a larger machine, such as the workbench or woodcutter
+     */
+    public static DeferredBlock<GearedTurntableBlock> GEARED_TURNTABLE = BLOCKS.registerBlock("geared_turntable", GearedTurntableBlock::new, BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .requiresCorrectToolForDrops()
+            .strength(3.5F));
+
+
 
     /*
      * Utility function for dyed blocks, etc

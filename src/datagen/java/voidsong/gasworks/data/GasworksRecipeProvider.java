@@ -10,6 +10,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StainedGlassBlock;
 import net.minecraft.world.level.block.StainedGlassPaneBlock;
 import net.neoforged.neoforge.common.Tags;
@@ -254,6 +255,19 @@ public class GasworksRecipeProvider extends RecipeProvider {
                 .requires(Items.TORCH)
                 .unlockedBy("has_soul_fire_base_block", has(ItemTags.SOUL_FIRE_BASE_BLOCKS))
                 .save(output, rl(Items.SOUL_TORCH, "crafting",  "_from_torch"));
+        /*
+         * Specialty workshop blocks not part of a larger machine, such as the workbench or woodcutter
+         */
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, GSItems.GEARED_TURNTABLE)
+                .pattern("sss")
+                .pattern("cwc")
+                .pattern("crc")
+                .define('s', Blocks.SMOOTH_STONE_SLAB)
+                .define('c', Tags.Items.COBBLESTONES)
+                .define('w', Tags.Items.STRIPPED_LOGS)
+                .define('r', Tags.Items.DUSTS_REDSTONE)
+                .unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
+                .save(output, rl(GSItems.GEARED_TURNTABLE, "crafting"));
 
         /*
          * Tool items & other useful items

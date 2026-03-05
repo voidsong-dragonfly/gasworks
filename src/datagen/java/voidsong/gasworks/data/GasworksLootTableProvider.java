@@ -11,6 +11,7 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import voidsong.gasworks.common.block.CandelabraBlock;
 import voidsong.gasworks.common.block.CompostBlock;
 import voidsong.gasworks.common.block.PyrolyticAshBlock;
@@ -237,6 +239,10 @@ public class GasworksLootTableProvider extends LootTableProvider {
             dropSelf(GSBlocks.UNLIT_WALL_TORCH.get());
             dropSelf(GSBlocks.UNLIT_SOUL_TORCH.get());
             dropSelf(GSBlocks.UNLIT_SOUL_WALL_TORCH.get());
+            /*
+             * Specialty workshop blocks not part of a larger machine, such as the workbench or woodcutter
+             */
+            dropSelf(GSBlocks.GEARED_TURNTABLE.get());
         }
     }
 

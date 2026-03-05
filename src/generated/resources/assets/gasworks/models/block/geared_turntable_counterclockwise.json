@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/piston_bottom",
+    "side": "gasworks:block/geared_turntable/side_counterclockwise",
+    "top": "minecraft:block/smooth_stone"
+  }
+}

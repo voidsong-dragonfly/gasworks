@@ -123,6 +123,7 @@ public class GasworksBlockTagsProvider extends BlockTagsProvider {
             .add(GSBlocks.COMPOST_PILE.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(GSBlocks.CANDELABRA.get())
+            .add(GSBlocks.GEARED_TURNTABLE.get())
             .addAll(GSBlocks.BRICK_SILLS.stream().map(DeferredHolder::getKey).toList())
             .addAll(GSBlocks.BRICK_QUOINS.stream().map(DeferredHolder::getKey).toList())
             .addAll(GSBlocks.CANDELABRAS.stream().map(pair -> pair.getSecond().getKey()).toList());

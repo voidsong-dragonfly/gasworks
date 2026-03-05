@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "c": {
+      "tag": "c:cobblestones"
+    },
+    "r": {
+      "tag": "c:dusts/redstone"
+    },
+    "s": {
+      "item": "minecraft:smooth_stone_slab"
+    },
+    "w": {
+      "tag": "c:stripped_logs"
+    }
+  },
+  "pattern": [
+    "sss",
+    "cwc",
+    "crc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "gasworks:geared_turntable"
+  }
+}
