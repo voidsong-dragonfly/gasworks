@@ -105,12 +105,11 @@ public class GearedTurntableBlock extends Block {
                     facingPos.move(direction);
                     BlockState adjacentState = level.getBlockState(facingPos);
                     PushReaction reaction = adjacentState.getPistonPushReaction();
-                    // TODO: FireBlock as a stretch goal
                     // Simple attached blocks, such as FaceAttachedHorizontalDirectionalBlock or WallTorchBlock handling
                     if (isSimpleAttachedState(adjacentState, direction)) {
                         test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
-                    // VineBlock handling
-                    } else if (adjacentState.getBlock() instanceof VineBlock && adjacentState.getValue(VineBlock.getPropertyForFace(direction.getOpposite()))) {
+                    // VineBlock & FireBlock handling, as they both use PipeBlock properties directly
+                    } else if ((adjacentState.getBlock() instanceof VineBlock || adjacentState.getBlock() instanceof FireBlock) && adjacentState.getValue(VineBlock.getPropertyForFace(direction.getOpposite()))) {
                         test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
                     // MultifaceBlock handling
                     } else if (adjacentState.getBlock() instanceof MultifaceBlock && adjacentState.getValue(MultifaceBlock.getFaceProperty(direction.getOpposite()))) {
@@ -172,7 +171,7 @@ public class GearedTurntableBlock extends Block {
                                     nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || !currentResult.c.getValue(MultifaceBlock.getFaceProperty(check)));
                                 if (!nothingLeft)
                                     level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(MultifaceBlock.getFaceProperty(current.getOpposite()), false));
-                            } else if (currentResult.c.getBlock() instanceof VineBlock) {
+                            } else if (currentResult.c.getBlock() instanceof VineBlock || currentResult.c.getBlock() instanceof FireBlock) {
                                 for (Direction check : Direction.values())
                                     nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || check.equals(Direction.DOWN) || !currentResult.c.getValue(VineBlock.getPropertyForFace(check)));
                                 if (!nothingLeft)
@@ -217,7 +216,7 @@ public class GearedTurntableBlock extends Block {
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean canRotateIntoWithoutDestroying(BlockState moving, BlockState replace) {
-        return moving.getBlock().equals(replace.getBlock()) && (replace.getBlock() instanceof MultifaceBlock || replace.getBlock() instanceof VineBlock);
+        return moving.getBlock().equals(replace.getBlock()) && (replace.getBlock() instanceof MultifaceBlock || replace.getBlock() instanceof VineBlock || replace.getBlock() instanceof FireBlock);
     }
 
     public static BlockState getRotatedState(LevelAccessor level, BlockPos pos, BlockState before, BlockState replace, Rotation rotation, Direction offset) {
@@ -240,10 +239,12 @@ public class GearedTurntableBlock extends Block {
                 }
                 return before;
             }
-        // The same is true of vines blocks
-        } else if (block instanceof VineBlock) {
+        // The same is true of vines blocks. We merge with FireBlock here as it does not have a method to get properties,
+        // so we use the one from VineBlock. This works because both use properties straight from PipeBlock
+        // FireBlock also does not have a down property, so merging them here makes sense
+        } else if (block instanceof VineBlock || block instanceof FireBlock) {
             // If it is another vines block, we set the necessary face to true and move on
-            if (replace.getBlock() instanceof VineBlock) {
+            if ((replace.getBlock() instanceof VineBlock || replace.getBlock() instanceof FireBlock) && replace.getBlock().equals(block)) {
                 return replace.setValue(VineBlock.getPropertyForFace(endpoint), true);
             // Otherwise we want to only place the face we rotated, so we need to iterate through all faces to set 'em to false
             } else {
