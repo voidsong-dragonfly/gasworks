@@ -19,10 +19,12 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.Tags;
 import org.antlr.v4.runtime.misc.Triple;
+import voidsong.gasworks.api.GSTags;
 import voidsong.gasworks.common.block.properties.GSProperties;
 
 import javax.annotation.Nonnull;
@@ -48,7 +50,7 @@ public class GearedTurntableBlock extends Block {
 
     @Override
     @Nonnull
-    protected ItemInteractionResult useItemOn(ItemStack stack, @Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull Player player, @Nonnull InteractionHand hand, BlockHitResult hitResult) {
+    protected ItemInteractionResult useItemOn(ItemStack stack, @Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull Player player, @Nonnull InteractionHand hand, @Nonnull BlockHitResult hitResult) {
         if (stack.isEmpty()) {
             Rotation type = switch(state.getValue(ROTATION_TYPE)) {
                 case NONE -> Rotation.CLOCKWISE_90;
@@ -103,12 +105,15 @@ public class GearedTurntableBlock extends Block {
                     facingPos.move(direction);
                     BlockState adjacentState = level.getBlockState(facingPos);
                     PushReaction reaction = adjacentState.getPistonPushReaction();
-                    // TODO: Ladder Block, Vines Block, WallSign Block, possibly FireBlock as a stretch goal, Coral Fans, Torches
-                    // FaceAttachedDirectionalBlock handling
-                    if (adjacentState.getBlock() instanceof FaceAttachedHorizontalDirectionalBlock && adjacentState.getValue(FaceAttachedHorizontalDirectionalBlock.FACING).equals(direction)) {
+                    // TODO: FireBlock as a stretch goal
+                    // Simple attached blocks, such as FaceAttachedHorizontalDirectionalBlock or WallTorchBlock handling
+                    if (isSimpleAttachedState(adjacentState, direction)) {
+                        test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
+                    // VineBlock handling
+                    } else if (adjacentState.getBlock() instanceof VineBlock && adjacentState.getValue(VineBlock.getPropertyForFace(direction.getOpposite()))) {
                         test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
                     // MultifaceBlock handling
-                    } else if (adjacentState.getBlock() instanceof MultifaceBlock && adjacentState.getValue(MultifaceBlock.getFaceProperty(direction))) {
+                    } else if (adjacentState.getBlock() instanceof MultifaceBlock && adjacentState.getValue(MultifaceBlock.getFaceProperty(direction.getOpposite()))) {
                         test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
                     // If the block is empty, pass ignore
                     } else if (adjacentState.isEmpty()) {
@@ -130,7 +135,7 @@ public class GearedTurntableBlock extends Block {
                 Direction lead = rotation.rotate(start);
                 // We handle flip-flops specially
                 if (rotation.equals(Rotation.CLOCKWISE_180)) {
-
+                    // TODO: flip rotation implementation
                 // Otherwise, we can use a more standardized rotation handler
                 } else {
                     Triple<PushReaction, BlockPos, BlockState> rotateIntoResult = test.get(lead);
@@ -147,21 +152,33 @@ public class GearedTurntableBlock extends Block {
                                 // We check the actual block result, not the "rotation" result, destroy gets popped
                                 if (currentResult.c.getPistonPushReaction().equals(PushReaction.DESTROY)) {
                                     level.destroyBlock(currentResult.b, true, null, 0);
-                                // Anything that's not IGNORE gets marked as immobile
+                                // Anything else that's not IGNORE gets marked as immobile
                                 } else if (!currentResult.c.getPistonPushReaction().equals(PushReaction.IGNORE)) {
                                     currentResult = new Triple<>(PushReaction.BLOCK, currentResult.b, currentResult.c);
                                 }
                             // If we rotate a block into a destroyable block, pop that block
-                            } else if (rotateIntoResult.a.equals(PushReaction.DESTROY)) {
+                            } else if (rotateIntoResult.a.equals(PushReaction.DESTROY) && !canRotateIntoWithoutDestroying(currentResult.c, rotateIntoResult.c)) {
                                 level.destroyBlock(rotateIntoResult.b, true, null, 0);
                             }
                             // Do the actual rotation into the new place, and set the current block to air
                             if (!rotateIntoResult.a.equals(PushReaction.BLOCK)) {
                                 // Set rotated block
-                                // TODO: handle waterlogging properly, instead of moving waterlogged states
-                                level.setBlockAndUpdate(rotateIntoResult.b, getRotatedState(level, currentResult.b, currentResult.c, rotation));
-                                // Set current block to air
-                                level.removeBlock(currentResult.b, true);
+                                level.setBlockAndUpdate(rotateIntoResult.b, getRotatedState(level, currentResult.b, currentResult.c, rotateIntoResult.c, rotation, current));
+                                // Remove the current state's necessary rotated components; for simple blocks this is a remove, multiface we remove just one side
+                                boolean nothingLeft = true;
+                                if (currentResult.c.getBlock() instanceof MultifaceBlock) {
+                                    for (Direction check : Direction.values())
+                                        nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || !currentResult.c.getValue(MultifaceBlock.getFaceProperty(check)));
+                                    if (!nothingLeft)
+                                        level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(MultifaceBlock.getFaceProperty(current.getOpposite()), false));
+                                } else if (currentResult.c.getBlock() instanceof VineBlock) {
+                                    for (Direction check : Direction.values())
+                                        nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || check.equals(Direction.DOWN) || !currentResult.c.getValue(VineBlock.getPropertyForFace(check)));
+                                    if (!nothingLeft)
+                                        level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(VineBlock.getPropertyForFace(current.getOpposite()), false));
+                                }
+                                // If we have nothing left (normal blocks, special cases of multiface blocks), do removal
+                                if (nothingLeft) level.removeBlock(currentResult.b, true);
                             }
                         }
                         // Move one step backwards and go back to the start of the loop
@@ -181,11 +198,61 @@ public class GearedTurntableBlock extends Block {
         return state.is(Tags.Blocks.RELOCATION_NOT_SUPPORTED) || reaction.equals(PushReaction.BLOCK) || reaction.equals(PushReaction.PUSH_ONLY) || reaction.equals(PushReaction.NORMAL);
     }
 
-    public static BlockState getRotatedState(LevelAccessor level, BlockPos pos, BlockState before, Rotation rotation) {
-        Block block = before.getBlock();
-        // TODO: what we need to do for placement depends upon block class
-        if (block instanceof MultifaceBlock) {
+    @SuppressWarnings("unused")
+    public static boolean isSimpleAttachedState(BlockState state, Direction side) {
+        Block baseBlock = state.getBlock();
+        return switch (baseBlock) {
+            case FaceAttachedHorizontalDirectionalBlock block when state.getValue(FaceAttachedHorizontalDirectionalBlock.FACING).equals(side) -> true;
+            case WallTorchBlock block when state.getValue(WallTorchBlock.FACING).equals(side) -> true;
+            case UnlitWallTorchBlock block when state.getValue(UnlitWallTorchBlock.FACING).equals(side) -> true;
+            case WallSignBlock block when state.getValue(WallSignBlock.FACING).equals(side) -> true;
+            case LadderBlock block when state.getValue(LadderBlock.FACING).equals(side) -> true;
+            case CoralWallFanBlock block when state.getValue(CoralWallFanBlock.FACING).equals(side) -> true;
+            case TripWireHookBlock block when state.getValue(TripWireHookBlock.FACING).equals(side) -> true;
+            case CandelabraBlock block when state.getValue(GSProperties.FACING_ALL).equals(side.getOpposite()) -> true;
+            default -> state.is(GSTags.Blocks.SIMPLE_ROTATABLE_BLOCKS) && state.getValue(BlockStateProperties.FACING).equals(side);
+        };
+    }
 
+    public boolean canRotateIntoWithoutDestroying(BlockState moving, BlockState replace) {
+        return moving.getBlock().equals(replace.getBlock()) && (replace.getBlock() instanceof MultifaceBlock || replace.getBlock() instanceof VineBlock);
+    }
+
+    public static BlockState getRotatedState(LevelAccessor level, BlockPos pos, BlockState before, BlockState replace, Rotation rotation, Direction offset) {
+        // Handle waterlog detection, and update before state
+        boolean canWaterlog = before.hasProperty(BlockStateProperties.WATERLOGGED);
+        boolean shouldWaterlog = canWaterlog && replace.getFluidState().getType() == Fluids.WATER;
+        before = canWaterlog ? before.setValue(BlockStateProperties.WATERLOGGED, shouldWaterlog) : before;
+        // Result calculation if the state is not a standard simple rotation
+        Block block = before.getBlock();
+        Direction endpoint = rotation.rotate(offset).getOpposite();
+        // Multiface blocks we have two cases: if the block is or is not another multiface block
+        if (block instanceof MultifaceBlock) {
+            // If it is another multiface block, we set the necessary face to true and move on
+            if (replace.getBlock() instanceof MultifaceBlock) {
+                return replace.setValue(MultifaceBlock.getFaceProperty(endpoint), true);
+            // Otherwise we want to only place the face we rotated, so we need to iterate through all faces to set 'em to false
+            } else {
+                for (Direction face : Direction.values()) {
+                    before = before.setValue(MultifaceBlock.getFaceProperty(face), face.equals(endpoint));
+                }
+                return before;
+            }
+        // The same is true of vines blocks
+        } else if (block instanceof VineBlock) {
+            // If it is another vines block, we set the necessary face to true and move on
+            if (replace.getBlock() instanceof VineBlock) {
+                return replace.setValue(VineBlock.getPropertyForFace(endpoint), true);
+            // Otherwise we want to only place the face we rotated, so we need to iterate through all faces to set 'em to false
+            } else {
+                for (Direction face : Direction.values()) {
+                    // The downwards side must be excluded because vines do not have a down-facing property
+                    if (!face.equals(Direction.DOWN)) {
+                        before = before.setValue(VineBlock.getPropertyForFace(face), face.equals(endpoint));
+                    }
+                }
+                return before;
+            }
         }
         // If none of the above apply, we apply a simple rotation
         return before.rotate(level, pos, rotation);
