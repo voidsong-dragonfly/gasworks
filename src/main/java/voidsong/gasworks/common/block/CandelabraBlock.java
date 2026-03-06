@@ -18,10 +18,7 @@ import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.AbstractCandleBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -281,5 +278,18 @@ public class CandelabraBlock extends Block implements SimpleWaterloggedBlock {
         if (explosion.canTriggerBlocks() && state.getValue(LIT))
             extinguish(null, state, level, pos);
         super.onExplosionHit(state, level, pos, explosion, dropConsumer);
+    }
+
+    @Override
+    @Nonnull
+    public BlockState rotate(@Nonnull BlockState state, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull Rotation rotation) {
+        return state.setValue(GSProperties.FACING_ALL, rotation.rotate(state.getValue(GSProperties.FACING_ALL)));
+    }
+
+    @Override
+    @Nonnull
+    @SuppressWarnings("deprecation")
+    protected BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(GSProperties.FACING_ALL)));
     }
 }
