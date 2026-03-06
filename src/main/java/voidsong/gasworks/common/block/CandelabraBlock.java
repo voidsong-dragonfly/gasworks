@@ -93,10 +93,10 @@ public class CandelabraBlock extends Block implements SimpleWaterloggedBlock {
                 default -> Shapes.block();
             };
             case SOUTH -> switch(state.getValue(CANDLES)) {
-                case 1 -> Shapes.box(0.375, 0.6875, 0.375, 0.625, 0.875, 1);
-                case 2 -> Shapes.box(0.0625, 0.6875, 0.1875, 0.8125, 0.875, 1);
-                case 3 -> Shapes.box(0.0625, 0.5625, 0.0625, 0.9375, 0.875, 1);
-                case 4 -> Shapes.box(0.0625, 0.5, 0.0625, 0.9375, 0.875, 1);
+                case 1 -> Shapes.box(0.375, 0.0625, 0.6875, 0.625, 0.875, 1);
+                case 2 -> Shapes.box(0.1875, 0.0625, 0.6875, 0.8125, 0.875, 1);
+                case 3 -> Shapes.box(0.0625, 0.0625, 0.5625, 0.9375, 0.875, 1);
+                case 4 -> Shapes.box(0.0625, 0.0625, 0.5, 0.9375, 0.875, 1);
                 default -> Shapes.block();
             };
             case UP -> switch(state.getValue(CANDLES)) {
@@ -233,7 +233,7 @@ public class CandelabraBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     protected boolean canSurvive(@Nonnull BlockState state, @Nonnull LevelReader level, BlockPos pos) {
         Direction base = state.getValue(GSProperties.FACING_ALL);
-        return canSupportCenter(level, pos.offset(base.getStepX(), base.getStepY(), base.getStepZ()), base);
+        return canSupportCenter(level, pos.offset(base.getStepX(), base.getStepY(), base.getStepZ()), base.getOpposite());
     }
 
     /*
