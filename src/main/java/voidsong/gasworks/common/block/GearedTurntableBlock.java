@@ -148,7 +148,7 @@ public class GearedTurntableBlock extends Block {
                     // Do resource pop/etc if the block can be popped off, otherwise mark as immobile and move on
                     if (currentResult.a.equals(PushReaction.NORMAL)) {
                         // Pop off blocks as necessary, for destroy and place results; mark as immobile
-                        if (rotateIntoResult.a.equals(PushReaction.BLOCK)) {
+                        if (rotateIntoResult.a.equals(PushReaction.BLOCK) || (flip && rotateBlockingForFlipResult.a.equals(PushReaction.BLOCK))) {
                             // We check the actual block result, not the "rotation" result, destroy gets popped
                             if (currentResult.c.getPistonPushReaction().equals(PushReaction.DESTROY)) {
                                 level.destroyBlock(currentResult.b, true, null, 0);
@@ -162,7 +162,7 @@ public class GearedTurntableBlock extends Block {
                             level.destroyBlock(rotateIntoResult.b, true, null, 0);
                         }
                         // Do the actual rotation into the new place, and set the current block to air
-                        if (!rotateIntoResult.a.equals(PushReaction.BLOCK)) {
+                        if (!rotateIntoResult.a.equals(PushReaction.BLOCK) && !(flip && rotateBlockingForFlipResult.a.equals(PushReaction.BLOCK))) {
                             // Set rotated block
                             level.setBlockAndUpdate(rotateIntoResult.b, getRotatedState(level, currentResult.b, currentResult.c, rotateIntoResult.c, rotation, current));
                             // Remove the current state's necessary rotated components; for simple blocks this is a remove, multiface we remove just one side
