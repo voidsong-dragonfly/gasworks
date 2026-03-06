@@ -132,59 +132,60 @@ public class GearedTurntableBlock extends Block {
                 // Place the rotated state without updates other than to send to the client
                 level.setBlock(facingPos, rotatedState, 2);
                 // Iterate rotation direction over the states as necessary
+                boolean flip = rotation.equals(Rotation.CLOCKWISE_180);
                 Direction lead = rotation.rotate(start);
-                // We handle flip-flops specially
-                if (rotation.equals(Rotation.CLOCKWISE_180)) {
-                    // TODO: flip rotation implementation
-                // Otherwise, we can use a more standardized rotation handler
-                } else {
-                    Triple<PushReaction, BlockPos, BlockState> rotateIntoResult = test.get(lead);
-                    Triple<PushReaction, BlockPos, BlockState> currentResult;
-                    // We run until we go to the block across from the start, which is the one that leads
-                    for (int place = 0; place < 4; place++) {
-                        // Grab the current rotation results
-                        Direction current = rotation.rotate(lead).getOpposite();
-                        currentResult = test.get(current);
-                        // Do resource pop/etc if the block can be popped off, otherwise mark as immobile and move on
-                        if (currentResult.a.equals(PushReaction.NORMAL)) {
-                            // Pop off blocks as necessary, for destroy and place results; mark as immobile
-                            if (rotateIntoResult.a.equals(PushReaction.BLOCK)) {
-                                // We check the actual block result, not the "rotation" result, destroy gets popped
-                                if (currentResult.c.getPistonPushReaction().equals(PushReaction.DESTROY)) {
-                                    level.destroyBlock(currentResult.b, true, null, 0);
-                                // Anything else that's not IGNORE gets marked as immobile
-                                } else if (!currentResult.c.getPistonPushReaction().equals(PushReaction.IGNORE)) {
-                                    currentResult = new Triple<>(PushReaction.BLOCK, currentResult.b, currentResult.c);
-                                }
-                            // If we rotate a block into a destroyable block, pop that block
-                            } else if (rotateIntoResult.a.equals(PushReaction.DESTROY) && !canRotateIntoWithoutDestroying(currentResult.c, rotateIntoResult.c)) {
-                                level.destroyBlock(rotateIntoResult.b, true, null, 0);
+                // All rotations are the same, except for a couple of special checks for flips to ensure they move correctly
+                Triple<PushReaction, BlockPos, BlockState> rotateIntoResult = test.get(lead);
+                Triple<PushReaction, BlockPos, BlockState> rotateBlockingForFlipResult;
+                Triple<PushReaction, BlockPos, BlockState> currentResult;
+                // We run until we go to the block across from the start, which is the one that leads
+                for (int place = 0; place < 4; place++) {
+                    // Grab the current rotation results, if we're flipping we want opposite, otherwise we want the direction before this in the rotation order
+                    // To get this, because we're rotating by 90 degrees (if we're not flipping), we want to rotate by 270 - so one rotation plus a flip
+                    Direction current = flip ? lead.getOpposite() : rotation.rotate(lead).getOpposite();
+                    rotateBlockingForFlipResult = test.get(current.getClockWise());
+                    currentResult = test.get(current);
+                    // Do resource pop/etc if the block can be popped off, otherwise mark as immobile and move on
+                    if (currentResult.a.equals(PushReaction.NORMAL)) {
+                        // Pop off blocks as necessary, for destroy and place results; mark as immobile
+                        if (rotateIntoResult.a.equals(PushReaction.BLOCK)) {
+                            // We check the actual block result, not the "rotation" result, destroy gets popped
+                            if (currentResult.c.getPistonPushReaction().equals(PushReaction.DESTROY)) {
+                                level.destroyBlock(currentResult.b, true, null, 0);
+                            // Anything else that's not IGNORE gets marked as immobile
+                            } else if (!currentResult.c.getPistonPushReaction().equals(PushReaction.IGNORE)) {
+                                currentResult = new Triple<>(PushReaction.BLOCK, currentResult.b, currentResult.c);
+                                test.replace(current, currentResult);
                             }
-                            // Do the actual rotation into the new place, and set the current block to air
-                            if (!rotateIntoResult.a.equals(PushReaction.BLOCK)) {
-                                // Set rotated block
-                                level.setBlockAndUpdate(rotateIntoResult.b, getRotatedState(level, currentResult.b, currentResult.c, rotateIntoResult.c, rotation, current));
-                                // Remove the current state's necessary rotated components; for simple blocks this is a remove, multiface we remove just one side
-                                boolean nothingLeft = true;
-                                if (currentResult.c.getBlock() instanceof MultifaceBlock) {
-                                    for (Direction check : Direction.values())
-                                        nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || !currentResult.c.getValue(MultifaceBlock.getFaceProperty(check)));
-                                    if (!nothingLeft)
-                                        level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(MultifaceBlock.getFaceProperty(current.getOpposite()), false));
-                                } else if (currentResult.c.getBlock() instanceof VineBlock) {
-                                    for (Direction check : Direction.values())
-                                        nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || check.equals(Direction.DOWN) || !currentResult.c.getValue(VineBlock.getPropertyForFace(check)));
-                                    if (!nothingLeft)
-                                        level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(VineBlock.getPropertyForFace(current.getOpposite()), false));
-                                }
-                                // If we have nothing left (normal blocks, special cases of multiface blocks), do removal
-                                if (nothingLeft) level.removeBlock(currentResult.b, true);
-                            }
+                        // If we rotate a block into a destroyable block, pop that block
+                        } else if (rotateIntoResult.a.equals(PushReaction.DESTROY) && !canRotateIntoWithoutDestroying(currentResult.c, rotateIntoResult.c)) {
+                            level.destroyBlock(rotateIntoResult.b, true, null, 0);
                         }
-                        // Move one step backwards and go back to the start of the loop
-                        lead = current;
-                        rotateIntoResult = currentResult;
+                        // Do the actual rotation into the new place, and set the current block to air
+                        if (!rotateIntoResult.a.equals(PushReaction.BLOCK)) {
+                            // Set rotated block
+                            level.setBlockAndUpdate(rotateIntoResult.b, getRotatedState(level, currentResult.b, currentResult.c, rotateIntoResult.c, rotation, current));
+                            // Remove the current state's necessary rotated components; for simple blocks this is a remove, multiface we remove just one side
+                            boolean nothingLeft = true;
+                            if (currentResult.c.getBlock() instanceof MultifaceBlock) {
+                                for (Direction check : Direction.values())
+                                    nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || !currentResult.c.getValue(MultifaceBlock.getFaceProperty(check)));
+                                if (!nothingLeft)
+                                    level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(MultifaceBlock.getFaceProperty(current.getOpposite()), false));
+                            } else if (currentResult.c.getBlock() instanceof VineBlock) {
+                                for (Direction check : Direction.values())
+                                    nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || check.equals(Direction.DOWN) || !currentResult.c.getValue(VineBlock.getPropertyForFace(check)));
+                                if (!nothingLeft)
+                                    level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(VineBlock.getPropertyForFace(current.getOpposite()), false));
+                            }
+                            // If we have nothing left (normal blocks, special cases of multiface blocks), do removal
+                            if (nothingLeft) level.removeBlock(currentResult.b, true);
+                        }
                     }
+                    // Move one step backwards and go back to the start of the loop
+                    // Except if we flip were we only move 90 degrees clockwise, to ensure we hit all 4 sides
+                    lead = flip ? current.getClockWise() : current;
+                    rotateIntoResult = flip ? rotateBlockingForFlipResult : currentResult;
                 }
                 // Place the rotated state one final time, with updates; this will update the nearby states as well
                 level.setBlockAndUpdate(facingPos, rotatedState);
@@ -214,6 +215,7 @@ public class GearedTurntableBlock extends Block {
         };
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean canRotateIntoWithoutDestroying(BlockState moving, BlockState replace) {
         return moving.getBlock().equals(replace.getBlock()) && (replace.getBlock() instanceof MultifaceBlock || replace.getBlock() instanceof VineBlock);
     }
