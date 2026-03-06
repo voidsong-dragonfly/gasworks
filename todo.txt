@@ -28,12 +28,13 @@
      - Kiln
      - Turntable for blocks that need mechanical power (Geared Hammer, Geared Bellows)
      - Implement jute, hemp, & possibly rubber?
- - possible features i might like from Suppl
+ - possible features i might like from Suppl/inspirations
      - Ash from burning blocks => decide if I want to entirely redo fire spread first
      - Useful small blocks; turntable, adjustable lever, & wind vane?
      - Feeding & nesting blocks to help with automation
      - Fabric blocks such as awnings, bales, etc
      - Map icons for portals, beacons, etc?
+     - photometer,
  - Tool system
      - Two kinds of durability, 'minor fixes' & 'major fixes'
          - Minor fixes can be repaired with N nuggets of the material each time, and can be fixed out in the wild via a maintenance kit
@@ -122,7 +123,9 @@
      - add in lines of gunpowder being able to trigger barrels/TNT
      - change the name of TNT perhaps?
  - crates (?)
- - Weatherproofed Planks/wood/etc
+ - Weatherproof Planks/wood/etc
+     - "Weaterproof Crate" for item storage (can be picked up after sealing... somehow. with toolbox?)
+     - "Weatherproof Barrel" for fluid storage. 12B or 16B. Same recipe as normal barrel
  - figure out fireclay/nether brick debate I started having in my head recently
      - do we care about having limeclay specifically, and not using nether resources (?)
      - nether clay makes nether bricks, netherrack used as flux alongside dripstone or calcite
@@ -133,6 +136,9 @@
      - will need to keep limeclay around for ironmaking in the overworld. instead just normal clay + dripstone (!) or possibly calcite (!)
      - will need a way to get that's not standard deposits, suggest keeping ore deposit for now, but on surface. clay pit perhaps (?)
      - do we care if we use nether clay at all, or can we keep the current method? => finding nether clay, etc
-
-
-
+ - trees falling (vanilla tweaks ohitsjustjose or panda's falling trees as an example?)
+ - items dropped by players don't despawn
+ - a few other things similar to bits i like from Charcoal Pit 4
+     - place for chickens to lay their eggs, and a feeding trough that naturally limits # of animals?
+ - hoe harvesting: rightclick a crop with a hoe to hoe a 3x3 space around it & replant from the offhand
+ - woodcutter block for nicer wood recipes?

@@ -7,7 +7,6 @@ Iron            | Wrought Iron, Steel
 Copper          | Copper, Duralumin
 Latenium        | Latenium
 Bauxite         | Duralumin
-Limeclay        | Cement, Fireclay, Clay
 
 
 PROCESSED MATERIALS
@@ -24,12 +23,11 @@ FULL MATERIALS LIST
 INGOTS (Plate, Rod, Components, Wire)                           OTHER
 ------------------------------------------                      ------------------------------------------
 Wrought Iron                                                    Cement
-Copper                                                          Fireclay
-Latenium                                                        Clay
-Duralumin                                                       Coal
-Hardened Steel (+Tool BIts)                                     Coke
-HSNA Steel (+Tool Bits)                                         Redstone
-                                                                Quartz
+Copper                                                          Clay
+Latenium                                                        Coal
+Duralumin                                                       Coke
+Hardened Steel (+Tool BIts)                                     Redstone
+HSNA Steel (+Tool Bits)                                         Quartz
 
 
 MACHINES (EARLY GAME)                                   		UTILITIES (EARLY GAME)

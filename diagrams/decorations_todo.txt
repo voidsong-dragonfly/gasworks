@@ -7,7 +7,6 @@ Iron            | Wrought Iron, Steel
 Copper          | Copper, Duralumin
 Latenium        | Latenium
 Bauxite         | Duralumin
-Limeclay        | Cement, Fireclay, Clay
 
 
 CERAMICS
