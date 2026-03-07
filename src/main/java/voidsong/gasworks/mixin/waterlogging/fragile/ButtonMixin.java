@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import voidsong.gasworks.common.block.interfaces.FragileWaterloggedBlock;
-import voidsong.gasworks.common.block.interfaces.modifications.VanillaWaterloggedBlock;
+import voidsong.gasworks.api.block.FragileWaterloggedBlock;
+import voidsong.gasworks.common.block.interfaces.VanillaWaterloggedBlock;
 
 @Mixin(ButtonBlock.class)
 public class ButtonMixin implements VanillaWaterloggedBlock, FragileWaterloggedBlock {

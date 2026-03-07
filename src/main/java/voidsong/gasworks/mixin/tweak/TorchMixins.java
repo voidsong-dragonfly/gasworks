@@ -31,7 +31,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import voidsong.gasworks.api.GSTags;
-import voidsong.gasworks.common.block.interfaces.modifications.VanillaRandomTickBlock;
+import voidsong.gasworks.common.block.interfaces.VanillaRandomTickBlock;
 import voidsong.gasworks.common.util.BlockUtil;
 
 import javax.annotation.Nonnull;

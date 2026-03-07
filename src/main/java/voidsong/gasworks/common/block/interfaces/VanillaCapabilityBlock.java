@@ -1,4 +1,4 @@
-package voidsong.gasworks.common.block.interfaces.modifications;
+package voidsong.gasworks.common.block.interfaces;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

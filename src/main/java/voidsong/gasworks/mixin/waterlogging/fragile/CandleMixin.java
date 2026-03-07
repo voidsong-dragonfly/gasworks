@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import voidsong.gasworks.common.block.interfaces.FragileWaterloggedBlock;
+import voidsong.gasworks.api.block.FragileWaterloggedBlock;
 
 @Mixin(CandleBlock.class)
 public class CandleMixin extends Block implements FragileWaterloggedBlock {

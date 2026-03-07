@@ -29,7 +29,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
-import voidsong.gasworks.common.block.interfaces.FragileWaterloggedBlock;
+import voidsong.gasworks.api.block.FragileWaterloggedBlock;
 import voidsong.gasworks.common.block.properties.GSProperties;
 import voidsong.gasworks.common.util.BlockUtil;
 
