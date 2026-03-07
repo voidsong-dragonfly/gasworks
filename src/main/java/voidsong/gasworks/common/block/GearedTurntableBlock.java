@@ -25,6 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.Tags;
 import org.antlr.v4.runtime.misc.Triple;
 import voidsong.gasworks.api.GSTags;
+import voidsong.gasworks.api.block.IReceivesIntermittentRotation;
 import voidsong.gasworks.common.block.properties.GSProperties;
 
 import javax.annotation.Nonnull;
@@ -85,109 +86,125 @@ public class GearedTurntableBlock extends Block {
         }
     }
 
+    private boolean hasNeighborSignalExceptThroughTurntable(Level level, BlockPos pos, Direction facing) {
+        int powered = 0;
+        for (Direction direction : Direction.values()) {
+            if (!direction.equals(facing)) powered += level.getSignal(pos.relative(direction), direction);
+        }
+        return powered > 0;
+    }
+
     public void checkAndRotate(BlockState state, ServerLevel level, BlockPos pos) {
-        boolean redstone = level.hasNeighborSignal(pos);
+        // Grab facing so we can test signal power for the block, as we don't accept power through the turntable
+        Direction facing = state.getValue(GSProperties.FACING_TOP_DOWN);
+        boolean redstone = hasNeighborSignalExceptThroughTurntable(level, pos, facing);
         // Check if we have changed state  and if we can even rotate
         if (redstone != state.getValue(BlockStateProperties.POWERED)) {
             // Get rotation
             Rotation rotation = state.getValue(ROTATION_TYPE);
             // If we currently have power, aren't set to no-rotation, rotate
             if (redstone && !rotation.equals(Rotation.NONE)) {
-                MutableBlockPos facingPos = pos.relative(state.getValue(GSProperties.FACING_TOP_DOWN)).mutable();
+                MutableBlockPos facingPos = pos.relative(facing).mutable();
                 BlockState facingState = level.getBlockState(facingPos);
-                // Rotate the state above and save it until we make changes
-                BlockState rotatedState = facingState.rotate(level,facingPos, state.getValue(ROTATION_TYPE));
-                // Check if external block rotational is possible, and what states we have to care about rotating
-                Map<Direction, Triple<PushReaction, BlockPos, BlockState>> test = new HashMap<>();
-                Direction start = Direction.NORTH;
-                for (Direction direction : Direction.Plane.HORIZONTAL) {
-                    // Move the position to the exterior one & get the state
-                    facingPos.move(direction);
-                    BlockState adjacentState = level.getBlockState(facingPos);
-                    PushReaction reaction = adjacentState.getPistonPushReaction();
-                    // Simple attached blocks, such as FaceAttachedHorizontalDirectionalBlock or WallTorchBlock handling
-                    if (isSimpleAttachedState(adjacentState, direction)) {
-                        test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
-                    // VineBlock & FireBlock handling, as they both use PipeBlock properties directly
-                    } else if ((adjacentState.getBlock() instanceof VineBlock || adjacentState.getBlock() instanceof FireBlock) && adjacentState.getValue(VineBlock.getPropertyForFace(direction.getOpposite()))) {
-                        test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
-                    // MultifaceBlock handling
-                    } else if (adjacentState.getBlock() instanceof MultifaceBlock && adjacentState.getValue(MultifaceBlock.getFaceProperty(direction.getOpposite()))) {
-                        test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
-                    // If the block is empty, pass ignore
-                    } else if (adjacentState.isEmpty()) {
-                        test.put(direction, new Triple<>(PushReaction.IGNORE, facingPos.immutable(), adjacentState));
-                    // If it's marked as absolute immobile, exit early
-                    } else if (blocksTurntableFaceRotation(adjacentState, reaction)) {
-                        test.put(direction, new Triple<>(PushReaction.BLOCK, facingPos.immutable(), adjacentState));
-                        start = direction;
-                    // Otherwise, the rest can pass through (ignore/destroy)
-                    } else {
-                        test.put(direction, new Triple<>(reaction, facingPos.immutable(), adjacentState));
-                    }
-                    // Move the position back to the center
-                    facingPos.move(direction.getOpposite());
-                }
-                // Place the rotated state without updates other than to send to the client
-                level.setBlock(facingPos, rotatedState, 2);
-                // Iterate rotation direction over the states as necessary
-                boolean flip = rotation.equals(Rotation.CLOCKWISE_180);
-                Direction lead = rotation.rotate(start);
-                // All rotations are the same, except for a couple of special checks for flips to ensure they move correctly
-                Triple<PushReaction, BlockPos, BlockState> rotateIntoResult = test.get(lead);
-                Triple<PushReaction, BlockPos, BlockState> rotateBlockingForFlipResult;
-                Triple<PushReaction, BlockPos, BlockState> currentResult;
-                // We run until we go to the block across from the start, which is the one that leads
-                for (int place = 0; place < 4; place++) {
-                    // Grab the current rotation results, if we're flipping we want opposite, otherwise we want the direction before this in the rotation order
-                    // To get this, because we're rotating by 90 degrees (if we're not flipping), we want to rotate by 270 - so one rotation plus a flip
-                    Direction current = flip ? lead.getOpposite() : rotation.rotate(lead).getOpposite();
-                    rotateBlockingForFlipResult = test.get(current.getClockWise());
-                    currentResult = test.get(current);
-                    // Do resource pop/etc if the block can be popped off, otherwise mark as immobile and move on
-                    if (currentResult.a.equals(PushReaction.NORMAL)) {
-                        // Pop off blocks as necessary, for destroy and place results; mark as immobile
-                        if (rotateIntoResult.a.equals(PushReaction.BLOCK) || (flip && rotateBlockingForFlipResult.a.equals(PushReaction.BLOCK))) {
-                            // We check the actual block result, not the "rotation" result, destroy gets popped
-                            if (currentResult.c.getPistonPushReaction().equals(PushReaction.DESTROY)) {
-                                level.destroyBlock(currentResult.b, true, null, 0);
-                            // Anything else that's not IGNORE gets marked as immobile
-                            } else if (!currentResult.c.getPistonPushReaction().equals(PushReaction.IGNORE)) {
-                                currentResult = new Triple<>(PushReaction.BLOCK, currentResult.b, currentResult.c);
-                                test.replace(current, currentResult);
-                            }
-                        // If we rotate a block into a destroyable block, pop that block
-                        } else if (rotateIntoResult.a.equals(PushReaction.DESTROY) && !canRotateIntoWithoutDestroying(currentResult.c, rotateIntoResult.c)) {
-                            level.destroyBlock(rotateIntoResult.b, true, null, 0);
+                // If we have a state that takes rotation above, activate it
+                if (facingState.getBlock() instanceof IReceivesIntermittentRotation receivesRotation && receivesRotation.acceptsFromSide(facing.getOpposite())) {
+                    receivesRotation.onIntermittentRotate();
+                // Otherwise, simply rotate the state above
+                } else if (!facingState.is(GSTags.Blocks.ROTATION_BLACKLIST)) {
+                    // Rotate the state above and save it until we make changes
+                    BlockState rotatedState = facingState.rotate(level, facingPos, state.getValue(ROTATION_TYPE));
+                    // Check if external block rotational is possible, and what states we have to care about rotating
+                    Map<Direction, Triple<PushReaction, BlockPos, BlockState>> test = new HashMap<>();
+                    Direction start = Direction.NORTH;
+                    for (Direction direction : Direction.Plane.HORIZONTAL) {
+                        // Move the position to the exterior one & get the state
+                        facingPos.move(direction);
+                        BlockState adjacentState = level.getBlockState(facingPos);
+                        PushReaction reaction = adjacentState.getPistonPushReaction();
+                        // Simple attached blocks, such as FaceAttachedHorizontalDirectionalBlock or WallTorchBlock handling
+                        if (isSimpleAttachedState(adjacentState, direction)) {
+                            test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
+                        // VineBlock & FireBlock handling, as they both use PipeBlock properties directly
+                        } else if ((adjacentState.getBlock() instanceof VineBlock || adjacentState.getBlock() instanceof FireBlock) && adjacentState.getValue(VineBlock.getPropertyForFace(direction.getOpposite()))) {
+                            test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
+                        // MultifaceBlock handling
+                        } else if (adjacentState.getBlock() instanceof MultifaceBlock && adjacentState.getValue(MultifaceBlock.getFaceProperty(direction.getOpposite()))) {
+                            test.put(direction, new Triple<>(PushReaction.NORMAL, facingPos.immutable(), adjacentState));
+                        // If the block is empty, pass ignore
+                        } else if (adjacentState.isEmpty()) {
+                            test.put(direction, new Triple<>(PushReaction.IGNORE, facingPos.immutable(), adjacentState));
+                        // If it's marked as absolute immobile, exit early
+                        } else if (blocksTurntableFaceRotation(adjacentState, reaction)) {
+                            test.put(direction, new Triple<>(PushReaction.BLOCK, facingPos.immutable(), adjacentState));
+                            start = direction;
+                        // Otherwise, the rest can pass through (ignore/destroy)
+                        } else {
+                            test.put(direction, new Triple<>(reaction, facingPos.immutable(), adjacentState));
                         }
-                        // Do the actual rotation into the new place, and set the current block to air
-                        if (!rotateIntoResult.a.equals(PushReaction.BLOCK) && !(flip && rotateBlockingForFlipResult.a.equals(PushReaction.BLOCK))) {
-                            // Set rotated block
-                            level.setBlockAndUpdate(rotateIntoResult.b, getRotatedState(level, currentResult.b, currentResult.c, rotateIntoResult.c, rotation, current));
-                            // Remove the current state's necessary rotated components; for simple blocks this is a remove, multiface we remove just one side
-                            boolean nothingLeft = true;
-                            if (currentResult.c.getBlock() instanceof MultifaceBlock) {
-                                for (Direction check : Direction.values())
-                                    nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || !currentResult.c.getValue(MultifaceBlock.getFaceProperty(check)));
-                                if (!nothingLeft)
-                                    level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(MultifaceBlock.getFaceProperty(current.getOpposite()), false));
-                            } else if (currentResult.c.getBlock() instanceof VineBlock || currentResult.c.getBlock() instanceof FireBlock) {
-                                for (Direction check : Direction.values())
-                                    nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || check.equals(Direction.DOWN) || !currentResult.c.getValue(VineBlock.getPropertyForFace(check)));
-                                if (!nothingLeft)
-                                    level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(VineBlock.getPropertyForFace(current.getOpposite()), false));
-                            }
-                            // If we have nothing left (normal blocks, special cases of multiface blocks), do removal
-                            if (nothingLeft) level.removeBlock(currentResult.b, true);
-                        }
+                        // Move the position back to the center
+                        facingPos.move(direction.getOpposite());
                     }
-                    // Move one step backwards and go back to the start of the loop
-                    // Except if we flip were we only move 90 degrees clockwise, to ensure we hit all 4 sides
-                    lead = flip ? current.getClockWise() : current;
-                    rotateIntoResult = flip ? rotateBlockingForFlipResult : currentResult;
+                    // Place the rotated state without updates other than to send to the client
+                    level.setBlock(facingPos, rotatedState, 2);
+                    // Iterate rotation direction over the states as necessary
+                    boolean flip = rotation.equals(Rotation.CLOCKWISE_180);
+                    Direction lead = rotation.rotate(start);
+                    // All rotations are the same, except for a couple of special checks for flips to ensure they move correctly
+                    Triple<PushReaction, BlockPos, BlockState> rotateIntoResult = test.get(lead);
+                    Triple<PushReaction, BlockPos, BlockState> rotateBlockingForFlipResult;
+                    Triple<PushReaction, BlockPos, BlockState> currentResult;
+                    // We run until we go to the block across from the start, which is the one that leads
+                    for (int place = 0; place < 4; place++) {
+                        // Grab the current rotation results, if we're flipping we want opposite, otherwise we want the direction before this in the rotation order
+                        // To get this, because we're rotating by 90 degrees (if we're not flipping), we want to rotate by 270 - so one rotation plus a flip
+                        Direction current = flip ? lead.getOpposite() : rotation.rotate(lead).getOpposite();
+                        rotateBlockingForFlipResult = test.get(current.getClockWise());
+                        currentResult = test.get(current);
+                        // Do resource pop/etc if the block can be popped off, otherwise mark as immobile and move on
+                        if (currentResult.a.equals(PushReaction.NORMAL)) {
+                            // Pop off blocks as necessary, for destroy and place results; mark as immobile
+                            if (rotateIntoResult.a.equals(PushReaction.BLOCK) || (flip && rotateBlockingForFlipResult.a.equals(PushReaction.BLOCK))) {
+                                // We check the actual block result, not the "rotation" result, destroy gets popped
+                                if (currentResult.c.getPistonPushReaction().equals(PushReaction.DESTROY)) {
+                                    level.destroyBlock(currentResult.b, true, null, 0);
+                                // Anything else that's not IGNORE gets marked as immobile
+                                } else if (!currentResult.c.getPistonPushReaction().equals(PushReaction.IGNORE)) {
+                                    currentResult = new Triple<>(PushReaction.BLOCK, currentResult.b, currentResult.c);
+                                    test.replace(current, currentResult);
+                                }
+                            // If we rotate a block into a destroyable block, pop that block
+                            } else if (rotateIntoResult.a.equals(PushReaction.DESTROY) && !canRotateIntoWithoutDestroying(currentResult.c, rotateIntoResult.c)) {
+                                level.destroyBlock(rotateIntoResult.b, true, null, 0);
+                            }
+                            // Do the actual rotation into the new place, and set the current block to air
+                            if (!rotateIntoResult.a.equals(PushReaction.BLOCK) && !(flip && rotateBlockingForFlipResult.a.equals(PushReaction.BLOCK))) {
+                                // Set rotated block
+                                level.setBlock(rotateIntoResult.b, getRotatedState(level, currentResult.b, currentResult.c, rotateIntoResult.c, rotation, current), 67);
+                                // Remove the current state's necessary rotated components; for simple blocks this is a remove, multiface we remove just one side
+                                boolean nothingLeft = true;
+                                if (currentResult.c.getBlock() instanceof MultifaceBlock) {
+                                    for (Direction check : Direction.values())
+                                        nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || !currentResult.c.getValue(MultifaceBlock.getFaceProperty(check)));
+                                    if (!nothingLeft)
+                                        level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(MultifaceBlock.getFaceProperty(current.getOpposite()), false));
+                                } else if (currentResult.c.getBlock() instanceof VineBlock || currentResult.c.getBlock() instanceof FireBlock) {
+                                    for (Direction check : Direction.values())
+                                        nothingLeft = nothingLeft && (check.equals(current.getOpposite()) || check.equals(Direction.DOWN) || !currentResult.c.getValue(VineBlock.getPropertyForFace(check)));
+                                    if (!nothingLeft)
+                                        level.setBlockAndUpdate(currentResult.b, currentResult.c.setValue(VineBlock.getPropertyForFace(current.getOpposite()), false));
+                                }
+                                // If we have nothing left (normal blocks, special cases of multiface blocks), do removal
+                                if (nothingLeft) level.removeBlock(currentResult.b, true);
+                            }
+                        }
+                        // Move one step backwards and go back to the start of the loop
+                        // Except if we flip were we only move 90 degrees clockwise, to ensure we hit all 4 sides
+                        lead = flip ? current.getClockWise() : current;
+                        rotateIntoResult = flip ? rotateBlockingForFlipResult : currentResult;
+                    }
+                    // Place the rotated state one final time, with updates from neighbors; this will update the nearby states as well
+                    level.setBlockAndUpdate(facingPos, Block.updateFromNeighbourShapes(rotatedState, level, facingPos));
                 }
-                // Place the rotated state one final time, with updates; this will update the nearby states as well
-                level.setBlockAndUpdate(facingPos, rotatedState);
             }
             // Update the powered property as necessary at the end
             level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.POWERED, redstone));
@@ -204,6 +221,7 @@ public class GearedTurntableBlock extends Block {
         return switch (baseBlock) {
             case FaceAttachedHorizontalDirectionalBlock block when state.getValue(FaceAttachedHorizontalDirectionalBlock.FACING).equals(side) -> true;
             case WallTorchBlock block when state.getValue(WallTorchBlock.FACING).equals(side) -> true;
+            case RedstoneWallTorchBlock block when state.getValue(RedstoneWallTorchBlock.FACING).equals(side) -> true;
             case UnlitWallTorchBlock block when state.getValue(UnlitWallTorchBlock.FACING).equals(side) -> true;
             case WallSignBlock block when state.getValue(WallSignBlock.FACING).equals(side) -> true;
             case LadderBlock block when state.getValue(LadderBlock.FACING).equals(side) -> true;

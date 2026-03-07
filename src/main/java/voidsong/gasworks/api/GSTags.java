@@ -46,6 +46,7 @@ public class GSTags {
         public static final TagKey<Block> LOW_LIGHT_TORCHES = blockTag(Gasworks.rl("low_light_torches"));
         // Tags for simple rotating blocks
         public static final TagKey<Block> SIMPLE_ROTATABLE_BLOCKS = blockTag(Gasworks.rl("simple_rotatable_blocks"));
+        public static final TagKey<Block> ROTATION_BLACKLIST = blockTag(Gasworks.rl("rotation_blacklist"));
     }
 
     public static class Items {
