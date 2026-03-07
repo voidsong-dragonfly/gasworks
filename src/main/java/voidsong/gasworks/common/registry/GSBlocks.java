@@ -125,10 +125,6 @@ public class GSBlocks {
     public static DeferredBlock<CandelabraBlock> CANDELABRA = BLOCKS.registerBlock("candelabra", CandelabraBlock::new, CANDELABRA_PROPERTIES.mapColor(MapColor.SAND));
     public static List<Pair<DyeColor, DeferredBlock<CandelabraBlock>>> CANDELABRAS = createCandelabras();
     // Unlit torches, soul & otherwise
-    public static DeferredBlock<UnlitTorchBlock> UNLIT_TORCH = BLOCKS.register("unlit_torch", () -> new UnlitTorchBlock(UNLIT_TORCH_PROPERTIES.randomTicks(), true));
-    public static DeferredBlock<UnlitTorchBlock> UNLIT_WALL_TORCH = BLOCKS.register("unlit_wall_torch", () -> new UnlitWallTorchBlock(UNLIT_TORCH_PROPERTIES.randomTicks(), true));
-    public static DeferredBlock<UnlitTorchBlock> UNLIT_SOUL_TORCH = BLOCKS.register("unlit_soul_torch", () -> new UnlitTorchBlock(UNLIT_TORCH_PROPERTIES, false));
-    public static DeferredBlock<UnlitTorchBlock> UNLIT_SOUL_WALL_TORCH = BLOCKS.register("unlit_soul_wall_torch", () -> new UnlitWallTorchBlock(UNLIT_TORCH_PROPERTIES, false));
     /*
      * Specialty workshop blocks not part of a larger machine, such as the workbench or woodcutter
      */

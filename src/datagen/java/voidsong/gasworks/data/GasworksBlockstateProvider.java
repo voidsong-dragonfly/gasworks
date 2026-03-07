@@ -97,21 +97,6 @@ public class GasworksBlockstateProvider extends ExtendedBlockstateProvider {
             CandelabraBlock block = pair.getSecond().get();
             candelabraBlockAndItem(block, pair.getFirst(), 0,0);
         }
-        // Unlit torches, soul & otherwise
-        simpleBlockAndItem(GSBlocks.UNLIT_TORCH.get(), models()
-            .withExistingParent(getName(GSBlocks.UNLIT_TORCH.get()), rlMC("template_torch"))
-            .texture("torch", rl("torch/unlit")).renderType("cutout"));
-        rotatedBlock(GSBlocks.UNLIT_WALL_TORCH.get(), models()
-            .withExistingParent(getName(GSBlocks.UNLIT_WALL_TORCH.get()), rlMC("template_torch_wall"))
-            .texture("torch", rl("torch/unlit")).renderType("cutout"),
-            HorizontalDirectionalBlock.FACING, List.of(), 0, 90);
-        simpleBlockAndItem(GSBlocks.UNLIT_SOUL_TORCH.get(), models()
-            .withExistingParent(getName(GSBlocks.UNLIT_SOUL_TORCH.get()), rlMC("template_torch"))
-            .texture("torch", rl("torch/unlit_soul")).renderType("cutout"));
-        rotatedBlock(GSBlocks.UNLIT_SOUL_WALL_TORCH.get(), models()
-            .withExistingParent(getName(GSBlocks.UNLIT_SOUL_WALL_TORCH.get()), rlMC("template_torch_wall"))
-            .texture("torch", rl("torch/unlit_soul")).renderType("cutout"),
-            HorizontalDirectionalBlock.FACING, List.of(), 0, 90);
         /*
          * Specialty workshop blocks not part of a larger machine, such as the workbench or woodcutter
          */

@@ -238,15 +238,6 @@ public class GasworksRecipeProvider extends RecipeProvider {
                 .save(output, rl(item, "crafting",  "_dyeing"));
         }
         // Unlit torches, soul & otherwise
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(GSItems.UNLIT_TORCH), RecipeCategory.DECORATIONS, Items.TORCH, 0.35f, 100)
-            .unlockedBy("has_unlit_torch", has(GSItems.UNLIT_TORCH))
-            .save(output, rl(Items.TORCH, "campfire"));
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Tags.Items.RODS_WOODEN), RecipeCategory.DECORATIONS, Items.TORCH, 0.35f, 100)
-                .unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
-                .save(output, rl(Items.TORCH, "campfire", "_from_stick"));
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(GSItems.UNLIT_SOUL_TORCH), RecipeCategory.DECORATIONS, Items.SOUL_TORCH, 1.0f, 100)
-                .unlockedBy("has_unlit_soul_torch", has(GSItems.UNLIT_SOUL_TORCH))
-                .save(output, rl(Items.SOUL_TORCH, "campfire"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, Items.SOUL_TORCH, 4)
                 .requires(ItemTags.SOUL_FIRE_BASE_BLOCKS)
                 .requires(Items.TORCH)

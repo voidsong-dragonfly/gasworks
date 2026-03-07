@@ -224,7 +224,6 @@ public class GearedTurntableBlock extends Block {
             case FaceAttachedHorizontalDirectionalBlock block when state.getValue(FaceAttachedHorizontalDirectionalBlock.FACING).equals(side) -> true;
             case WallTorchBlock block when state.getValue(WallTorchBlock.FACING).equals(side) -> true;
             case RedstoneWallTorchBlock block when state.getValue(RedstoneWallTorchBlock.FACING).equals(side) -> true;
-            case UnlitWallTorchBlock block when state.getValue(UnlitWallTorchBlock.FACING).equals(side) -> true;
             case WallSignBlock block when state.getValue(WallSignBlock.FACING).equals(side) -> true;
             case LadderBlock block when state.getValue(LadderBlock.FACING).equals(side) -> true;
             case CoralWallFanBlock block when state.getValue(CoralWallFanBlock.FACING).equals(side) -> true;

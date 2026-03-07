@@ -67,8 +67,6 @@ public class GSItems {
     public static DeferredItem<BlockItem> CANDELABRA = ITEMS.registerSimpleBlockItem("candelabra", GSBlocks.CANDELABRA);
     public static List<DeferredItem<BlockItem>> CANDELABRAS = createCandelabras();
     // Unlit torches, soul & otherwise
-    public static DeferredItem<StandingAndWallBlockItem> UNLIT_TORCH = ITEMS.registerItem("unlit_torch", p -> new StandingAndWallBlockItem(GSBlocks.UNLIT_TORCH.get(), GSBlocks.UNLIT_WALL_TORCH.get(), p, Direction.DOWN));
-    public static DeferredItem<StandingAndWallBlockItem> UNLIT_SOUL_TORCH = ITEMS.registerItem("unlit_soul_torch", p -> new StandingAndWallBlockItem(GSBlocks.UNLIT_SOUL_TORCH.get(), GSBlocks.UNLIT_SOUL_WALL_TORCH.get(), p, Direction.DOWN));
     /*
      * Specialty workshop blocks not part of a larger machine, such as the workbench or woodcutter
      */
@@ -119,8 +117,6 @@ public class GSItems {
             output.accept(GSItems.FRAMED_GLASS_PANE);
             output.acceptAll(STAINED_FRAMED_GLASS.stream().map(item -> new ItemStack(item.get())).toList());
             output.acceptAll(STAINED_FRAMED_GLASS_PANES.stream().map(item -> new ItemStack(item.get())).toList());
-            output.accept(GSItems.UNLIT_TORCH);
-            output.accept(GSItems.UNLIT_SOUL_TORCH);
             output.accept(GSItems.GEARED_TURNTABLE);
         }).build());
 
