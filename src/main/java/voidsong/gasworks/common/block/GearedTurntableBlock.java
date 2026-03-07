@@ -39,7 +39,7 @@ public class GearedTurntableBlock extends Block {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(GSProperties.FACING_TOP_DOWN, Direction.UP)
-                .setValue(ROTATION_TYPE, Rotation.NONE)
+                .setValue(ROTATION_TYPE, Rotation.CLOCKWISE_90)
                 .setValue(BlockStateProperties.POWERED, false));
     }
 
@@ -203,7 +203,9 @@ public class GearedTurntableBlock extends Block {
                         rotateIntoResult = flip ? rotateBlockingForFlipResult : currentResult;
                     }
                     // Place the rotated state one final time, with updates from neighbors; this will update the nearby states as well
-                    level.setBlockAndUpdate(facingPos, Block.updateFromNeighbourShapes(rotatedState, level, facingPos));
+                    BlockState finalState = Block.updateFromNeighbourShapes(rotatedState, level, facingPos);
+                    level.setBlockAndUpdate(facingPos, finalState);
+                    level.updateNeighborsAt(facingPos, finalState.getBlock());
                 }
             }
             // Update the powered property as necessary at the end
