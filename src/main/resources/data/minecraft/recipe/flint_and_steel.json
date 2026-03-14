@@ -3,7 +3,7 @@
   "category": "equipment",
   "ingredients": [
     {
-      "tag": "gasworks:ferric_striker"
+      "tag": "gasworks:ferric_strikers"
     },
     {
       "item": "minecraft:flint"
