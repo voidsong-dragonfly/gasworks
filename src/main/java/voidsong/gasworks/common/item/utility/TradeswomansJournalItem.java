@@ -50,13 +50,9 @@ public class TradeswomansJournalItem extends Item {
             return InteractionResultHolder.pass(stack);
         // Grab the stored experience for checks
         StoredExperience bookExperience = getExperienceStored(stack);
-        // Fail the check if we have too much experience or no experience to learn
+        // Fail the check if we have no experience to learn
         if(player.experienceLevel == 0 && player.experienceProgress == 0 && !bookExperience.set) {
             player.displayClientMessage(Component.translatable("message.gasworks.no_experience"), true);
-            return InteractionResultHolder.fail(stack);
-        }
-        if(bookExperience.set && (player.experienceLevel > bookExperience.level || (player.experienceLevel == bookExperience.level && player.experienceProgress > bookExperience.progress))) {
-            player.displayClientMessage(Component.translatable("message.gasworks.too_much_experience"), true);
             return InteractionResultHolder.fail(stack);
         }
         // Start interaction
@@ -78,7 +74,8 @@ public class TradeswomansJournalItem extends Item {
         // Set the player's experience & add a 1s cooldown on getting experience
         player.setExperiencePoints(0);
         player.setExperienceLevels(bookExperience.level);
-        player.setExperiencePoints((int)(bookExperience.progress*player.getXpNeededForNextLevel()));
+        // We set directly here so as not to go through conversions that may shave a small amount off
+        player.experienceProgress = bookExperience.progress;
         player.getCooldowns().addCooldown(GSItems.TRADESWOMANS_JOURNAL.get(), 20);
         // Set the book's experience
         stack.set(GSDataComponents.EXPERIENCE_DATA, new StoredExperience(playerLevel, playerProgress, playerLevel != 0 || playerProgress != 0));
