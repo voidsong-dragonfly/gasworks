@@ -45,11 +45,12 @@ public class BedMixin implements VanillaWaterloggedBlock {
         if(this.getClass().equals(BedBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
     }
 
+    @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     @ModifyReturnValue(method = "getStateForPlacement", at = @At(value = "RETURN"))
-    private BlockState getStateForPlacement(BlockState toPlace, @Local(argsOnly = true) BlockPlaceContext context) {
+    private BlockState getStateForPlacement(BlockState place, @Local(argsOnly = true) BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         boolean waterlogged = fluid.getType() == Fluids.WATER;
-        return toPlace == null ? null : toPlace.setValue(BlockStateProperties.WATERLOGGED, waterlogged);
+        return (place != null && place.hasProperty(BlockStateProperties.WATERLOGGED) && this.getClass().equals(BedBlock.class)) ? place.setValue(BlockStateProperties.WATERLOGGED, waterlogged) : place;
     }
 
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})

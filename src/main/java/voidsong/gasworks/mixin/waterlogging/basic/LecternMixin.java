@@ -41,6 +41,6 @@ public class LecternMixin implements VanillaWaterloggedBlock {
     private BlockState getStateForPlacement(BlockState place, @Local(argsOnly = true) BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         boolean waterlogged = fluid.getType() == Fluids.WATER && place.hasProperty(BlockStateProperties.WATERLOGGED);
-        return (this.getClass().equals(LecternBlock.class) && place != null) ? place.setValue(BlockStateProperties.WATERLOGGED, waterlogged) : place;
+        return (place != null && place.hasProperty(BlockStateProperties.WATERLOGGED) && this.getClass().equals(LecternBlock.class)) ? place.setValue(BlockStateProperties.WATERLOGGED, waterlogged) : place;
     }
 }
