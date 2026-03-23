@@ -9,6 +9,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.WeatheringCopperDoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -26,7 +27,7 @@ public class DoorMixin implements VanillaWaterloggedBlock {
     @Override
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     public boolean gasworks$shouldWaterlogMixinApply(boolean updateShapeOverride, boolean getStateForPlacementOverride) {
-        return this.getClass().equals(DoorBlock.class) && !(updateShapeOverride || getStateForPlacementOverride);
+        return (this.getClass().equals(DoorBlock.class) || this.getClass().equals(WeatheringCopperDoorBlock.class)) && !(updateShapeOverride || getStateForPlacementOverride);
     }
 
     @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/DoorBlock;registerDefaultState(Lnet/minecraft/world/level/block/state/BlockState;)V"), index = 0)
@@ -37,7 +38,7 @@ public class DoorMixin implements VanillaWaterloggedBlock {
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
     @Inject(method = "createBlockStateDefinition", at = @At(value = "RETURN"))
     private void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder, CallbackInfo ci) {
-        if(this.getClass().equals(DoorBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
+        if(this.getClass().equals(DoorBlock.class) || this.getClass().equals(WeatheringCopperDoorBlock.class)) builder.add(BlockStateProperties.WATERLOGGED);
     }
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
 
@@ -45,7 +46,8 @@ public class DoorMixin implements VanillaWaterloggedBlock {
     private BlockState getStateForPlacement(BlockState place, @Local(argsOnly = true) BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         boolean waterlogged = fluid.getType() == Fluids.WATER;
-        return (place != null && place.hasProperty(BlockStateProperties.WATERLOGGED) && this.getClass().equals(DoorBlock.class)) ? place.setValue(BlockStateProperties.WATERLOGGED, waterlogged) : place;
+        boolean modified = place != null && place.hasProperty(BlockStateProperties.WATERLOGGED) && (this.getClass().equals(DoorBlock.class) || this.getClass().equals(WeatheringCopperDoorBlock.class));
+        return modified ? place.setValue(BlockStateProperties.WATERLOGGED, waterlogged) : place;
     }
 
     @SuppressWarnings({"ConstantValue", "EqualsBetweenInconvertibleTypes"})
@@ -55,7 +57,7 @@ public class DoorMixin implements VanillaWaterloggedBlock {
         if (state.hasProperty(BlockStateProperties.WATERLOGGED) && state.getValue(BlockStateProperties.WATERLOGGED))
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         // Code to ensure we don't duplicate or erase water source blocks; specific to DoorBlock(s)
-        if (this.getClass().equals(DoorBlock.class) && state.hasProperty(BlockStateProperties.WATERLOGGED)) {
+        if ((this.getClass().equals(DoorBlock.class) || this.getClass().equals(WeatheringCopperDoorBlock.class)) && state.hasProperty(BlockStateProperties.WATERLOGGED)) {
             if (updated.isAir())
                 return state.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : updated;
             else
